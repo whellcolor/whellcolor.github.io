@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WhellColor Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
+     crossorigin="anonymous"></script>
+     
+     <script async custom-element="amp-auto-ads"
+     src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+     </script>
+
+<meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+<style type="text/css">
+/* CSS for mobile devices */
+
+.container {
+    width: 1000px;
+    min-height: 200px;
+}
+/* Styles for larger screens */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Styles for tablets */
+@media (min-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Styles for laptops/desktops */
+@media (min-width: 1200px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+#h1 {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#test {
+    width: 200px;
+    height: 200px;
+    background-color: #ffcc00;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #333;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#show,
+#header {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+    color: #1a75d2;
+    margin-top: 10px;
+}
+
+.btns {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#area {
+    width: 80%;
+    margin-left: 10%;
+    padding: 8px; /* Increased padding for better appearance */
+    font-size: 1em;
+    border: 2px solid #1a75d2; /* Adding border for better visibility */
+    border-radius: 5px;
+    color: #333;
+    background-color: #fff; /* Setting background color to white */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: 2px solid #1a75d2;
+    border-radius: 5px;
+    background-color: #1a75d2;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #1a75d2;
+}
+</style>
+
+</head>
+<body>
+    <div id="h1">WhellColor Generator</div>
+    
+    <p>
+    Wheelcolor
+    Color Palette Generator
+    Whether you’re designing a logo or painting your guest room, choosing colors can be frustrating. Where do you start? Which colors work together, and why? How can you go from theory to using themes and tools to get the job done?
+    
+    Use the free Color Calculator to try different colors for your project. Choose your base color(s) and color harmony to create a color palette. You’ll get a color chart with hex, RGB, and CMYK color values and see your colors applied to design samples. You’ll be able to immediately evaluate your color choices against real-world design examples. Adjust, share, print, rinse, and repeat.
+    
+    </p>
+    <input class="form-control" id="area" placeholder="Enter a color here" type="text"><br>
+    <div id="test"></div><br>
+    <div class="btns">
+        <button class="btn btn-primary" id="randomColorBtn">Random Color</button>
+        <button class="btn btn-success" id="submitColorBtn">Submit</button>
+    </div><br>
+    <div id="header">Color Used</div>
+    <div id="show" align="center">rgba(250, 0, 0, 1)</div>
+
+    <script src="script.js"></script>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('randomColorBtn').addEventListener('click', generateRandomColor);
+    document.getElementById('submitColorBtn').addEventListener('click', submitColor);
+    });
+    
+    function generateRandomColor() {
+    var col1 = Math.floor(Math.random() * 256);
+    var col2 = Math.floor(Math.random() * 256);
+    var col3 = Math.floor(Math.random() * 256);
+    var col4 = Math.random().toFixed(2);
+    
+    var code = 'rgba(' + col1 + ', ' + col2 + ', ' + col3 + ', ' + col4 + ')';
+    document.getElementById('show').innerHTML = code;
+    document.getElementById('test').style.backgroundColor = code;
+    }
+    
+    function submitColor() {
+    var val = document.getElementById('area').value;
+    document.getElementById('show').innerHTML = val;
+    document.getElementById('test').style.backgroundColor = val;
+    }
+    </script>
+    
+    <amp-auto-ads type="adsense"
+    data-ad-client="ca-pub-7182145371991939">
+    </amp-auto-ads>
+    
+    <footer>
+    <center>
+    <button a href="https://whellcolor.github.io" >Home </button>
+   </center> </footer>
+    
+</body>
+</html>
