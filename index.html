@@ -1,165 +1,1107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>WhellColor Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whellcolor Cube Crypto (WCC)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-7182145371991939">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
-     crossorigin="anonymous"></script>
-     
-     <script async custom-element="amp-auto-ads"
-     src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-     </script>
+ crossorigin="anonymous"></script>
+ 
+ <script async custom-element="amp-auto-ads"
+ src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+ </script>
 
 <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
-    <style type="text/css">
-/* CSS for mobile devices */
+<style>
 
-.container {
-    width: 1000px;
-    min-height: 200px;
-}
-/* Styles for larger screens */
-@media (min-width: 768px) {
-    body {
-        font-size: 16px;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* Styles for tablets */
-@media (min-width: 992px) {
-    body {
-        font-size: 18px;
-    }
+body{
+font-family:'Orbitron',sans-serif;
+background:#050816;
+color:white;
+overflow:hidden;
 }
 
-/* Styles for laptops/desktops */
-@media (min-width: 1200px) {
-    body {
-        font-size: 20px;
-    }
+.container{
+display:flex;
+height:100vh;
+width:100%;
 }
 
-#h1 {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    font-size: 3em;
-    font-weight: bold;
-    margin-top: 20px;
+/* SIDEBAR */
+
+.sidebar{
+width:260px;
+background:linear-gradient(180deg,#0f172a,#020617);
+border-right:1px solid rgba(255,255,255,0.1);
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:20px;
+z-index:10;
 }
 
-#test {
-    width: 200px;
-    height: 200px;
-    background-color: #ffcc00;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 3px solid #333;
-    border-radius: 10px;
-    margin-top: 30px;
+.logo{
+font-size:22px;
+font-weight:700;
+text-align:center;
+padding:20px 10px;
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-#show,
-#header {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    font-size: 1.2em;
-    color: #1a75d2;
-    margin-top: 10px;
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.btns {
-    text-align: center;
-    margin-top: 20px;
+.menu button{
+padding:15px;
+border:none;
+border-radius:12px;
+background:#111827;
+color:white;
+cursor:pointer;
+font-size:15px;
+transition:0.3s;
+font-family:'Orbitron',sans-serif;
 }
 
-#area {
-    width: 80%;
-    margin-left: 10%;
-    padding: 8px; /* Increased padding for better appearance */
-    font-size: 1em;
-    border: 2px solid #1a75d2; /* Adding border for better visibility */
-    border-radius: 5px;
-    color: #333;
-    background-color: #fff; /* Setting background color to white */
+.menu button:hover{
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
+transform:translateY(-2px);
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1em;
-    border: 2px solid #1a75d2;
-    border-radius: 5px;
-    background-color: #1a75d2;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+.menu button.active{
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
 }
 
-.btn:hover {
-    background-color: #fff;
-    color: #1a75d2;
+/* CONTENT */
+
+.content{
+flex:1;
+position:relative;
+background:#000;
 }
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+display:none;
+background:#000;
+}
+
+iframe.active{
+display:block;
+}
+
+/* TOPBAR */
+
+.topbar{
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:70px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+z-index:5;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.title{
+font-size:18px;
+font-weight:600;
+}
+
+.status{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#00ff88;
+box-shadow:0 0 10px #00ff88;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.4);}
+100%{transform:scale(1);}
+}
+
+/* MOBILE */
+
+.mobile-toggle{
+display:none;
+position:absolute;
+top:15px;
+left:15px;
+z-index:20;
+background:#111827;
+border:none;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+font-size:18px;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+position:absolute;
+left:-260px;
+top:0;
+bottom:0;
+transition:0.4s;
+}
+
+.sidebar.show{
+left:0;
+}
+
+.mobile-toggle{
+display:block;
+}
+
+.content{
+width:100%;
+}
+
+.topbar{
+padding-left:70px;
+}
+
+}
+
+/* LOADER */
+
+.loader{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:99;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.spinner{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,0.1);
+border-top:6px solid #00f0ff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.loader.hidden{
+display:none;
+}
+
 </style>
-
 </head>
-<body>
-    <div id="h1">WhellColor Generator</div>
-    
-    <p>
-    Wheelcolor
-    Color Palette Generator
-    Whether you’re designing a logo or painting your guest room, choosing colors can be frustrating. Where do you start? Which colors work together, and why? How can you go from theory to using themes and tools to get the job done?
-    
-    Use the free Color Calculator to try different colors for your project. Choose your base color(s) and color harmony to create a color palette. You’ll get a color chart with hex, RGB, and CMYK color values and see your colors applied to design samples. You’ll be able to immediately evaluate your color choices against real-world design examples. Adjust, share, print, rinse, and repeat.
-    
-    </p>
-    <input class="form-control" id="area" placeholder="Enter a color here" type="text"><br>
-    <div id="test"></div><br>
-    <div class="btns">
-        <button class="btn btn-primary" id="randomColorBtn">Random Color</button>
-        <button class="btn btn-success" id="submitColorBtn">Submit</button>
-    </div><br>
-    <div id="header">Color Used</div>
-    <div id="show" align="center">rgba(250, 0, 0, 1)</div>
 
-    <script src="script.js"></script>
-    <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('randomColorBtn').addEventListener('click', generateRandomColor);
-    document.getElementById('submitColorBtn').addEventListener('click', submitColor);
+<body>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+
+<div class="container">
+
+<div class="sidebar" id="sidebar">
+
+<div class="logo">
+WCC
+</div>
+
+<div class="menu">
+
+<button class="active" onclick="loadPage('home',this)">
+🏠 Home
+</button>
+
+<button onclick="loadPage('dex',this)">
+💱 DEX
+</button>
+
+<button onclick="loadPage('nft',this)">
+🖼 NFT
+</button>
+
+<button onclick="loadPage('cube',this)">
+🧊 Cube
+</button>
+
+<button onclick="loadPage('miner',this)">
+⛏ Miner
+</button>
+
+<button>
+<appkit-button></appkit-button>
+</button>
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="topbar">
+<div class="title">
+Whellcolor Cube Crypto (WCC)
+</div>
+<div>
+<appkit-button></appkit-button>
+
+  <button onclick="sendTx()">Claim 0.0001 ETH</button>
+</div>
+<div class="status">
+<div class="dot"></div>
+LIVE NETWORK
+</div>
+
+  
+  <script type="module">
+    import { createAppKit } from "https://esm.sh/@reown/appkit";
+    import { EthersAdapter } from "https://esm.sh/@reown/appkit-adapter-ethers";
+    import { mainnet, arbitrum } from "https://esm.sh/@reown/appkit/networks";
+    import { BrowserProvider, parseEther } from "https://esm.sh/ethers";
+
+    const projectId = "5022875ce6ee68917f103ff9b1e3422d";
+
+    const metadata = {
+      name: "AppKit",
+      description: "AppKit Example",
+      url: window.location.origin,
+      icons: ["https://avatars.githubusercontent.com/u/179229932"],
+    };
+
+    // CREATE APPKIT (ONLY ONCE)
+    const modal = createAppKit({
+      adapters: [new EthersAdapter()],
+      networks: [mainnet, arbitrum],
+      metadata,
+      projectId,
+      features: {
+        analytics: true,
+      },
     });
-    
-    function generateRandomColor() {
-    var col1 = Math.floor(Math.random() * 256);
-    var col2 = Math.floor(Math.random() * 256);
-    var col3 = Math.floor(Math.random() * 256);
-    var col4 = Math.random().toFixed(2);
-    
-    var code = 'rgba(' + col1 + ', ' + col2 + ', ' + col3 + ', ' + col4 + ')';
-    document.getElementById('show').innerHTML = code;
-    document.getElementById('test').style.backgroundColor = code;
+
+    let provider;
+
+    // GET PROVIDER WHEN READY
+    modal.subscribeProviders((state) => {
+      provider = state?.eip155;
+    });
+
+    window.modal = modal;
+    window.provider = provider;
+
+    // SEND TRANSACTION FUNCTION
+    window.sendTx = async function () {
+      try {
+        if (!provider) {
+          alert("Wallet belum connect");
+          return;
+        }
+
+        const ethersProvider = new BrowserProvider(provider);
+        const signer = await ethersProvider.getSigner();
+
+        const tx = await signer.sendTransaction({
+          to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+          value: parseEther("0.0001"),
+        });
+
+        console.log("TX:", tx);
+        alert("Transaction sent!");
+      } catch (err) {
+        console.error(err);
+        alert("Transaction failed");
+      }
+    };
+  </script>
+
+</div>
+
+<div class="loader" id="loader">
+<div class="spinner"></div>
+<div>Loading WCC...</div>
+</div>
+
+<!-- IFRAME PAGES -->
+
+<iframe
+id="home"
+class="active"
+src="https://whellcolor.github.io/">
+</iframe>
+
+<iframe
+id="dex"
+src="https://whellcolor.github.io/dapp/dex">
+</iframe>
+
+<iframe
+id="nft"
+src="https://whellcolor.github.io/cube/nft/">
+</iframe>
+
+<iframe
+id="cube"
+src="https://whellcolor.github.io/cube/">
+</iframe>
+
+<iframe
+id="miner"
+src="https://whellcolor.github.io/miner/">
+</iframe>
+
+</div>
+
+</div>
+
+<script>
+
+const iframes=document.querySelectorAll("iframe");
+const loader=document.getElementById("loader");
+
+function loadPage(id,btn){
+
+loader.classList.remove("hidden");
+
+iframes.forEach(frame=>{
+frame.classList.remove("active");
+});
+
+document.querySelectorAll(".menu button").forEach(b=>{
+b.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+btn.classList.add("active");
+
+setTimeout(()=>{
+loader.classList.add("hidden");
+},800);
+
+if(window.innerWidth<900){
+document.getElementById("sidebar").classList.remove("show");
+}
+
+}
+
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("show");
+}
+
+window.onload=()=>{
+setTimeout(()=>{
+loader.classList.add("hidden");
+},1200);
+}
+
+</script>
+<script>
+
+// =====================
+// CONFIG
+// =====================
+const contractAddress = "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00";
+const contractAddress = "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb";
+
+const TOKEN_ADDRESS =
+"0xd8519a8b8825aa0dcc73aad572f447fae102fe88";
+
+const FAUCET_ADDRESS =
+"0xd8519a8b8825aa0dcc73aad572f447fae102fe88";
+
+const NFT_ADDRESS =
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+const abi = [
+"function getValue() view returns(uint256)",
+"function setValue(uint256)"
+];
+
+const TOKEN_ABI = ["function balanceOf(address) view returns(uint256)"];
+const FAUCET_ABI = [
+"function requestTokens()",
+"function canClaim(address) view returns(bool)"
+];
+
+const NFT_ABI = [
+"function mint(address to,string uri)"
+];
+
+// =====================
+let provider, signer, contract;
+let tokenContract, faucetContract;
+
+let mining=false;
+let sec=0;
+let btc=0;
+
+// =====================
+// CONNECT WALLET
+// =====================
+async function connectWallet(){
+
+if(!window.ethereum) return alert("Install MetaMask");
+
+provider = new ethers.BrowserProvider(window.ethereum);
+await provider.send("eth_requestAccounts",[]);
+
+signer = await provider.getSigner();
+contract = new ethers.Contract(contractAddress,abi,signer);
+
+tokenContract = new ethers.Contract(TOKEN_ADDRESS,TOKEN_ABI,signer);
+faucetContract = new ethers.Contract(FAUCET_ADDRESS,FAUCET_ABI,signer);
+
+document.getElementById("wallet").innerText =
+await signer.getAddress();
+
+}
+
+// =====================
+function connectWalletInput(){
+const w=document.getElementById("minerWallet").value;
+if(w.length<20)return alert("Invalid wallet");
+document.getElementById("walletInfo").innerText=w;
+}
+
+// =====================
+// MINING
+// =====================
+function startMining(){mining=true;}
+function stopMining(){mining=false;}
+
+// timer
+setInterval(()=>{
+if(mining){
+sec++;
+let h=String(Math.floor(sec/3600)).padStart(2,"0");
+let m=String(Math.floor(sec%3600/60)).padStart(2,"0");
+let s=String(sec%60).padStart(2,"0");
+document.getElementById("timer").innerText=`${h}:${m}:${s}`;
+}
+},1000);
+
+// earnings
+setInterval(()=>{
+if(mining){
+btc+=0.0001;
+document.getElementById("earnings").innerText=btc.toFixed(4)+" BTC";
+}
+},3000);
+
+// hash rate + chart
+const ctx=document.getElementById("chart");
+const data={
+labels:["1","2","3","4","5"],
+datasets:[{label:"Hash",data:[120,130,140,150,160],borderColor:"#38bdf8"}]
+};
+
+const chart=new Chart(ctx,{type:"line",data});
+
+// =====================
+// CONTRACT
+// =====================
+async function readData(){
+if(!contract)return;
+const v=await contract.getValue();
+document.getElementById("output").innerText=v.toString();
+}
+
+async function updateData(){
+const tx=await contract.setValue(42);
+await tx.wait();
+alert("Updated");
+}
+
+// =====================
+// TOKEN
+// =====================
+async function checkTokenBalance(){
+const addr=await signer.getAddress();
+const bal=await tokenContract.balanceOf(addr);
+alert(bal.toString());
+}
+
+// =====================
+// FAUCET
+// =====================
+async function requestFaucet(){
+const tx=await faucetContract.requestTokens();
+await tx.wait();
+alert("Claimed");
+}
+
+// =====================
+// NFT
+// =====================
+async function mintNFT(){
+const nft=new ethers.Contract(NFT_ADDRESS,NFT_ABI,signer);
+const tx=await nft.mint(await signer.getAddress(),"ipfs://metadata");
+await tx.wait();
+alert("NFT Minted");
+}
+
+// =====================
+// RPC
+// =====================
+async function getLatestBlock(){
+const rpc=new ethers.JsonRpcProvider("https://ethereum-holesky-rpc.publicnode.com");
+const b=await rpc.getBlockNumber();
+document.getElementById("rpcStatus").innerText=b;
+}
+
+</script>
+
+<!-- RPC THIRDWEB ACTIVE -->
+<!-- tambahkan di bawah script ethers -->
+
+<script>
+
+// =====================================
+// THIRDWEB RPC
+// =====================================
+
+const THIRDWEB_RPC =
+"https://1.rpc.thirdweb.com/e6230839e78c90a670b64b1f26c0b3d8";
+
+
+// =====================================
+// GET BLOCK NUMBER
+// =====================================
+
+async function getLatestBlock(){
+
+  try{
+
+    const res = await fetch(
+      THIRDWEB_RPC,
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":"application/json",
+        },
+
+        body:JSON.stringify({
+
+          jsonrpc:"2.0",
+
+          method:"eth_blockNumber",
+
+          params:[],
+
+          id:1
+
+        })
+      }
+    );
+
+    const data =
+    await res.json();
+
+    const latestBlock =
+    parseInt(
+      data.result,
+      16
+    );
+
+    console.log(
+      "Latest block:",
+      latestBlock
+    );
+
+    document.getElementById(
+      "rpcStatus"
+    ).innerHTML =
+    "RPC Active ✅ Block: " +
+    latestBlock;
+
+  }catch(err){
+
+    console.log(err);
+
+    document.getElementById(
+      "rpcStatus"
+    ).innerHTML =
+    "RPC Failed ❌";
+
+  }
+
+}
+
+
+// =====================================
+// AUTO RPC CHECK
+// =====================================
+
+window.onload = () => {
+
+  getLatestBlock();
+
+};
+
+</script>
+
+<script type="module">
+
+import React from "https://esm.sh/react";
+import ReactDOM from "https://esm.sh/react-dom/client";
+
+import {
+  ConnectButton
+} from "https://esm.sh/thirdweb/react";
+
+import {
+  createThirdwebClient
+} from "https://esm.sh/thirdweb";
+
+import {
+  inAppWallet,
+  createWallet
+} from "https://esm.sh/thirdweb/wallets";
+
+
+// =========================
+// THIRDWEB CLIENT
+// =========================
+
+const client = createThirdwebClient({
+  clientId: "G8vNXJOMTp_TuTQV3kgFIQyKAz_L21F3a9SW57zKanPEqK7iGCHyTUcHKuujJR1q3G2h7d4VHaIlDeR3yn0Wjw"
+});
+
+
+// =========================
+// WALLET LIST
+// =========================
+
+const wallets = [
+
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "telegram",
+        "farcaster",
+        "email",
+        "x",
+        "passkey",
+        "phone",
+        "github",
+        "steam",
+        "tiktok",
+        "coinbase",
+        "guest",
+        "facebook",
+        "epic",
+      ],
+    },
+  }),
+
+  createWallet("com.trustwallet.app"),
+  createWallet("io.metamask"),
+  createWallet("io.zerion.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("com.binance.wallet"),
+  createWallet("com.bitget.web3"),
+  createWallet("org.uniswap"),
+  createWallet("com.crypto.wallet"),
+  createWallet("com.bitcoin"),
+  createWallet("com.blockchain.login"),
+  createWallet("global.safe"),
+  createWallet("com.okex.wallet"),
+  createWallet("id.co.pintu"),
+  createWallet("ag.jup"),
+  createWallet("org.hot-labs"),
+  createWallet("com.oasys-wallet"),
+  createWallet("io.enjin"),
+  createWallet("my.mone"),
+  createWallet("io.ethermail"),
+  createWallet("io.trustasset"),
+  createWallet("com.zypto"),
+  createWallet("me.astrox"),
+  createWallet("com.thirdweb"),
+  createWallet("com.kresus"),
+  createWallet("com.dolletwallet"),
+  createWallet("com.passwallet.app"),
+  createWallet("finance.porta"),
+  createWallet("com.dokwallet"),
+  createWallet("io.streakk"),
+  createWallet("io.earthwallet"),
+  createWallet("walletConnect"),
+  createWallet("smart"),
+  createWallet("org.base.account"),
+  createWallet("sh.frame"),
+];
+
+
+// =========================
+// CONNECT BUTTON UI
+// =========================
+
+function App() {
+
+  return React.createElement(
+    "div",
+    {
+      style:{
+        display:"flex",
+        justifyContent:"center",
+        marginTop:"30px"
+      }
+    },
+
+    React.createElement(
+      ConnectButton,
+      {
+        client:client,
+
+        wallets:wallets,
+
+        connectModal:{
+          size:"compact"
+        },
+
+        theme:"dark",
+
+        connectButton:{
+          label:"CONNECT WEB3"
+        }
+      }
+    )
+  );
+}
+
+
+// =========================
+// RENDER
+// =========================
+
+const root =
+ReactDOM.createRoot(
+document.getElementById(
+"connect-popup"
+)
+);
+
+root.render(
+React.createElement(App)
+);
+
+</script>
+
+<script>
+
+let provider;
+let signer;
+
+let mining = false;
+let sec = 0;
+let btc = 0;
+
+const HOLESKY_RPC =
+"https://ethereum-holesky-rpc.publicnode.com";
+
+const nftAddress =
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+const nftAbi = [
+"function mint(address to, string uri)"
+];
+
+
+// =======================
+// TIMER
+// =======================
+
+setInterval(()=>{
+
+    if(mining){
+
+        sec++;
+
+        let h = String(Math.floor(sec/3600)).padStart(2,'0');
+        let m = String(Math.floor((sec%3600)/60)).padStart(2,'0');
+        let s = String(sec%60).padStart(2,'0');
+
+        document.getElementById("timer").innerHTML =
+        `${h}:${m}:${s}`;
+
     }
-    
-    function submitColor() {
-    var val = document.getElementById('area').value;
-    document.getElementById('show').innerHTML = val;
-    document.getElementById('test').style.backgroundColor = val;
+
+},1000);
+
+
+// =======================
+// START MINING
+// =======================
+
+function startMining(){
+
+    mining = true;
+
+}
+
+
+// =======================
+// STOP MINING
+// =======================
+
+function stopMining(){
+
+    mining = false;
+
+}
+
+
+// =======================
+// CHART
+// =======================
+
+const ctx =
+document.getElementById("chart");
+
+const data = {
+labels:["1","2","3","4","5","6"],
+datasets:[{
+label:"Hash Rate",
+data:[120,130,125,140,145,150],
+borderColor:"#38bdf8",
+backgroundColor:"rgba(56,189,248,0.2)",
+fill:true,
+tension:0.4
+}]
+};
+
+const chart = new Chart(ctx,{
+type:"line",
+data:data,
+options:{
+plugins:{
+legend:{
+labels:{
+color:"white"
+}
+}
+},
+scales:{
+x:{
+ticks:{color:"white"}
+},
+y:{
+ticks:{color:"white"}
+}
+}
+}
+});
+
+
+// =======================
+// RANDOM HASHRATE
+// =======================
+
+setInterval(()=>{
+
+    if(mining){
+
+        let random =
+        Math.floor(Math.random()*40)+100;
+
+        document.getElementById("rate").innerHTML =
+        random+" MH/s";
+
+        btc += 0.0001;
+
+        document.getElementById("earnings").innerHTML =
+        btc.toFixed(4)+" BTC";
+
+        data.datasets[0].data.push(random);
+        data.datasets[0].data.shift();
+
+        chart.update();
+
     }
-    </script>
-    
-    <amp-auto-ads type="adsense"
-    data-ad-client="ca-pub-7182145371991939">
-    </amp-auto-ads>
-    
-    <footer>
-    <center>
-    <button a href="https://whellcolor.github.io" >Home </button>
-   </center> </footer>
-    
+
+},5000);
+
+
+// =======================
+// CONNECT WALLET
+// =======================
+
+async function connectWallet(){
+
+    if(!window.ethereum){
+        alert("Install MetaMask");
+        return;
+    }
+
+    try{
+
+        provider =
+        new ethers.BrowserProvider(window.ethereum);
+
+        await provider.send(
+        "eth_requestAccounts",
+        []
+        );
+
+        signer =
+        await provider.getSigner();
+
+        const address =
+        await signer.getAddress();
+
+        document.getElementById("wallet")
+        .innerHTML =
+        "Connected: "+address;
+
+    }catch(err){
+
+        console.log(err);
+
+    }
+
+}
+
+
+// =======================
+// TEST RPC
+// =======================
+
+async function testRPC(){
+
+    try{
+
+        const rpcProvider =
+        new ethers.JsonRpcProvider(
+        HOLESKY_RPC
+        );
+
+        const block =
+        await rpcProvider.getBlockNumber();
+
+        document.getElementById(
+        "rpcStatus"
+        ).innerHTML =
+        "RPC Connected ✅ Block: "+block;
+
+    }catch(err){
+
+        document.getElementById(
+        "rpcStatus"
+        ).innerHTML =
+        "RPC Failed ❌";
+
+    }
+
+}
+
+
+// =======================
+// MINT NFT
+// =======================
+
+async function mintNFT(){
+
+    if(!signer){
+
+        alert("Connect wallet first");
+        return;
+
+    }
+
+    try{
+
+        const nft =
+        new ethers.Contract(
+        nftAddress,
+        nftAbi,
+        signer
+        );
+
+        const tx =
+        await nft.mint(
+        await signer.getAddress(),
+        "ipfs://YOUR_METADATA"
+        );
+
+        await tx.wait();
+
+        alert("NFT Minted ✅");
+
+    }catch(err){
+
+        console.log(err);
+
+        alert("Mint Failed");
+
+    }
+
+}
+
+
+// =======================
+// CLAIM REWARD
+// =======================
+
+function claimReward(){
+
+    alert("Reward Claimed ✅");
+
+}
+
+</script>
+<amp-auto-ads type="adsense"
+data-ad-client="ca-pub-7182145371991939">
+</amp-auto-ads>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
+     crossorigin="anonymous"></script>
+<!-- whell ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7182145371991939"
+     data-ad-slot="8012664455"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 </html>
