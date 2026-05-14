@@ -10,7 +10,7 @@ import {ERC1155SupplyUpgradeable} from "@openzeppelin/contracts-upgradeable/toke
 import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
 
 /// @custom:security-contact bahansatekambing@gmail.com
-contract WCC is Initializable, ERC1155Upgradeable, OwnableUpgradeable, ERC1155PausableUpgradeable, ERC1155BurnableUpgradeable, ERC1155SupplyUpgradeable {
+contract WhellcolorCubeCryptoWCC is Initializable, ERC1155Upgradeable, OwnableUpgradeable, ERC1155PausableUpgradeable, ERC1155BurnableUpgradeable, ERC1155SupplyUpgradeable {
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
