@@ -1088,6 +1088,66 @@ function claimReward(){
 }
 
 </script>
+<script type="text/javascript">
+async function main() {
+  const Token = await ethers.getContractFactory("WCCToken");
+  const token = await Token.deploy();
+  await token.waitForDeployment();
+
+  const Staking = await ethers.getContractFactory("WCCStaking");
+  const staking = await Staking.deploy(token.target);
+  await staking.waitForDeployment();
+
+  const Vault = await ethers.getContractFactory("WCCVault");
+  const vault = await Vault.deploy();
+  await vault.waitForDeployment();
+
+  console.log("TOKEN:", token.target);
+  console.log("STAKING:", staking.target);
+  console.log("VAULT:", vault.target);
+}
+
+main();
+</script>
+<script type="text/javascript">
+import { BrowserProvider, Contract, parseEther } from "ethers";
+
+const TOKEN = "0xTOKEN_ADDRESS";
+const STAKING = "0xSTAKING_ADDRESS";
+
+let provider;
+
+async function connect() {
+  provider = new BrowserProvider(window.ethereum);
+}
+
+async function stake(amount) {
+  const signer = await provider.getSigner();
+
+  const token = new Contract(TOKEN, [
+    "function approve(address spender, uint256 amount) public returns(bool)"
+  ], signer);
+
+  await token.approve(STAKING, parseEther(amount));
+
+  const staking = new Contract(STAKING, [
+    "function stake(uint256 amount) external"
+  ], signer);
+
+  await staking.stake(parseEther(amount));
+}
+
+async function claim() {
+  const signer = await provider.getSigner();
+
+  const staking = new Contract(STAKING, [
+    "function claim() external"
+  ], signer);
+
+  await staking.claim();
+}
+</script>
+ 
 <amp-auto-ads type="adsense"
 data-ad-client="ca-pub-7182145371991939">
 </amp-auto-ads>
