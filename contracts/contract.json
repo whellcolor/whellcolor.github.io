@@ -1,0 +1,21 @@
+{
+  "project": {
+    "name": "WhellColor",
+    "website": "https://whellcolor.github.io/"
+  },
+  "network": {
+    "rpc_url": "https://rpc.buildbear.io/global-wolverine-ff979075",
+    "api_key": "8WRIDBMW18HXAB44ATGX7IPYGSHXVXDVC3",
+    "chain": "Ethereum Compatible"
+  },
+  "contract": {
+    "address": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+    "contractor_wallet": "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+    "owner_creator": "0xdd99b75f095d0c4d5112ace938e4e6ed962fb024"
+  },
+  "verification": {
+    "message": "[Etherscan.io 15/05/2026 07:00:51] I, hereby verify that I am the owner/creator of the address [0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00]",
+    "signature_hash": "0x370ba6f1643c62d130ac39a94466c29b8076404f3fe91a57b1329bfe7cee5d2e198c6987fe4de30adcbac2a33f20eb8609c09f8d3e603cc3f159c9520516420d1b",
+    "verified_at": "2026-05-15T07:00:51Z"
+  }
+}
