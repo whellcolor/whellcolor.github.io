@@ -1,0 +1,1187 @@
+{
+  "compiler": {
+    "version": "0.8.23+commit.f704f362"
+  },
+  "language": "Solidity",
+  "output": {
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_defaultAdmin",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IEntryPoint",
+            "name": "_entrypoint",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "accountAdmin",
+            "type": "address"
+          }
+        ],
+        "name": "AccountCreated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "prevURI",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "newURI",
+            "type": "string"
+          }
+        ],
+        "name": "ContractURIUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "previousAdminRole",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "newAdminRole",
+            "type": "bytes32"
+          }
+        ],
+        "name": "RoleAdminChanged",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          }
+        ],
+        "name": "RoleGranted",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          }
+        ],
+        "name": "RoleRevoked",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          }
+        ],
+        "name": "SignerAdded",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          }
+        ],
+        "name": "SignerRemoved",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "DEFAULT_ADMIN_ROLE",
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "accountImplementation",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "contractURI",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_admin",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes",
+            "name": "_data",
+            "type": "bytes"
+          }
+        ],
+        "name": "createAccount",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "entrypoint",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "_start",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_end",
+            "type": "uint256"
+          }
+        ],
+        "name": "getAccounts",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "accounts",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "signer",
+            "type": "address"
+          }
+        ],
+        "name": "getAccountsOfSigner",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "accounts",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_adminSigner",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes",
+            "name": "_data",
+            "type": "bytes"
+          }
+        ],
+        "name": "getAddress",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getAllAccounts",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "name": "getRoleAdmin",
+        "outputs": [
+          {
+            "internalType": "bytes32",
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+          }
+        ],
+        "name": "getRoleMember",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "member",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          }
+        ],
+        "name": "getRoleMemberCount",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "count",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "grantRole",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "hasRole",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "hasRoleWithSwitch",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_account",
+            "type": "address"
+          }
+        ],
+        "name": "isRegistered",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes[]",
+            "name": "data",
+            "type": "bytes[]"
+          }
+        ],
+        "name": "multicall",
+        "outputs": [
+          {
+            "internalType": "bytes[]",
+            "name": "results",
+            "type": "bytes[]"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "_salt",
+            "type": "bytes32"
+          }
+        ],
+        "name": "onRegister",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_signer",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "_salt",
+            "type": "bytes32"
+          }
+        ],
+        "name": "onSignerAdded",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_signer",
+            "type": "address"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "_salt",
+            "type": "bytes32"
+          }
+        ],
+        "name": "onSignerRemoved",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "renounceRole",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "bytes32",
+            "name": "role",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "account",
+            "type": "address"
+          }
+        ],
+        "name": "revokeRole",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_uri",
+            "type": "string"
+          }
+        ],
+        "name": "setContractURI",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "totalAccounts",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ],
+    "devdoc": {
+      "events": {
+        "ContractURIUpdated(string,string)": {
+          "details": "Emitted when the contract URI is updated."
+        },
+        "RoleAdminChanged(bytes32,bytes32,bytes32)": {
+          "details": "Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole` `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite {RoleAdminChanged} not being emitted signaling this. _Available since v3.1._"
+        },
+        "RoleGranted(bytes32,address,address)": {
+          "details": "Emitted when `account` is granted `role`. `sender` is the account that originated the contract call, an admin role bearer except when using {AccessControl-_setupRole}."
+        },
+        "RoleRevoked(bytes32,address,address)": {
+          "details": "Emitted when `account` is revoked `role`. `sender` is the account that originated the contract call:   - if using `revokeRole`, it is the admin role bearer   - if using `renounceRole`, it is the role bearer (i.e. `account`)"
+        }
+      },
+      "kind": "dev",
+      "methods": {
+        "getRoleAdmin(bytes32)": {
+          "details": "See {grantRole} and {revokeRole}.                  To change a role's admin, use {_setRoleAdmin}.",
+          "params": {
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "getRoleMember(bytes32,uint256)": {
+          "details": "Returns `member` who has `role`, at `index` of role-members list.                  See struct {RoleMembers}, and mapping {roleMembers}",
+          "params": {
+            "index": "Index in list of current members for the role.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          },
+          "returns": {
+            "member": " Address of account that has `role`"
+          }
+        },
+        "getRoleMemberCount(bytes32)": {
+          "details": "Returns `count` of accounts that have `role`.                  See struct {RoleMembers}, and mapping {roleMembers}",
+          "params": {
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          },
+          "returns": {
+            "count": "  Total number of accounts that have `role`"
+          }
+        },
+        "grantRole(bytes32,address)": {
+          "details": "Caller must have admin role for the `role`.                  Emits {RoleGranted Event}.",
+          "params": {
+            "account": "Address of the account to which the role is being granted.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "hasRole(bytes32,address)": {
+          "details": "Returns `true` if `account` has been granted `role`.",
+          "params": {
+            "account": "Address of the account for which the role is being checked.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "hasRoleWithSwitch(bytes32,address)": {
+          "details": "Returns `true` if `account` has been granted `role`.                  Role restrictions can be swtiched on and off:                      - If address(0) has ROLE, then the ROLE restrictions                        don't apply.                      - If address(0) does not have ROLE, then the ROLE                        restrictions will apply.",
+          "params": {
+            "account": "Address of the account for which the role is being checked.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "multicall(bytes[])": {
+          "details": "Receives and executes a batch of function calls on this contract.",
+          "params": {
+            "data": "The bytes data that makes up the batch of function calls to execute."
+          },
+          "returns": {
+            "results": "The bytes data that makes up the result of the batch of function calls executed."
+          }
+        },
+        "renounceRole(bytes32,address)": {
+          "details": "Caller must have the `role`, with caller being the same as `account`.                  Emits {RoleRevoked Event}.",
+          "params": {
+            "account": "Address of the account from which the role is being revoked.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "revokeRole(bytes32,address)": {
+          "details": "Caller must have admin role for the `role`.                  Emits {RoleRevoked Event}.",
+          "params": {
+            "account": "Address of the account from which the role is being revoked.",
+            "role": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        },
+        "setContractURI(string)": {
+          "details": "Caller should be authorized to setup contractURI, e.g. contract admin.                  See {_canSetContractURI}.                  Emits {ContractURIUpdated Event}.",
+          "params": {
+            "_uri": "keccak256 hash of the role. e.g. keccak256(\"TRANSFER_ROLE\")"
+          }
+        }
+      },
+      "version": 1
+    },
+    "userdoc": {
+      "events": {
+        "AccountCreated(address,address)": {
+          "notice": "Emitted when a new Account is created."
+        },
+        "SignerAdded(address,address)": {
+          "notice": "Emitted when a new signer is added to an Account."
+        },
+        "SignerRemoved(address,address)": {
+          "notice": "Emitted when a new signer is added to an Account."
+        }
+      },
+      "kind": "user",
+      "methods": {
+        "accountImplementation()": {
+          "notice": "Returns the address of the Account implementation."
+        },
+        "contractURI()": {
+          "notice": "Returns the contract metadata URI."
+        },
+        "createAccount(address,bytes)": {
+          "notice": "Deploys a new Account for admin."
+        },
+        "getAccounts(uint256,uint256)": {
+          "notice": "Returns all accounts between the given indices."
+        },
+        "getAccountsOfSigner(address)": {
+          "notice": "Returns all accounts that the given address is a signer of."
+        },
+        "getAddress(address,bytes)": {
+          "notice": "Returns the address of an Account that would be deployed with the given admin signer."
+        },
+        "getAllAccounts()": {
+          "notice": "Returns all accounts created on the factory."
+        },
+        "getRoleAdmin(bytes32)": {
+          "notice": "Returns the admin role that controls the specified role."
+        },
+        "getRoleMember(bytes32,uint256)": {
+          "notice": "Returns the role-member from a list of members for a role,                  at a given index."
+        },
+        "getRoleMemberCount(bytes32)": {
+          "notice": "Returns total number of accounts that have a role."
+        },
+        "grantRole(bytes32,address)": {
+          "notice": "Grants a role to an account, if not previously granted."
+        },
+        "hasRole(bytes32,address)": {
+          "notice": "Checks whether an account has a particular role."
+        },
+        "hasRoleWithSwitch(bytes32,address)": {
+          "notice": "Checks whether an account has a particular role;                  role restrictions can be swtiched on and off."
+        },
+        "isRegistered(address)": {
+          "notice": "Returns whether an account is registered on this factory."
+        },
+        "multicall(bytes[])": {
+          "notice": "Receives and executes a batch of function calls on this contract."
+        },
+        "onRegister(bytes32)": {
+          "notice": "Callback function for an Account to register itself on the factory."
+        },
+        "onSignerRemoved(address,bytes32)": {
+          "notice": "Callback function for an Account to un-register its signers."
+        },
+        "renounceRole(bytes32,address)": {
+          "notice": "Revokes role from the account."
+        },
+        "revokeRole(bytes32,address)": {
+          "notice": "Revokes role from an account."
+        },
+        "setContractURI(string)": {
+          "notice": "Lets a contract admin set the URI for contract-level metadata."
+        },
+        "totalAccounts()": {
+          "notice": "Returns the total number of accounts."
+        }
+      },
+      "version": 1
+    }
+  },
+  "settings": {
+    "compilationTarget": {
+      "contracts/prebuilts/account/non-upgradeable/AccountFactory.sol": "AccountFactory"
+    },
+    "evmVersion": "london",
+    "libraries": {},
+    "metadata": {
+      "bytecodeHash": "ipfs"
+    },
+    "optimizer": {
+      "enabled": true,
+      "runs": 20
+    },
+    "remappings": [
+      ":@chainlink/=lib/chainlink/",
+      ":@ds-test/=lib/ds-test/src/",
+      ":@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+      ":@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+      ":@rari-capital/solmate/=lib/seaport/lib/solmate/",
+      ":@seaport/=lib/seaport/contracts/",
+      ":@std/=lib/forge-std/src/",
+      ":@thirdweb-dev/dynamic-contracts/=lib/dynamic-contracts/",
+      ":ERC721A-Upgradeable/=lib/ERC721A-Upgradeable/contracts/",
+      ":ERC721A/=lib/ERC721A/contracts/",
+      ":chainlink/=lib/chainlink/contracts/",
+      ":contracts/=contracts/",
+      ":ds-test/=lib/ds-test/src/",
+      ":dynamic-contracts/=lib/dynamic-contracts/src/",
+      ":erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/",
+      ":erc721a-upgradeable/=lib/ERC721A-Upgradeable/",
+      ":erc721a/=lib/ERC721A/",
+      ":forge-std/=lib/forge-std/src/",
+      ":lib/sstore2/=lib/dynamic-contracts/lib/sstore2/",
+      ":murky/=lib/murky/src/",
+      ":openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+      ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+      ":openzeppelin/=lib/openzeppelin-contracts-upgradeable/contracts/",
+      ":seaport-core/=lib/seaport/lib/seaport-core/",
+      ":seaport-sol/=lib/seaport-sol/src/",
+      ":seaport-types/=lib/seaport/lib/seaport-types/",
+      ":seaport/=lib/seaport/",
+      ":solady/=lib/solady/",
+      ":solarray/=lib/seaport/lib/solarray/src/",
+      ":solmate/=lib/seaport/lib/solmate/src/",
+      ":sstore2/=lib/dynamic-contracts/lib/sstore2/contracts/"
+    ]
+  },
+  "sources": {
+    "contracts/eip/ERC1271.sol": {
+      "keccak256": "0xce12f73b64a1d954ce3b96cc83974d9a9d7b1e6f34e75ed8c1fdcf19ed92574e",
+      "license": "Apache 2.0",
+      "urls": [
+        "bzz-raw://ac19729c3f76aa804eff7dd0365bfaff3871b22953908a26cc0dd07a0319c6c0",
+        "dweb:/ipfs/QmTQMZGceJ4QvWAwngCEbt6PfQhZMHWhuzE8wWVC8yR7Ro"
+      ]
+    },
+    "contracts/eip/ERC165.sol": {
+      "keccak256": "0x0ea604ea6ebe99809a2f620009c8dead82d7fb17ab12b734e1e29c8ceb85938b",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://d9d109154c913e34d107db2cec5608dd8a55075dee35ae77aa78ebb9ff7d856c",
+        "dweb:/ipfs/QmW8QKw4kag1Bv68FjSZiGvPP8WDocjdhLSd3ssUXZ5Kgr"
+      ]
+    },
+    "contracts/eip/interface/IERC165.sol": {
+      "keccak256": "0x35d0a916f70344a5fcc6c67cb531b6150d2fce43e72a6282385eab02020f2f49",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://75ccd8b9a8b52a93b8097fcb8181b7afb6d72bbe6eaabf434f0481a7a207cc8a",
+        "dweb:/ipfs/QmPUZAEE4nwkijcE2amAXAWEVGVG5XaKWGhpgnRwpAf93R"
+      ]
+    },
+    "contracts/extension/Multicall.sol": {
+      "keccak256": "0xe4479833f6297a1461478733e14dd0e9b8376da474fa7067cb8937f9ccff2836",
+      "license": "Apache 2.0",
+      "urls": [
+        "bzz-raw://b03c41daeba7783e04387eff65f6ccc50f2312d895ff3cb9198410976df19c4e",
+        "dweb:/ipfs/QmV54V9YQn9TWZhoAsFex8GdCkQmFX6iajYnUv5zU1sxEQ"
+      ]
+    },
+    "contracts/extension/interface/IAccountPermissions.sol": {
+      "keccak256": "0xfb7f2234c9c03480db9241fb9ca487a6b671c03f27836abbb33e24e79f401c52",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://156c44d9bc550c602e964dd655112de25a3966cfd6870e9631b9d841cebe028b",
+        "dweb:/ipfs/Qmbq5ozkA52o86eGxDG3wMBYtMZM6dMatnA3B64sbYjADJ"
+      ]
+    },
+    "contracts/extension/interface/IContractMetadata.sol": {
+      "keccak256": "0x41d3f7f43c124e9ff0247cb94f4e8fc8c5a79b1de331c67eb03654154248d7f2",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://fa8d6251cf3a876193cc719b456c02ff23d3f2d5486431e9bdaf290be9a4ce9a",
+        "dweb:/ipfs/QmRwnA2q15Vdkc66fz6BAinZM3tjuVNHn5CeGzc7ZFMAzr"
+      ]
+    },
+    "contracts/extension/interface/IMulticall.sol": {
+      "keccak256": "0xe2bbd37b8fdb9cc8b933e598512a068ebb214b3f5abc2bc634916def55be4ef3",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://012352099c262348ac755a53b082af520babc6c66dc5f1251fc23609728340ca",
+        "dweb:/ipfs/QmcXEgzQ53jdJX5ZNy8zivvUjDq7J8WTnR1yAiwTpkQ2ar"
+      ]
+    },
+    "contracts/extension/interface/IPermissions.sol": {
+      "keccak256": "0xc0cd1f87bac474a06f85e2b341b9b57662aee957fc24180d42c872481c2f2ae3",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://7dec3eed451d63867531d693f0be3279fa2c9aef3130f0826c3520c06820fa5d",
+        "dweb:/ipfs/QmTYANrcPdd9SCe99DWsKJ19evNRQKQGZeoS1Keew4M2cS"
+      ]
+    },
+    "contracts/extension/interface/IPermissionsEnumerable.sol": {
+      "keccak256": "0x2e742c18a4481bad41d56424cd16c52def2fb415f69e5fb5f67d8d979300ff95",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://d9be33bb865e3e82aca540a3e38cbc2bf2e431f9d1bf39c50d6c757e7b7bf3ee",
+        "dweb:/ipfs/Qmdad1Xqj5SQ44Bk4bwD2uA36XnGHtqnVYSomKZQvnUBVG"
+      ]
+    },
+    "contracts/extension/upgradeable/AccountPermissions.sol": {
+      "keccak256": "0x24c130546924f7838c676f71585d30bd7891ee51098d4b0e39a2be43acce3852",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://f7ae95a9bd317b220d1c8fe99c4eca2ea3dca14456f225e17accf28e5acd4f03",
+        "dweb:/ipfs/QmaAUPY6C1diScgonDxeUHjr6AezSpD5iJU9vZ5Vdt97Ws"
+      ]
+    },
+    "contracts/extension/upgradeable/ContractMetadata.sol": {
+      "keccak256": "0xe42f63bdf826446047de0825bc930d8a157cf613cf35b74cd10ade9246ed5907",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://a907ddcadb07f70600753b37b129d7be234f44cd557aaa0a5833b0a796a2a826",
+        "dweb:/ipfs/QmdhJ3Y4N6nnQDgLCPVmyRU26sgJfkLxUnqgSt911Eqmms"
+      ]
+    },
+    "contracts/extension/upgradeable/Initializable.sol": {
+      "keccak256": "0x359ee85a4b1b32f7e875ff4742ce3b347a036e2d065675494889e9753fc6f64a",
+      "license": "Apache 2.0",
+      "urls": [
+        "bzz-raw://daa0a7f80cf27545e7040c2bc32486c4d9a8a8a75a7cde5ad6ea4b85f75f6fbf",
+        "dweb:/ipfs/QmZmKPCTUUKN8BKo2aCGFRYVAkZtEs3R6Ysx1m3Kibv4Ai"
+      ]
+    },
+    "contracts/extension/upgradeable/Permissions.sol": {
+      "keccak256": "0xc543a8f28fd99b1c4f313fc74f1549e96a645681e11d50e4de54f6a7a6f1d3e9",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://61b0641aed031275f1cca7fa202adf9535ae2295fcde96544c059f770caf0080",
+        "dweb:/ipfs/QmfQJDmhTgm3qVxN6jN3diZyCKYBXuEYwb247FF1KKwxdL"
+      ]
+    },
+    "contracts/extension/upgradeable/PermissionsEnumerable.sol": {
+      "keccak256": "0xd69a09eb5078dc85e9fb3e59f578c267e7694f2bc9f995461225b596af93b07f",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://08fa417baf97ef109876f76a0040e28d9c7b9edafb52189352642790f10a335c",
+        "dweb:/ipfs/QmZDMmbLDuG48VUZLvAZnkUuNexyZ3ys1hoqFGn7hvtNyc"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/proxy/Clones.sol": {
+      "keccak256": "0x0e1fe02da411a6293004e5ee85bdd1facef5f1b6ef2aab8d36c73f0d77b448db",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://c5bfd474499866fe24ac6b88eb92969395baf1e644a0f0b0054e66f9ae90c00e",
+        "dweb:/ipfs/QmS5j268UauZARToNJazEBJDWvWM35j8kHx779PF3c5rib"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/token/ERC1155/IERC1155Receiver.sol": {
+      "keccak256": "0xfa15dab6578501dc97f9b3fbb5c149f687556f1c9e05f8e308e203487202a826",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://7d78ecefcc13f40d148f851c3ee037c52e6bc4d9cf99bff47202372e8b12ebb4",
+        "dweb:/ipfs/QmYSFk1hKNeW5M1SXg8JREVSw3EkTtheHm6je8kFzJCwfn"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/token/ERC1155/utils/ERC1155Holder.sol": {
+      "keccak256": "0x2e024ca51ce5abe16c0d34e6992a1104f356e2244eb4ccbec970435e8b3405e3",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://a74009db3c6fc8db851ba69ddb6795b5c1ef1120c5a00fd1a8dc3a717dd9d519",
+        "dweb:/ipfs/QmZMk8Yh2X3gPS51ckUVLEXjZUhMSEeGApnA53WtjvLb9h"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/token/ERC1155/utils/ERC1155Receiver.sol": {
+      "keccak256": "0x3105f99cacb873592e34c8a0ac41c082e640ca5ba5f1269f9d156f72780aabb8",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://52d27f9e2e65e3f9cd8376a4cd30370b065d355f810458872115e0b23ca483d7",
+        "dweb:/ipfs/QmQ9rofayAoymc4pgjqCss4AmkGGKJEsDcieqPMsKtKByC"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/token/ERC721/IERC721Receiver.sol": {
+      "keccak256": "0xd5fa74b4fb323776fa4a8158800fec9d5ac0fec0d6dd046dd93798632ada265f",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://33017a30a99cc5411a9e376622c31fc4a55cfc6a335e2f57f00cbf24a817ff3f",
+        "dweb:/ipfs/QmWNQtWTPhA7Lo8nbxbc8KFMvZwbFYB8fSeEQ3vuapSV4a"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/token/ERC721/utils/ERC721Holder.sol": {
+      "keccak256": "0xe703814ee88fca440ac66fbfbbf3a5085d9028237145e6c3447c7ca44d1177ed",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://2c09e9ee347c311074d0cce306cef98c1b9ab7d06ff360031c4c71214e1395ef",
+        "dweb:/ipfs/QmTE9VX4ejp2D5wimaPvzoAZefAMVNybCwdYJm2sEwfXni"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/utils/cryptography/ECDSA.sol": {
+      "keccak256": "0x2f1ee59fbdefde38381074fcd365a919dbd9ab6d6240e07b1753961f8e6fcd3b",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://108be415a1fe17915fa42ba5eb6cdf812b25d88b299c8dc05721241078871ebe",
+        "dweb:/ipfs/Qmc8AJ6jfL3jTi597Z86hkQYEX2FaP66s1tWs9uuEyTRPn"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/utils/cryptography/EIP712.sol": {
+      "keccak256": "0x6688fad58b9ec0286d40fa957152e575d5d8bd4c3aa80985efdb11b44f776ae7",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://8bc00ab7f133cdaafd212a5cc6a16c8d37319721105d130c8e5af0c4e8f170ba",
+        "dweb:/ipfs/QmVmf6LVMfFiEkvKYLzSv3bGHzymEW93AcUuFrNUdY3NtT"
+      ]
+    },
+    "contracts/external-deps/openzeppelin/utils/structs/EnumerableSet.sol": {
+      "keccak256": "0x5050943b32b6a8f282573d166b2e9d87ab7eb4dbba4ab6acf36ecb54fe6995e4",
+      "license": "MIT",
+      "urls": [
+        "bzz-raw://d4831d777a29ebdf9f2caecd70e74b97bff1b70e53622fd0a02aed01e21c8271",
+        "dweb:/ipfs/QmUqurVVnCc7XkMxb2k23TVQUtuhHZduJ3hTZarTJrqU24"
+      ]
+    },
+    "contracts/lib/Address.sol": {
+      "keccak256": "0xa1e2c06c07422ce6f27ab1c4d4ce62bdc3200e082b735b5e3a75c2e7b61cbc4f",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://cc90229c980f78c582a05386d4621172c7d20dec9ad528a5bf1d59b243fff0a5",
+        "dweb:/ipfs/QmcZZLaZ9XU1gWj7b9EBZftPoED3pKEvvFGhS5yBvtMPtn"
+      ]
+    },
+    "contracts/lib/BytesLib.sol": {
+      "keccak256": "0xa6eb27284b96770c4eb22be18bb0c71f73caff260e6223abb5f0fdaf3788e515",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://12bc240624a3dc7eb720af95f7b9532984864520c251be31a0b310a214e8af65",
+        "dweb:/ipfs/QmTktZehWmPBNfaNw1VVm6MySkmNaPQeJyuuLjuBma4wCA"
+      ]
+    },
+    "contracts/lib/Strings.sol": {
+      "keccak256": "0xd8fcca4db8f1678a124ae0d3b4da6c29e9737e5ae03f90f18b84261ae4499568",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://ed0d23694c31613645904cc5d6f3e08ecd34063aeb5bd23ebc9a8223a67f91fb",
+        "dweb:/ipfs/QmTf9WBdvzU2dDDTqeSn1g85AkXTe8MfN1pdyaVzm15Cdb"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IAccount.sol": {
+      "keccak256": "0x6befb3f63de884edd10234add40d9ba1fbe6b92d3c7bc330a645a5ebe004a81f",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://e1cabf8b79778a3754860ec72c5947830fa47df54a9d7307ceaabff864267da2",
+        "dweb:/ipfs/QmbEtTQH2pBs2vQBD1iZYNGpqqzB1sd9XkDrg545rsmwSA"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IAccountCore.sol": {
+      "keccak256": "0xd1fc238376d4fa8c881f06159662b4c5b855c633fad840d97b1abc368b701a83",
+      "license": "Apache 2.0",
+      "urls": [
+        "bzz-raw://990de8226236d213aa9b8eef60d96782c58cc226a0f4ec0ea6c0c63a2a3019bc",
+        "dweb:/ipfs/QmWoUNKgiAH8vPfsNsjEtSNsg6Rmgnqp4fU9Zaej4iKRsE"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IAccountFactory.sol": {
+      "keccak256": "0xc57560766cadb9834bed6f7ade0d8968152dd8118e46211d084f3aa476dd3169",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://189672029caee09d461fc4bc8d6d9fdbdc25ce0ce96e0b07cd47c0ad739cccc3",
+        "dweb:/ipfs/QmeBzdQHTuupCW5LeuGCqxJYSDXTnprHcBegBY3v93ahwW"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IAccountFactoryCore.sol": {
+      "keccak256": "0x8a518d843fb5249c28df0b50d8beb0726f8114f42dd74d90dbfe62b1b0c26856",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://48379dc33cd42392ce0d988585dc62101c45a24ab554e3ab1e5e6d324845ef6c",
+        "dweb:/ipfs/QmRRmYDzyL5x82pWSDWJSHniNFP87aQdXYqfWtj4g9aw5s"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IAggregator.sol": {
+      "keccak256": "0x90e0249ae38e4b307169bb7ef89bb1eff8155ab872b57dd84ee3f9a5ba007ea0",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://cd348c42ae070b4f609934ec111998ee0e03db9345fc071bb8556549db15a973",
+        "dweb:/ipfs/QmaYVb23vDtBtpnEsFf95aZGTcubyCLowNMrSMX4Thqxbc"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IEntryPoint.sol": {
+      "keccak256": "0xbb6520c4f431478886efc3d3065a8b854c2a9262f0788a4b90ae28e5c90df4eb",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://f19be9a2a2d7a64ac30bc843382606b2866c6094d2a11df7d73a65930e32aa77",
+        "dweb:/ipfs/QmQ5e5Pankuxqa9cdj95CGrjJyGagif28qYV6f7vtoQTMZ"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/INonceManager.sol": {
+      "keccak256": "0x2b67d501c8e2d98df49eb0f8e0da7fe53f43adf1df21596d639795392609698a",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://7ee572e21c4f9a83934d834f8db02115a6b495261417e0f39ad2112633406677",
+        "dweb:/ipfs/QmdDW8s1A1qaaDBSN3RhA9cZ35SRwjuf2BejdTkJrdyiaP"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/IStakeManager.sol": {
+      "keccak256": "0x5f9deab263f31f210b4256b2bed70742d6e559519f65d6172c14e1a90aab0c5d",
+      "license": "GPL-3.0-only",
+      "urls": [
+        "bzz-raw://dea9c26f8633b78a0532024a5347e6271f2447059960317e0b0b8e72fd9242b2",
+        "dweb:/ipfs/Qmd2Z8AqCxzD8kr9HiisyLozGoxFMiiiqRvs38Qn1xnm82"
+      ]
+    },
+    "contracts/prebuilts/account/interfaces/PackedUserOperation.sol": {
+      "keccak256": "0x3ecf39cbb96c76997df74db1022ba9e513c453734ce060edb50cc15baee2487a",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://419fd6de0654510606e1806a7239b2e95e6a3824cad412e2f50bb3cbb54dd02f",
+        "dweb:/ipfs/QmXjbdvMJpoZh53SohjA1DPXSGz2M5BEBLSHdsUBoJ77bz"
+      ]
+    },
+    "contracts/prebuilts/account/non-upgradeable/Account.sol": {
+      "keccak256": "0xf4da8973f6f368f7584763f047f201fde91ec10ee80b5c967d8e3998b690a30d",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://4fd4205b2dbadab3f75de54f3fb94b116f0b8852e16e1eac4974876d6f2cb45f",
+        "dweb:/ipfs/QmY6dpitAw4prTG9Tk8CNayCKwg9ofuDWF7ydD3FHajc9Z"
+      ]
+    },
+    "contracts/prebuilts/account/non-upgradeable/AccountFactory.sol": {
+      "keccak256": "0x5a996f04605edc23c80eaaefb27761085b58188f121706baad6123518926ec8a",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://ebb752bde0b67dc9df90353620b3cbea6844a8d7e3ebb03ce1fe0ef693255909",
+        "dweb:/ipfs/QmbMA1kVqEyFnocjV6vaA3vTbH1DWrYnDZauxqHjH89NkM"
+      ]
+    },
+    "contracts/prebuilts/account/utils/AccountCore.sol": {
+      "keccak256": "0xc9ae130f25f682a5adc8b135350e848ce70151b1216331da09415efb8e5bb9e8",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://dfd64cba4504c772e38a3dd9cbe51ea28c89afe0a8750db29e6317ad3d4c2459",
+        "dweb:/ipfs/QmQDdsLRrgGaz8MwrFTNSMfxNiAmL5iuZ2w4wcsX1XFdZ1"
+      ]
+    },
+    "contracts/prebuilts/account/utils/AccountCoreStorage.sol": {
+      "keccak256": "0x2cc0f23b78b77cb625ca9f16a4098d9695dae300f50f627ff9447d0fee4c6d6c",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://accce31e4cf16735ee72fb4619582a9a0441fd07c5259dc7dbefd758121b2383",
+        "dweb:/ipfs/Qmdh4i9mbjFqNncakFBGppkNVvxRkhQfpLktjbi3LorTue"
+      ]
+    },
+    "contracts/prebuilts/account/utils/AccountExtension.sol": {
+      "keccak256": "0x86f92015f5edef9713409c3d13fc14f7c9582cb26dcd6ad28e6318c5a87efeff",
+      "license": "Apache-2.0",
+      "urls": [
+        "bzz-raw://df536607fe1e4a23ee9cb2f1b682ace94038f05ba020657531705bf4f32423eb",
+        "dweb:/ipfs/QmTHuV2HWX3kYtb6eJw9xjHkAHpbUyk4C8fCy8yLLQ7MUz"
+      ]
+    },
+    "contracts/prebuilts/account/utils/BaseAccount.sol": {
+      "keccak256": "0xf38c7f5289469f8c77d51b5944132899910e8c33e379ffafed806f7dc900f9d6",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://ad4b712ca33922fa5af26c74e767846c72aa65470fc0fe12c36fd7850e727f0d",
+        "dweb:/ipfs/QmZqFiVVenpZKi3NbEHWwRbBRJtv416Qd87K2t87Uu5cB1"
+      ]
+    },
+    "contracts/prebuilts/account/utils/BaseAccountFactory.sol": {
+      "keccak256": "0x2569c331b21202d1bc7b2c78e410b5f5173d9ff541d32baeea9c9edb3b3be7f1",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://2c5ca23e31d564d9d5ea890268a1791ff12a85a684b5eb9adf045978225c7bce",
+        "dweb:/ipfs/QmVdpZF3pMsBzjFny4FKocPkpsoYAYTQxmzrxdYCBNZpaH"
+      ]
+    },
+    "contracts/prebuilts/account/utils/Helpers.sol": {
+      "keccak256": "0x007af0de471654ff0e105c040603d236d74c601a36e62a5c87bd3fa3bc7e745a",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://fc8e11c532c51f5e3ab05c74dba3c285b8aa3cb396f8c821b070d4d4a3c14beb",
+        "dweb:/ipfs/QmPDVKq51QdoTxpnYKXiz3LEXfnKXbFRRkihGeYY8X7bng"
+      ]
+    },
+    "contracts/prebuilts/account/utils/UserOperationLib.sol": {
+      "keccak256": "0xfe20868dd7c18cbd1832466951b0715c155051a3f5ca0bc9d33936569fafe36b",
+      "license": "GPL-3.0",
+      "urls": [
+        "bzz-raw://b9cd89f360f8de6e3b283f7b93eac0a5dd2bf41a0148e6e3f626c7cbb2f81b91",
+        "dweb:/ipfs/QmT1SufUMhjfnZY2B7bA4iPXBxbGZTKAMSLakvmVczceQi"
+      ]
+    }
+  },
+  "version": 1
+}

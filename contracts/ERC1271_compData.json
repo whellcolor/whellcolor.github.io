@@ -1,0 +1,59 @@
+{
+	"compilerInput": "{\"language\":\"Solidity\",\"sources\":{\"contracts/ERC1271.sol\":{\"content\":\"// SPDX-License-Identifier: Apache 2.0\\npragma solidity ^0.8.0;\\n\\nabstract contract ERC1271 {\\n    // bytes4(keccak256(\\\"isValidSignature(bytes32,bytes)\\\")\\n    bytes4 internal constant MAGICVALUE = 0x1626ba7e;\\n\\n    /**\\n     * @dev Should return whether the signature provided is valid for the provided hash\\n     * @param _hash      Hash of the data to be signed\\n     * @param _signature Signature byte array associated with _hash\\n     *\\n     * MUST return the bytes4 magic value 0x1626ba7e when function passes.\\n     * MUST NOT modify state (using STATICCALL for solc < 0.5, view modifier for solc > 0.5)\\n     * MUST allow external calls\\n     */\\n    function isValidSignature(bytes32 _hash, bytes memory _signature) public view virtual returns (bytes4 magicValue);\\n}\\n\"}},\"settings\":{\"optimizer\":{\"enabled\":true,\"runs\":200},\"outputSelection\":{\"*\":{\"\":[\"ast\"],\"*\":[\"abi\",\"metadata\",\"devdoc\",\"userdoc\",\"storageLayout\",\"evm.legacyAssembly\",\"evm.bytecode\",\"evm.deployedBytecode\",\"evm.methodIdentifiers\",\"evm.gasEstimates\",\"evm.assembly\"]}},\"remappings\":[]}}",
+	"name": "ERC1271",
+	"metadata": "{\"compiler\":{\"version\":\"0.8.34+commit.80d5c536\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_hash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"_signature\",\"type\":\"bytes\"}],\"name\":\"isValidSignature\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"magicValue\",\"type\":\"bytes4\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"isValidSignature(bytes32,bytes)\":{\"details\":\"Should return whether the signature provided is valid for the provided hash\",\"params\":{\"_hash\":\"Hash of the data to be signed\",\"_signature\":\"Signature byte array associated with _hash MUST return the bytes4 magic value 0x1626ba7e when function passes. MUST NOT modify state (using STATICCALL for solc < 0.5, view modifier for solc > 0.5) MUST allow external calls\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ERC1271.sol\":\"ERC1271\"},\"evmVersion\":\"osaka\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ERC1271.sol\":{\"keccak256\":\"0xce12f73b64a1d954ce3b96cc83974d9a9d7b1e6f34e75ed8c1fdcf19ed92574e\",\"license\":\"Apache 2.0\",\"urls\":[\"bzz-raw://ac19729c3f76aa804eff7dd0365bfaff3871b22953908a26cc0dd07a0319c6c0\",\"dweb:/ipfs/QmTQMZGceJ4QvWAwngCEbt6PfQhZMHWhuzE8wWVC8yR7Ro\"]}},\"version\":1}",
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_hash",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "bytes",
+					"name": "_signature",
+					"type": "bytes"
+				}
+			],
+			"name": "isValidSignature",
+			"outputs": [
+				{
+					"internalType": "bytes4",
+					"name": "magicValue",
+					"type": "bytes4"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	],
+	"storageLayout": {
+		"storage": [],
+		"types": null
+	},
+	"functionHashes": {
+		"1626ba7e": "isValidSignature(bytes32,bytes)"
+	},
+	"gasEstimates": {},
+	"devdoc": {
+		"kind": "dev",
+		"methods": {
+			"isValidSignature(bytes32,bytes)": {
+				"details": "Should return whether the signature provided is valid for the provided hash",
+				"params": {
+					"_hash": "Hash of the data to be signed",
+					"_signature": "Signature byte array associated with _hash MUST return the bytes4 magic value 0x1626ba7e when function passes. MUST NOT modify state (using STATICCALL for solc < 0.5, view modifier for solc > 0.5) MUST allow external calls"
+				}
+			}
+		},
+		"version": 1
+	},
+	"userdoc": {
+		"kind": "user",
+		"methods": {},
+		"version": 1
+	},
+	"Assembly": "\n",
+	"metadataHash": "405856b228f8aa57571d6f5112d463fee220b30d55b302d75cf0f8ecea45bdd0"
+}
