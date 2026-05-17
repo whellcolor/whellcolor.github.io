@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>WCC Multi Faucet Chain</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Ethers -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+
+<!-- Solana -->
+<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+
+<!-- WalletConnect AppKit -->
+<script src="https://unpkg.com/@reown/appkit@latest/dist/index.umd.js"></script>
+
+<!-- Thirdweb -->
+<script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+<script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
+<script src="/rpc.js"></script>
+<script src="https://whellcolor.github.io/dapp/js/rpc.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
+ crossorigin="anonymous"></script>
+ 
+ <script async custom-element="amp-auto-ads"
+ src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+ </script>
+
+<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+
+
+
+
+<style>
+
+body{
+    background:#020617;
+}
+
+.glass{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+}
+
+</style>
+
+</head>
+<body class="text-white min-h-screen p-6">
+
+<div class="max-w-4xl mx-auto">
+
+    <h1 class="text-4xl font-bold mb-6">
+        🚀 WCC Multi Faucet Chain
+    </h1>
+
+    <!-- WALLET -->
+    <div class="glass rounded-2xl p-5 mb-6">
+
+        <div class="flex gap-3 flex-wrap">
+<appkit-button></appkit-button>
+            <button
+                onclick="connectEVM()"
+                class="bg-violet-600 px-4 py-3 rounded-xl"
+            >
+                Connect EVM
+            </button>
+
+            <button
+                onclick="connectSolana()"
+                class="bg-cyan-600 px-4 py-3 rounded-xl"
+            >
+                Connect Phantom
+            </button>
+
+        </div>
+
+        <input
+            id="wallet"
+            class="w-full mt-4 p-3 rounded-xl bg-slate-900"
+            placeholder="Wallet Address"
+        />
+
+    </div>
+
+    <!-- NETWORK -->
+    <div class="glass rounded-2xl p-5 mb-6">
+
+        <select
+            id="network"
+            class="w-full p-3 rounded-xl bg-slate-900"
+        ></select>
+
+        <button
+            onclick="claimFaucet()"
+            class="bg-green-600 px-5 py-3 rounded-xl mt-4 w-full"
+        >
+            Claim Faucet
+        </button>
+
+        <div
+            id="cooldown"
+            class="mt-4 text-yellow-400"
+        >
+            Ready
+        </div>
+
+    </div>
+
+    <!-- STATUS -->
+    <div
+        id="status"
+        class="glass rounded-2xl p-5 mb-6"
+    >
+        Ready...
+    </div>
+
+    <!-- HISTORY -->
+    <div class="glass rounded-2xl p-5">
+
+        <h2 class="text-2xl mb-4">
+            Transaction History
+        </h2>
+
+        <div id="history"></div>
+
+    </div>
+
+</div>
+
+<!-- Add a container element where you want to render the UI -->
+<div id="bridge-widget-container"></div>
+
+<!-- Initialize the widget at the end of <body> -->
+<script>
+  const container = document.querySelector('#bridge-widget-container');
+
+  BridgeWidget.render(container, {
+    clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
+    theme: "dark",
+  });
+</script>
+
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
+  <table>
+    <tr>
+      <td>
+        <input type="hidden" name="on0" value="LAYANAN PELANGGAN"/>
+        LAYANAN PELANGGAN
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <select name="os0">
+          <option value="Subcribe">
+            Subcribe $5,00 USD - minggu
+          </option>
+          <option value="Premium">
+            Premium $25,00 USD - bulan
+          </option>
+          <option value="Golden">
+            Golden $100,00 USD - tahun
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" name="on1" value="Terima Kasih ."/>
+        Terima Kasih .
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" name="os1" maxLength="200" />
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - Cara yang lebih aman dan mudah untuk membayar secara daring!" alt="Berlangganan" />
+</form></center>
+</div>
+
+<!-- CHART JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+// ======================================
+// TESTNET ONLY
+// ======================================
+
+const NETWORKS = [
+
+{
+name:"Ethereum Sepolia",
+chain:"evm",
+rpc:"https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Base Sepolia",
+chain:"evm",
+rpc:"https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Arbitrum Sepolia",
+chain:"evm",
+rpc:"https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Polygon Amoy",
+chain:"evm",
+rpc:"https://polygon-amoy.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Avalanche Fuji",
+chain:"evm",
+rpc:"https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Solana Devnet",
+chain:"solana",
+rpc:"https://api.devnet.solana.com"
+}
+
+];
+
+// ======================================
+// GLOBAL
+// ======================================
+
+let currentProvider;
+let cooldown = 60;
+
+// ======================================
+// LOAD NETWORK
+// ======================================
+
+function loadNetworks(){
+
+    const select =
+        document.getElementById("network");
+
+    NETWORKS.forEach((net,index)=>{
+
+        const option =
+            document.createElement("option");
+
+        option.value = index;
+
+        option.innerHTML =
+            net.name;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+loadNetworks();
+
+// ======================================
+// CONNECT EVM
+// ======================================
+
+async function connectEVM(){
+
+    if(!window.ethereum){
+
+        alert("Install MetaMask");
+        return;
+
+    }
+
+    const accounts =
+        await window.ethereum.request({
+            method:"eth_requestAccounts"
+        });
+
+    document.getElementById("wallet").value =
+        accounts[0];
+
+}
+
+// ======================================
+// CONNECT SOLANA
+// ======================================
+
+async function connectSolana(){
+
+    if(!window.solana){
+
+        alert("Install Phantom");
+        return;
+
+    }
+
+    const res =
+        await window.solana.connect();
+
+    document.getElementById("wallet").value =
+        res.publicKey.toString();
+
+}
+
+// ======================================
+// COOLDOWN
+// ======================================
+
+function startCooldown(){
+
+    let time = cooldown;
+
+    const timer =
+        setInterval(()=>{
+
+            document.getElementById(
+                "cooldown"
+            ).innerHTML =
+
+            `Cooldown : ${time}s`;
+
+            time--;
+
+            if(time < 0){
+
+                clearInterval(timer);
+
+                document.getElementById(
+                    "cooldown"
+                ).innerHTML =
+
+                "Ready";
+
+            }
+
+        },1000);
+
+}
+
+// ======================================
+// ANTI SPAM
+// ======================================
+
+function canClaim(wallet){
+
+    const last =
+        localStorage.getItem(
+            "claim_"+wallet
+        );
+
+    if(!last) return true;
+
+    const diff =
+        Date.now() - Number(last);
+
+    return diff > cooldown * 1000;
+
+}
+
+// ======================================
+// SAVE CLAIM
+// ======================================
+
+function saveClaim(wallet){
+
+    localStorage.setItem(
+        "claim_"+wallet,
+        Date.now()
+    );
+
+}
+
+// ======================================
+// HISTORY
+// ======================================
+
+function saveHistory(data){
+
+    let history =
+        JSON.parse(
+            localStorage.getItem("txHistory")
+        ) || [];
+
+    history.unshift(data);
+
+    localStorage.setItem(
+        "txHistory",
+        JSON.stringify(history)
+    );
+
+    renderHistory();
+
+}
+
+function renderHistory(){
+
+    let history =
+        JSON.parse(
+            localStorage.getItem("txHistory")
+        ) || [];
+
+    const el =
+        document.getElementById("history");
+
+    el.innerHTML = "";
+
+    history.forEach(tx=>{
+
+        el.innerHTML += `
+
+        <div class="bg-slate-900 p-4 rounded-xl mb-3">
+
+            <div>${tx.network}</div>
+
+            <div class="text-sm text-slate-400">
+                ${tx.hash}
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+renderHistory();
+
+// ======================================
+// FASTEST RPC
+// ======================================
+
+async function getFastestRPC(chain){
+
+    const list =
+        NETWORKS.filter(
+            x=>x.chain===chain
+        );
+
+    let best = list[0];
+
+    let bestTime = 999999;
+
+    for(let rpc of list){
+
+        const start = Date.now();
+
+        try{
+
+            if(chain==="evm"){
+
+                const provider =
+                    new ethers.JsonRpcProvider(
+                        rpc.rpc
+                    );
+
+                await provider.getBlockNumber();
+
+            }else{
+
+                const conn =
+                    new solanaWeb3.Connection(
+                        rpc.rpc
+                    );
+
+                await conn.getBlockHeight();
+
+            }
+
+            const speed =
+                Date.now() - start;
+
+            if(speed < bestTime){
+
+                best = rpc;
+                bestTime = speed;
+
+            }
+
+        }catch(err){}
+
+    }
+
+    return best;
+
+}
+
+// ======================================
+// CLAIM FAUCET
+// ======================================
+
+async function claimFaucet(){
+
+    const wallet =
+        document.getElementById("wallet")
+        .value.trim();
+
+    if(!wallet){
+
+        alert("Input wallet");
+        return;
+
+    }
+
+    if(!canClaim(wallet)){
+
+        alert("Cooldown active");
+        return;
+
+    }
+
+    const network =
+        NETWORKS[
+            document.getElementById(
+                "network"
+            ).value
+        ];
+
+    document.getElementById(
+        "status"
+    ).innerHTML =
+
+    "Processing...";
+
+    try{
+
+        // ======================
+        // SOLANA
+        // ======================
+
+        if(network.chain==="solana"){
+
+            const conn =
+                new solanaWeb3.Connection(
+                    network.rpc,
+                    "confirmed"
+                );
+
+            const sig =
+                await conn.requestAirdrop(
+                    new solanaWeb3.PublicKey(
+                        wallet
+                    ),
+                    solanaWeb3.LAMPORTS_PER_SOL
+                );
+
+            saveHistory({
+                network:network.name,
+                hash:sig
+            });
+
+            document.getElementById(
+                "status"
+            ).innerHTML =
+
+            `
+            ✅ Success<br><br>
+            ${sig}
+            `;
+
+        }
+
+        // ======================
+        // EVM TESTNET
+        // ======================
+
+        else{
+
+            const rpc =
+                await getFastestRPC("evm");
+
+            const provider =
+                new ethers.JsonRpcProvider(
+                    rpc.rpc
+                );
+
+            const block =
+                await provider.getBlockNumber();
+
+            const fakeHash =
+                "BLOCK-"+block;
+
+            saveHistory({
+                network:network.name,
+                hash:fakeHash
+            });
+
+            document.getElementById(
+                "status"
+            ).innerHTML =
+
+            `
+            ✅ RPC Connected<br><br>
+            ${rpc.name}<br>
+            Block : ${block}
+            `;
+
+        }
+
+        saveClaim(wallet);
+
+        startCooldown();
+
+    }catch(err){
+
+        document.getElementById(
+            "status"
+        ).innerHTML =
+
+        `
+        ❌ Error<br><br>
+        ${err.message}
+        `;
+
+    }
+
+}
+
+</script>
+
+<!-- THIRDWEB BRIDGE -->
+<thirdweb-bridge-widget />
+
+</body>
+</html>
