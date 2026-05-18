@@ -14,7 +14,7 @@ function Example() {
       })}
       client={client}
       description={"NFT Whellcolor Cube Crypto (WCC)"}
-      image={"https://whellcolor.github.io/nft /0.png"}
+      image={"https://whellcolor.github.io/nft/0.png"}
       name={"WCC NFT"}
       currency={"USD"}
       chain={defineChain(2741)}
