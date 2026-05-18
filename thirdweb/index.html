@@ -2,331 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartWallet EVM Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thirdweb Dapp MultiChain Faucet</title>
+
+  <!-- Google AdSense & SEO Meta -->
+  <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+  <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+  
+  <!-- External CDN Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+  <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+  <!-- SKRIP DARI WHELLCOLOR GITHUB -->
+  <script src="https://whellcolor.github.io/js/deploy.js"></script>
+  <script src="https://whellcolor.github.io/thirdweb/contract.js"></script>
+  <script src="https://whellcolor.github.io/thirdweb/multi-rpc.js"></script>
 
   <style>
-    body{
-      background:#0d1117;
-      color:#e6edf3;
-      font-family:Arial, sans-serif;
-      margin:0;
-      padding:20px;
-    }
-
-    h1{
-      text-align:center;
-      color:#58a6ff;
-    }
-
-    .container{
-      max-width:1200px;
-      margin:auto;
-    }
-
-    .card{
-      background:#161b22;
-      border:1px solid #30363d;
-      border-radius:12px;
-      padding:20px;
-      margin-bottom:20px;
-    }
-
-    .title{
-      color:#58a6ff;
-      margin-bottom:10px;
-      font-size:20px;
-    }
-
-    pre{
-      background:#0d1117;
-      padding:15px;
-      border-radius:10px;
-      overflow:auto;
-      color:#7ee787;
-    }
-
-    button{
-      background:#238636;
-      border:none;
-      padding:10px 20px;
-      color:white;
-      border-radius:8px;
-      cursor:pointer;
-      margin-top:10px;
-    }
-
-    button:hover{
-      background:#2ea043;
-    }
-
-    .wallet{
-      color:#f0883e;
-      word-break:break-all;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-      gap:20px;
-    }
+    /* ... (CSS style Anda tetap sama seperti sebelumnya) ... */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    body { background:#020617; color:white; min-height:100vh; display:flex; justify-content:center; align-items:center; padding:20px; overflow-x:hidden; }
+    .bg { position:fixed; width:60vw; height:60vw; max-width:700px; max-height:700px; background:linear-gradient(45deg, #00f0ff, #8b5cf6, #00f0ff); filter:blur(140px); opacity:.25; animation:rotate 10s linear infinite; z-index:1; }
+    @keyframes rotate { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+    .card { position:relative; z-index:10; width:100%; max-width:430px; background:rgba(15,23,42,.82); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(20px); padding:24px; border-radius:24px; box-shadow: 0 0 40px rgba(0,0,0,.45); }
+    h1 { text-align:center; margin-bottom:20px; font-size:clamp(26px,5vw,38px); background:linear-gradient(90deg, #00f0ff, #8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    input, select, button { width:100%; min-height:52px; border:none; outline:none; border-radius:14px; margin-top:12px; }
+    input, select { background:#0f172a; color:white; padding:14px; font-size:15px; }
+    button { cursor:pointer; font-size:15px; font-weight:bold; color:white; background:linear-gradient(90deg, #06b6d4, #8b5cf6); transition:.25s; }
+    button:hover { transform:translateY(-2px); box-shadow: 0 0 20px #06b6d4; }
+    #status, #rewardStatus { margin-top:18px; padding:14px; border-radius:14px; background:#0f172a; font-size:14px; line-height:1.6; word-break:break-word; border:1px solid rgba(255,255,255,.08); }
+    .timer { margin-top:12px; text-align:center; color:#38bdf8; font-size:14px; }
+    .nft-box { margin-top:20px; padding:18px; border-radius:20px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); text-align:center; }
+    .nft-image { width:100%; height:auto; border-radius:16px; margin-bottom:15px; object-fit:cover; box-shadow: 0 0 25px rgba(0,255,255,.25); }
+    .nft-info h2 { font-size:22px; margin-bottom:6px; color:#00f0ff; }
+    .nft-info p { color:#cbd5e1; font-size:14px; }
+    .support { margin-top:12px; color:#22c55e; font-weight:bold; font-size:18px; }
+    canvas { width:100% !important; max-width:100%; height:auto !important; }
+    #live-hashrate { margin-top:10px; color:#00f0ff; font-weight:bold; text-align:center; }
+    .miner-buttons { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:10px; }
+    @media (max-width:600px){ body { padding:14px; align-items:flex-start; } .card { padding:18px; border-radius:20px; } h1 { font-size:30px; } button, input, select { min-height:50px; font-size:14px; } .miner-buttons { grid-template-columns:1fr; } .support { font-size:16px; } }
   </style>
 </head>
+
 <body>
-
-<div class="container">
-
-  <h1>SmartWallet EVM Dashboard</h1>
+  <div class="bg"></div>
 
   <div class="card">
-    <div class="title">Wallet Information</div>
+    <h1>Dapp Thirdweb MultiChain Faucet</h1>
+    <appkit-button></appkit-button>
 
-    <p><strong>Owner Wallet:</strong></p>
-    <p class="wallet">
-      0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B
-    </p>
+    <input type="text" id="wallet" placeholder="Wallet Address" autocomplete="off" />
 
-    <p><strong>Smart Wallet:</strong></p>
-    <p class="wallet">
-      0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763
-    </p>
+    <select id="chain">
+      <option value="84532">Base Sepolia</option>
+      <option value="421614">Arbitrum Sepolia</option>
+      <option value="11155111">Ethereum Sepolia</option>
+      <option value="sepolia">Ethereum</option>
+      <option value="base">Base</option>
+      <option value="arbitrum">Arbitrum</option>
+      <option value="linea">Linea</option>
+    </select>
+
+    <button onclick="claimFaucet()">Claim Faucet</button>
+    <button onclick="sendReward()">Send Reward</button>
+    <div class="timer" id="timer">Ready to claim</div>
+    <button onclick="sendTx()">Rewards 0.0001 ETH</button>
+
+    <!-- MINER -->
+    <div style="margin-top:20px">
+      <canvas id="hashChart" height="120"></canvas>
+      <div id="live-hashrate">0 H/s</div>
+      <div class="miner-buttons">
+        <button id="btn-start">Start Miner</button>
+        <button id="btn-stop">Stop Miner</button>
+        <button id="btn-clear">Clear History</button>
+      </div>
+    </div>
+
+    <div id="status">Waiting...</div>
+
+    <!-- NFT -->
+    <div class="nft-box">
+      <img src="https://whellcolor.github.io/nft/0.jpg" class="nft-image" alt="NFT Miner" />
+      <div class="nft-info">
+        <h2>NFT Miner</h2>
+        <p>DAPP MINER Collection</p>
+        <div class="support">Support: 0.9 ETH</div>
+      </div>
+      <button onclick="mintNFT()">Mint NFT</button>
+    </div>
+
+    <button onclick="claimGasReward()">Claim Gas Reward</button>
+    <button onclick="claimMiningReward()">Claim Mining Reward</button>
+    <div id="rewardStatus">Waiting reward...</div>
+
+    <!-- Widget Bridge -->
+    <div id="bridge-widget-container"></div>
+
+    <!-- PayPal Section -->
+    <center style="margin-top:20px;">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
+        <table>
+          <tr><td><input type="hidden" name="on0" value="LAYANAN PELANGGAN"/>LAYANAN PELANGGAN</td></tr>
+          <tr>
+            <td>
+              <select name="os0">
+                <option value="Subcribe">Subcribe $5,00 USD - minggu</option>
+                <option value="Premium">Premium $25,00 USD - bulan</option>
+                <option value="Golden">Golden $100,00 USD - tahun</option>
+              </select>
+            </td>
+          </tr>
+          <tr><td><input type="hidden" name="on1" value="Terima Kasih ."/>Terima Kasih .</td></tr>
+          <tr><td><input type="text" name="os1" maxLength="200" /></td></tr>
+        </table>
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" name="submit" title="PayPal!" alt="Berlangganan" style="width:auto; min-height:auto; margin-top:10px; cursor:pointer;" />
+      </form>
+    </center>
   </div>
 
-  <div class="grid">
-
-    <div class="card">
-      <div class="title">miner.json</div>
-
-<pre>{
-  "type":"miner",
-  "reward":"0.9 ETH",
-  "chainId":8453
-}</pre>
-
-      <button onclick="downloadJSON('miner.json', miner)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">swap.json</div>
-
-<pre>{
-  "type":"swap",
-  "from":"ETH",
-  "to":"USDC",
-  "amount":"0.9"
-}</pre>
-
-      <button onclick="downloadJSON('swap.json', swap)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">dapp.json</div>
-
-<pre>{
-  "type":"dapp",
-  "name":"SmartWalletEVM"
-}</pre>
-
-      <button onclick="downloadJSON('dapp.json', dapp)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">mint.json</div>
-
-<pre>{
-  "type":"mint",
-  "amount":"0.9",
-  "token":"NFT"
-}</pre>
-
-      <button onclick="downloadJSON('mint.json', mint)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">faucet.json</div>
-
-<pre>{
-  "type":"faucet",
-  "claim":"0.9 ETH"
-}</pre>
-
-      <button onclick="downloadJSON('faucet.json', faucet)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">log.json</div>
-
-<pre>{
-  "type":"log",
-  "status":"active"
-}</pre>
-
-      <button onclick="downloadJSON('log.json', logdata)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">key.json</div>
-
-<pre>{
-  "type":"apikey",
-  "provider":"thirdweb"
-}</pre>
-
-      <button onclick="downloadJSON('key.json', keyjson)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">send.json</div>
-
-<pre>{
-  "type":"send",
-  "amount":"0.9 ETH"
-}</pre>
-
-      <button onclick="downloadJSON('send.json', sendjson)">
-        Download
-      </button>
-    </div>
-
-    <div class="card">
-      <div class="title">received.json</div>
-
-<pre>{
-  "type":"received",
-  "status":"success"
-}</pre>
-
-      <button onclick="downloadJSON('received.json', receivedjson)">
-        Download
-      </button>
-    </div>
-
-
-    
-  </div>
-  <center>
-    <iframe
-  src="https://thirdweb.com/bridge/checkout-widget?chain=2741&amount=0.01&seller=0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88&tokenAddress=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&title=WCC+NFT&description=NFT+Whellcolor+Cube+Crypto+%28WCC%29&image=https%3A%2F%2Fwhellcolor.github.io%2Fnft+%2F0.png"
-  height="850px"
-  width="100%"
-  style="border: 0;"
-/>
-  </center>
-
-</div>
-
-<script>
-
-const wallet =
-"0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B";
-
-const smartWallet =
-"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763";
-
-const miner = {
-  type:"miner",
-  chainId:8453,
-  wallet,
-  smartWallet,
-  reward:"0.9 ETH"
-};
-
-const swap = {
-  type:"swap",
-  chainId:8453,
-  fromToken:"ETH",
-  toToken:"USDC",
-  amount:"0.9",
-  wallet
-};
-
-const dapp = {
-  type:"dapp",
-  name:"SmartWalletEVM",
-  owner:wallet,
-  smartWallet,
-  contracts:{
-    v06:"0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
-    v07:"0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb"
-  }
-};
-
-const mint = {
-  type:"mint",
-  receiver:wallet,
-  amount:"0.9",
-  token:"NFT"
-};
-
-const faucet = {
-  type:"faucet",
-  wallet,
-  claim:"0.9 ETH",
-  network:"Base"
-};
-
-const logdata = {
-  type:"log",
-  wallet,
-  smartWallet,
-  status:"active"
-};
-
-const keyjson = {
-  type:"apikey",
-  provider:"thirdweb",
-  secretKey:"YOUR_SECRET_KEY"
-};
-
-const sendjson = {
-  type:"send",
-  from:wallet,
-  to:smartWallet,
-  amount:"0.9 ETH"
-};
-
-const receivedjson = {
-  type:"received",
-  receiver:wallet,
-  sender:smartWallet,
-  amount:"0.9 ETH",
-  status:"success"
-};
-
-function downloadJSON(filename, data){
-
-  const blob = new Blob(
-    [JSON.stringify(data,null,2)],
-    {type:"application/json"}
-  );
-
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-
-  a.href = url;
-  a.download = filename;
-
-  a.click();
-
-  URL.revokeObjectURL(url);
-}
-
-</script>
-
+  <!-- LOAD MAIN TS FILE -->
+  <script type="module" src="./neon.ts"></script>
 </body>
 </html>
