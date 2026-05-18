@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web3 Faucet Generator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 400px;
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      background: #3b82f6;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    #status {
+      margin-top: 15px;
+      padding: 10px;
+      background: #0f172a;
+      border-radius: 10px;
+      min-height: 50px;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🚰 Faucet Generator</h1>
+
+  <appkit-button></appkit-button>
+
+  <input type="text" id="wallet" placeholder="Wallet Address"/>
+
+  <button onclick="sendTx()">
+    Send 0.0001 ETH
+  </button>
+
+  <button onclick="mintToken()">
+    Mint Faucet Token
+  </button>
+
+  <button onclick="checkBalance()">
+    Check Balance
+  </button>
+
+  <div id="status">
+    Ready...
+  </div>
+ <center> <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
+  <table>
+  <tr>
+  <td>
+  <input type="hidden" name="on0" value="LAYANAN PELANGGAN"/>
+  LAYANAN PELANGGAN
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <select name="os0">
+  <option value="Subcribe">
+  Subcribe $5,00 USD - minggu
+  </option>
+  <option value="Premium">
+  Premium $25,00 USD - bulan
+  </option>
+  <option value="Golden">
+  Golden $100,00 USD - tahun
+  </option>
+  </select>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <input type="hidden" name="on1" value="Terima Kasih ."/>
+  Terima Kasih .
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <input type="text" name="os1" maxLength="200" />
+  </td>
+  </tr>
+  </table>
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - Cara yang lebih aman dan mudah untuk membayar secara daring!" alt="Berlangganan" />
+  </form></center>
+</div>
+
+<script type="text/javascript">
+{
+  "name": "AWDEV NFT",
+  "description": "Official NFT created and verified by wallet owner.",
+  "image": "https://whellcolor.github.io/dapp/awdevNFT.jpg",
+  "external_url": "https://whellcolor.github.io/dapp/nft/",
+  "chain": "Ethereum",
+  "creator_wallet": "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+  "attributes": [
+    {
+      "trait_type": "Network",
+      "value": "ETH"
+    },
+    {
+      "trait_type": "Creator",
+      "value": "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88"
+    }
+  ],
+  "verification": "[Etherscan.io dd/mm/yyyy hh:mm:ss] I, [0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88], hereby verify that I am the owner/creator of the token contract address [bridged token's contract address] connect on url dapp mint original contracttor https://whellcolor.github.io/dapp/nft/"
+}
+</script>
+
+<script type="module">
+  import { createAppKit } from "https://esm.sh/@reown/appkit";
+  import { EthersAdapter } from "https://esm.sh/@reown/appkit-adapter-ethers";
+  import { mainnet, arbitrum } from "https://esm.sh/@reown/appkit/networks";
+  import { BrowserProvider, parseEther } from "https://esm.sh/ethers";
+
+  const projectId = "5022875ce6ee68917f103ff9b1e3422d";
+
+  const metadata = {
+    name: "Faucet Generator",
+    description: "Web3 Faucet",
+    url: window.location.origin,
+    icons: ["https://avatars.githubusercontent.com/u/179229932"],
+  };
+
+  const modal = createAppKit({
+    adapters: [new EthersAdapter()],
+    networks: [mainnet, arbitrum],
+    metadata,
+    projectId,
+    features: {
+      analytics: true,
+    },
+  });
+
+  let provider;
+
+  modal.subscribeProviders((state) => {
+    provider = state?.eip155;
+    window.provider = provider;
+  });
+
+  const status = document.getElementById("status");
+
+  function setStatus(msg) {
+    status.innerHTML = msg;
+  }
+
+  // SEND ETH
+  window.sendTx = async function () {
+    try {
+
+      if (!provider) {
+        setStatus("❌ Wallet belum connect");
+        return;
+      }
+
+      const ethersProvider = new BrowserProvider(provider);
+      const signer = await ethersProvider.getSigner();
+
+      setStatus("⏳ Sending transaction...");
+
+      const tx = await signer.sendTransaction({
+        to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+        value: parseEther("0.0001"),
+      });
+
+      setStatus(`
+        ✅ Transaction Sent <br>
+        Hash: ${tx.hash}
+      `);
+
+    } catch (err) {
+      console.error(err);
+      setStatus("❌ Transaction Failed");
+    }
+  };
+
+  // MINT TOKEN
+  window.mintToken = async function () {
+
+    try {
+
+      const wallet = document.getElementById("wallet").value;
+
+      if (!wallet) {
+        setStatus("❌ Masukkan wallet address");
+        return;
+      }
+
+      setStatus("⏳ Minting token...");
+
+      const response = await fetch(
+        "https://api.thirdweb.com/v1/transactions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+
+            // JANGAN taruh secret key di frontend production
+            "x-secret-key":
+              "-mo2kL01Syg12xzGeqFXFP_GDqg9Pt08hYCsIp0TOWmuOtedh-1rJUTJJW-2K24ZWyIkXWupLQW2Yvb-iTu0TA",
+          },
+
+          body: JSON.stringify({
+            chainId: "84532",
+
+            from:
+              "0x5E8Bade6E0BCe65807dB6327cB1D9EEb7C6A6A5B",
+
+            transactions: [
+              {
+                type: "contractCall",
+
+                contractAddress:
+                  "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+
+                method:
+                  "function mintTo(address to, uint256 amount)",
+
+                params: [wallet, "100"],
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      console.log(data);
+
+      setStatus(`
+        ✅ Faucet Success
+        <br>
+        Token berhasil dikirim
+      `);
+
+    } catch (err) {
+
+      console.error(err);
+
+      setStatus("❌ Faucet Failed");
+    }
+  };
+
+  // CHECK BALANCE
+  window.checkBalance = async function () {
+
+    try {
+
+      setStatus("⏳ Checking balance...");
+
+      const response = await fetch(
+        "https://api.etherscan.io/v2/api?apikey=8WRIDBMW18HXAB44ATGX7IPYGSHXVXDVC3&address=0xd8519a8b8825aa0dcc73aad572f447fae102fe88&module=DappMiner&action=balancemulti&tag=0x10d4f&chainid=8453"
+      );
+
+      const data = await response.json();
+
+      console.log(data);
+
+      setStatus(`
+        ✅ Balance Loaded
+        <br>
+        ${JSON.stringify(data)}
+      `);
+
+    } catch (err) {
+
+      console.error(err);
+
+      setStatus("❌ Failed load balance");
+    }
+  };
+</script>
+<script>
+
+// ======================================================
+// MULTI RPC + MULTI FAUCET + NFT SYSTEM WCC
+// ======================================================
+
+// =======================
+// ALL RPC URL
+// =======================
+
+const RPC_LIST = [
+
+{
+name:"Ethereum Mainnet",
+url:"https://mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Sepolia",
+url:"https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Hoodi",
+url:"https://hoodi.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Linea Sepolia",
+url:"https://linea-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Linea Mainnet",
+url:"https://linea-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Polygon Amoy",
+url:"https://polygon-amoy.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Polygon Mainnet",
+url:"https://polygon-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Base Sepolia",
+url:"https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Blast Sepolia",
+url:"https://blast-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Optimism Mainnet",
+url:"https://optimism-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Arbitrum Sepolia",
+url:"https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Palm Mainnet",
+url:"https://palm-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Avalanche Fuji",
+url:"https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Starknet Sepolia",
+url:"https://starknet-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Celo Sepolia",
+url:"https://celo-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"BSC Mainnet",
+url:"https://bsc-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Hemi Mainnet",
+url:"https://hemi-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Mantle Mainnet",
+url:"https://mantle-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Scroll Sepolia",
+url:"https://scroll-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"OpBNB Mainnet",
+url:"https://opbnb-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Monad Testnet",
+url:"https://monad-testnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Solana Devnet",
+url:"https://solana-devnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Solana Mainnet",
+url:"https://solana-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Unichain Mainnet",
+url:"https://unichain-mainnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+},
+
+{
+name:"Unichain Sepolia",
+url:"https://unichain-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+}
+
+];
+
+// =======================
+// GLOBAL
+// =======================
+
+let provider;
+let signer;
+
+const faucetAddress =
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+const nftAddress =
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+// =======================
+// ABI
+// =======================
+
+const faucetAbi = [
+
+"function requestTokens()"
+
+];
+
+const nftAbi = [
+
+"function mint(address to,string uri)"
+
+];
+
+// =======================
+// LOAD RPC TO SELECT
+// =======================
+
+function loadRPCs(){
+
+const select =
+document.getElementById("rpcSelector");
+
+select.innerHTML = "";
+
+RPC_LIST.forEach((rpc,index)=>{
+
+const option =
+document.createElement("option");
+
+option.value = rpc.url;
+
+option.innerHTML =
+rpc.name;
+
+select.appendChild(option);
+
+});
+
+}
+
+// =======================
+// TEST RPC
+// =======================
+
+async function checkRPC(){
+
+const rpc =
+document.getElementById(
+"rpcSelector"
+).value;
+
+try{
+
+const rpcProvider =
+new ethers.JsonRpcProvider(rpc);
+
+const block =
+await rpcProvider.getBlockNumber();
+
+document.getElementById(
+"rpcStatus"
+).innerHTML =
+
+`
+✅ RPC ACTIVE <br><br>
+${rpc}
+<br><br>
+BLOCK : ${block}
+`;
+
+console.log(
+"RPC ACTIVE:",
+block
+);
+
+}catch(err){
+
+console.log(err);
+
+document.getElementById(
+"rpcStatus"
+).innerHTML =
+
+`
+❌ RPC FAILED
+<br><br>
+${err.message}
+`;
+
+}
+
+}
+
+// =======================
+// AUTO TEST ALL RPC
+// =======================
+
+async function checkAllRPCs(){
+
+for(let i=0;i<RPC_LIST.length;i++){
+
+const rpc = RPC_LIST[i];
+
+try{
+
+const provider =
+new ethers.JsonRpcProvider(
+rpc.url
+);
+
+const block =
+await provider.getBlockNumber();
+
+console.log(
+"✅",
+rpc.name,
+block
+);
+
+}catch(err){
+
+console.log(
+"❌",
+rpc.name
+);
+
+}
+
+}
+
+}
+
+// =======================
+// CONNECT WALLET
+// =======================
+
+async function connectWallet(){
+
+if(!window.ethereum){
+
+alert(
+"Install MetaMask"
+);
+
+return;
+
+}
+
+try{
+
+provider =
+new ethers.BrowserProvider(
+window.ethereum
+);
+
+await provider.send(
+"eth_requestAccounts",
+[]
+);
+
+signer =
+await provider.getSigner();
+
+const address =
+await signer.getAddress();
+
+alert(
+"Wallet Connected :\n\n" +
+address
+);
+
+document.getElementById(
+"rpcStatus"
+).innerHTML =
+
+`
+✅ WALLET CONNECTED
+<br><br>
+${address}
+`;
+
+}catch(err){
+
+console.log(err);
+
+alert(
+"Wallet Failed"
+);
+
+}
+
+}
+
+// =======================
+// SEND TRANSACTION
+// =======================
+
+async function sendTx(){
+
+if(!signer){
+
+alert(
+"Connect wallet first"
+);
+
+return;
+
+}
+
+try{
+
+const tx =
+await signer.sendTransaction({
+
+to:
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+
+value:
+ethers.parseEther(
+"0.0001"
+)
+
+});
+
+await tx.wait();
+
+alert(
+"Transaction Success ✅"
+);
+
+}catch(err){
+
+console.log(err);
+
+alert(
+"Transaction Failed ❌"
+);
+
+}
+
+}
+
+// =======================
+// REQUEST FAUCET
+// =======================
+
+async function requestFaucet(){
+
+if(!signer){
+
+alert(
+"Connect wallet first"
+);
+
+return;
+
+}
+
+try{
+
+const faucet =
+new ethers.Contract(
+
+faucetAddress,
+
+faucetAbi,
+
+signer
+
+);
+
+const tx =
+await faucet.requestTokens();
+
+await tx.wait();
+
+alert(
+"Faucet Success ✅"
+);
+
+}catch(err){
+
+console.log(err);
+
+alert(
+"Faucet Failed ❌"
+);
+
+}
+
+}
+
+// =======================
+// MINT NFT
+// =======================
+
+async function mintNFT(){
+
+if(!signer){
+
+alert(
+"Connect wallet first"
+);
+
+return;
+
+}
+
+try{
+
+const nft =
+new ethers.Contract(
+
+nftAddress,
+
+nftAbi,
+
+signer
+
+);
+
+const tx =
+await nft.mint(
+
+await signer.getAddress(),
+
+"ipfs://metadata.json"
+
+);
+
+await tx.wait();
+
+alert(
+"NFT Minted ✅"
+);
+
+}catch(err){
+
+console.log(err);
+
+alert(
+"Mint NFT Failed ❌"
+);
+
+}
+
+}
+
+// =======================
+// AUTO LOAD
+// =======================
+
+window.addEventListener(
+"load",
+()=>{
+
+loadRPCs();
+
+checkAllRPCs();
+
+}
+);
+
+</script>
+</body>
+</html>
