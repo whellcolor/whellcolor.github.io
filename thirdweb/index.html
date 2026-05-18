@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartWallet EVM Dashboard</title>
+
+  <style>
+    body{
+      background:#0d1117;
+      color:#e6edf3;
+      font-family:Arial, sans-serif;
+      margin:0;
+      padding:20px;
+    }
+
+    h1{
+      text-align:center;
+      color:#58a6ff;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .card{
+      background:#161b22;
+      border:1px solid #30363d;
+      border-radius:12px;
+      padding:20px;
+      margin-bottom:20px;
+    }
+
+    .title{
+      color:#58a6ff;
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    pre{
+      background:#0d1117;
+      padding:15px;
+      border-radius:10px;
+      overflow:auto;
+      color:#7ee787;
+    }
+
+    button{
+      background:#238636;
+      border:none;
+      padding:10px 20px;
+      color:white;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    button:hover{
+      background:#2ea043;
+    }
+
+    .wallet{
+      color:#f0883e;
+      word-break:break-all;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+      gap:20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>SmartWallet EVM Dashboard</h1>
+
+  <div class="card">
+    <div class="title">Wallet Information</div>
+
+    <p><strong>Owner Wallet:</strong></p>
+    <p class="wallet">
+      0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B
+    </p>
+
+    <p><strong>Smart Wallet:</strong></p>
+    <p class="wallet">
+      0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="title">miner.json</div>
+
+<pre>{
+  "type":"miner",
+  "reward":"0.9 ETH",
+  "chainId":8453
+}</pre>
+
+      <button onclick="downloadJSON('miner.json', miner)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">swap.json</div>
+
+<pre>{
+  "type":"swap",
+  "from":"ETH",
+  "to":"USDC",
+  "amount":"0.9"
+}</pre>
+
+      <button onclick="downloadJSON('swap.json', swap)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">dapp.json</div>
+
+<pre>{
+  "type":"dapp",
+  "name":"SmartWalletEVM"
+}</pre>
+
+      <button onclick="downloadJSON('dapp.json', dapp)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">mint.json</div>
+
+<pre>{
+  "type":"mint",
+  "amount":"0.9",
+  "token":"NFT"
+}</pre>
+
+      <button onclick="downloadJSON('mint.json', mint)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">faucet.json</div>
+
+<pre>{
+  "type":"faucet",
+  "claim":"0.9 ETH"
+}</pre>
+
+      <button onclick="downloadJSON('faucet.json', faucet)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">log.json</div>
+
+<pre>{
+  "type":"log",
+  "status":"active"
+}</pre>
+
+      <button onclick="downloadJSON('log.json', logdata)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">key.json</div>
+
+<pre>{
+  "type":"apikey",
+  "provider":"thirdweb"
+}</pre>
+
+      <button onclick="downloadJSON('key.json', keyjson)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">send.json</div>
+
+<pre>{
+  "type":"send",
+  "amount":"0.9 ETH"
+}</pre>
+
+      <button onclick="downloadJSON('send.json', sendjson)">
+        Download
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="title">received.json</div>
+
+<pre>{
+  "type":"received",
+  "status":"success"
+}</pre>
+
+      <button onclick="downloadJSON('received.json', receivedjson)">
+        Download
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const wallet =
+"0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B";
+
+const smartWallet =
+"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763";
+
+const miner = {
+  type:"miner",
+  chainId:8453,
+  wallet,
+  smartWallet,
+  reward:"0.9 ETH"
+};
+
+const swap = {
+  type:"swap",
+  chainId:8453,
+  fromToken:"ETH",
+  toToken:"USDC",
+  amount:"0.9",
+  wallet
+};
+
+const dapp = {
+  type:"dapp",
+  name:"SmartWalletEVM",
+  owner:wallet,
+  smartWallet,
+  contracts:{
+    v06:"0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+    v07:"0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb"
+  }
+};
+
+const mint = {
+  type:"mint",
+  receiver:wallet,
+  amount:"0.9",
+  token:"NFT"
+};
+
+const faucet = {
+  type:"faucet",
+  wallet,
+  claim:"0.9 ETH",
+  network:"Base"
+};
+
+const logdata = {
+  type:"log",
+  wallet,
+  smartWallet,
+  status:"active"
+};
+
+const keyjson = {
+  type:"apikey",
+  provider:"thirdweb",
+  secretKey:"YOUR_SECRET_KEY"
+};
+
+const sendjson = {
+  type:"send",
+  from:wallet,
+  to:smartWallet,
+  amount:"0.9 ETH"
+};
+
+const receivedjson = {
+  type:"received",
+  receiver:wallet,
+  sender:smartWallet,
+  amount:"0.9 ETH",
+  status:"success"
+};
+
+function downloadJSON(filename, data){
+
+  const blob = new Blob(
+    [JSON.stringify(data,null,2)],
+    {type:"application/json"}
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+
+  a.href = url;
+  a.download = filename;
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+</script>
+
+</body>
+</html>
