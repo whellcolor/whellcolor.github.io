@@ -75,6 +75,7 @@ h1,h3{
 <div class="card">
 
 <h3>Wallet</h3>
+<input type="text" id="wallet" placeholder="Wallet Address"/>
 
 <button onclick="connectWallet()">
 Connect Wallet
@@ -317,7 +318,26 @@ alt="Subscribe" />
 <!-- MAIN SCRIPT -->
 
 <script>
+import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@6.13.4/+esm";
 
+let provider;
+let signer;
+let address;
+
+const connectBtn = document.getElementById("connectBtn");
+const walletInput = document.getElementById("walletInput");
+const claimBtn = document.getElementById("claimBtn");
+const statusText = document.getElementById("status");
+const progressBar = document.getElementById("progress");
+const historyDiv = document.getElementById("history");
+const networkSelect = document.getElementById("network");
+
+const RPCS = {
+  sepolia: "https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a",
+  base: "https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a",
+  arbitrum: "https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a",
+  linea: "https://linea-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
+};
 // =========================
 // CONFIG
 // =========================
@@ -351,6 +371,122 @@ const ABI = [
 "function swapToken(string fromToken,string toToken,uint256 amount) external"
 
 ];
+
+  /* ======================
+   DELAY FUNCTION
+====================== */
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+import { ethereum } from "thirdweb/chains";
+import { ConnectButton, darkTheme } from "thirdweb/react";
+import { createThirdwebClient } from "thirdweb";
+import { inAppWallet, createWallet } from "thirdweb/wallets";
+
+const client = createThirdwebClient({
+  clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
+});
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "telegram",
+        "farcaster",
+        "email",
+        "x",
+        "passkey",
+        "phone",
+        "github",
+        "twitch",
+        "steam",
+        "tiktok",
+        "coinbase",
+        "guest",
+        "facebook",
+        "apple",
+      ],
+    },
+  }),
+
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+  createWallet("com.trustwallet.app"),
+  createWallet("com.bestwallet"),
+  createWallet("com.bitpay"),
+  createWallet("com.binance.wallet"),
+  createWallet("io.1inch.wallet"),
+  createWallet("org.uniswap"),
+  createWallet("com.safepal"),
+  createWallet("com.crypto.wallet"),
+  createWallet("com.bitcoin"),
+  createWallet("com.blockchain.login"),
+  createWallet("id.co.pintu"),
+  createWallet("app.subwallet"),
+  createWallet("so.onekey.app.wallet"),
+  createWallet("ag.jup"),
+  createWallet("io.magiceden.wallet"),
+  createWallet("com.kucoin"),
+  createWallet("io.enjin"),
+  createWallet("org.creditcoin.app"),
+  createWallet("app.everspace"),
+];
+
+export default function App() {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-black">
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        connectModal={{ size: "compact" }}
+        accountAbstraction={{
+          chain: ethereum,
+          sponsorGas: true,
+        }}
+        auth={{
+          async doLogin(params) {
+            console.log("Login", params);
+          },
+
+          async doLogout() {
+            console.log("Logout");
+          },
+
+          async getLoginPayload(params) {
+            return {
+              domain: window.location.hostname,
+              address: params.address,
+              statement: "Login to App",
+              uri: window.location.origin,
+              version: "1",
+              chainId: 1,
+              nonce: "12345678",
+              issuedAt: new Date().toISOString(),
+              expirationTime: new Date(
+                Date.now() + 1000 * 60 * 60,
+              ).toISOString(),
+            };
+          },
+
+          async isLoggedIn() {
+            return false;
+          },
+        }}
+        theme={darkTheme({
+          colors: {
+            accentText: "hsl(0, 0%, 0%)",
+          },
+        })}
+      />
+    </div>
+  );
+}
 
 // =========================
 // CONNECT WALLET
@@ -512,6 +648,65 @@ async function claimFaucet(){
 
 }
 
+  const cooldown = localStorage.getItem(wallet);
+
+  if (cooldown) {
+    const last = parseInt(cooldown);
+    const now = Date.now();
+    const diff = now - last;
+    const hours = diff / 1000 / 60 / 60;
+
+    if (hours < 24) {
+      statusText.innerText = "Cooldown Active";
+      return;
+    }
+  }
+
+  statusText.innerText = "Processing Claim...";
+  progressBar.style.width = "10%";
+
+  await delay(500);
+  progressBar.style.width = "30%";
+
+  await delay(500);
+  progressBar.style.width = "60%";
+
+  await delay(500);
+  progressBar.style.width = "100%";
+
+  await delay(1000);
+
+  localStorage.setItem(wallet, Date.now());
+
+  addHistory(wallet);
+
+  statusText.innerText = "Claim Completed";
+
+  setTimeout(() => {
+    progressBar.style.width = "0%";
+  }, 1000);
+};
+
+/* ======================
+   HISTORY
+====================== */
+function addHistory(wallet) {
+  const div = document.createElement("div");
+
+  div.className = "bg-zinc-900 p-3 rounded-xl";
+  div.innerHTML = `
+    Faucet Sent to:
+    <br/>
+    <span class='text-cyan-400'>${wallet}</span>
+    <br/>
+    <span class='text-zinc-500 text-xs'>
+      ${new Date().toLocaleString()}
+    </span>
+  `;
+
+  historyDiv.prepend(div);
+}
+
 // =========================
 // SWAP TOKEN
 // =========================
@@ -613,7 +808,7 @@ async function mintToken(){
             "Content-Type":"application/json",
 
             // NEVER expose production secret
-            "x-secret-key":"YOUR_SECRET_KEY"
+            "x-secret-key":"-mo2kL01Syg12xzGeqFXFP_GDqg9Pt08hYCsIp0TOWmuOtedh-1rJUTJJW-2K24ZWyIkXWupLQW2Yvb-iTu0TA"
           },
 
           body: JSON.stringify({
