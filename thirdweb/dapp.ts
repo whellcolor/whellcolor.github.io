@@ -2,6 +2,25 @@ import { createAppKit } from "@reown/appkit";
 import { EthersAdapter } from "@reown/appkit-adapter-ethers";
 import { mainnet, arbitrum, sepolia } from "@reown/appkit/networks";
 import { BrowserProvider, parseEther, Signer } from "ethers";
+import { Contract, BrowserProvider } from "ethers";
+import contractAbi from "./DappMinerConfig.json"; // Import file JSON ABI ini
+
+const contractAddress = "0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b";
+
+async function panggilFungsiWithdraw() {
+  if (!provider) return;
+  
+  const ethersProvider = new BrowserProvider(provider as any);
+  const signer = await ethersProvider.getSigner();
+  
+  // Inisialisasi Instance Kontrak
+  const myContract = new Contract(contractAddress, contractAbi, signer);
+  
+  // Eksekusi fungsi withdrawFunds dari Solidity
+  const tx = await myContract.withdrawFunds();
+  await tx.wait();
+  console.log("Dana berhasil ditarik ke alamat contractor!");
+}
 
 // Deklarasi global tipe Chart.js agar TypeScript tidak error jika Chart dimuat via CDN/Global
 declare const Chart: any;
