@@ -1,0 +1,7 @@
+{
+  "type": "faucet",
+  "chainId": 8453,
+  "wallet": "0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B",
+  "claimAmount": "0.9 ETH",
+  "network": "Base"
+}
