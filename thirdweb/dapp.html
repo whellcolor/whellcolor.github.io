@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Polygon Web3 dApp</title>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+
+<style>
+
+body{
+  background:#0d1117;
+  color:white;
+  font-family:Arial;
+  padding:30px;
+}
+
+.card{
+  background:#161b22;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  border:1px solid #30363d;
+}
+
+button{
+  background:#238636;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+button:hover{
+  background:#2ea043;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  margin-top:10px;
+  background:#0d1117;
+  color:white;
+}
+
+pre{
+  background:black;
+  padding:15px;
+  border-radius:10px;
+  overflow:auto;
+  color:#7ee787;
+}
+
+h1,h3{
+  color:#58a6ff;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Polygon Web3 dApp</h1>
+
+<!-- CONNECT -->
+
+<div class="card">
+
+<h3>Wallet</h3>
+
+<button onclick="connectWallet()">
+Connect Wallet
+</button>
+
+<p id="walletAddress">
+Not Connected
+</p>
+
+</div>
+
+<!-- CONTRACT -->
+
+<div class="card">
+
+<h3>Contract Address</h3>
+
+<p>
+0x5F4D8e0d0A5f0Ca204a88B1e40e16e8E5Ab016Ec
+</p>
+
+</div>
+
+<!-- BALANCE -->
+
+<div class="card">
+
+<h3>Read Contract</h3>
+
+<button onclick="getBalance()">
+Get Contract Balance
+</button>
+
+<pre id="result">
+Waiting...
+</pre>
+
+</div>
+
+<!-- SEND -->
+
+<div class="card">
+
+<h3>Send MATIC</h3>
+
+<input
+type="text"
+id="receiver"
+placeholder="Receiver Address"
+/>
+
+<input
+type="number"
+id="amount"
+placeholder="Amount MATIC"
+/>
+
+<button onclick="sendTransaction()">
+Send
+</button>
+
+</div>
+
+<!-- NFT -->
+
+<div class="card">
+
+<h3>Mint NFT</h3>
+
+<button onclick="mintNFT()">
+Mint NFT
+</button>
+
+</div>
+
+<!-- FAUCET -->
+
+<div class="card">
+
+<h3>Claim Faucet</h3>
+
+<button onclick="claimFaucet()">
+Claim Faucet
+</button>
+
+</div>
+
+<!-- SWAP -->
+
+<div class="card">
+
+<h3>Swap Token</h3>
+
+<button onclick="swapToken()">
+Swap MATIC → USDC
+</button>
+
+</div>
+
+<!-- WEB3 FAUCET -->
+
+<div class="card">
+
+<h3>Faucet Generator</h3>
+
+<input
+type="text"
+id="walletInput"
+placeholder="Wallet Address"
+/>
+
+<button onclick="sendTx()">
+Send 0.0001 ETH
+</button>
+
+<button onclick="mintToken()">
+Mint Faucet Token
+</button>
+
+<button onclick="checkBalance()">
+Check Wallet Balance
+</button>
+
+<div id="status">
+Ready...
+</div>
+
+</div>
+
+<!-- PAYPAL -->
+
+<div class="card">
+
+<h3>Subscription</h3>
+
+<center>
+
+<form action="https://www.paypal.com/cgi-bin/webscr"
+method="post"
+target="_top">
+
+<input type="hidden" name="cmd" value="_s-xclick" />
+
+<input type="hidden"
+name="hosted_button_id"
+value="JZ8YZT9LM257A" />
+
+<table>
+
+<tr>
+<td>
+
+<input type="hidden"
+name="on0"
+value="LAYANAN PELANGGAN"/>
+
+LAYANAN PELANGGAN
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+<select name="os0">
+
+<option value="Subcribe">
+Subcribe $5,00 USD - minggu
+</option>
+
+<option value="Premium">
+Premium $25,00 USD - bulan
+</option>
+
+<option value="Golden">
+Golden $100,00 USD - tahun
+</option>
+
+</select>
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+<input type="hidden"
+name="on1"
+value="Terima Kasih ."/>
+
+Terima Kasih .
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+<input
+type="text"
+name="os1"
+maxlength="200"
+/>
+
+</td>
+</tr>
+
+</table>
+
+<input type="hidden"
+name="currency_code"
+value="USD" />
+
+<input type="image"
+src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif"
+border="0"
+name="submit"
+title="PayPal"
+alt="Subscribe" />
+
+</form>
+
+</center>
+
+</div>
+
+<!-- NFT METADATA -->
+
+<script type="application/json" id="nftMetadata">
+{
+  "name": "AWDEV NFT",
+  "description": "Official NFT created and verified by wallet owner.",
+  "image": "https://whellcolor.github.io/dapp/awdevNFT.jpg",
+  "external_url": "https://whellcolor.github.io/dapp/nft/",
+  "chain": "Ethereum",
+  "creator_wallet": "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88"
+}
+</script>
+
+<!-- MAIN SCRIPT -->
+
+<script>
+
+// =========================
+// CONFIG
+// =========================
+
+const CONTRACT_ADDRESS =
+"0x5F4D8e0d0A5f0Ca204a88B1e40e16e8E5Ab016Ec";
+
+const FAUCET_ADDRESS =
+"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+// =========================
+// GLOBAL
+// =========================
+
+let provider;
+let signer;
+let contract;
+
+// =========================
+// ABI
+// =========================
+
+const ABI = [
+
+"function contractBalance() view returns(uint256)",
+
+"function mintNFT() external",
+
+"function claimFaucet() external",
+
+"function swapToken(string fromToken,string toToken,uint256 amount) external"
+
+];
+
+// =========================
+// CONNECT WALLET
+// =========================
+
+async function connectWallet(){
+
+  try{
+
+    if(!window.ethereum){
+
+      alert("Please install MetaMask");
+
+      return;
+    }
+
+    await ethereum.request({
+      method:"eth_requestAccounts"
+    });
+
+    provider =
+      new ethers.providers.Web3Provider(window.ethereum);
+
+    signer = provider.getSigner();
+
+    const address =
+      await signer.getAddress();
+
+    document.getElementById("walletAddress")
+      .innerHTML =
+      "Connected : " + address;
+
+    contract =
+      new ethers.Contract(
+        CONTRACT_ADDRESS,
+        ABI,
+        signer
+      );
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Wallet connection failed");
+
+  }
+
+}
+
+// =========================
+// GET CONTRACT BALANCE
+// =========================
+
+async function getBalance(){
+
+  try{
+
+    const balance =
+      await contract.contractBalance();
+
+    document.getElementById("result")
+      .innerHTML =
+      ethers.utils.formatEther(balance)
+      + " MATIC";
+
+  }catch(err){
+
+    console.log(err);
+
+  }
+
+}
+
+// =========================
+// SEND TRANSACTION
+// =========================
+
+async function sendTransaction(){
+
+  try{
+
+    const receiver =
+      document.getElementById("receiver").value;
+
+    const amount =
+      document.getElementById("amount").value;
+
+    const tx =
+      await signer.sendTransaction({
+
+        to: receiver,
+
+        value:
+          ethers.utils.parseEther(amount)
+
+      });
+
+    await tx.wait();
+
+    alert("Transaction Success");
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Transaction Failed");
+
+  }
+
+}
+
+// =========================
+// MINT NFT
+// =========================
+
+async function mintNFT(){
+
+  try{
+
+    const tx =
+      await contract.mintNFT();
+
+    await tx.wait();
+
+    alert("NFT Minted");
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Mint NFT Failed");
+
+  }
+
+}
+
+// =========================
+// CLAIM FAUCET
+// =========================
+
+async function claimFaucet(){
+
+  try{
+
+    const tx =
+      await contract.claimFaucet();
+
+    await tx.wait();
+
+    alert("Claim Success");
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Claim Failed");
+
+  }
+
+}
+
+// =========================
+// SWAP TOKEN
+// =========================
+
+async function swapToken(){
+
+  try{
+
+    const tx =
+      await contract.swapToken(
+
+        "MATIC",
+
+        "USDC",
+
+        ethers.utils.parseEther("0.9")
+
+      );
+
+    await tx.wait();
+
+    alert("Swap Success");
+
+  }catch(err){
+
+    console.log(err);
+
+    alert("Swap Failed");
+
+  }
+
+}
+
+// =========================
+// SEND ETH
+// =========================
+
+async function sendTx(){
+
+  try{
+
+    const tx =
+      await signer.sendTransaction({
+
+        to: FAUCET_ADDRESS,
+
+        value:
+          ethers.utils.parseEther("0.0001")
+
+      });
+
+    await tx.wait();
+
+    document.getElementById("status")
+      .innerHTML =
+      "✅ ETH Sent";
+
+  }catch(err){
+
+    console.log(err);
+
+    document.getElementById("status")
+      .innerHTML =
+      "❌ Send Failed";
+
+  }
+
+}
+
+// =========================
+// MINT TOKEN
+// =========================
+
+async function mintToken(){
+
+  try{
+
+    const wallet =
+      document.getElementById("walletInput").value;
+
+    if(!wallet){
+
+      alert("Input wallet address");
+
+      return;
+    }
+
+    document.getElementById("status")
+      .innerHTML =
+      "⏳ Minting Token...";
+
+    const response =
+      await fetch(
+        "https://api.thirdweb.com/v1/transactions",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json",
+
+            // NEVER expose production secret
+            "x-secret-key":"YOUR_SECRET_KEY"
+          },
+
+          body: JSON.stringify({
+
+            chainId:"84532",
+
+            from:FAUCET_ADDRESS,
+
+            transactions:[{
+
+              type:"contractCall",
+
+              contractAddress:
+              "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+
+              method:
+              "function mintTo(address to,uint256 amount)",
+
+              params:[wallet,"100"]
+
+            }]
+
+          })
+
+        }
+      );
+
+    const data =
+      await response.json();
+
+    console.log(data);
+
+    document.getElementById("status")
+      .innerHTML =
+      "✅ Token Minted";
+
+  }catch(err){
+
+    console.log(err);
+
+    document.getElementById("status")
+      .innerHTML =
+      "❌ Mint Failed";
+
+  }
+
+}
+
+// =========================
+// CHECK BALANCE
+// =========================
+
+async function checkBalance(){
+
+  try{
+
+    const address =
+      await signer.getAddress();
+
+    const balance =
+      await provider.getBalance(address);
+
+    document.getElementById("status")
+      .innerHTML =
+
+      "Balance : "
+      + ethers.utils.formatEther(balance)
+      + " ETH";
+
+  }catch(err){
+
+    console.log(err);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
