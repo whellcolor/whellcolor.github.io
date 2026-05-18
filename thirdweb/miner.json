@@ -1,0 +1,8 @@
+{
+  "type": "miner",
+  "chainId": 8453,
+  "wallet": "0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B",
+  "smartWallet": "0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763",
+  "reward": "0.9 ETH",
+  "factory": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00"
+}
