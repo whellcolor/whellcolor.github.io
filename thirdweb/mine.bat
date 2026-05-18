@@ -1,0 +1,5 @@
+@echo off
+curl -X POST http://localhost:3001/api/mine ^
+     -H "Content-Type: application/json" ^
+     -d "{\"smartWallet\": \"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763\", \"contractor\": \"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88\", \"amount\": 0.9, \"status\": \"HASH_MINING_SUCCESS\"}"
+pause
