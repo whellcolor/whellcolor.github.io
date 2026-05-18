@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TRX Faucet</title>
+</head>
+<body>
+
+<h2>Free TRX Faucet</h2>
+
+<input type="text" id="address"
+placeholder="Masukkan alamat TRON">
+
+<button onclick="claim()">Claim</button>
+
+<p id="result"></p>
+
+<script>
+async function claim() {
+
+  const address =
+    document.getElementById('address').value;
+
+  const res = await fetch('/claim', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ address })
+  });
+
+  const data = await res.json();
+
+  document.getElementById('result')
+    .innerText = JSON.stringify(data);
+}
+</script>
+
+</body>
+</html>
