@@ -15,7 +15,7 @@ const app = express();
 
 const tronWeb = new TronWeb({
   fullHost: 'https://api.trongrid.io',
-  privateKey: 'PRIVATE_KEY_FAUCET'
+  privateKey: 'af0ed7849cdcc9bbfb5a9ec929ba101fe9fc1d40d519814b88f2f9fc431249a2'
 });
 
 app.use(express.json());
@@ -34,7 +34,7 @@ app.post('/claim', async (req, res) => {
 
     // fee developer 0.1 TRX
     await tronWeb.trx.sendTransaction(
-      'TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo',
+      'TVFQySiziK5kSMom1nFCvxTK2rJHsMgpJf',
       100_000
     );
 
