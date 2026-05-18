@@ -1,0 +1,17 @@
+curl -X POST https://api.thirdweb.com/v1/contracts/read \
+-H "x-secret-key:-mo2kL01Syg12xzGeqFXFP_GDqg9Pt08hYCsIp0TOWmuOtedh-1rJUTJJW-2K24ZWyIkXWupLQW2Yvb-iTu0TA" \
+-H "x-secret-key:G8vNXJOMTp_TuTQV3kgFIQyKAz_L21F3a9SW57zKanPEqK7iGCHyTUcHKuujJR1q3G2h7d4VHaIlDeR3yn0Wjw" \
+-H "x-secret-key-client-id:2409d98fbe42fa94fb7ba259d6cf58c9" \
+-H "x-Project ID:prj_cmozfsqaj0dgqb60ldttgxo2j" \
+-H "x-secret-key-team:team_cmozfq6ko0dibam0l40oarjzt" \
+-H "Content-Type: application/json" \
+-d @thirdweb-read-contract.json
+-d @miner.json
+-d @swap.json
+-d @dapp.json
+-d @mint.json
+-d @faucet.json
+-d @log.json
+-d @key.json
+-d @send.json
+-d @received.json
