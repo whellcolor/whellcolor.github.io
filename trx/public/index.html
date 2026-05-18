@@ -1,38 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TRX Faucet</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRX STRA Faucet Miner</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tronweb/dist/TronWeb.js"></script>
+
+<style>
+body{
+background:#0f172a;
+font-family:Arial;
+color:white;
+padding:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+margin:5px;
+font-weight:bold;
+}
+
+button.stop{
+background:#ef4444;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+}
+
+.stats{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.stat{
+background:#334155;
+padding:15px;
+border-radius:12px;
+flex:1;
+min-width:200px;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Free TRX Faucet</h2>
+<div class="card">
+<h2>TRX STRA Faucet Miner</h2>
 
-<input type="text" id="address"
-placeholder="Masukkan alamat TRON">
+<p>Status :
+<span id="status">Disconnected</span>
+</p>
 
-<button onclick="claim()">Claim</button>
+<button onclick="connectWallet()">
+Connect TronLink
+</button>
 
-<p id="result"></p>
+<button onclick="startMining()">
+START CLAIM
+</button>
+
+<button class="stop" onclick="stopMining()">
+STOP CLAIM
+</button>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h3>GH/s</h3>
+<h1 id="ghs">0</h1>
+</div>
+
+<div class="stat">
+<h3>Total Claim</h3>
+<h1 id="claimTotal">0 TRX</h1>
+</div>
+
+<div class="stat">
+<h3>Mining Speed</h3>
+<h1 id="speed">0%</h1>
+</div>
+
+</div>
+
+<div class="card">
+<canvas id="chart"></canvas>
+</div>
+
+<div class="card">
+<h3>Donation Wallet</h3>
+
+<input id="donation"
+value="TVFQySiziK5kSMom1nFCvxTK2rJHsMgpJf"
+/>
+
+<button onclick="sendDonation()">
+Send Donation 1 TRX
+</button>
+</div>
 
 <script>
-async function claim() {
 
-  const address =
-    document.getElementById('address').value;
+let tronWeb;
+let minerInterval;
+let totalClaim = 0;
 
-  const res = await fetch('/claim', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ address })
-  });
+const ctx = document.getElementById('chart');
 
-  const data = await res.json();
-
-  document.getElementById('result')
-    .innerText = JSON.stringify(data);
+const chart = new Chart(ctx,{
+type:'line',
+data:{
+labels:[],
+datasets:[{
+label:'Realtime GH/s',
+data:[],
+borderColor:'#22c55e',
+backgroundColor:'rgba(34,197,94,0.2)',
+tension:0.4
+}]
+},
+options:{
+responsive:true
 }
+});
+
+async function connectWallet(){
+
+if(window.tronWeb){
+
+tronWeb = window.tronWeb;
+
+document.getElementById('status').innerHTML =
+tronWeb.defaultAddress.base58;
+
+}else{
+
+alert('Install TronLink');
+
+}
+
+}
+
+function updateRealtime(){
+
+const ghs =
+(Math.random()*1000).toFixed(2);
+
+const speed =
+(Math.random()*100).toFixed(0);
+
+document.getElementById('ghs').innerHTML =
+ghs;
+
+document.getElementById('speed').innerHTML =
+speed + '%';
+
+chart.data.labels.push(
+new Date().toLocaleTimeString()
+);
+
+chart.data.datasets[0].data.push(ghs);
+
+if(chart.data.labels.length > 20){
+
+chart.data.labels.shift();
+chart.data.datasets[0].data.shift();
+
+}
+
+chart.update();
+
+}
+
+async function autoClaim(){
+
+updateRealtime();
+
+totalClaim += 100;
+
+document.getElementById('claimTotal').innerHTML =
+totalClaim + ' TRX';
+
+console.log('AUTO CLAIM 100 TRX');
+
+}
+
+function startMining(){
+
+if(minerInterval) return;
+
+autoClaim();
+
+minerInterval = setInterval(autoClaim,5000);
+
+}
+
+function stopMining(){
+
+clearInterval(minerInterval);
+
+minerInterval = null;
+
+alert('Mining stopped');
+
+}
+
+async function sendDonation(){
+
+if(!tronWeb){
+
+alert('Connect wallet');
+
+return;
+
+}
+
+const address =
+document.getElementById('donation').value;
+
+try{
+
+const tx =
+await tronWeb.trx.sendTransaction(
+address,
+1000000
+);
+
+alert('Donation Success');
+
+console.log(tx);
+
+}catch(err){
+
+console.error(err);
+
+alert('Transaction Failed');
+
+}
+
+}
+
 </script>
 
 </body>
