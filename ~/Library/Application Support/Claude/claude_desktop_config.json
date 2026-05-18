@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "trust-wallet": {
+      "url": "https://mcp.trustwallet.com/tws",
+      "headers": {
+        "X-TW-CREDENTIAL": "477c3b488a2d2b129deebd13dd38a8a1db7fb4069010530f40401fe28458d5e5",
+        "X-TW-SECRET-KEY": "f31ce871ecc9574c9a517572e30a2f9c70411de152b28236cb43364edbf2c1af"
+      }
+    }
+  }
+}
