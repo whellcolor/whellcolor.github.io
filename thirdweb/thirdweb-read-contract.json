@@ -1,0 +1,54 @@
+{
+  "chainId": 8453,
+  "wallets": {
+    "ownerWallet": "0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B",
+    "smartWallet": "0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763"
+  },
+  "contracts": {
+    "accountFactoryV06": {
+      "address": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+      "entrypointVersion": "0.6"
+    },
+    "accountFactoryV07": {
+      "address": "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb",
+      "entrypointVersion": "0.7"
+    }
+  },
+  "claim": {
+    "value": 0.9,
+    "token": "ETH",
+    "receiver": "0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B"
+  },
+  "calls": [
+    {
+      "contractAddress": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+      "method": "function name() view returns (string)"
+    },
+    {
+      "contractAddress": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+      "method": "function totalSupply() view returns (uint256)"
+    },
+    {
+      "contractAddress": "0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00",
+      "method": "function balanceOf(address) view returns (uint256)",
+      "params": [
+        "0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B"
+      ]
+    },
+    {
+      "contractAddress": "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb",
+      "method": "function name() view returns (string)"
+    },
+    {
+      "contractAddress": "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb",
+      "method": "function totalSupply() view returns (uint256)"
+    },
+    {
+      "contractAddress": "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb",
+      "method": "function balanceOf(address) view returns (uint256)",
+      "params": [
+        "0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763"
+      ]
+    }
+  ]
+}
