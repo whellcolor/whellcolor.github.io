@@ -270,6 +270,54 @@ a.click();
 }
 
 </script>
+<div style="
+margin-top:40px;
+text-align:center;
+padding:20px;
+background:#1e293b;
+border-radius:16px;
+">
 
+<h2>🚀 Creator Program</h2>
+
+<p>
+Support creator dengan mengirim <b>0.09</b> coin ke wallet.
+</p>
+
+<button onclick="sendCreator()"
+style="
+background:#22c55e;
+padding:14px 20px;
+border:none;
+border-radius:12px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+">
+💸 Send 0.09
+</button>
+
+<p style="margin-top:15px;color:#94a3b8;">
+Created by YourName
+</p>
+
+</div>
+
+<script>
+
+function sendCreator(){
+
+const amount = "0.09";
+
+navigator.clipboard.writeText(amount);
+
+alert(
+"Nominal 0.09 copied!\n" +
+"Silakan paste di wallet tujuan."
+);
+
+}
+
+</script>
 </body>
 </html>
