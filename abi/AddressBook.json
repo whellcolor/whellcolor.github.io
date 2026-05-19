@@ -1,0 +1,51 @@
+[
+  {
+    "type": "constructor",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "name": "mainWallet",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "targetETH",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "solana",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "string" }]
+  },
+  {
+    "type": "function",
+    "name": "btc",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "string" }]
+  },
+  {
+    "type": "function",
+    "name": "depositToken",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "token", "type": "address" },
+      { "name": "amount", "type": "uint256" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "ethBalance",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  }
+]
