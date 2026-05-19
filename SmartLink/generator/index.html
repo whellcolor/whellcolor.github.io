@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Smart Link Generator</title>
+    
+    <!-- Library QR Code Resmi -->
+    <script src="https://cloudflare.com"></script>
+    <!-- Library Ethers v5 Resmi untuk fungsi utilitas blockchain -->
+    <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
+
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 500px; 
+            margin: 30px auto; 
+            padding: 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border-radius: 12px;
+            background-color: #fdfdfd;
+        }
+        h2, h3 { text-align: center; color: #333; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
+        input, select, button { width: 100%; padding: 12px; margin: 8px 0; box-sizing: border-box; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; }
+        input:focus, select:focus { border-color: #007bff; outline: none; }
+        
+        .crypto-calc-info { font-size: 12px; color: #666; margin-top: -5px; margin-bottom: 5px; font-style: italic; }
+        
+        /* Tombol Utama */
+        .btn-generate { background-color: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-generate:hover { background-color: #0056b3; }
+        
+        /* Area Output */
+        .output-box { display: none; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px dashed #bbb; }
+        #smartLink { display: block; word-break: break-all; margin: 10px 0; text-align: center; font-weight: bold; color: #28a745; text-decoration: none; }
+        
+        /* Barisan Tombol Tambahan */
+        .action-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .btn-action { padding: 10px; font-weight: bold; cursor: pointer; border: none; flex: 1; }
+        .btn-copy { background-color: #6c757d; color: white; }
+        .btn-copy:hover { background-color: #5a6268; }
+        .btn-download { background-color: #28a745; color: white; }
+        .btn-download:hover { background-color: #218838; }
+        
+        #qrcode { margin-top: 20px; display: flex; justify-content: center; }
+        #status { text-align: center; margin-top: 15px; font-weight: bold; padding: 10px; border-radius: 6px; }
+        appkit-button { display: flex; justify-content: center; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <h2>Trust Wallet Link Generator</h2>
+    
+    <!-- Tombol Integrasi AppKit Web3 Wallet -->
+    <appkit-button></appkit-button>
+    
+    <div id="status">Silakan hubungkan dompet atau isi formulir di bawah</div>
+
+    <label>Alamat Dompet Anda (Penerima):</label>
+    <input type="text" id="walletAddress" placeholder="0x...">
+
+    <label>Jaringan Utama (Chain):</label>
+    <select id="chain" onchange="updateCryptoConversion()">
+        <option value="56" data-id="binancecoin" data-ticker="BNB">BNB Smart Chain (BSC)</option>
+        <option value="1" data-id="ethereum" data-ticker="ETH">Ethereum (ETH)</option>
+        <option value="137" data-id="matic-network" data-ticker="MATIC">Polygon (MATIC)</option>
+    </select>
+
+    <label>Jumlah Tagihan (IDR - Rupiah):</label>
+    <input type="number" id="amountIDR" placeholder="Contoh: 50000" oninput="updateCryptoConversion()">
+
+    <label>Setara Nilai Kripto:</label>
+    <input type="number" id="amountCrypto" step="any" placeholder="0.00" readonly>
+    <div class="crypto-calc-info" id="rateInfo">Masukkan nominal Rupiah untuk memuat kurs live.</div>
+
+    <button class="btn-generate" onclick="generateSmartLink()">Bikin Smart Link & QR</button>
+
+    <!-- Kotak Hasil Yang Akan Muncul Setelah Generate -->
+    <div class="output-box" id="outputContainer">
+        <h3>Hasil Smart Link:</h3>
+        <a id="smartLink" href="#" target="_blank">Belum ada link</a>
+        
+        <div class="action-buttons">
+            <button class="btn-action btn-copy" onclick="copySmartLink()">Copy Link</button>
+            <button class="btn-action btn-download" onclick="downloadQRCode()">Download QR</button>
+        </div>
+        
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        let currentGeneratedUrl = "";
+
+        // Fungsi mengambil data harga pasar terupdate & konversi IDR ke Kripto pilihan
+        async function updateCryptoConversion() {
+            const idrValue = document.getElementById('amountIDR').value;
+            const cryptoInput = document.getElementById('amountCrypto');
+            const rateInfo = document.getElementById('rateInfo');
+            
+            if (!idrValue || idrValue <= 0) {
+                cryptoInput.value = "";
+                rateInfo.innerText = "Masukkan nominal Rupiah untuk memuat kurs live.";
+                return;
+            }
+
+            const chainSelect = document.getElementById('chain');
+            const selectedOption = chainSelect.options[chainSelect.selectedIndex];
+            const cryptoGeckoId = selectedOption.getAttribute('data-id');
+            const cryptoTicker = selectedOption.getAttribute('data-ticker');
+
+            rateInfo.innerText = "⏳ Memuat harga kurs live...";
+
+            try {
+                // Fetch rate dari API CoinGecko tanpa token auth (Public API)
+                const res = await fetch(`https://coingecko.com{cryptoGeckoId}&vs_currencies=idr`);
+                const data = await res.json();
+                
+                const currentPriceIDR = data[cryptoGeckoId].idr;
+                
+                // Kalkulasi nilai kripto
+                const calculatedCrypto = parseFloat(idrValue) / currentPriceIDR;
+                
+                // Tampilkan hasil pembulatan presisi desimal kripto
+                cryptoInput.value = calculatedCrypto.toFixed(6);
+                rateInfo.innerText = `Kurs Live: 1 ${cryptoTicker} = Rp ${currentPriceIDR.toLocaleString('id-ID')}`;
+            } catch (err) {
+                console.error(err);
+                rateInfo.innerText = "❌ Gagal memuat kurs. Masukkan nominal koin manual jika diperlukan.";
+            }
+        }
+
+        function generateSmartLink() {
+            const address = document.getElementById('walletAddress').value.trim();
+            const amount = document.getElementById('amountCrypto').value;
+            const chainId = document.getElementById('chain').value;
+            const qrcodeDiv = document.getElementById('qrcode');
+            const outputContainer = document.getElementById('outputContainer');
+            
+            if(!address || !amount || amount <= 0) {
+                alert("Harap lengkapi formulir alamat dompet dan nominal harga!");
+                return;
+            }
+
+            try {
+                // 1. Konversi nominal input kripto desimal ke bentuk Wei
+                // Batasi string desimal agar tidak memicu error parseEther overflow
+                const formattedAmount = parseFloat(amount).toFixed(18).replace(/\.?0+$/, "");
+                const amountInWei = ethers.utils.parseEther(formattedAmount).toString();
+
+                // 2. Format URL standar EIP-681
+                currentGeneratedUrl = `ethereum:${address}@${chainId}/transfer?address=${address}&uint256=${amountInWei}`;
+
+                // 3. Tampilkan kontainer output
+                outputContainer.style.display = "block";
+                const linkElement = document.getElementById('smartLink');
+                linkElement.href = currentGeneratedUrl;
+                linkElement.innerText = "Klik untuk Buka Dompet (Trust Wallet)";
+
+                // 4. Perbarui QR Code
+                qrcodeDiv.innerHTML = "";
+                new QRCode(qrcodeDiv, {
+                    text: currentGeneratedUrl,
+                    width: 220,
+                    height: 220,
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            } catch (error) {
+                alert("Terjadi kesalahan kalkulasi blockchain atau alamat dompet tidak valid!");
+                console.error(error);
+            }
+        }
+
+        function copySmartLink() {
+            if (!currentGeneratedUrl) return;
+            navigator.clipboard.writeText(currentGeneratedUrl).then(() => {
+                alert("Smart Link berhasil disalin ke clipboard!");
+            }).catch(err => {
+                alert("Gagal menyalin link otomatis.");
+            });
+        }
+
+        function downloadQRCode() {
+            const qrImage = document.querySelector('#qrcode img');
+            const qrCanvas = document.querySelector('#qrcode canvas');
+            let downloadUrl = "";
+            
+            if (qrImage && qrImage.src) {
+                downloadUrl = qrImage.src;
+            } else if (qrCanvas) {
+                downloadUrl = qrCanvas.toDataURL("image/png");
+            } else {
+                alert("Hasilkan QR Code terlebih dahulu!");
+                return;
+            }
+
+            const downloadLink = document.createElement("a");
+            downloadLink.href = downloadUrl;
+            downloadLink.download = "crypto-payment-qrcode.png";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+    
+    <!-- Script Integrasi AppKit Web3 Wallet & Reown Core -->
+    <script type="module">
+        import { createAppKit } from "https://esm.sh";
+        import { EthersAdapter } from "https://esm.sh-adapter-ethers";
+        import { mainnet, bsc, polygon } from "https://esm.sh/networks";
+        import { BrowserProvider } from "https://esm.sh";
+        
+        const projectId = "5022875ce6ee68917f103ff9b1e3422d";
+        
+        const modal = createAppKit({
+            adapters: [new EthersAdapter()],
+            networks: [bsc, mainnet, polygon],
+            metadata: {
+                name: "SmartLink Generator",
+                description: "MultiChain Smartlink Generator Faucet & Payment Smartlink",
+                url: "https://whellcolor.github.io",
+                icons: ["https://githubusercontent.com"]
+            },
+            projectId
+        });
+        
+        let provider;
+        const statusBox = document.getElementById("status");
+        
+        function setStatus(msg){
+            statusBox.innerHTML = msg;
+        }
+        
+        modal.subscribeProviders(async (state) => {
+            provider = state?.eip155;
+            if (provider) {
+                try {
+                    const ethersProvider = new BrowserProvider(provider);
+                    const signer = await ethersProvider.getSigner();
+                    const walletAddress = await signer.getAddress();
+                    
+                    document.getElementById("walletAddress").value = walletAddress;
+                    setStatus(`✅ Terhubung: ${walletAddress.substring(0,6)}...${walletAddress.substring(38)}`);
+                } catch (err) {
+                    console.error(err);
+                }
+            } else {
+                setStatus("❌ Wallet Terputus. Silakan hubungkan dompet.");
+            }
+        });
+    </script>
+</body>
+</html>
