@@ -1,214 +1,490 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Smart Link Generator</title>
-    
-    <!-- Library QR Code Resmi -->
-    <script src="https://cloudflare.com"></script>
-    <!-- Library Ethers v5 Resmi untuk fungsi utilitas blockchain -->
-    <script src="https://cloudflare.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            max-width: 500px; 
-            margin: 30px auto; 
-            padding: 20px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            border-radius: 12px;
-            background-color: #fdfdfd;
-        }
-        h2, h3 { text-align: center; color: #333; }
-        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
-        input, select, button { width: 100%; padding: 12px; margin: 8px 0; box-sizing: border-box; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; }
-        input:focus, select:focus { border-color: #007bff; outline: none; }
-        
-        /* Tombol Utama */
-        .btn-generate { background-color: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .btn-generate:hover { background-color: #0056b3; }
-        
-        /* Area Output */
-        .output-box { display: none; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px dashed #bbb; }
-        #smartLink { display: block; word-break: break-all; margin: 10px 0; text-align: center; font-weight: bold; color: #28a745; text-decoration: none; }
-        
-        /* Barisan Tombol Tambahan */
-        .action-buttons { display: flex; gap: 10px; margin-top: 10px; }
-        .btn-action { padding: 10px; font-weight: bold; cursor: pointer; border: none; flex: 1; }
-        .btn-copy { background-color: #6c757d; color: white; }
-        .btn-copy:hover { background-color: #5a6268; }
-        .btn-download { background-color: #28a745; color: white; }
-        .btn-download:hover { background-color: #218838; }
-        
-        #qrcode { margin-top: 20px; display: flex; justify-content: center; }
-        #status { text-align: center; margin-top: 15px; font-weight: bold; padding: 10px; border-radius: 6px; }
-        appkit-button { display: flex; justify-content: center; margin-bottom: 15px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DappMiner Trust Wallet Smart Link Generator</title>
+
+<!-- QR CODE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- ETHERS -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    max-width:550px;
+    margin:20px auto;
+    padding:20px;
+    background:#f4f4f4;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+input,select,button{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.generate-btn{
+    background:#007bff;
+    color:white;
+    margin-top:20px;
+}
+
+.copy-btn{
+    background:#6c757d;
+    color:white;
+}
+
+.download-btn{
+    background:#28a745;
+    color:white;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+#smartLink{
+    display:block;
+    margin-top:15px;
+    word-break:break-all;
+    color:green;
+    font-weight:bold;
+}
+
+#qrcode{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+}
+
+.info{
+    background:#eef;
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+    font-size:14px;
+    word-break:break-all;
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <h2>Trust Wallet Link Generator</h2>
-    
-    <!-- Tombol Integrasi AppKit Web3 Wallet -->
-    <appkit-button></appkit-button>
-    
-    <div id="status">Silakan hubungkan dompet atau isi formulir di bawah</div>
+<h2>DappMiner Trust Wallet Smart Link Generator</h2>
 
-    <label>Alamat Dompet Anda (Penerima):</label>
-    <input type="text" id="walletAddress" placeholder="0x...">
+<!-- APPKIT -->
+<appkit-button></appkit-button>
 
-    <label>Jumlah Koin:</label>
-    <input type="number" id="amount" step="any" placeholder="0.05">
+<script
+type="module"
+src="https://whellcolor.github.io/js/mainnet.js">
+</script>
 
-    <label>Jaringan (Chain):</label>
-    <select id="chain">
-        <option value="56">BNB Smart Chain (BSC)</option>
-        <option value="1">Ethereum (ETH)</option>
-        <option value="137">Polygon (MATIC)</option>
-    </select>
+<div class="card">
 
-    <button class="btn-generate" onclick="generateSmartLink()">Bikin Smart Link & QR</button>
+<div class="info">
+<b>Team ID:</b><br>
+team_cmozfq6ko0dibam0l40oarjzt
+</div>
 
-    <!-- Kotak Hasil Yang Akan Muncul Setelah Generate -->
-    <div class="output-box" id="outputContainer">
-        <h3>Hasil Smart Link:</h3>
-        <a id="smartLink" href="#" target="_blank">Belum ada link</a>
-        
-        <div class="action-buttons">
-            <button class="btn-action btn-copy" onclick="copySmartLink()">Copy Link</button>
-            <button class="btn-action btn-download" onclick="downloadQRCode()">Download QR</button>
-        </div>
-        
-        <div id="qrcode"></div>
-    </div>
+<div class="info">
+<b>Client ID:</b><br>
+2409d98fbe42fa94fb7ba259d6cf58c9
+</div>
 
-    <script>
-        let currentGeneratedUrl = "";
+<div class="info">
+<b>Wallet Server:</b><br>
+0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B
+</div>
 
-        function generateSmartLink() {
-            const address = document.getElementById('walletAddress').value.trim();
-            const amount = document.getElementById('amount').value;
-            const chainId = document.getElementById('chain').value;
-            const qrcodeDiv = document.getElementById('qrcode');
-            const outputContainer = document.getElementById('outputContainer');
-            
-            if(!address || !amount) {
-                alert("Harap isi alamat dompet dan jumlah koin!");
-                return;
-            }
+<div class="info">
+<b>Smart Wallet:</b><br>
+0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763
+</div>
 
-            try {
-                // 1. Konversi nominal input manusia ke unit terkecil blockchain (Wei)
-                const amountInWei = ethers.utils.parseEther(amount.toString()).toString();
+<div class="info">
+<b>Factory v0.6:</b><br>
+0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00
+</div>
 
-                // 2. Format URL standar EIP-681 yang dikenali Trust Wallet
-                currentGeneratedUrl = `ethereum:${address}@${chainId}/transfer?address=${address}&uint256=${amountInWei}`;
+<div class="info">
+<b>Factory v0.7:</b><br>
+0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb
+</div>
 
-                // 3. Tampilkan kontainer output dan update teks link tautan
-                outputContainer.style.display = "block";
-                const linkElement = document.getElementById('smartLink');
-                linkElement.href = currentGeneratedUrl;
-                linkElement.innerText = "Klik untuk Buka Dompet (Trust Wallet)";
+</div>
 
-                // 4. Bersihkan QR code lama dan bangun QR code baru
-                qrcodeDiv.innerHTML = "";
-                new QRCode(qrcodeDiv, {
-                    text: currentGeneratedUrl,
-                    width: 220,
-                    height: 220,
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            } catch (error) {
-                alert("Terjadi kesalahan format angka atau alamat dompet!");
-                console.error(error);
-            }
-        }
+<div class="card">
 
-        // Fungsi Tombol Salin Tautan (Copy Link)
-        function copySmartLink() {
-            if (!currentGeneratedUrl) return;
-            navigator.clipboard.writeText(currentGeneratedUrl).then(() => {
-                alert("Smart Link berhasil disalin ke clipboard!");
-            }).catch(err => {
-                alert("Gagal menyalin link otomatis.");
-            });
-        }
+<div id="balanceBox">
+Loading RPC...
+</div>
 
-        // Fungsi Tombol Unduh QR Code (Download QR)
-        function downloadQRCode() {
-            const qrImage = document.querySelector('#qrcode img');
-            const qrCanvas = document.querySelector('#qrcode canvas');
-            
-            let downloadUrl = "";
-            
-            if (qrImage && qrImage.src) {
-                downloadUrl = qrImage.src;
-            } else if (qrCanvas) {
-                downloadUrl = qrCanvas.toDataURL("image/png");
-            } else {
-                alert("Hasilkan QR Code terlebih dahulu!");
-                return;
-            }
+<label>Wallet Penerima</label>
 
-            const downloadLink = document.createElement("a");
-            downloadLink.href = downloadUrl;
-            downloadLink.download = "crypto-payment-qrcode.png";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
-    </script>
-    
-    <!-- Script Integrasi AppKit Web3 Wallet & Reown Core -->
-    <script type="module">
-        import { createAppKit } from "https://esm.sh/@reown/appkit";
-        import { EthersAdapter } from "https://esm.sh/@reown/appkit-adapter-ethers";
-        import { mainnet, bsc, polygon } from "https://esm.sh/@reown/appkit/networks";
-        import { BrowserProvider, parseEther } from "https://esm.sh/ethers";
-        
-        const projectId = "5022875ce6ee68917f103ff9b1e3422d";
-        
-        // Inisialisasi AppKit Modal dengan jaringan yang sesuai dropdown pilihan user
-        const modal = createAppKit({
-            adapters: [new EthersAdapter()],
-            networks: [bsc, mainnet, polygon],
-            metadata: {
-                name: "Neon Faucet",
-                description: "MultiChain Faucet & Payment Smartlink",
-                url: "https://whellcolor.github.io/",
-                icons: ["https://avatars.githubusercontent.com/u/179229932"]
-            },
-            projectId
+<input
+type="text"
+id="walletAddress"
+value="0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B"
+/>
+
+<label>Jumlah ETH</label>
+
+<input
+type="number"
+id="amount"
+step="any"
+placeholder="0.01"
+/>
+
+<label>Network</label>
+
+<select id="chain">
+    <option value="1">Ethereum</option>
+    <option value="56">BNB Smart Chain</option>
+    <option value="137">Polygon</option>
+</select>
+
+<button
+class="generate-btn"
+onclick="generateSmartLink()">
+
+Generate Smart Link
+
+</button>
+
+</div>
+
+<div class="card" id="output" style="display:none;">
+
+<h3>Smart Link</h3>
+
+<a
+id="smartLink"
+target="_blank">
+</a>
+
+<div class="actions">
+
+<button
+class="copy-btn"
+onclick="copySmartLink()">
+
+Copy Link
+
+</button>
+
+<button
+class="download-btn"
+onclick="downloadQRCode()">
+
+Download QR
+
+</button>
+
+</div>
+
+<div id="qrcode"></div>
+
+</div>
+
+<script>
+
+// =========================
+// CONFIG
+// =========================
+
+const TEAM_ID =
+"team_cmozfq6ko0dibam0l40oarjzt";
+
+const CLIENT_ID =
+"2409d98fbe42fa94fb7ba259d6cf58c9";
+
+const RPC_URL =
+"https://rpc.buildbear.io/global-wolverine-ff979075";
+
+const WALLET_SERVER =
+"0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B";
+
+const SMART_WALLET =
+"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763";
+
+const FACTORY_V06 =
+"0x85e23b94e7F5E9cC1fF78BCe78cfb15B81f0DF00";
+
+const FACTORY_V07 =
+"0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb";
+
+// =========================
+// ETHERS PROVIDER
+// =========================
+
+const provider =
+new ethers.providers.JsonRpcProvider(RPC_URL);
+
+let currentGeneratedUrl = "";
+
+// =========================
+// LOAD BALANCE
+// =========================
+
+async function loadBalance(){
+
+    try{
+
+        const balance =
+        await provider.getBalance(WALLET_SERVER);
+
+        const eth =
+        ethers.utils.formatEther(balance);
+
+        document.getElementById("balanceBox")
+        .innerHTML =
+        "<b>Wallet Server Balance</b><br>"
+        + parseFloat(eth).toFixed(4)
+        + " ETH";
+
+    }catch(err){
+
+        console.error(err);
+
+        document.getElementById("balanceBox")
+        .innerHTML =
+        "RPC ERROR";
+
+    }
+
+}
+
+loadBalance();
+
+// =========================
+// GENERATE LINK
+// =========================
+
+function generateSmartLink(){
+
+    const address =
+    document.getElementById("walletAddress")
+    .value.trim();
+
+    const amount =
+    document.getElementById("amount")
+    .value;
+
+    const chainId =
+    document.getElementById("chain")
+    .value;
+
+    if(!address || !amount){
+
+        alert("Isi wallet dan jumlah");
+
+        return;
+    }
+
+    if(!ethers.utils.isAddress(address)){
+
+        alert("Wallet tidak valid");
+
+        return;
+    }
+
+    try{
+
+        const wei =
+        ethers.utils
+        .parseEther(amount.toString())
+        .toString();
+
+        currentGeneratedUrl =
+        `ethereum:${address}@${chainId}/transfer?address=${address}&uint256=${wei}`;
+
+        document.getElementById("output")
+        .style.display = "block";
+
+        const smartLink =
+        document.getElementById("smartLink");
+
+        smartLink.href =
+        currentGeneratedUrl;
+
+        smartLink.innerText =
+        currentGeneratedUrl;
+
+        const qr =
+        document.getElementById("qrcode");
+
+        qr.innerHTML = "";
+
+        new QRCode(qr,{
+            text: currentGeneratedUrl,
+            width:220,
+            height:220
         });
-        
-        let provider;
-        const statusBox = document.getElementById("status");
-        
-        function setStatus(msg){
-            statusBox.innerHTML = msg;
-        }
-        
-        // Memantau perubahan status koneksi dompet user
-        modal.subscribeProviders(async (state) => {
-            provider = state?.eip155;
-            if (provider) {
-                try {
-                    const ethersProvider = new BrowserProvider(provider);
-                    const signer = await ethersProvider.getSigner();
-                    const walletAddress = await signer.getAddress();
-                    
-                    // Otomatis isikan alamat dompet pengguna yang terkoneksi ke dalam form input
-                    document.getElementById("walletAddress").value = walletAddress;
-                    setStatus(`✅ Terhubung: ${walletAddress.substring(0,6)}...${walletAddress.substring(38)}`);
-                } catch (err) {
-                    console.error(err);
-                }
-            } else {
-                setStatus("❌ Wallet Terputus. Silakan hubungkan dompet.");
-            }
-        });
-    </script>
+
+    }catch(err){
+
+        console.error(err);
+
+        alert("Generate gagal");
+
+    }
+
+}
+
+// =========================
+// COPY LINK
+// =========================
+
+function copySmartLink(){
+
+    if(!currentGeneratedUrl){
+
+        alert("Belum ada link");
+
+        return;
+    }
+
+    navigator.clipboard
+    .writeText(currentGeneratedUrl)
+    .then(()=>{
+
+        alert("Link berhasil disalin");
+
+    });
+
+}
+
+// =========================
+// DOWNLOAD QR
+// =========================
+
+function downloadQRCode(){
+
+    const canvas =
+    document.querySelector("#qrcode canvas");
+
+    if(!canvas){
+
+        alert("QR belum dibuat");
+
+        return;
+    }
+
+    const image =
+    canvas.toDataURL("image/png");
+
+    const a =
+    document.createElement("a");
+
+    a.href = image;
+
+    a.download =
+    "dappminer-qrcode.png";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+
+}
+
+</script>
+<!-- Add a container element where you want to render the UI -->
+<div id="bridge-widget-container"></div>
+
+<!-- Initialize the widget at the end of <body> -->
+<script>
+  const container = document.querySelector('#bridge-widget-container');
+
+  BridgeWidget.render(container, {
+    clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
+    theme: "dark",
+  });
+</script>
+
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_s-xclick" />
+  <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
+  <table>
+    <tr>
+      <td>
+        <input type="hidden" name="on0" value="LAYANAN PELANGGAN"/>
+        LAYANAN PELANGGAN
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <select name="os0">
+          <option value="Subcribe">
+            Subcribe $5,00 USD - minggu
+          </option>
+          <option value="Premium">
+            Premium $25,00 USD - bulan
+          </option>
+          <option value="Golden">
+            Golden $100,00 USD - tahun
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="hidden" name="on1" value="Terima Kasih ."/>
+        Terima Kasih .
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" name="os1" maxLength="200" />
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - Cara yang lebih aman dan mudah untuk membayar secara daring!" alt="Berlangganan" />
+</form></center>
+    
+
 </body>
 </html>
