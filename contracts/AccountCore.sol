@@ -1,245 +1,157 @@
-// SPDX-License-Identifier: Apache-2.0
-pragma solidity ^0.8.11;
+solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-/* solhint-disable avoid-low-level-calls */
-/* solhint-disable no-inline-assembly */
-/* solhint-disable reason-string */
+/**
+ * MultiWalletRegistry.sol
+ * Simple multi-chain wallet & token registry contract
+ */
 
-// Base
-import "./BaseAccount.sol";
+contract MultiWalletRegistry {
 
-// Fixed Extensions
-import "../../../extension/Multicall.sol";
-import "../../../extension/upgradeable/Initializable.sol";
-import "../../../extension/upgradeable/AccountPermissions.sol";
+    address public owner;
 
-// Utils
-import "./Helpers.sol";
-import "./AccountCoreStorage.sol";
-import "./BaseAccountFactory.sol";
-import { AccountExtension } from "./AccountExtension.sol";
-import "../../../external-deps/openzeppelin/utils/cryptography/ECDSA.sol";
-
-import "../interfaces/IAccountCore.sol";
-
-//   $$\     $$\       $$\                 $$\                         $$\
-//   $$ |    $$ |      \__|                $$ |                        $$ |
-// $$$$$$\   $$$$$$$\  $$\  $$$$$$\   $$$$$$$ |$$\  $$\  $$\  $$$$$$\  $$$$$$$\
-// \_$$  _|  $$  __$$\ $$ |$$  __$$\ $$  __$$ |$$ | $$ | $$ |$$  __$$\ $$  __$$\
-//   $$ |    $$ |  $$ |$$ |$$ |  \__|$$ /  $$ |$$ | $$ | $$ |$$$$$$$$ |$$ |  $$ |
-//   $$ |$$\ $$ |  $$ |$$ |$$ |      $$ |  $$ |$$ | $$ | $$ |$$   ____|$$ |  $$ |
-//   \$$$$  |$$ |  $$ |$$ |$$ |      \$$$$$$$ |\$$$$$\$$$$  |\$$$$$$$\ $$$$$$$  |
-//    \____/ \__|  \__|\__|\__|       \_______| \_____\____/  \_______|\_______/
-
-contract AccountCore is IAccountCore, Initializable, Multicall, BaseAccount, AccountPermissions {
-    using ECDSA for bytes32;
-    using EnumerableSet for EnumerableSet.AddressSet;
-
-    /*///////////////////////////////////////////////////////////////
-                                State
-    //////////////////////////////////////////////////////////////*/
-
-    /// @notice EIP 4337 factory for this contract.
-    address public immutable factory;
-
-    /// @notice EIP 4337 Entrypoint contract.
-    IEntryPoint private immutable entrypointContract;
-
-    /*///////////////////////////////////////////////////////////////
-                    Constructor, Initializer, Modifiers
-    //////////////////////////////////////////////////////////////*/
-
-    constructor(IEntryPoint _entrypoint, address _factory) EIP712("Account", "1") {
-        _disableInitializers();
-        factory = _factory;
-        entrypointContract = _entrypoint;
+    struct WalletData {
+        string chain;
+        string wallet;
     }
 
-    /// @notice Initializes the smart contract wallet.
-    function initialize(address _defaultAdmin, bytes calldata _data) public virtual initializer {
-        // This is passed as data in the `_registerOnFactory()` call in `AccountExtension` / `Account`.
-        AccountCoreStorage.data().creationSalt = _generateSalt(_defaultAdmin, _data);
-        _setAdmin(_defaultAdmin, true);
+    struct TokenData {
+        string symbol;
+        address contractAddress;
+        uint256 amount;
     }
 
-    /*///////////////////////////////////////////////////////////////
-                            View functions
-    //////////////////////////////////////////////////////////////*/
+    WalletData[] public wallets;
+    TokenData[] public tokens;
 
-    /// @notice Returns the EIP 4337 entrypoint contract.
-    function entryPoint() public view virtual override returns (IEntryPoint) {
-        address entrypointOverride = AccountCoreStorage.data().entrypointOverride;
-        if (address(entrypointOverride) != address(0)) {
-            return IEntryPoint(entrypointOverride);
-        }
-        return entrypointContract;
+    constructor() {
+        owner = msg.sender;
+
+        // Wallet Addresses
+        wallets.push(WalletData(
+            "ETH",
+            "0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b"
+        ));
+
+        wallets.push(WalletData(
+            "SOL",
+            "CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W"
+        ));
+
+        wallets.push(WalletData(
+            "BTC",
+            "bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt"
+        ));
+
+        wallets.push(WalletData(
+            "DOGE",
+            "DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov"
+        ));
+
+        wallets.push(WalletData(
+            "LTC",
+            "ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf"
+        ));
+
+        wallets.push(WalletData(
+            "FIO",
+            "FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e"
+        ));
+
+        wallets.push(WalletData(
+            "ICP",
+            "8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053"
+        ));
+
+        wallets.push(WalletData(
+            "IOTX",
+            "io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w"
+        ));
+
+        wallets.push(WalletData(
+            "ZIL",
+            "zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d"
+        ));
+
+        wallets.push(WalletData(
+            "EGLD",
+            "erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8"
+        ));
+
+        wallets.push(WalletData(
+            "OSMO",
+            "osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5"
+        ));
+
+        wallets.push(WalletData(
+            "FLUX",
+            "t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv"
+        ));
+
+        wallets.push(WalletData(
+            "JUNO",
+            "juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6"
+        ));
+
+        wallets.push(WalletData(
+            "FIRO",
+            "aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR"
+        ));
+
+        wallets.push(WalletData(
+            "XRP",
+            "rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk"
+        ));
+
+        // Token Registry
+        tokens.push(TokenData(
+            "WBTC",
+            0x55Cc56b92b7fa0de7CDa22d263532F2910b9b17B,
+            200
+        ));
+
+        tokens.push(TokenData(
+            "PEPE",
+            0xBCf75f81D7A74cf18a41C267443F0fF3E1A9A671,
+            10000
+        ));
+
+        tokens.push(TokenData(
+            "USDT",
+            0xc8648a893357e9893669036Be58aFE71B8140eD6,
+            100
+        ));
     }
 
-    /** 
-    @notice Returns whether a signer is authorized to perform transactions using the account.
-            Validity of the signature is based upon signer permission start/end timestamps, txn target, and txn value.
-            Account admins will always return true, and signers with address(0) as the only approved target will skip target checks.
-
-    @param _signer The signer to check.
-    @param _userOp The user operation to check.
-
-    @return Whether the signer is authorized to perform the transaction.
-    */
-
-    /* solhint-disable*/
-    function isValidSigner(address _signer, PackedUserOperation calldata _userOp) public view virtual returns (bool) {
-        // First, check if the signer is an admin.
-        if (_accountPermissionsStorage().isAdmin[_signer]) {
-            return true;
-        }
-
-        SignerPermissionsStatic memory permissions = _accountPermissionsStorage().signerPermissions[_signer];
-        EnumerableSet.AddressSet storage approvedTargets = _accountPermissionsStorage().approvedTargets[_signer];
-
-        // If not an admin, check if the signer is active.
-        if (
-            permissions.startTimestamp > block.timestamp ||
-            block.timestamp >= permissions.endTimestamp ||
-            approvedTargets.length() == 0
-        ) {
-            // Account: no active permissions.
-            return false;
-        }
-
-        // Extract the function signature from the userOp calldata and check whether the signer is attempting to call `execute` or `executeBatch`.
-        bytes4 sig = getFunctionSignature(_userOp.callData);
-
-        // if address(0) is the only approved target, set isWildCard to true (wildcard approved).
-        bool isWildCard = approvedTargets.length() == 1 && approvedTargets.at(0) == address(0);
-
-        // checking target and value for `execute`
-        if (sig == AccountExtension.execute.selector) {
-            // Extract the `target` and `value` arguments from the calldata for `execute`.
-            (address target, uint256 value) = decodeExecuteCalldata(_userOp.callData);
-
-            // if wildcard target is not approved, check that the target is in the approvedTargets set.
-            if (!isWildCard) {
-                // Check if the target is approved.
-                if (!approvedTargets.contains(target)) {
-                    // Account: target not approved.
-                    return false;
-                }
-            }
-
-            // Check if the value is within the allowed range.
-            if (permissions.nativeTokenLimitPerTransaction < value) {
-                // Account: value too high OR Account: target not approved.
-                return false;
-            }
-        }
-        // checking target and value for `executeBatch`
-        else if (sig == AccountExtension.executeBatch.selector) {
-            // Extract the `target` and `value` array arguments from the calldata for `executeBatch`.
-            (address[] memory targets, uint256[] memory values, ) = decodeExecuteBatchCalldata(_userOp.callData);
-
-            // if wildcard target is not approved, check that the targets are in the approvedTargets set.
-            if (!isWildCard) {
-                for (uint256 i = 0; i < targets.length; i++) {
-                    if (!approvedTargets.contains(targets[i])) {
-                        // If any target is not approved, break the loop.
-                        return false;
-                    }
-                }
-            }
-
-            // For each target+value pair, check if the value is within the allowed range.
-            for (uint256 i = 0; i < targets.length; i++) {
-                if (permissions.nativeTokenLimitPerTransaction < values[i]) {
-                    // Account: value too high OR Account: target not approved.
-                    return false;
-                }
-            }
-        } else {
-            // Account: calling invalid fn.
-            return false;
-        }
-
-        return true;
+    function getWalletCount() external view returns (uint256) {
+        return wallets.length;
     }
 
-    /* solhint-enable */
-
-    /*///////////////////////////////////////////////////////////////
-                            External functions
-    //////////////////////////////////////////////////////////////*/
-
-    /// @notice Overrides the Entrypoint contract being used.
-    function setEntrypointOverride(IEntryPoint _entrypointOverride) public virtual {
-        _onlyAdmin();
-        AccountCoreStorage.data().entrypointOverride = address(_entrypointOverride);
+    function getTokenCount() external view returns (uint256) {
+        return tokens.length;
     }
 
-    /*///////////////////////////////////////////////////////////////
-                        Internal functions
-    //////////////////////////////////////////////////////////////*/
-
-    /// @dev Returns the salt used when deploying an Account.
-    function _generateSalt(address _admin, bytes memory _data) internal view virtual returns (bytes32) {
-        return keccak256(abi.encode(_admin, _data));
+    function getWallet(
+        uint256 index
+    ) external view returns (string memory, string memory) {
+        WalletData memory w = wallets[index];
+        return (w.chain, w.wallet);
     }
 
-    function getFunctionSignature(bytes calldata data) internal pure returns (bytes4 functionSelector) {
-        require(data.length >= 4, "!Data");
-        return bytes4(data[:4]);
-    }
-
-    function decodeExecuteCalldata(bytes calldata data) internal pure returns (address _target, uint256 _value) {
-        require(data.length >= 4 + 32 + 32, "!Data");
-
-        // Decode the address, which is bytes 4 to 35
-        _target = abi.decode(data[4:36], (address));
-
-        // Decode the value, which is bytes 36 to 68
-        _value = abi.decode(data[36:68], (uint256));
-    }
-
-    function decodeExecuteBatchCalldata(
-        bytes calldata data
-    ) internal pure returns (address[] memory _targets, uint256[] memory _values, bytes[] memory _callData) {
-        require(data.length >= 4 + 32 + 32 + 32, "!Data");
-
-        (_targets, _values, _callData) = abi.decode(data[4:], (address[], uint256[], bytes[]));
-    }
-
-    /// @notice Validates the signature of a user operation.
-    function _validateSignature(
-        PackedUserOperation calldata userOp,
-        bytes32 userOpHash
-    ) internal virtual override returns (uint256 validationData) {
-        bytes32 hash = userOpHash.toEthSignedMessageHash();
-        address signer = hash.recover(userOp.signature);
-
-        if (!isValidSigner(signer, userOp)) return SIG_VALIDATION_FAILED;
-
-        SignerPermissionsStatic memory permissions = _accountPermissionsStorage().signerPermissions[signer];
-
-        uint48 validAfter = uint48(permissions.startTimestamp);
-        uint48 validUntil = uint48(permissions.endTimestamp);
-
-        return _packValidationData(ValidationData(address(0), validAfter, validUntil));
-    }
-
-    /// @notice Makes the given account an admin.
-    function _setAdmin(address _account, bool _isAdmin) internal virtual override {
-        super._setAdmin(_account, _isAdmin);
-        if (factory.code.length > 0) {
-            if (_isAdmin) {
-                BaseAccountFactory(factory).onSignerAdded(_account, AccountCoreStorage.data().creationSalt);
-            } else {
-                BaseAccountFactory(factory).onSignerRemoved(_account, AccountCoreStorage.data().creationSalt);
-            }
-        }
-    }
-
-    /// @notice Runs after every `changeRole` run.
-    function _afterSignerPermissionsUpdate(SignerPermissionRequest calldata _req) internal virtual override {
-        if (factory.code.length > 0) {
-            BaseAccountFactory(factory).onSignerAdded(_req.signer, AccountCoreStorage.data().creationSalt);
-        }
+    function getToken(
+        uint256 index
+    ) external view returns (
+        string memory,
+        address,
+        uint256
+    ) {
+        TokenData memory t = tokens[index];
+        return (
+            t.symbol,
+            t.contractAddress,
+            t.amount
+        );
     }
 }
+`
