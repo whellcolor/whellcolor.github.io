@@ -248,7 +248,40 @@ Generate Smart Link
 <div class="card output" id="output">
 
 <h3>Smart Link Result</h3>
+<div class="action-buttons">
 
+<button
+class="copy-btn"
+onclick="openEtherscan()">
+
+View Etherscan
+
+</button>
+
+<button
+class="download-btn"
+onclick="openBlockchair()">
+
+View Blockchair
+
+</button>
+
+</div>
+
+<div class="action-buttons">
+
+<button
+style="
+background:#8247e5;
+color:white;
+"
+onclick="openPolygonscan()">
+
+View PolygonScan
+
+</button>
+
+</div>
 <a
 id="smartLink"
 target="_blank">
@@ -471,7 +504,72 @@ function downloadQRCode(){
     document.body.removeChild(a);
 
 }
+// ==========================
+// VIEW EXPLORERS
+// ==========================
 
+function getCurrentWallet(){
+
+    return document
+    .getElementById("walletAddress")
+    .value
+    .trim();
+
+}
+
+function openEtherscan(){
+
+    const wallet = getCurrentWallet();
+
+    if(!wallet){
+
+        alert("Wallet kosong");
+
+        return;
+    }
+
+    window.open(
+        `https://etherscan.io/address/${wallet}`,
+        "_blank"
+    );
+
+}
+
+function openBlockchair(){
+
+    const wallet = getCurrentWallet();
+
+    if(!wallet){
+
+        alert("Wallet kosong");
+
+        return;
+    }
+
+    window.open(
+        `https://blockchair.com/search?q=${wallet}`,
+        "_blank"
+    );
+
+}
+
+function openPolygonscan(){
+
+    const wallet = getCurrentWallet();
+
+    if(!wallet){
+
+        alert("Wallet kosong");
+
+        return;
+    }
+
+    window.open(
+        `https://polygonscan.com/address/${wallet}`,
+        "_blank"
+    );
+
+}
 </script>
 
 </body>
