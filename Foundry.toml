@@ -1,0 +1,4 @@
+[rpc_endpoints]
+buildbear = "https://rpc.buildbear.io/global-wolverine-ff979075"
+[profile.sourcify]
+url= "https://rpc.buildbear.io/verify/sourcify/server/global-wolverine-ff979075"
