@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto Wallet Address Book</title>
+<title>Wallet QR Generator Crypto Address Book</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/@reown/appkit@latest/dist/index.css"/>
 
 <style>
+
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial;
     background:#0f172a;
     color:white;
     margin:0;
@@ -18,84 +22,132 @@ body{
 
 h1{
     text-align:center;
-    margin-bottom:10px;
 }
 
-.desc{
-    text-align:center;
-    color:#94a3b8;
-    margin-bottom:30px;
-}
-
-.container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:20px;
-}
-
-.card{
+.form-box{
+    max-width:700px;
+    margin:auto;
     background:#1e293b;
-    border-radius:16px;
     padding:20px;
-    box-shadow:0 0 10px rgba(0,0,0,.3);
+    border-radius:16px;
 }
 
-.coin{
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.address{
-    background:#0f172a;
+input,select{
+    width:100%;
     padding:12px;
+    margin:10px 0;
+    border:none;
     border-radius:10px;
-    word-break:break-all;
-    margin-bottom:15px;
-    font-size:14px;
-}
-
-.qr{
-    background:white;
-    padding:10px;
-    border-radius:12px;
-    display:inline-block;
-    margin-bottom:15px;
-}
-
-.buttons{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+    background:#0f172a;
+    color:white;
 }
 
 button{
     border:none;
-    padding:10px 15px;
+    padding:12px;
     border-radius:10px;
     cursor:pointer;
     font-weight:bold;
     color:white;
 }
 
-.copy{
-    background:#2563eb;
+.generate{background:#2563eb;width:100%;}
+
+.wallets{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    margin-top:20px;
 }
 
-.download{
-    background:#16a34a;
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:16px;
 }
 
-button:hover{
-    opacity:.9;
+.coin{font-size:20px;font-weight:bold;}
+
+.address{
+    background:#0f172a;
+    padding:10px;
+    border-radius:10px;
+    word-break:break-all;
+    margin:10px 0;
 }
+
+.qr{
+    background:white;
+    padding:10px;
+    display:inline-block;
+    border-radius:10px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.copy{background:#2563eb;}
+.download{background:#16a34a;}
+.explorer{background:#f59e0b;text-decoration:none;padding:10px;border-radius:10px;color:white;}
+
+.creator-box{
+    margin-top:40px;
+    background:#1e293b;
+    padding:25px;
+    border-radius:16px;
+    text-align:center;
+}
+
+.send-btn{
+    background:#22c55e;
+    width:100%;
+    margin-top:10px;
+}
+
+.status{
+    margin-top:10px;
+    font-size:14px;
+    color:#cbd5e1;
+}
+
 </style>
 </head>
+
 <body>
 
+<h1>📬 Wallet QR Generator</h1>
+
+<div class="form-box">
+
+<select id="coin">
+<option>ETH</option>
+<option>SOL</option>
+<option>BTC</option>
+<option>TRX</option>
+<option>DOGE</option>
+<option>LTC</option>
+<option>XRP</option>
+</select>
+
+<input id="address" placeholder="Masukkan wallet address">
+
+<button class="generate" onclick="generateWallet()">
+⚡ Generate QR
+</button>
+
+</div>
+
+<div class="wallets" id="wallets"></div>
+
+
 <h1>📬 Crypto Wallet Address Book</h1>
+
 <p class="desc">
-Generate QR, copy address, dan download QR wallet crypto.
+Generate QR, copy address, download QR, dan buka explorer wallet.
 </p>
 
 <div class="container" id="walletContainer"></div>
@@ -103,74 +155,109 @@ Generate QR, copy address, dan download QR wallet crypto.
 <script>
 
 const wallets = [
+
 {
 name:"Ethereum (ETH)",
-address:"0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b"
+address:"0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b",
+explorer:"https://etherscan.io/address/0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b"
 },
+
 {
 name:"Solana (SOL)",
-address:"CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W"
+address:"CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W",
+explorer:"https://solscan.io/account/CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W"
 },
+
 {
 name:"Bitcoin (BTC)",
-address:"bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt"
+address:"bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt",
+explorer:"https://www.blockchain.com/explorer/addresses/btc/bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt"
 },
+
 {
 name:"Injective (INJ)",
-address:"inj1t696mehqhnn9sp7mvvnuk8v7ad7x56jm5gslj6"
+address:"inj1t696mehqhnn9sp7mvvnuk8v7ad7x56jm5gslj6",
+explorer:"https://www.mintscan.io/injective/address/inj1t696mehqhnn9sp7mvvnuk8v7ad7x56jm5gslj6"
 },
+
 {
 name:"Dogecoin (DOGE)",
-address:"DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov"
+address:"DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov",
+explorer:"https://dogechain.info/address/DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov"
 },
+
 {
 name:"Litecoin (LTC)",
-address:"ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf"
+address:"ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf",
+explorer:"https://blockchair.com/litecoin/address/ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf"
 },
+
 {
 name:"FIO",
-address:"FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e"
+address:"FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e",
+explorer:"https://fio.bloks.io/key/FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e"
 },
+
 {
 name:"ICP",
-address:"8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053"
+address:"8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053",
+explorer:"https://dashboard.internetcomputer.org/account/8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053"
 },
+
 {
 name:"IOTX",
-address:"io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w"
+address:"io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w",
+explorer:"https://iotexscan.io/address/io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w"
 },
+
 {
 name:"Zilliqa (ZIL)",
-address:"zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d"
+address:"zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d",
+explorer:"https://viewblock.io/zilliqa/address/zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d"
 },
+
 {
 name:"MultiversX (eGLD)",
-address:"erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8"
+address:"erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8",
+explorer:"https://explorer.multiversx.com/accounts/erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8"
 },
+
 {
 name:"Osmosis (OSMO)",
-address:"osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5"
+address:"osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5",
+explorer:"https://www.mintscan.io/osmosis/address/osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5"
 },
+
 {
 name:"Flux (FLUX)",
-address:"t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv"
+address:"t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv",
+explorer:"https://explorer.runonflux.io/address/t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv"
 },
+
 {
 name:"JUNO",
-address:"juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6"
+address:"juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6",
+explorer:"https://www.mintscan.io/juno/address/juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6"
 },
+
 {
 name:"FIRO",
-address:"aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR"
+address:"aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR",
+explorer:"https://explorer.firo.org/address/aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR"
 },
+
 {
 name:"XRP",
-address:"rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk"
+address:"rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk",
+explorer:"https://livenet.xrpl.org/accounts/rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk"
 },
+
 {
 name:"TRON (TRX)",
-address:"TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo"
+address:"TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo",
+explorer:"https://tronscan.org/#/address/TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo"
 }
+
 ];
 
 const container = document.getElementById("walletContainer");
@@ -188,13 +275,23 @@ card.innerHTML = `
 <div class="qr" id="qr-${index}"></div>
 
 <div class="buttons">
-<button class="copy" onclick="copyAddress('${wallet.address}')">
+
+<button class="copy"
+onclick="copyAddress('${wallet.address}')">
 📋 Copy
 </button>
 
-<button class="download" onclick="downloadQR(${index}, '${wallet.name}')">
+<button class="download"
+onclick="downloadQR(${index}, '${wallet.name}')">
 ⬇ Download QR
 </button>
+
+<a class="explorer"
+href="${wallet.explorer}"
+target="_blank">
+🔎 Explorer
+</a>
+
 </div>
 `;
 
@@ -215,7 +312,8 @@ alert("Address copied!");
 
 function downloadQR(index,name){
 
-const qrDiv = document.querySelector(`#qr-${index} img`) ||
+const qrDiv =
+document.querySelector(`#qr-${index} img`) ||
 document.querySelector(`#qr-${index} canvas`);
 
 let url;
@@ -227,9 +325,163 @@ url = qrDiv.toDataURL("image/png");
 }
 
 const a = document.createElement("a");
+
 a.href = url;
 a.download = name + "-QR.png";
+
 a.click();
+
+}
+
+</script>
+
+<!-- CREATOR -->
+<div class="creator-box">
+
+<h2>🚀 Support Creator</h2>
+
+<appkit-button balance="show"></appkit-button>
+
+<p>Send 0.09 ETH to creator</p>
+
+<button class="send-btn" onclick="pay()">
+💸 Send 0.09 ETH
+</button>
+
+<div class="status" id="status">Waiting...</div>
+
+</div>
+
+<script>
+
+const explorers = {
+ETH:"https://etherscan.io/address/",
+SOL:"https://solscan.io/account/",
+BTC:"https://www.blockchain.com/explorer/addresses/btc/",
+TRX:"https://tronscan.org/#/address/",
+DOGE:"https://dogechain.info/address/",
+LTC:"https://blockchair.com/litecoin/address/",
+XRP:"https://livenet.xrpl.org/accounts/"
+};
+
+let counter = 0;
+
+function generateWallet(){
+
+const coin = document.getElementById("coin").value;
+const address = document.getElementById("address").value.trim();
+
+if(!address){
+alert("Isi address!");
+return;
+}
+
+counter++;
+
+const box = document.getElementById("wallets");
+
+const card = document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<div class="coin">${coin}</div>
+<div class="address">${address}</div>
+
+<div class="qr" id="qr-${counter}"></div>
+
+<div class="buttons">
+<button class="copy" onclick="copy('${address}')">Copy</button>
+<a class="explorer" target="_blank" href="${explorers[coin]||''}${address}">Explorer</a>
+<button class="download" onclick="download(${counter},'${coin}')">Download</button>
+</div>
+`;
+
+box.prepend(card);
+
+new QRCode(document.getElementById(`qr-${counter}`),{
+text:address,
+width:150,
+height:150
+});
+
+document.getElementById("address").value="";
+}
+
+function copy(a){
+navigator.clipboard.writeText(a);
+alert("Copied");
+}
+
+function download(id,name){
+
+const qr = document.querySelector(`#qr-${id} canvas`) ||
+document.querySelector(`#qr-${id} img`);
+
+const url = qr.toDataURL ? qr.toDataURL("image/png") : qr.src;
+
+const a=document.createElement("a");
+a.href=url;
+a.download=name+"-qr.png";
+a.click();
+}
+
+</script>
+
+<script src="https://esm.sh/@reown/appkit@latest"></script>
+
+<script type="module">
+
+import { createAppKit } from "https://esm.sh/@reown/appkit";
+import { EthersAdapter } from "https://esm.sh/@reown/appkit-adapter-ethers";
+import { mainnet } from "https://esm.sh/@reown/appkit/networks";
+import { BrowserProvider, parseEther } from "https://esm.sh/ethers";
+
+const projectId = "5022875ce6ee68917f103ff9b1e3422d";
+
+const modal = createAppKit({
+adapters:[new EthersAdapter()],
+networks:[mainnet],
+projectId,
+metadata:{
+name:"Wallet QR",
+description:"Donation App",
+url:window.location.origin
+}
+});
+
+let provider;
+
+modal.subscribeProviders(state=>{
+provider = state?.eip155;
+});
+
+window.pay = async function(){
+
+const status = document.getElementById("status");
+
+try{
+
+if(!provider){
+status.innerText="Connect wallet dulu";
+modal.open();
+return;
+}
+
+const ethersProvider = new BrowserProvider(provider);
+const signer = await ethersProvider.getSigner();
+
+const tx = await signer.sendTransaction({
+to:"0x32ed98666663Fc8Dc7264BaF3fC1a3Ac4BFAE24B",
+value:parseEther("0.09")
+});
+
+status.innerText="TX Sent: "+tx.hash;
+
+}catch(e){
+
+status.innerText="Failed";
+
+}
 
 }
 
