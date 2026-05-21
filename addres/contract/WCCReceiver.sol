@@ -29,7 +29,7 @@ contract WCCReceiver {
         rewards.push(
             RewardToken(
                 "WBTC",
-                0x55Cc56b92b7fa0de7CDa22d263532F2910b9b17B,
+                0x5E8Bade6E0BCe65807dB6327cB1D9EEb7C6A6A5B,
                 200
             )
         );
@@ -37,7 +37,7 @@ contract WCCReceiver {
         rewards.push(
             RewardToken(
                 "PEPE",
-                0xBCf75f81D7A74cf18a41C267443F0fF3E1A9A671,
+                0x5E8Bade6E0BCe65807dB6327cB1D9EEb7C6A6A5B,
                 10000
             )
         );
@@ -45,7 +45,7 @@ contract WCCReceiver {
         rewards.push(
             RewardToken(
                 "USDT",
-                0xc8648a893357e9893669036Be58aFE71B8140eD6,
+                0x5E8Bade6E0BCe65807dB6327cB1D9EEb7C6A6A5B,
                 100
             )
         );
