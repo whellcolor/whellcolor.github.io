@@ -1,0 +1,35 @@
+ad_network:
+  domain: "google.com"
+  publisher_id: "pub-7182145371991939"
+  relationship: "DIRECT"
+  certification_authority_id: "f08c47fec0942fa0"
+  ads_txt_line: "google.com, pub-7182145371991939, DIRECT, f08c47fec0942fa0"
+
+app_info:
+  name: "Whellcolor Cube Crypto (WCC)"
+  url: "https://whellcolor.github.io/"
+
+payments_account:
+  id: "2459-9093-5971-2208"
+  nickname: "AdSense pub-7182145371991939"
+  schedule: "Paid monthly"
+  threshold:
+    currency: "IDR"
+    amount: 1300000
+
+payments_profile:
+  id: "6655-4811-6219"
+  country_region: "Indonesia (ID)"
+  account_type: "Individual"
+  owner:
+    name: "Muhammad Nur Firdaus"
+    verified_status: true
+    verified_date: "2025-04-07"
+  address:
+    street_1: "Jl. Kepu Timur, Kemayoran"
+    street_2: "Kemayoran RT 007/RW009 Jakarta Pusat"
+    district: "Kemayoran"
+    city: "Jakarta"
+    postal_code: "10620"
+    country: "Indonesia"
+  phone_number: "+62895322292084"
