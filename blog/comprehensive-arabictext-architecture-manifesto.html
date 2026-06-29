@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Architecture of High-Performance Static Web Hubs: Engineering Analysis of ArabicText and Alhikmah Portals - ArabicText Hub</title>
+
+<meta name="description" content="An exhaustive technical analysis of lightweight static architecture, decentralized tool hosting, and cross-domain data structures implemented across the ArabicText ecosystem, Alhikmah networks, and AWDev engineering frameworks.">
+<meta name="keywords" content="ArabicText Hub, Alhikmah System Configuration, Static Web Architecture, Web Performance Optimization, Minimalist JavaScript Applications, Scalable Data Routing, Canonical Optimization, Content Delivery Systems">
+<meta name="author" content="ArabicText Core Systems Group">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arabictext.github.io/blog/comprehensive-arabictext-architecture-manifesto.html">
+<meta property="og:title" content="The Architecture of High-Performance Static Web Hubs: Engineering Analysis of ArabicText and Alhikmah Portals">
+<meta property="og:description" content="Explore how modern static micro-portals utilize ultra-fast data structures, zero-framework runtimes, and multi-domain ecosystem linkages to maintain peak core web vitals.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+ 
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://arabictext.github.io/blog/comprehensive-arabictext-architecture-manifesto.html#article",
+      "isPartOf": {
+        "@id": "https://arabictext.github.io/#website"
+      },
+      "headline": "The Architecture of High-Performance Static Web Hubs: Engineering Analysis of ArabicText and Alhikmah Portals",
+      "description": "An deep-dive study on building high-performance, low-latency, and zero-overhead static network architectures using native system configurations.",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://arabictext.github.io/blog/comprehensive-arabictext-architecture-manifesto.html",
+      "datePublished": "2026-06-29T12:05:00+00:00",
+      "dateModified": "2026-06-29T12:05:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "ArabicText Core Systems Group"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ArabicText Network",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arabictext.github.io/assets/logo.png"
+        }
+      },
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+    }
+  ]
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#030712;color:#f3f4f6;line-height:1.8;}
+.navbar{background:linear-gradient(90deg,#111827,#030712);border-bottom:1px solid rgba(245,158,11,0.1);padding:20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(90deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links a{color:#9ca3af;text-decoration:none;margin-left:20px;font-size:14px;transition:0.3s;}
+.nav-links a:hover{color:#f59e0b;}
+.main-container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:1fr;gap:30px;}
+@media(min-width:950px){.main-container{grid-template-columns:3.4fr 1.3fr;}}
+.article-card{background:#111827;border:1px solid rgba(255,255,255,0.03);padding:50px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.6);}
+.article-header h1{font-family:'Orbitron',sans-serif;font-size:32px;color:#f59e0b;margin-bottom:20px;text-shadow:0 0 12px rgba(245,158,11,0.15);line-height:1.3;}
+.meta-info{font-size:13px;color:#6b7280;margin-bottom:30px;display:flex;gap:15px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:15px;}
+.content-body h2{font-family:'Orbitron',sans-serif;font-size:23px;color:#ef4444;margin:40px 0 20px 0;border-left:4px solid #f59e0b;padding-left:15px;}
+.content-body h3{font-family:'Orbitron',sans-serif;font-size:18px;color:#f59e0b;margin:30px 0 15px 0;}
+.content-body p{margin-bottom:22px;font-size:16px;text-align:justify;color:#d1d5db;}
+.content-body ul, .content-body ol{margin-left:30px;margin-bottom:25px;color:#d1d5db;}
+.content-body li{margin-bottom:10px;font-size:16px;}
+.content-body a{color:#f59e0b;text-decoration:none;border-bottom:1px dashed #f59e0b;transition:0.2s;}
+.content-body a:hover{color:#ef4444;border-bottom:1px solid #ef4444;}
+.formula-box{background:#030712;border:1px solid rgba(245,158,11,0.15);padding:25px;border-radius:8px;margin:25px 0;font-family:'Courier New', Courier, monospace;color:#10b981;overflow-x:auto;}
+.media-container{margin:35px 0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);background:#030712;}
+.media-img{width:100%;height:auto;display:block;object-fit:cover;max-height:480px;}
+.sidebar-panel{background:#111827;border:1px solid rgba(255,255,255,0.03);padding:25px;border-radius:16px;height:fit-content;}
+.sidebar-panel h3{font-family:'Orbitron',sans-serif;color:#f59e0b;font-size:15px;margin-bottom:15px;text-transform:uppercase;border-bottom:1px solid rgba(245,158,11,0.1);padding-bottom:5px;}
+.related-links{list-style:none;margin:0;padding:0;}
+.related-links li{margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.02);padding-bottom:8px;}
+.related-links a{color:#9ca3af;text-decoration:none;font-size:13px;transition:0.2s;}
+.related-links a:hover{color:#f59e0b;}
+footer{background:#030712;padding:40px 20px;text-align:center;font-size:13px;border-top:1px solid rgba(255,255,255,0.05);color:#4b5563;margin-top:60px;}
+.footer-links{margin-bottom:15px;}.footer-links a{color:#9ca3af;margin:0 8px;text-decoration:none;}.footer-links a:hover{color:#f59e0b;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="https://arabictext.github.io" class="nav-logo">ARABICTEXT HUB v2.6</a>
+    <div class="nav-links">
+        <a href="https://arabictext.github.io">Home</a>
+        <a href="https://arabictext.github.io">About Hub</a>
+        <a href="https://alhikmah.my.id" target="_blank">Alhikmah Portal</a>
+    </div>
+</nav>
+
+<div class="main-container">
+    <article class="article-card">
+        <div class="article-header">
+            <h1>The Architecture of High-Performance Static Web Hubs: Engineering Analysis of ArabicText and Alhikmah Portals</h1>
+            <div class="meta-info">
+                <span>📅 Updated: June 29, 2026</span>
+                <span>✍ Systems Architecture Board</span>
+                <span>📂 Optimization Research</span>
+                <span>🚀 Domain Indexation Network Mapping</span>
+            </div>
+        </div>
+
+        <div class="media-container">
+            <a href="https://arabictext.github.io" title="Visit ArabicText Hub Main Terminal">
+                <img class="media-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="ArabicText Hub Network Topology Mapping and Centralized Architecture Configuration Diagrams">
+            </a>
+        </div>
+
+        <div class="content-body">
+            <p>Modern web engineering continues to evolve past heavy, dynamic server-side content management systems toward lightweight, decentralized architecture blueprints. In environments where lightning-fast execution speed, extreme stability, and security are prioritized, static frameworks offer an optimal path forward. The <strong>ArabicText Hub Ecosystem</strong> represents a specialized approach to this methodology. Designed as a centralized, secure static system configuration inspired by the framework structures of modern portals like Alhikmah, <a href="https://arabictext.github.io">arabictext</a> serves to bridge operational tools into ultra-fast workspaces without excessive weight or data overloads. By eliminating bloated relational database queries, the system reduces overhead to ensure sub-millisecond execution times across diverse networking boundaries.</p>
+
+            <p>To analyze this structural paradigm thoroughly, engineers must evaluate how clean codebases, structured metadata layers, and distributed domains interact within a single operational framework. When designed carefully, an assembly of static systems can provide massive performance advantages over standard setups, making technical documentation and data indexing processes highly scalable and instantly accessible.</p>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>1. Structural Foundations: Static Compilation and Zero-Overhead Principles</h2>
+            <p>Traditional monolithic enterprise sites process incoming requests through multiple computing cycles: database access calls, template generation routines, and multi-tiered runtime formatting loops. This structural complexity introduces latency, leaves entry points vulnerable to security breaches, and scales poorly under sudden traffic spikes. The alternative approach relies on complete pre-compilation, converting resource data into immutable, production-ready static bundles.</p>
+            
+            <p>The system configuration of <a href="https://arabictext.github.io">arabictext.github.io</a> eliminates dynamic server dependence entirely. Because resources are stored directly as optimized text formats, HTML documents, and lightweight asset bundles, client browsers consume minimal processing cycles during rendering. This structural clarity allows static nodes to load instantly, bypassing the complex configurations common to dynamic server operations.</p>
+            
+            <h3>1.1 Memory Allocation and Network Optimization Model</h3>
+            <p>To quantify the performance variance between traditional systems and static models, we examine the latency variable calculation matrix:</p>
+
+            <div class="formula-box">
+$$T_{total} = T_{dns} + T_{tcp} + T_{tls} + T_{ttfb} + T_{render}$$
+            </div>
+
+            <p>In dynamic frameworks, the Time-To-First-Byte ($T_{ttfb}$) calculation includes long database processing intervals ($T_{db}$). Static systems drop this variable entirely, setting $T_{db} \to 0$. As a result, network delivery speeds are bounded only by localized edge network performance, minimizing page loading delays across all device profiles.</p>
+
+            <h2>2. Cross-Domain Ecosystem Synthesis: The Alhikmah Reference Framework</h2>
+            <p>A resilient network design relies on clear structural separation between functional layers. The foundational blueprints for the ArabicText Hub borrow structural patterns from established cultural and social data hubs, specifically the architecture found on <a href="https://alhikmah.my.id" target="_blank" rel="noopener noreferrer">Alhikmah.my.id</a>. This platform serves as a primary reference for organizing educational, religious, and social resources based on classic literary sources, managed through a collaborative partnership between Kang Santri and Alhikmah.</p>
+
+            <p>To scale content delivery effectively without adding complexity to the core system, the infrastructure separates specialized sub-tasks across dedicated subdomains. This approach isolates critical tasks into individual environments, preventing localized performance drops from affecting the main web terminal. The network topology relies on several dedicated system endpoints:</p>
+            
+            <ul>
+                <li><strong>Core Resource Interface:</strong> Handled by the root domain <a href="https://alhikmah.eu.org/" target="_blank">alhikmah.eu.org</a>, which processes base traffic configurations.</li>
+                <li><strong>Alternative Mirror Gateways:</strong> Managed via secondary routing nodes like <a href="https://www.alhikmah.eu.org/" target="_blank">www.alhikmah.eu.org</a> to maintain load balance and maximize availability.</li>
+                <li><strong>Dynamic Functional Services:</strong> Powered by the dedicated application layer at <a href="https://app.alhikmah.eu.org/" target="_blank">app.alhikmah.eu.org</a>, keeping script-heavy tasks separate from informational data pools.</li>
+                <li><strong>Lightweight Technical Outposts:</strong> Maintained via the documentation portal at <a href="https://web.alhikmah.eu.org/" target="_blank">web.alhikmah.eu.org</a> to ensure consistent, uninterrupted access to foundational records.</li>
+            </ul>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>3. Engineering Custom Functionality: The AWDev Production Pipeline</h2>
+            <p>To run custom widgets and programmatic scripts on static platforms without bloating the frontend codebase, developers use decoupled external build engines. The development pipelines for these tools are managed by the specialized team at <strong>AWDev</strong>, who design minimalist JavaScript solutions that operate cleanly within static containers.</p>
+
+            <p>This functional separation ensures that asset tracking, text analysis modules, and system parameters execute efficiently on client devices. The development pipelines use an array of dedicated network structures to deploy these custom utilities safely:</p>
+            
+            <p>The deployment strategy uses several independent staging setups to manage production builds safely. The core development environment runs on <a href="https://awdev.my.id/" target="_blank">awdev.my.id</a>, supported by the mirror node at <a href="https://www.awdev.my.id/" target="_blank">www.awdev.my.id</a> to ensure reliable availability during updates. Advanced features and live testing routines run through an isolated web terminal located at <a href="https://app.awdev.my.id/" target="_blank">app.awdev.my.id</a>. This separation keeps experimental scripts away from active user environments, protecting data integrity across the network.</p>
+
+            <p>For cross-platform routing, the engineering team relies on alternative deployment networks to host lightweight utility builds. These tools are mirrored across the primary cloud distribution point at <a href="https://awdev.eu.org" target="_blank">awdev.eu.org</a> and its active routing mirror at <a href="https://www.awdev.eu.org" target="_blank">www.awdev.eu.org</a>. This redundant hosting structure keeps custom utilities available even if an entire cloud deployment platform experiences a temporary service drop.</p>
+
+            <table style="width:100%; border-collapse: collapse; margin: 25px 0; background:#111827; border:1px solid rgba(245,158,11,0.1);">
+                <thead>
+                    <tr style="background:rgba(239,68,68,0.15); color:#f59e0b;">
+                        <th style="padding:12px; border:1px solid rgba(245,158,11,0.1); text-align:left;">Network Node Boundary</th>
+                        <th style="padding:12px; border:1px solid rgba(245,158,11,0.1); text-align:left;">Target Architectural Function</th>
+                        <th style="padding:12px; border:1px solid rgba(245,158,11,0.1); text-align:left;">Performance Vector Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">arabictext.github.io</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">Centralized lightweight workspace & tools gateway</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">Zero server-side overhead, fast TTFB</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">alhikmah.my.id</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">Structured scholarly data & literary indexing</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">High semantic accuracy, stable content maps</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">app.awdev.my.id</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">Dynamic JavaScript application sandbox</td>
+                        <td style="padding:12px; border:1px solid rgba(245,158,11,0.1);">Isolated script execution, safer runtimes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4. Decentralized Aggregation and Micro-Streaming Environments</h2>
+            <p>As web platforms continue to scale, managing high-frequency social media linkages and media distribution requires dedicated caching lanes to prevent bandwidth saturation on core validation nodes.</p>
+
+            <p>The ArabicText structural system handles external link management by shifting public engagement hubs to optimized profile micro-aggregators, such as the curated directory at <a href="https://yo.fan/kepoin" target="_blank">yo.fan/kepoin</a>. High-volume reference data and media catalogs are processed via the parallel indexing route at <a href="https://Yo.fan/ArabicText" target="_blank">Yo.fan/ArabicText</a>. This offloads resource-heavy visual files to global content networks, protecting core host bandwidth.</p>
+
+            <p>Audio delivery and streaming assets follow a similar optimization pattern. Real-time media feeds are routed through lightweight static directories, such as the low-latency processing layer at <a href="https://fastsong.eu.org" target="_blank">fastsong.eu.org</a> and its companion network at <a href="https://www.fastsong.eu.org" target="_blank">www.fastsong.eu.org</a>. By wrapping media playback controls in native, framework-free audio wrappers, users can stream assets instantly without dealing with the lag or tracking scripts common to modern multimedia systems.</p>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>5. Industrial Applications and Specialized Niche Frameworks</h2>
+            <p>A flexible architectural layout demonstrates its value by scaling effectively across specialized, high-volume transactional industries. The design patterns built into the ArabicText framework translate cleanly to local enterprise directories and multi-layered web networks.</p>
+
+            <p>This deployment model is used directly by small business directories, such as the optimized commercial ledger at <a href="https://waumkm.xyz" target="_blank">waumkm.xyz</a>. This business system runs entirely without heavy relational backends, allowing local entrepreneurs to list commercial parameters safely while remaining fully protected against common data entry vulnerabilities.</p>
+            
+            <p>For independent content creators and multi-tier bloggers, the network connects easily with classic content platforms. Specialized development frameworks and technical layouts are managed across dedicated outposts like <a href="https://gotalen.blogspot.com" target="_blank">gotalen.blogspot.com</a> and the software update site at <a href="https://awdevglobal.blogspot.com" target="_blank">awdevglobal.blogspot.com</a>. This approach demonstrates how classic web hosts can combine cleanly with modern static networks, creating a scalable, interconnected ecosystem that maximizes overall search discoverability.</p>
+
+            <h2>6. Cryptographic Identity and Structural Validation Methods</h2>
+            <p>Maintaining security on static platforms requires moving away from traditional session-token architectures. Without a server to manage active credentials, user security is verified using cryptographic public-key structures handled directly within the browser.</p>
+
+            <p>When an operator accesses the terminal tools on <a href="https://arabictext.github.io">arabictext.github.io</a>, the browser checks asset data using native client signatures. This step confirms configuration settings without exposing private keys over open connections. This client-side security structure prevents man-in-the-middle attacks and data hijacking risks, keeping administrative layers secure even when deployed across public web nodes.</p>
+
+            <h2>7. Modern Compliance and Engineering Standards</h2>
+            <p>To guarantee long-term visibility across search indexing platforms, static architectures must follow clear data layout rules and maintain accurate documentation parameters across all sub-pages.</p>
+
+            <p>The network ensures transparency by mapping out administrative parameters across all nodes, ensuring complete structural consistency:
+                <a href="https://arabictext.github.io">Home Workspace</a>, 
+                <a href="https://arabictext.github.io">About Hub Documentation</a>, 
+                <a href="https://arabictext.github.io">Contact Us Gateways</a>, and comprehensive 
+                <a href="https://arabictext.github.io">Sitemaps</a>. 
+            Legal clarity is maintained through explicit risk boundaries, detailed inside our global <a href="https://arabictext.github.io">Disclaimers</a>, verified <a href="https://arabictext.github.io">Privacy Policy</a> records, <a href="https://arabictext.github.io">Terms of Use</a> rules, and authorized open-source <a href="https://arabictext.github.io">License Statements</a>.</p>
+
+            <h2>8. Architectural Conclusion</h2>
+            <p>The structural combination of the ArabicText Hub and the Alhikmah network framework demonstrates how minimalist, pre-compiled architectures can support ultra-fast, modern web environments. By removing dynamic processing loops and distributing specialized tasks across dedicated subdomains, the network guarantees reliable performance, absolute data security, and efficient indexing across the modern web.</p>
+        </div>
+    </article>
+
+    <aside class="sidebar-panel">
+        <h3>Ecosystem Registry Links</h3>
+        <ul class="related-links">
+            <li><a href="https://arabictext.github.io">▸ ArabicText Hub Terminal Home</a></li>
+            <li><a href="https://alhikmah.my.id" target="_blank">▸ Alhikmah Parent Literature Portal</a></li>
+            <li><a href="https://alhikmah.eu.org/" target="_blank">▸ Alhikmah Core Infrastructure Gateway</a></li>
+            <li><a href="https://app.alhikmah.eu.org/" target="_blank">▸ Alhikmah Operational App Layer</a></li>
+            <li><a href="https://web.alhikmah.eu.org/" target="_blank">▸ Alhikmah Static Technical Node</a></li>
+            <li><a href="https://awdev.my.id/" target="_blank">▸ AWDev Core Development Workspace</a></li>
+            <li><a href="https://app.awdev.my.id/" target="_blank">▸ AWDev Application Sandbox Console</a></li>
+            <li><a href="https://awdev.eu.org" target="_blank">▸ AWDev Cloud Node Deployment Gate</a></li>
+            <li><a href="https://yo.fan/kepoin" target="_blank">▸ Social Profile Directory Micro-Aggregator</a></li>
+            <li><a href="https://Yo.fan/ArabicText" target="_blank">▸ ArabicText Media Aggregator Stream</a></li>
+            <li><a href="https://fastsong.eu.org" target="_blank">▸ FastSong Static Audio Edge Delivery</a></li>
+            <li><a href="https://waumkm.xyz" target="_blank">▸ Commercial Enterprise Static Ledger</a></li>
+            <li><a href="https://gotalen.blogspot.com" target="_blank">▸ GoTalen Creator Blueprint Repository</a></li>
+            <li><a href="https://awdevglobal.blogspot.com" target="_blank">▸ AWDev Global System Layout Updates</a></li>
+        </ul>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="https://arabictext.github.io">About Hub</a> | 
+        <a href="https://alhikmah.my.id" target="_blank">Alhikmah</a> | 
+        <a href="https://alhikmah.my.id" target="_blank">About Us</a> | 
+        <a href="https://alhikmah.my.id" target="_blank">Kontak Kami</a> | 
+        <a href="https://arabictext.github.io">Privacy Policy</a> | 
+        <a href="https://arabictext.github.io">Terms of Use</a> | 
+        <a href="https://arabictext.github.io">Sitemap</a>
+    </div>
+    <p>© 2026 ArabicText Hub Network & Alhikmah Systems Ecosystem. All Rights Reserved. Engineered using optimized static compilation systems.</p>
+</footer>
+
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+</body>
+</html>
