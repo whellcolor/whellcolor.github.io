@@ -7,3 +7,31 @@
     "check-rpc": "curl https://rpc.buildbear.io/global-wolverine-ff979075 -X POST -H \"Content-Type: application/json\" -d '{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[],\"id\":1}'"
   }
 }
+{
+  "name": "whellcolor-cube-crypto",
+  "version": "1.0.0",
+  "description": "Whellcolor Cube Crypto (WCC) official platform and monetization configurations.",
+  "main": "index.js",
+  "homepage": "https://whellcolor.github.io",
+  "scripts": {
+    "start": "echo \"Running WCC local server...\" && -your-start-command-here-",
+    "build": "echo \"Building WCC project...\" && -your-build-command-here-",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crypto",
+    "cube",
+    "whellcolor",
+    "wcc",
+    "adsense"
+  ],
+  "author": "Muhammad Nur Firdaus",
+  "license": "ISC",
+  "adsense": {
+    "client": "pub-7182145371991939",
+    "slot_id": "f08c47fec0942fa0",
+    "payment_profile_id": "6655-4811-6219"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
