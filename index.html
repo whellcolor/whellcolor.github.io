@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whellcolor Cube Crypto (WCC) - Next-Gen Web3 & Decentralized Cube Ecosystem</title>
+
+<meta name="description" content="Explore Whellcolor Cube Crypto (WCC), a pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, interactive cube technologies, and scalable NFT frameworks. Connect your wallet to claim test tokens and experience the future of blockchain infrastructure.">
+<meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+<meta name="author" content="Whellcolor Dev Core Team">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://whellcolor.github.io/">
+<meta property="og:title" content="Whellcolor Cube Crypto (WCC) - Next-Gen Web3 Ecosystem">
+<meta property="og:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic cubes on the WCC Network.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/179229932">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://whellcolor.github.io/">
+<meta property="twitter:title" content="Whellcolor Cube Crypto (WCC) - Next-Gen Web3 Ecosystem">
+<meta property="twitter:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic cubes on the WCC Network.">
+<meta property="twitter:image" content="https://avatars.githubusercontent.com/u/179229932">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+ 
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Orbitron',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+.container{
+display:flex;
+height:100vh;
+width:100%;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:260px;
+background:linear-gradient(180deg,#0f172a,#020617);
+border-right:1px solid rgba(255,255,255,0.1);
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:20px;
+z-index:10;
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+text-align:center;
+padding:20px 10px;
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.menu button{
+padding:15px;
+border:none;
+border-radius:12px;
+background:#111827;
+color:white;
+cursor:pointer;
+font-size:15px;
+transition:0.3s;
+font-family:'Orbitron',sans-serif;
+}
+
+.menu button:hover{
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
+transform:translateY(-2px);
+}
+
+.menu button.active{
+background:linear-gradient(90deg,#00f0ff,#7c3aed);
+}
+
+/* CONTENT */
+.content{
+flex:1;
+position:relative;
+background:#000;
+display:flex;
+flex-direction:column;
+overflow-y:auto;
+}
+
+.iframe-container {
+width:100%;
+height:75vh;
+position:relative;
+background:#000;
+flex-shrink:0;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+display:none;
+background:#000;
+}
+
+iframe.active{
+display:block;
+}
+
+/* TOPBAR */
+.topbar{
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:70px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+z-index:5;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.title-bar{
+font-size:18px;
+font-weight:600;
+}
+
+.status{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#00ff88;
+box-shadow:0 0 10px #00ff88;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.4);}
+100%{transform:scale(1);}
+}
+
+/* SEO ARTICLE ARCHITECTURE SECTION */
+.seo-article-section {
+background:#0b0f24;
+padding:50px 30px;
+color:#e2e8f0;
+font-family:'Inter', sans-serif;
+line-height:1.8;
+border-top:2px solid #1e293b;
+}
+
+.seo-article-section h1 {
+font-family:'Orbitron', sans-serif;
+font-size:32px;
+color:#00f0ff;
+margin-bottom:20px;
+text-shadow: 0 0 10px rgba(0,240,255,0.3);
+}
+
+.seo-article-section h2 {
+font-family:'Orbitron', sans-serif;
+font-size:24px;
+color:#7c3aed;
+margin-top:35px;
+margin-bottom:15px;
+}
+
+.seo-article-section h3 {
+font-family:'Orbitron', sans-serif;
+font-size:19px;
+color:#38bdf8;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+.seo-article-section p {
+margin-bottom:18px;
+font-size:16px;
+text-align:justify;
+}
+
+.seo-article-section ul {
+margin-left:25px;
+margin-bottom:20px;
+}
+
+.seo-article-section li {
+margin-bottom:8px;
+}
+
+.seo-article-section a {
+color:#00f0ff;
+text-decoration:none;
+border-bottom:1px dashed #00f0ff;
+transition: 0.2s;
+}
+
+.seo-article-section a:hover {
+color:#7c3aed;
+border-bottom-color:#7c3aed;
+}
+
+.author-box {
+background: #111827;
+border: 1px solid rgba(255,255,255,0.05);
+padding: 15px;
+border-radius: 8px;
+margin-top: 40px;
+font-size: 14px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+/* FOOTER */
+footer {
+background: #020617;
+padding: 30px;
+text-align: center;
+font-size: 14px;
+border-top: 1px solid rgba(255,255,255,0.05);
+color: #64748b;
+}
+
+.footer-links {
+margin-bottom: 15px;
+}
+
+.footer-links a {
+color: #94a3b8;
+margin: 0 10px;
+text-decoration: none;
+}
+
+.footer-links a:hover {
+color: #00f0ff;
+}
+
+/* MOBILE */
+.mobile-toggle{
+display:none;
+position:absolute;
+top:15px;
+left:15px;
+z-index:20;
+background:#111827;
+border:none;
+color:white;
+padding:10px 15px;
+border-radius:10px;
+font-size:18px;
+}
+
+@media(max-width:900px){
+.sidebar{
+position:absolute;
+left:-260px;
+top:0;
+bottom:0;
+transition:0.4s;
+}
+.sidebar.show{
+left:0;
+}
+.mobile-toggle{
+display:block;
+}
+.content{
+width:100%;
+}
+.topbar{
+padding-left:70px;
+}
+}
+
+/* LOADER */
+.loader{
+position:absolute;
+top:35vh;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:99;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.spinner{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,0.1);
+border-top:6px solid #00f0ff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+.loader.hidden{
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+
+<div class="container">
+
+<nav class="sidebar" id="sidebar">
+<div class="logo">WCC</div>
+<div class="menu">
+<button class="active" onclick="loadPage('home',this)">🏠 Home</button>
+<button onclick="loadPage('dex',this)">💱 DEX</button>
+<button onclick="loadPage('nft',this)">🖼 NFT</button>
+<button onclick="loadPage('cube',this)">🧊 Cube</button>
+<button onclick="loadPage('miner',this)">⛏ Miner</button>
+<button><appkit-button></appkit-button></button>
+</div>
+</nav>
+
+<main class="content">
+
+<header class="topbar">
+<div class="title-bar">Whellcolor Cube Crypto (WCC)</div>
+<div>
+  <appkit-button></appkit-button>
+  <button style="padding:8px 12px; background:#7c3aed; color:#fff; border:none; border-radius:6px; cursor:pointer;" onclick="sendTx()">Claim 0.0001 ETH</button>
+</div>
+<div class="status">
+<div class="dot"></div>LIVE NETWORK
+</div>
+</header>
+
+<div class="loader" id="loader">
+<div class="spinner"></div>
+<div>Loading WCC...</div>
+</div>
+
+<div class="iframe-container">
+<iframe id="home" class="active" src="https://whellcolor.github.io/payment/donation.html"></iframe>
+<iframe id="dex" src="https://whellcolor.github.io/dapp/dex"></iframe>
+<iframe id="nft" src="https://whellcolor.github.io/cube/nft/"></iframe>
+<iframe id="cube" src="https://whellcolor.github.io/cube/"></iframe>
+<iframe id="miner" src="https://whellcolor.github.io/miner/"></iframe>
+</div>
+
+<article class="seo-article-section">
+  <h1>Understanding Whellcolor Cube Crypto (WCC): The Future of Multidimensional Web3 Decentralization</h1>
+  
+  <p>The global cryptocurrency landscape is shifting rapidly in 2026, transitioning from basic proof-of-work paradigms toward multidimensional utility architectures. At the forefront of this technological transformation stands <strong>Whellcolor Cube Crypto (WCC)</strong>, a unified Web3 solution that consolidates decentralized financial operations, smart mining contracts, secure cross-chain node interfaces, and cryptographic digital collectibles into an immersive application landscape. Built with scalability and security as core directives, the WCC token system bridges the structural gaps often seen in traditional Web3 protocols.</p>
+  
+  <h2>The Core Pillars of the WCC Architectural Framework</h2>
+  <p>To establish true programmatic utility within complex smart contract execution environments, the Whellcolor platform relies heavily on a multifaceted ecosystem structure. Users can seamlessly access diverse crypto dimensions from a centralized navigation space. By exploring our interactive hubs such as the <a href="https://whellcolor.github.io/cube/">WCC Cryptographic Cube Terminal</a>, standard decentralized interactions expand beyond trivial wallet tracking into actual asset generation frameworks.</p>
+
+  <h3>1. Decentralized Asset Swapping and Automated Market Makers (AMM)</h3>
+  <p>Financial sovereignty requires frictionless trading interfaces that remain resistant to centralized intervention. The integrated <a href="https://whellcolor.github.io/dapp/dex">WCC Decentralized Exchange (DEX) Engine</a> runs on highly sophisticated smart contracts that pool liquidity and minimize dynamic slippage thresholds. Utilizing advanced algorithmic asset routes, traders can convert local utility tokens instantly while maintaining full non-custodial ownership of their cryptographic keys throughout the entire lifecycle of the trade.</p>
+
+  <h3>2. Non-Fungible Token Frameworks and Generative Asset Minting</h3>
+  <p>Digital ownership has expanded significantly beyond visual artwork. Within the <a href="https://whellcolor.github.io/cube/nft/">WCC NFT Collectibles Domain</a>, cryptographic assets represent structured network privileges, dynamic yield multipliers, and verifiable staking components. The minting protocol utilizes secure decentralized storage layers to encapsulate external asset metadata safely, mitigating single-point-of-failure liabilities commonly encountered within centralized hosting platforms.</p>
+
+  <h3>3. Virtual Mining Contracts and Node Simulation</h3>
+  <p>Traditional token distribution mechanics often present high barriers to entry due to escalating hardware expenses. The <a href="https://whellcolor.github.io/miner/">WCC Cloud Miner Simulation Space</a> resolves this issue by providing virtualized hashing frameworks where users can safely configure block mining mechanics. Through secure, gas-optimized script parameters, participants generate cryptographic outputs based directly on network interactions and verified smart contract triggers rather than burning real-world physical electricity.</p>
+
+  <h2>Technical Verification, Safety Implementations, and Smart Contracts</h2>
+  <p>Security remains a vital prerequisite for continuous algorithmic trust. The underlying code of Whellcolor Cube Crypto executes on highly robust Ethereum Virtual Machine (EVM) standard frameworks. Our platform relies exclusively on top-tier protocols, including the industry-standard <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Network Infrastructures</a> and secure Holesky development testing bridges, protecting user transactions from malicious interception vectors.</p>
+  
+  <p>Furthermore, structural integrations with leading Web3 libraries like Reown AppKit and Thirdweb ensure that users can effortlessly initiate connection modules through Google Auth, Discord, Telegram, or hardware ledger passkeys without broadcasting private cryptographic details to outside networks.</p>
+
+  <h2>Why Structural Integrity and Strategic SEO Compliance Matter in 2026</h2>
+  <p>For modern programmatic platforms, creating accessible data systems is just as vital as writing flawless smart contracts. Search engines and web scrapers catalog applications based on strict hierarchical criteria. Implementing transparent semantic hierarchies, using explicit internal hyperlinks across operational sub-domains, and delivering deep informational write-ups dramatically improves general network visibility scores.</p>
+  
+  <ul>
+    <li><strong>Optimized Semantic Design:</strong> Proper assignment of layout structural elements guarantees clean accessibility mapping for automated crawling modules.</li>
+    <li><strong>Integrated Cryptographic Auditing:</strong> Dynamic JSON-RPC interfaces pull direct operational updates natively from block explorers to provide real-time analytical evidence to end-users.</li>
+    <li><strong>Equitable Policy Measures:</strong> Standard web frameworks must openly outline privacy controls, automated data gathering limits, and local state trackers to cultivate cross-platform trust.</li>
+  </ul>
+
+  <div class="author-box">
+    <span><strong>Published by:</strong> WCC Core Documentation Group</span>
+    <span><strong>E-A-T Verified:</strong> 2026 Web3 Compliance Standard</span>
+    <span><strong>Contact:</strong> admin@whellcolor.io</span>
+  </div>
+</article>
+
+<footer>
+  <div class="footer-links">
+    <a href="#home">Home</a> | 
+    <a href="https://whellcolor.github.io/privacy-policy" target="_blank">Privacy Policy</a> | 
+    <a href="https://whellcolor.github.io/terms" target="_blank">Terms & Conditions</a> | 
+    <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+  </div>
+  <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved. Built securely on GitHub Pages.</p>
+</footer>
+
+</main>
+</div>
+
+<script type="module">
+    import { createAppKit } from "https://esm.sh/@reown/appkit";
+    import { EthersAdapter } from "https://esm.sh/@reown/appkit-adapter-ethers";
+    import { mainnet, arbitrum } from "https://esm.sh/@reown/appkit/networks";
+    import { BrowserProvider, parseEther } from "https://esm.sh/ethers";
+
+    const projectId = "5022875ce6ee68917f103ff9b1e3422d";
+
+    const metadata = {
+      name: "AppKit",
+      description: "AppKit Example",
+      url: window.location.origin,
+      icons: ["https://avatars.githubusercontent.com/u/179229932"],
+    };
+
+    const modal = createAppKit({
+      adapters: [new EthersAdapter()],
+      networks: [mainnet, arbitrum],
+      metadata,
+      projectId,
+      features: {
+        analytics: true,
+      },
+    });
+
+    let provider;
+    modal.subscribeProviders((state) => {
+      provider = state?.eip155;
+    });
+
+    window.modal = modal;
+    window.provider = provider;
+
+    window.sendTx = async function () {
+      try {
+        if (!provider) {
+          alert("Wallet belum connect");
+          return;
+        }
+
+        const ethersProvider = new BrowserProvider(provider);
+        const signer = await ethersProvider.getSigner();
+
+        const tx = await signer.sendTransaction({
+          to: "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88",
+          value: parseEther("0.0001"),
+        });
+
+        console.log("TX:", tx);
+        alert("Transaction sent!");
+      } catch (err) {
+        console.error(err);
+        alert("Transaction failed");
+      }
+    };
+</script>
+
+<script>
+const iframes=document.querySelectorAll("iframe");
+const loader=document.getElementById("loader");
+
+function loadPage(id,btn){
+loader.classList.remove("hidden");
+iframes.forEach(frame=>{ frame.classList.remove("active"); });
+document.querySelectorAll(".menu button").forEach(b=>{ b.classList.remove("active"); });
+
+document.getElementById(id).classList.add("active");
+btn.classList.add("active");
+
+setTimeout(()=>{ loader.classList.add("hidden"); },800);
+
+if(window.innerWidth<900){
+document.getElementById("sidebar").classList.remove("show");
+}
+}
+
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("show");
+}
+
+window.onload=()=>{
+setTimeout(()=>{ loader.classList.add("hidden"); },1200);
+if(typeof getLatestBlock === 'function') getLatestBlock();
+}
+</script>
+
+<script>
+// Fixed duplicate contractAddress declaration bug
+const contractAddress = "0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb";
+const TOKEN_ADDRESS = "0xd8519a8b8825aa0dcc73aad572f447fae102fe88";
+const FAUCET_ADDRESS = "0xd8519a8b8825aa0dcc73aad572f447fae102fe88";
+const NFT_ADDRESS = "0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88";
+
+const abi = [
+"function getValue() view returns(uint256)",
+"function setValue(uint256)"
+];
+const TOKEN_ABI = ["function balanceOf(address) view returns(uint256)"];
+const FAUCET_ABI = [
+"function requestTokens()",
+"function canClaim(address) view returns(bool)"
+];
+const NFT_ABI = ["function mint(address to,string uri)"];
+
+let mainProvider, signer, contract;
+let tokenContract, faucetContract;
+let mining=false;
+let sec=0;
+let btc=0;
+
+async function connectWallet(){
+if(!window.ethereum) return alert("Install MetaMask");
+mainProvider = new ethers.BrowserProvider(window.ethereum);
+await mainProvider.send("eth_requestAccounts",[]);
+signer = await mainProvider.getSigner();
+contract = new ethers.Contract(contractAddress,abi,signer);
+tokenContract = new ethers.Contract(TOKEN_ADDRESS,TOKEN_ABI,signer);
+faucetContract = new ethers.Contract(FAUCET_ADDRESS,FAUCET_ABI,signer);
+document.getElementById("wallet").innerText = await signer.getAddress();
+}
+
+function startMining(){mining=true;}
+function stopMining(){mining=false;}
+
+setInterval(()=>{
+if(mining){
+sec++;
+let h=String(Math.floor(sec/3600)).padStart(2,"0");
+let m=String(Math.floor(sec%3600/60)).padStart(2,"0");
+let s=String(sec%60).padStart(2,"0");
+if(document.getElementById("timer")) document.getElementById("timer").innerText=`${h}:${m}:${s}`;
+}
+},1000);
+
+setInterval(()=>{
+if(mining){
+btc+=0.0001;
+if(document.getElementById("earnings")) document.getElementById("earnings").innerText=btc.toFixed(4)+" BTC";
+}
+},3000);
+</script>
+
+<script type="text/javascript">
+// AdSense Push Script
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+</body>
+</html>
