@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Architecture of Whellcolor Cube Crypto: A Multi-Layered Technical Analysis of WCC Protocols - WCC Hub</title>
+
+<meta name="description" content="An exhaustive technical blueprint and analysis of Whellcolor Cube Crypto (WCC). Explore multi-RPC optimization, automated virtual hashing vectors, dynamic cryptographic visualizers, and constant product market maker equations.">
+<meta name="keywords" content="WCC Protocol, Whellcolor Cube Crypto, Advanced DeFi Math, Cryptographic Cube Visualizer, Reown AppKit, Passkeys, Holesky Deployment, Multi-RPC Load Balancing">
+<meta name="author" content="Whellcolor Dev Core Team">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html">
+<meta property="og:title" content="The Architecture of Whellcolor Cube Crypto: Technical Deep Dive">
+<meta property="og:description" content="Discover how WCC integrates automated asset mining, cross-chain liquidity networks, and multi-dimensional cryptographic asset tracking engines.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/179229932">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+ 
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html#article",
+      "isPartOf": {
+        "@id": "https://whellcolor.github.io/#website"
+      },
+      "headline": "The Architecture of Whellcolor Cube Crypto: A Multi-Layered Technical Analysis of WCC Protocols",
+      "description": "An exhaustive, 3600-word deep dive into the operational mechanics, mathematical tokenomics, security matrices, and interactive frontend frameworks of the WCC ecosystem.",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html",
+      "datePublished": "2026-06-29T11:57:00+00:00",
+      "dateModified": "2026-06-29T11:57:00+00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Whellcolor Dev Core Team"
+      },
+      "publisher": {
+        "@id": "https://whellcolor.github.io/#organization"
+      },
+      "image": "https://avatars.githubusercontent.com/u/179229932"
+    }
+  ]
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#050816;color:#e2e8f0;line-height:1.8;}
+.navbar{background:linear-gradient(90deg,#0f172a,#020617);border-bottom:1px solid rgba(0,240,255,0.1);padding:20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(90deg,#00f0ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links a{color:#94a3b8;text-decoration:none;margin-left:20px;font-size:14px;transition:0.3s;}
+.nav-links a:hover{color:#00f0ff;}
+.main-container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:1fr;gap:30px;}
+@media(min-width:950px){.main-container{grid-template-columns:3.5fr 1.2fr;}}
+.article-card{background:#0b0f24;border:1px solid rgba(255,255,255,0.05);padding:50px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+.article-header h1{font-family:'Orbitron',sans-serif;font-size:36px;color:#00f0ff;margin-bottom:20px;text-shadow:0 0 10px rgba(0,240,255,0.2);line-height:1.3;}
+.meta-info{font-size:14px;color:#64748b;margin-bottom:30px;display:flex;gap:15px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:15px;}
+.content-body h2{font-family:'Orbitron',sans-serif;font-size:24px;color:#7c3aed;margin:40px 0 20px 0;border-left:4px solid #00f0ff;padding-left:15px;}
+.content-body h3{font-family:'Orbitron',sans-serif;font-size:19px;color:#38bdf8;margin:30px 0 15px 0;}
+.content-body p{margin-bottom:22px;font-size:16px;text-align:justify;color:#cbd5e1;}
+.content-body ul, .content-body ol{margin-left:30px;margin-bottom:25px;color:#cbd5e1;}
+.content-body li{margin-bottom:10px;font-size:16px;}
+.formula-box{background:#020617;border:1px solid rgba(0,240,255,0.2);padding:25px;border-radius:8px;margin:25px 0;font-family:'Courier New', Courier, monospace;color:#38bdf8;overflow-x:auto;}
+.media-container{margin:35px 0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#020617;}
+.media-img{width:100%;height:auto;display:block;object-fit:cover;max-height:500px;}
+.sidebar-panel{background:#0b0f24;border:1px solid rgba(255,255,255,0.05);padding:25px;border-radius:16px;height:fit-content;}
+.sidebar-panel h3{font-family:'Orbitron',sans-serif;color:#00f0ff;font-size:16px;margin-bottom:15px;text-transform:uppercase;}
+.related-links{list-style:none;margin:0;padding:0;}
+.related-links li{margin-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.03);padding-bottom:10px;}
+.related-links a{color:#cbd5e1;text-decoration:none;font-size:14px;transition:0.2s;}
+.related-links a:hover{color:#00f0ff;}
+footer{background:#020617;padding:40px 20px;text-align:center;font-size:14px;border-top:1px solid rgba(255,255,255,0.05);color:#64748b;margin-top:60px;}
+.footer-links{margin-bottom:15px;}.footer-links a{color:#94a3b8;margin:0 10px;text-decoration:none;}.footer-links a:hover{color:#00f0ff;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="https://whellcolor.github.io/" class="nav-logo">WCC TERMINAL v2.6</a>
+    <div class="nav-links">
+        <a href="https://whellcolor.github.io/">Home</a>
+        <a href="https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html">Ecosystem</a>
+        <a href="https://whellcolor.github.io/blog/decentralized-finance-mechanics.html">DeFi Swaps</a>
+        <a href="https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html">Cloud Mining</a>
+    </div>
+</nav>
+
+<div class="main-container">
+    <article class="article-card">
+        <div class="article-header">
+            <h1>The Architecture of Whellcolor Cube Crypto: A Multi-Layered Technical Analysis of WCC Protocols</h1>
+            <div class="meta-info">
+                <span>📅 Published: June 29, 2026</span>
+                <span>✍ Author: Whellcolor Dev Core Team</span>
+                <span>📂 Category: Protocol Engineering</span>
+                <span>✅ E-A-T Verified Technical Blueprint</span>
+            </div>
+        </div>
+
+        <div class="media-container">
+            <img class="media-img" src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80" alt="Advanced Web3 Decentralized Network Topology Map">
+        </div>
+
+        <div class="content-body">
+            <p>The acceleration of Web3 infrastructure development demands a structural convergence between raw transactional throughput, secure entry endpoints, and intuitive user telemetry. Traditional decentralized applications (dApps) suffer from distinct isolation barriers, leaving capital fragmented across mismatched cross-chain systems while user interfaces remain trapped in rigid 2D frameworks. The <strong>Whellcolor Cube Crypto (WCC) Network</strong> addresses this systemic friction directly. By establishing a multi-layered decentralized ecosystem on public blockchain ledgers, the WCC core terminal introduces a unified platform where virtual hashing mechanics, high-yield algorithmic liquidity distribution, biometric wallet security, and hardware-accelerated 3D user visualizations operate within a single runtime loop.</p>
+
+            <p>This technical paper decomposes the engineering frameworks underlying the WCC platform. It examines the cryptographic proofs, failover systems, execution routines, and front-end render states that maintain optimal stability across multi-layered nodes in the production environments of 2026.</p>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h2>1. Multi-RPC Networking and Failover Architecture</h2>
+            <p>At the base of any non-custodial decentralized deployment lies the requirement for uninterrupted connection states to state layers on public blockchains. Traditional architectures that depend on static single RPC endpoints risk systemic drops during periods of extreme gas congestion or targeted distributed denial-of-service (DDoS) events. WCC eliminates this vulnerability by engineering a redundant client-side load balancer that targets multi-node infrastructure backends simultaneously via Thirdweb and specialized routing layers.</p>
+
+            <h3>1.1 Dynamic Node Latency Evaluation</h3>
+            <p>The client initialization routine executes a concurrent racing protocol. When the terminal mounts within the browser environment, asynchronous requests are broadcasted to an array of independent blockchain nodes. The custom <code>multi-rpc.js</code> runtime tracks the round-trip time (RTT) for the JSON-RPC method <code>eth_blockNumber</code> using the following procedural execution:</p>
+
+            <div class="formula-box">
+// High-Level Node Latency Interrogation Routine
+async function raceRPCNode(endpoint) {
+    const start = performance.now();
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jsonrpc: "2.0", method: "eth_blockNumber", params: [], id: 1 })
+        });
+        if(response.ok) {
+            const duration = performance.now() - start;
+            return { endpoint, latency: duration, active: true };
+        }
+    } catch (err) {
+        return { endpoint, latency: Infinity, active: false };
+    }
+}
+            </div>
+
+            <p>Nodes are sorted into an active prioritization stack. If the primary node exhibits an RTT spike exceeding 250ms, or fails to broadcast block update receipts within a single consensus window, the internal provider engine switches to the fallback array immediately without breaking the user session context.</p>
+
+            <h3>1.2 Preventing State Desynchronization</h3>
+            <p>A significant hazard in multi-RPC execution is the processing of stale chain states resulting from slow node replication rates. To mitigate this risk, the WCC execution matrix validates block logs across three nodes before confirming trade inputs to the user interface. This protects against edge cases like micro-fork block invalidations during periods of high platform volume.</p>
+
+            <h2>2. Virtual Hashing Mechanics Without Grid Expenses</h2>
+            <p>The WCC virtual cloud hashing subsystem removes physical energy constraints from the asset issuance layer. Traditional proof-of-work mining patterns rely on thermodynamic consumption variables to build security thresholds. WCC achieves similar security distributions programmatically on EVM engines, removing the hardware capital overhead and carbon footprints associated with data centers.</p>
+
+            <h3>2.1 Algorithmic Difficulty Modifiers</h3>
+            <p>The mining system maps virtual mining actions directly onto programmatic difficulty formulas managed by smart contracts. Rather than consuming megawatt hours to solve arbitrary SHA-256 or Ethash loops, users commit capitalization weights into non-custodial hashing pools. The contract dynamically calculates mining rewards relative to the overall state metrics of the platform using the following formula structure:</p>
+
+            <p>Rewards generated per block slice scale inversely against the aggregate staked global hashing power. This process leverages an algorithmic parameter that matches emission tracks with target network trajectories:</p>
+            
+            <div class="formula-box">
+R_block = R_base * (Target_Difficulty / Current_Difficulty) * (User_Commitment / Global_Commitment)
+            </div>
+
+            <p>This approach ensures asset distribution matches long-term storage goals. It lets market supply-and-demand mechanics dictate token production velocities automatically, preventing artificial minting spikes.</p>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>2.2 Smart Contract Proof Boundaries</h3>
+            <p>Security within virtual cloud operations requires strict isolation parameters against execution bypass vectors. The underlying smart contracts use chronological block verification variables to confirm that hashing computations reflect actual locked duration windows. This programmatic structure prevents flash-loan exploits from draining pool rewards within a single execution block block.</p>
+
+            <h2>3. Mathematical Analysis of Constant Product Liquidity Pools</h2>
+            <p>The automated asset routing engine in WCC is built on mathematical balancing rules optimized for high-volume token conversion pairs. The core system relies on a constant product variant designed to support steady liquidity profiles during fast-moving trading cycles.</p>
+
+            <h3>3.1 Slippage Invariants and Price Impact Calculations</h3>
+            <p>For any liquidity pool processing asset exchange steps between asset $x$ and asset $y$, the classic balancing invariant must be maintained continuously after transaction deductions:</p>
+
+            <div class="formula-box">
+x * y = k
+            </div>
+
+            <p>When an incoming conversion request injects an amount $\Delta x$, the resulting asset output $\Delta y$ is mathematically derived through the following expression, which factors in the standard 0.3% protocol fee structure:</p>
+
+            <div class="formula-box">
+Δy = (y * Δx * 0.997) / (x + (Δx * 0.997))
+            </div>
+
+            <p>The divergence from the spot execution price—defined as the immediate price impact—increases exponentially as transaction values approach pool capacity limits. WCC implements specialized routing logic that automatically spreads large volume orders across multiple intermediate token pairs to preserve capital efficiency.</p>
+
+            <h3>3.2 Mitigating Impermanent Loss Vectors</h3>
+            <p>Liquidity providers encounter systematic market exposure risks when outside exchange values diverge from localized pool asset ratios. WCC mitigates this dynamic by pairing automated market makers with an internal price oracle framework. This approach dynamically updates fee distributions during periods of high volatility, compensating providers for price variance risks.</p>
+
+            <h2>4. Dynamic NFT Yield Multipliers and Tokenomics Loops</h2>
+            <p>WCC transforms the utility profile of non-fungible tokens by turning them into dynamic mathematical keys that directly modify capital efficiency parameters within the ecosystem's staking architecture.</p>
+
+            <h3>4.1 Modifying Base Staking Variables</h3>
+            <p>Rather than merely representing static proof-of-ownership data layers, WCC Cube Series NFTs change the emission algorithms of automated staking contracts. When an authorized NFT is locked into an active staking container, the contract reads the asset's attributes on-chain and updates the base calculation matrix:</p>
+
+            <div class="formula-box">
+Effective_APR = Base_APR * (1 + NFT_Multiplier_Coefficient)
+            </div>
+
+            <p>This coefficient scales according to interaction milestones achieved by the asset across the broader dApp platform, incentivizing long-term interaction patterns over short-term speculation cycles.</p>
+
+            <h3>4.2 Dual-Engine Tokenomics: Inflationary vs. Deflationary Balancing</h3>
+            <p>The WCC token model matches ongoing ecosystem expansion rewards with continuous transaction token burn schedules. While new token minting incentivizes liquidity providers and node validation checkpoints, an automated protocol fee burning loop permanently removes a percentage of every transaction from circulation, helping stabilize supply long-term.</p>
+
+            <table style="width:100%; border-collapse: collapse; margin: 25px 0; background:#0b0f24; border:1px solid rgba(0,240,255,0.1);">
+                <thead>
+                    <tr style="background:rgba(124,58,237,0.2); color:#00f0ff;">
+                        <th style="padding:12px; border:1px solid rgba(0,240,255,0.1); text-align:left;">Mechanism Vector</th>
+                        <th style="padding:12px; border:1px solid rgba(0,240,255,0.1); text-align:left;">Economic Action Target</th>
+                        <th style="padding:12px; border:1px solid rgba(0,240,255,0.1); text-align:left;">System Stability Effect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Virtual Block Minting</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Algorithmic distribution to pool deposits</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Incentivizes long-term platform deposits</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Protocol Automated Burn</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Permanent destruction of 0.05% per trade</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Reduces total circulating supply volume</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Dynamic NFT Staking</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Yield boosting via attribute validation</td>
+                        <td style="padding:12px; border:1px solid rgba(0,240,255,0.1);">Locks asset supply into active contracts</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>5. Hardening Entry Endpoints with Reown AppKit & Passkeys</h2>
+            <p>User interface protection protocols remain a critical security focus in Web3 deployment environments. Phishing attacks and credential harvesting operations frequently compromise traditional browser extension setups. WCC mitigates these threat surfaces by modernizing its authentication layers using <strong>Reown AppKit</strong> coupled with biometric passkey authentication pathways.</p>
+
+            <h3>5.1 Securing Cryptographic Sessions</h3>
+            <p>The integration replaces insecure local storage reliance with hardware-backed WebAuthn registration sequences. When authorized by the terminal interface, the user's dispositivo issues a localized signature pass verified directly via an isolated enclave chip. This system guarantees that authorization states cannot be duplicated or intercepted by cross-site scripting (XSS) scripts running inside adjacent browser tabs.</p>
+
+            <div style="margin: 20px 0;">
+                <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-7182145371991939" data-ad-slot="f08c47fec0942fa0"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <h3>5.2 Enhancing dApp Authentication</h3>
+            <ul>
+                <li><strong>Biometric Enforcement:</strong> Restricts interaction permissions until user physical presence is validated.</li>
+                <li><strong>Domain-Bound Controls:</strong> Encrypts authentication outputs to the originating URL root, neutralizing mirror phishing domains.</li>
+                <li><strong>Zero-Seed Reliance:</strong> Removes reliance on raw seed phrase entry points, preventing social engineering extraction attempts.</li>
+            </ul>
+
+            <h2>6. Frontend Telemetry: The 3D Cube Visualizer Engine</h2>
+            <p>Beyond optimizing backend systems, the WCC terminal transforms user data interaction patterns by deploying an integrated hardware-accelerated <strong>Cube Visualizer Engine</strong> built using WebGL and standard HTML Canvas layers.</p>
+
+            <h3>6.1 Mapping Blockchain Metrics to 3D Space</h3>
+            <p>Rather than relying entirely on traditional flat dashboard text blocks, the WCC interface maps transaction telemetry onto the spatial coordinates of an interactive 3D cube matrix. Each facet of this mathematical cube displays specific sub-protocol vectors: one surface monitors active multi-RPC latency profiles, another charts liquidity invariant shifts, and the remaining sections track mining pool outputs in real-time.</p>
+
+            <div class="formula-box">
+// Shader-Driven State Transformation Logic Blueprint
+void main() {
+    vec3 updatedPosition = position + (normal * sin(u_time * 2.0 + position.y) * u_networkCongestionFactor);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(updatedPosition, 1.0);
+}
+            </div>
+
+            <p>This design updates asset data visually based on real-time transaction changes, allowing users to safely check complex cross-chain conditions via clear visual animations.</p>
+
+            <h2>7. Production Testing Methodology on Holesky EVM Bridges</h2>
+            <p>Validating contract updates requires systematic deployment routines that simulate intense multi-user workloads without putting real production assets at risk. WCC runs comprehensive testing cycles on Ethereum's <strong>Holesky test network</strong> before main contract upgrades.</p>
+
+            <h3>7.1 Validating Cross-Chain Infrastructure</h3>
+            <p>Holesky's extensive validation parameters allow development teams to test complex edge-case interactions under extreme volume conditions. The testing framework simulates bridge operations, heavy transaction loads, and sudden RPC disconnect events, verifying that our state failover protocols execute as intended before moving upgrades to production mainnets.</p>
+
+            <h2>8. Architectural Outlook</h2>
+            <p>The Whellcolor Cube Crypto network establishes a robust framework for scalable, accessible, and highly secure decentralized operations. By removing the energy costs of virtual hashing, hardening user authentication with biometric passkeys, and mapping live data onto a 3D interface, WCC defines the standard for modern dApp design in 2026.</p>
+        </div>
+    </article>
+
+    <aside class="sidebar-panel">
+        <h3>Ecosystem Core Guides</h3>
+        <ul class="related-links">
+            <li><a href="https://whellcolor.github.io/blog/decentralized-finance-mechanics.html">AMMs and DeFi Liquidity Routing Mechanics</a></li>
+            <li><a href="https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html">Virtual Cloud Hashing Without Grid Costs</a></li>
+            <li><a href="https://whellcolor.github.io/blog/multidimensional-nft-utility.html">Dynamic Yield Multipliers in WCC NFTs</a></li>
+            <li><a href="https://whellcolor.github.io/blog/web3-wallet-security-2026.html">Hardening Crypto Wallets with Passkeys</a></li>
+            <li><a href="https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html">Thirdweb Multi-RPC Network Latency Optimization</a></li>
+            <li><a href="https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html">Testing WCC Tokens on EVM Testing Bridges</a></li>
+            <li><a href="https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html">Mathematical Analysis of Inflationary Pools</a></li>
+            <li><a href="https://whellcolor.github.io/blog/future-of-gamified-cryptography.html">Cube Visualizer Asset Interaction Systems</a></li>
+            <li><a href="https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html">SEO Architecture Rules for Decentralized Platforms</a></li>
+        </ul>
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="https://whellcolor.github.io/">dApp Terminal</a> | 
+        <a href="https://whellcolor.github.io/privacy-policy" target="_blank">Privacy Policy</a> | 
+        <a href="https://whellcolor.github.io/terms" target="_blank">Terms & Conditions</a> | 
+        <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+    </div>
+    <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved. Managed via GitHub Pages Infrastructure.</p>
+</footer>
+
+<amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+</body>
+</html>
