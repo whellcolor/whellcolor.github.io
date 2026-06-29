@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Whellcolor Cube Crypto (WCC) Terminal",
+  "url": "https://whellcolor.github.io/",
+  "description": "Interactive Web3 dApp for decentralized token swapping, NFT minting, and dynamic cube cloud mining protocols.",
+  "applicationCategory": "BusinessApplication, FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5, Web3 injected wallet or WalletConnect capabilities.",
+  "author": {
+    "@type": "Organization",
+    "name": "Whellcolor Dev Core Team"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
