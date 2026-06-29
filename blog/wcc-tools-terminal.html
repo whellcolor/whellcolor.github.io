@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WCC Protocol Color & Asset Terminal v2.6 - Whellcolor Cube Crypto</title>
+
+<meta name="description" content="The centralized, high-performance cryptographic color engineering matrix and production asset toolkit for the Whellcolor Cube Crypto (WCC) Network ecosystem.">
+<meta name="keywords" content="WCC Tools, Palette Generator, Contrast Checker, Gradient Maker, Image Converter, Tailwind Color Engine, Web3 Color Picker">
+<meta name="author" content="Whellcolor Dev Core Team">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+
+<style>
+:root {
+    --bg-main: #050816;
+    --bg-card: #0b0f24;
+    --bg-input: #020617;
+    --accent-cyan: #00f0ff;
+    --accent-purple: #7c3aed;
+    --text-primary: #e2e8f0;
+    --text-muted: #64748b;
+    --border-glow: rgba(0, 240, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & Framework Layout */
+.navbar {
+    background: linear-gradient(90deg, #0f172a, #020617);
+    border-bottom: 1px solid var(--border-glow);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--accent-cyan); }
+
+.app-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+@media(max-width: 991px) {
+    .app-container { grid-template-columns: 1fr; }
+}
+
+/* Sidebar Navigation */
+.tool-sidebar {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+}
+.sidebar-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+.tool-menu { list-style: none; }
+.tool-menu li { margin-bottom: 8px; }
+.tool-menu button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tool-menu button:hover, .tool-menu button.active {
+    background: rgba(124, 58, 237, 0.2);
+    color: var(--accent-cyan);
+    border-left: 3px solid var(--accent-cyan);
+}
+
+/* Dynamic Workspace Workstations */
+.workspace-wrapper {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.tool-panel { display: none; }
+.tool-panel.active { display: block; }
+
+.panel-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 15px;
+}
+.panel-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-cyan);
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+.panel-header p { color: var(--text-muted); font-size: 14px; }
+
+/* Global Interactive UI Components */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+@media(max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.wcc-btn {
+    background: linear-gradient(135deg, var(--accent-purple), #6d28d9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+.wcc-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    transform: translateY(-1px);
+}
+.wcc-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.wcc-input:focus { border-color: var(--accent-cyan); outline: none; }
+
+/* Functional Blocks Visualizers */
+.color-stripe-container { height: 200px; border-radius: 12px; overflow: hidden; display: flex; margin-bottom: 20px; }
+.color-stripe { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 15px; font-family: 'Orbitron', sans-serif; font-size: 12px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.8); transition: 0.2s; cursor: pointer; }
+.color-stripe:hover { flex: 1.3; }
+
+.contrast-preview { padding: 30px; border-radius: 12px; text-align: center; font-size: 24px; font-weight: bold; margin-top: 20px; }
+.badge { display: inline-block; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-family: 'Orbitron', sans-serif; margin-top: 10px; }
+
+/* Typography Engine elements */
+.font-output { padding: 20px; background: var(--bg-input); border-radius: 8px; font-size: 28px; color: white; margin-top: 15px; word-break: break-all; }
+
+/* Tutorial Section */
+.tutorial-box { margin-top: 40px; background: rgba(255,255,255,0.02); border-left: 4px solid var(--accent-purple); padding: 20px; border-radius: 0 8px 8px 0; }
+.tutorial-box h4 { font-family: 'Orbitron', sans-serif; color: var(--accent-cyan); margin-bottom: 10px; }
+.tutorial-box code { font-family: monospace; color: #f43f5e; background: #000; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="https://whellcolor.github.io/" class="nav-logo">WCC TERMINAL v2.6</a>
+    <div class="nav-links">
+        <a href="https://whellcolor.github.io/">Core Node</a>
+        <a href="https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html">Ecosystem</a>
+        <a href="https://whellcolor.github.io/blog/decentralized-finance-mechanics.html">DeFi Engine</a>
+    </div>
+</nav>
+
+<div class="app-container">
+    <aside class="tool-sidebar">
+        <div class="sidebar-title">Color Protocol</div>
+        <ul class="tool-menu">
+            <li><button class="active" onclick="switchTool('palette-generator')">⚡ Generate Palettes</button></li>
+            <li><button onclick="switchTool('popular-palettes')">🔥 Explore Popular</button></li>
+            <li><button onclick="switchTool('extract-image')">🖼 Extract from Image</button></li>
+            <li><button onclick="switchTool('contrast-checker')">👁 Contrast Checker</button></li>
+            <li><button onclick="switchTool('preview-design')">📱 Preview on Designs</button></li>
+            <li><button onclick="switchTool('color-picker')">🎨 Color Picker</button></li>
+            <li><button onclick="switchTool('tailwind-colors')">📐 Tailwind Engine</button></li>
+            <li><button onclick="switchTool('color-bot')">🤖 Color Bot (AI)</button></li>
+        </ul>
+        <div class="sidebar-title" style="margin-top:25px;">Gradients & Vector</div>
+        <ul class="tool-menu">
+            <li><button onclick="switchTool('browse-gradients')">🌊 Browse Gradients</button></li>
+            <li><button onclick="switchTool('create-gradient')">🔮 Create Gradient</button></li>
+        </ul>
+        <div class="sidebar-title" style="margin-top:25px;">Graphics Studio</div>
+        <ul class="tool-menu">
+            <li><button onclick="switchTool('image-converter')">⚙ Image Converter</button></li>
+            <li><button onclick="switchTool('font-generator')">🔠 Font Generator</button></li>
+        </ul>
+    </aside>
+
+    <main class="workspace-wrapper">
+        
+        <div id="palette-generator" class="tool-panel active">
+            <div class="panel-header">
+                <h2>Generate Your Palettes</h2>
+                <p>Algorithmic color harmonization vector mapping based on constant product frequency shifts.</p>
+            </div>
+            <div class="color-stripe-container" id="generator-stripes"></div>
+            <button class="wcc-btn" onclick="generateRandomPalette()">Execute Matrix Shuffle</button>
+            
+            <div class="tutorial-box">
+                <h4>Tutorial & Mathematical Alignment</h4>
+                <p>This generator computes complementary vectors across the HSL spatial matrix. Click any color strip to automatically copy its hexadecimal address into your system clipboard.</p>
+            </div>
+        </div>
+
+        <div id="popular-palettes" class="tool-panel">
+            <div class="panel-header">
+                <h2>Explore Popular Palettes</h2>
+                <p>Curated design structures used across modern Web3 frontends and 3D UI layouts.</p>
+            </div>
+            <div class="grid-2" id="popular-container"></div>
+        </div>
+
+        <div id="extract-image" class="tool-panel">
+            <div class="panel-header">
+                <h2>Extract Palette from Image</h2>
+                <p>Upload any operational graphics asset to decouple its core computational color values.</p>
+            </div>
+            <input type="file" class="wcc-input" id="image-extractor-input" accept="image/*" onchange="extractColorsFromFile(event)">
+            <div class="color-stripe-container" id="extracted-stripes" style="display:none;"></div>
+            <canvas id="extract-canvas" style="display:none;"></canvas>
+        </div>
+
+        <div id="contrast-checker" class="tool-panel">
+            <div class="panel-header">
+                <h2>Contrast Checker</h2>
+                <p>Verify compliance curves based on WCAG 2.1 analytical readability standards.</p>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label>Background Vector (Hex)</label>
+                    <input type="text" class="wcc-input" id="contrast-bg" value="#050816" oninput="calculateContrastMatrix()">
+                </div>
+                <div>
+                    <label>Foreground Text Vector (Hex)</label>
+                    <input type="text" class="wcc-input" id="contrast-fg" value="#00f0ff" oninput="calculateContrastMatrix()">
+                </div>
+            </div>
+            <div class="contrast-preview" id="contrast-preview-box">Testing WCC Accessibility Elements</div>
+            <div style="text-align:center;"><span id="contrast-ratio" class="badge">Ratio: 1.00</span></div>
+        </div>
+
+        <div id="preview-design" class="tool-panel">
+            <div class="panel-header">
+                <h2>Preview Palettes on Designs</h2>
+                <p>Simulate how system colors adapt into modular application interfaces directly.</p>
+            </div>
+            <div style="padding:25px; border-radius:12px; background:#020617; border:1px solid rgba(255,255,255,0.05);" id="mockup-card">
+                <div style="display:flex; justify-content:between; align-items:center; margin-bottom:15px;">
+                    <span style="font-weight:bold;" id="mockup-title">WCC Interface Component</span>
+                    <span style="font-size:12px; opacity:0.6;">v2.6 Live Simulation</span>
+                </div>
+                <p style="font-size:14px; margin-bottom:15px;" id="mockup-text">The operational data layout maps user metrics directly onto decentralized application protocols instantly.</p>
+                <button class="wcc-btn" id="mockup-btn">Action Execution Trigger</button>
+            </div>
+            <button class="wcc-btn" style="margin-top:20px;" onclick="cycleMockupColors()">Cycle Mockup Matrix</button>
+        </div>
+
+        <div id="color-picker" class="tool-panel">
+            <div class="panel-header">
+                <h2>Color Picker Engine</h2>
+                <p>Native system interrogation engine supporting custom canvas selection layers.</p>
+            </div>
+            <input type="color" class="wcc-input" style="height:60px; padding:2px; cursor:pointer;" id="native-picker" oninput="syncPickerOutput(this.value)">
+            <input type="text" class="wcc-input" id="picker-output" readonly>
+        </div>
+
+        <div id="tailwind-colors" class="tool-panel">
+            <div class="panel-header">
+                <h2>Tailwind Color Matrix Parser</h2>
+                <p>Instant reference mappings matching atomic utility css configuration matrices.</p>
+            </div>
+            <div class="grid-4" id="tailwind-grid"></div>
+        </div>
+
+        <div id="color-bot" class="tool-panel">
+            <div class="panel-header">
+                <h2>Color Bot Analytics</h2>
+                <p>Algorithmic automated text prompt processing model translating inputs into color arrays.</p>
+            </div>
+            <input type="text" class="wcc-input" id="bot-prompt" placeholder="Type prompt e.g., 'Cyberpunk Neon Genesis Matrix' or 'Deep Space Ocean'">
+            <button class="wcc-btn" onclick="executeAIBotPalette()">Parse Theme Vector</button>
+            <div class="color-stripe-container" id="bot-stripes" style="margin-top:20px;"></div>
+        </div>
+
+        <div id="browse-gradients" class="tool-panel">
+            <div class="panel-header">
+                <h2>Browse Functional Gradients</h2>
+                <p>Pre-calculated CSS injection strings matched with standard crypto presentation layers.</p>
+            </div>
+            <div class="grid-2" id="gradients-shelf"></div>
+        </div>
+
+        <div id="create-gradient" class="tool-panel">
+            <div class="panel-header">
+                <h2>Create Custom Gradient Strings</h2>
+                <p>Interactive coordinate array tracking linear interpolation spaces seamlessly.</p>
+            </div>
+            <div class="grid-2">
+                <input type="color" class="wcc-input" id="grad-color-1" value="#7c3aed" oninput="compileGradientWorkspace()">
+                <input type="color" class="wcc-input" id="grad-color-2" value="#00f0ff" oninput="compileGradientWorkspace()">
+            </div>
+            <div id="gradient-canvas-preview" style="height:15px; border-radius:12px; height:180px; margin:20px 0;"></div>
+            <input type="text" class="wcc-input" id="gradient-css-string" readonly>
+        </div>
+
+        <div id="image-converter" class="tool-panel">
+            <div class="panel-header">
+                <h2>Image Format Web Converter</h2>
+                <p>Transform operational imaging files into modern light configurations client-side instantly.</p>
+            </div>
+            <input type="file" class="wcc-input" id="converter-file" accept="image/*">
+            <select class="wcc-input" id="converter-format">
+                <option value="image/webp">Format Configuration: WEBP (High Density Compression)</option>
+                <option value="image/jpeg">Format Configuration: JPEG (Standard Web Layout)</option>
+                <option value="image/png">Format Configuration: PNG (Lossless Alpha Layer)</option>
+            </select>
+            <button class="wcc-btn" onclick="executeImageTransformation()">Convert Asset Layer</button>
+            <div style="margin-top:15px;" id="conversion-link-box"></div>
+        </div>
+
+        <div id="font-generator" class="tool-panel">
+            <div class="panel-header">
+                <h2>Font Transform Generator Matrix</h2>
+                <p>Convert alphabetic text structures into algorithmic mathematical symbols.</p>
+            </div>
+            <input type="text" class="wcc-input" id="font-input-text" value="WCC Protocol Active Initialization" oninput="transformTypographyFonts()">
+            <div class="font-output" id="font-output-1"></div>
+            <div class="font-output" id="font-output-2" style="font-family:'Orbitron';"></div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+// Tab Switching Router Matrix
+function switchTool(toolId) {
+    document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tool-menu button').forEach(b => b.classList.remove('active'));
+    
+    document.getElementById(toolId).classList.add('active');
+    event.currentTarget.classList.add('active');
+    
+    if(toolId === 'palette-generator') generateRandomPalette();
+    if(toolId === 'popular-palettes') loadPopularPalettes();
+    if(toolId === 'tailwind-colors') parseTailwindGrid();
+    if(toolId === 'browse-gradients') renderGradientsShelf();
+}
+
+// 1. Core Mathematical Palette Engine
+function generateRandomPalette() {
+    const container = document.getElementById('generator-stripes');
+    container.innerHTML = '';
+    const baseHue = Math.floor(Math.random() * 360);
+    for(let i=0; i<5; i++) {
+        const hue = (baseHue + (i * 36)) % 360;
+        const saturation = 75 + Math.floor(Math.random() * 20);
+        const lightness = 40 + Math.floor(Math.random() * 30);
+        const hex = hsvToHex(hue, saturation, lightness);
+        
+        const stripe = document.createElement('div');
+        stripe.className = 'color-stripe';
+        stripe.style.backgroundColor = hex;
+        stripe.innerHTML = `<span>${hex}</span>`;
+        stripe.onclick = () => copyHexData(hex);
+        container.appendChild(stripe);
+    }
+}
+
+function hsvToHex(h, s, l) {
+    l /= 100; const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function copyHexData(text) {
+    navigator.clipboard.writeText(text);
+    alert(`Copied Matrix Value: ${text}`);
+}
+
+// 2. Popular Palettes Storage Array
+function loadPopularPalettes() {
+    const data = [
+        ['#050816', '#00f0ff', '#7c3aed', '#10b981', '#f43f5e'],
+        ['#1e1e2f', '#ff007f', '#7000ff', '#00ffff', '#ffffff'],
+        ['#0f172a', '#38bdf8', '#818cf8', '#34d399', '#f472b6']
+    ];
+    const box = document.getElementById('popular-container');
+    box.innerHTML = '';
+    data.forEach((p, idx) => {
+        const item = document.createElement('div');
+        item.style.background = '#020617'; item.style.padding = '15px'; item.style.borderRadius = '8px';
+        const inner = document.createElement('div'); inner.className = 'color-stripe-container'; inner.style.height = '80px';
+        p.forEach(c => {
+            const el = document.createElement('div'); el.className = 'color-stripe'; el.style.backgroundColor = c;
+            el.onclick = () => copyHexData(c); inner.appendChild(el);
+        });
+        item.appendChild(inner); box.appendChild(item);
+    });
+}
+
+// 3. Automated Palette Extraction Canvas Processing
+function extractColorsFromFile(e) {
+    const file = e.target.files[0]; if(!file) return;
+    const img = new Image(); img.src = URL.createObjectURL(file);
+    img.onload = () => {
+        const canvas = document.getElementById('extract-canvas'); const ctx = canvas.getContext('2d');
+        canvas.width = 100; canvas.height = 100; ctx.drawImage(img, 0, 0, 100, 100);
+        const data = ctx.getImageData(0,0,100,100).data;
+        const sampleColors = [];
+        for(let i=0; i<5; i++) {
+            const idx = Math.floor(Math.random() * 10000) * 4;
+            const r = data[idx], g = data[idx+1], b = data[idx+2];
+            sampleColors.push('#' + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join(''));
+        }
+        const container = document.getElementById('extracted-stripes'); container.innerHTML = '';
+        container.style.display = 'flex';
+        sampleColors.forEach(c => {
+            const el = document.createElement('div'); el.className = 'color-stripe'; el.style.backgroundColor = c;
+            el.innerHTML = `<span>${c}</span>`; el.onclick = () => copyHexData(c); container.appendChild(el);
+        });
+    }
+}
+
+// 4. Accessibility WCAG 2.1 Contrast Invariant Engine
+function calculateContrastMatrix() {
+    const bg = document.getElementById('contrast-bg').value;
+    const fg = document.getElementById('contrast-fg').value;
+    const preview = document.getElementById('contrast-preview-box');
+    const badge = document.getElementById('contrast-ratio');
+    
+    try {
+        preview.style.backgroundColor = bg; preview.style.color = fg;
+        const lum1 = getRelativeLuminance(bg); const lum2 = getRelativeLuminance(fg);
+        const ratio = (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+        badge.innerText = `Ratio: ${ratio.toFixed(2)} : 1`;
+        badge.style.background = ratio >= 4.5 ? '#10b981' : '#f43f5e';
+    } catch(err) {}
+}
+
+function getRelativeLuminance(hex) {
+    const rgb = hex.replace('#','').match(/.{1,2}/g).map(x => parseInt(x, 16) / 255);
+    const a = rgb.map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+
+// 5. Mockup Style Interactivity Mutation Matrix
+function cycleMockupColors() {
+    const colors = ['#7c3aed', '#00f0ff', '#10b981', '#f43f5e', '#f59e0b'];
+    const r1 = colors[Math.floor(Math.random()*colors.length)];
+    const r2 = colors[Math.floor(Math.random()*colors.length)];
+    document.getElementById('mockup-card').style.borderColor = r1;
+    document.getElementById('mockup-title').style.color = r1;
+    document.getElementById('mockup-btn').style.background = r2;
+}
+
+// 6. Native Picker Synchronization Sync
+function syncPickerOutput(v) { document.getElementById('picker-output').value = v; }
+
+// 7. Tailwind Utility CSS Generator Array Layout
+function parseTailwindGrid() {
+    const colors = { slate: '#64748b', red: '#ef4444', amber: '#f59e0b', emerald: '#10b981', sky: '#0ea5e9', violet: '#8b5cf6' };
+    const grid = document.getElementById('tailwind-grid'); grid.innerHTML = '';
+    for(let k in colors) {
+        const item = document.createElement('div'); item.style.background = '#020617'; item.style.padding = '10px'; item.style.borderRadius = '6px';
+        item.innerHTML = `<div style="height:40px; background:${colors[k]}; border-radius:4px; margin-bottom:5px;"></div><span style="font-size:12px;">bg-${k}-500</span>`;
+        item.onclick = () => copyHexData(colors[k]); grid.appendChild(item);
+    }
+}
+
+// 8. Algorithmic Pseudo-AI Prompt Theme Vector Parser
+function executeAIBotPalette() {
+    const prompt = document.getElementById('bot-prompt').value.toLowerCase();
+    const container = document.getElementById('bot-stripes'); container.innerHTML = '';
+    let seedColors = ['#00f0ff', '#7c3aed', '#020617', '#ffffff', '#64748b'];
+    if(prompt.includes('cyberpunk') || prompt.includes('neon')) seedColors = ['#ff007f', '#00ffff', '#ffff00', '#000000', '#7000ff'];
+    if(prompt.includes('ocean') || prompt.includes('space')) seedColors = ['#0f172a', '#1e3a8a', '#3b82f6', '#60a5fa', '#93c5fd'];
+    
+    seedColors.forEach(c => {
+        const el = document.createElement('div'); el.className = 'color-stripe'; el.style.backgroundColor = c;
+        el.innerHTML = `<span>${c}</span>`; el.onclick = () => copyHexData(c); container.appendChild(el);
+    });
+}
+
+// 9. Gradient CSS Construction Mapping Elements
+function renderGradientsShelf() {
+    const shelf = document.getElementById('gradients-shelf'); shelf.innerHTML = '';
+    const items = ['linear-gradient(90deg, #7c3aed, #00f0ff)', 'linear-gradient(90deg, #f43f5e, #f59e0b)', 'linear-gradient(90deg, #111827, #10b981)'];
+    items.forEach(g => {
+        const wrapper = document.createElement('div'); wrapper.style.padding = '10px'; wrapper.style.background = '#020617'; wrapper.style.borderRadius = '8px';
+        const display = document.createElement('div'); display.style.height = '60px'; display.style.background = g; display.style.borderRadius = '4px';
+        wrapper.appendChild(display); wrapper.onclick = () => copyHexData(g); shelf.appendChild(wrapper);
+    });
+}
+
+// 10. Manual Custom Gradient Real-Time String Calculation Engine
+function compileGradientWorkspace() {
+    const c1 = document.getElementById('grad-color-1').value; const c2 = document.getElementById('grad-color-2').value;
+    const css = `linear-gradient(135deg, ${c1}, ${c2})`;
+    document.getElementById('gradient-canvas-preview').style.background = css;
+    document.getElementById('gradient-css-string').value = css;
+}
+
+// 11. Client-Side Non-Custodial Image Web Converter Core Routine
+function executeImageTransformation() {
+    const fInput = document.getElementById('converter-file').files[0]; if(!fInput) return alert('No image binary file attached.');
+    const format = document.getElementById('converter-format').value;
+    const img = new Image(); img.src = URL.createObjectURL(fInput);
+    img.onload = () => {
+        const c = document.createElement('canvas'); const ctx = c.getContext('2d');
+        c.width = img.width; c.height = img.height; ctx.drawImage(img,0,0);
+        c.toBlob((blob) => {
+            const box = document.getElementById('conversion-link-box'); box.innerHTML = '';
+            const link = document.createElement('a'); link.href = URL.createObjectURL(blob);
+            link.download = `wcc-converted-asset.${format.split('/')[1]}`; link.className = 'wcc-btn'; link.innerText = 'Download Production Web Asset';
+            box.appendChild(link);
+        }, format, 0.85);
+    }
+}
+
+// 12. Alphabetic Text Transformation Engine Blueprint
+function transformTypographyFonts() {
+    const src = document.getElementById('font-input-text').value;
+    const leetMap = { 'a':'4', 'e':'3', 'i':'1', 'o':'0', 's':'5', 't':'7', 'w':'vv' };
+    const processed = src.toLowerCase().split('').map(char => leetMap[char] || char).join('').toUpperCase();
+    document.getElementById('font-output-1').innerText = processed;
+    document.getElementById('font-output-2').innerText = src;
+}
+
+// Initial Boot Configuration Sequences
+window.onload = () => {
+    generateRandomPalette();
+    calculateContrastMatrix();
+    compileGradientWorkspace();
+    transformTypographyFonts();
+};
+</script>
+</body>
+</html>
