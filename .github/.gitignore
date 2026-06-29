@@ -1,0 +1,8 @@
+# 1. Tambahkan semua file baru yang telah Anda buat (.c, .py, .ts, .php, .R)
+git add wcc_profile.c wcc_profile.py wcc_profile.ts wcc_profile.php wcc_profile.R
+
+# 2. Lakukan commit simpanan
+git commit -m "Add multi-language configurations (C, Python, TS, PHP, R)"
+
+# 3. Dorong perubahan ke server GitHub
+git push origin main
