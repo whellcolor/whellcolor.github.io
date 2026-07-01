@@ -8,10 +8,10 @@
     },
     "app_info": {
         "name": "Whellcolor Cube Crypto (WCC)",
-        "url": "whellcolor.github.io"
+        "url": "https://whellcolor.github.io/"
     },
-      "monetization_configs": {
-        "ads_txt": "http://whellcolor.github.ioads.txt",
+    "monetization_configs": {
+        "ads_txt": "https://github.io",
         "app_ads_txt": "https://whellcolor.github.io/app-ads.txt"
     },
     "site_pages": {
