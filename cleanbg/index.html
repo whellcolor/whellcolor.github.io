@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC CleanBG - Premium AI Background Remover</title>
+    <meta name="description" content="Remove image backgrounds instantly with high precision using our client-side AI network. Free, fast, and secure.">
+       <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+  
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- WASM Client-Side Background Removal Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/bundle.js"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+            background-attachment: fixed;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .transparent-bg {
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .dark .transparent-bg {
+            background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), linear-gradient(-45deg, #1e293b 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1e293b 75%), linear-gradient(-45deg, transparent 75%, #1e293b 75%);
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full glassmorphism border-b border-slate-800 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-indigo-500 flex items-center justify-center text-white shadow-lg">
+                    <i class="fas fa-wand-magic-sparkles text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-white">WCC<span class="text-pink-500 font-medium">CleanBG</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#workbench" class="hover:text-pink-500 transition">AI Remover</a>
+                <a href="#article" class="hover:text-pink-500 transition">How it Works</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Workbench Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20" id="workbench">
+        <div class="text-center space-y-4 mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                Remove Image Backgrounds <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-400">Instantly with Neural AI.</span>
+            </h1>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+                No installations, no server uploads, and 100% free. Your privacy is secured as all image manipulations occur directly inside your browser.
+            </p>
+        </div>
+
+        <!-- Workbench Grid Control -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Side: Control & Upload Panel -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="glassmorphism p-6 rounded-3xl space-y-6 shadow-xl">
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fas fa-sliders text-pink-500"></i> Source Input Selection
+                    </h2>
+
+                    <!-- File Dropzone Input -->
+                    <div id="dropzone" class="border-2 border-dashed border-slate-700 hover:border-pink-500/50 rounded-2xl p-8 text-center cursor-pointer transition bg-slate-950/40 group relative overflow-hidden">
+                        <input type="file" id="fileInput" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
+                        <div class="space-y-3 pointer-events-none">
+                            <i class="fas fa-cloud-arrow-up text-4xl text-slate-500 group-hover:text-pink-400 transition animate-bounce"></i>
+                            <p class="text-sm font-medium text-slate-300">Drag & drop your image here, or <span class="text-pink-500">browse</span></p>
+                            <p class="text-xs text-slate-500">Supports PNG, JPG, WEBP up to 10MB</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center my-2 text-xs text-slate-500 uppercase tracking-wider font-bold before:flex-1 before:border-t before:border-slate-800 before:mr-3 after:flex-1 after:border-t after:border-slate-800 after:ml-3">Or</div>
+
+                    <!-- URL Input Source -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Fetch Image via URL</label>
+                        <div class="flex gap-2">
+                            <input type="url" id="urlInput" placeholder="https://example.com/image.jpg" class="flex-1 px-4 py-3 rounded-xl bg-slate-900/60 border border-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm text-slate-200">
+                            <button id="btnFetchUrl" class="px-4 bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs rounded-xl transition">Fetch</button>
+                        </div>
+                    </div>
+
+                    <!-- Generate Action Button -->
+                    <button id="btnGenerate" disabled class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 to-indigo-600 hover:from-pink-500 hover:to-indigo-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed font-bold text-sm tracking-wide text-white transition shadow-lg shadow-pink-500/10 flex items-center justify-center gap-2">
+                        <i class="fas fa-wand-magic-sparkles"></i> Remove Background
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side: Interactive Preview Arena -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="glassmorphism p-6 rounded-3xl space-y-4 shadow-xl">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-eye text-indigo-400"></i> Interactive Result Arena
+                        </h2>
+                        <!-- Format Downloader Selector -->
+                        <div class="flex items-center gap-2 bg-slate-950/80 p-1.5 rounded-xl border border-slate-800 text-xs">
+                            <span class="text-slate-400 px-2 font-medium">Format:</span>
+                            <select id="downloadFormat" class="bg-slate-900 text-white font-bold px-2 py-1 rounded-md focus:outline-none border border-slate-700 cursor-pointer">
+                                <option value="image/png">PNG (Transparent)</option>
+                                <option value="image/jpeg">JPG (White BG)</option>
+                                <option value="image/webp">WEBP (Optimized)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Visual Grid Output Compartment -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[320px]">
+                        <!-- Input Preview -->
+                        <div class="relative bg-slate-950/50 border border-slate-800 rounded-2xl flex flex-col items-center justify-center overflow-hidden">
+                            <span class="absolute top-2 left-2 bg-slate-900/80 text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider text-slate-400 z-10">Original</span>
+                            <img id="imgOriginal" class="max-w-full max-h-full object-contain hidden" src="" alt="Original View">
+                            <div id="originalPlaceholder" class="text-slate-600 text-sm flex flex-col items-center gap-2 p-4 text-center">
+                                <i class="far fa-image text-3xl"></i>
+                                <span>No input asset loaded</span>
+                            </div>
+                        </div>
+
+                        <!-- Processed Output Preview -->
+                        <div class="relative transparent-bg border border-slate-800 rounded-2xl flex flex-col items-center justify-center overflow-hidden">
+                            <span class="absolute top-2 left-2 bg-slate-900/80 text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider text-pink-400 z-10">Result Matte</span>
+                            
+                            <!-- Processing Loader state overlay -->
+                            <div id="loaderState" class="absolute inset-0 bg-slate-950/90 hidden flex-col items-center justify-center gap-3 z-20 text-center p-4">
+                                <div class="w-10 h-10 border-4 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
+                                <p class="text-xs font-bold text-pink-400 uppercase tracking-widest animate-pulse">AI Model Processing...</p>
+                                <p class="text-[11px] text-slate-500 max-w-[200px]">Downloading neural data model weights inside browser memory (~20MB initially)</p>
+                            </div>
+
+                            <img id="imgResult" class="max-w-full max-h-full object-contain hidden z-10" src="" alt="Result View">
+                            
+                            <div id="resultPlaceholder" class="text-slate-600 text-sm flex flex-col items-center gap-2 p-4 text-center">
+                                <i class="fas fa-layer-group text-3xl"></i>
+                                <span>Matte texture asset not generated</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Trigger Area -->
+                    <div class="flex items-center justify-end gap-4 border-t border-slate-800/60 pt-4">
+                        <button id="btnDownload" disabled class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-xs font-bold uppercase tracking-wider text-white shadow-lg transition flex items-center gap-2">
+                            <i class="fas fa-circle-down"></i> Download Asset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Deep Technical Overview Article -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="article">
+        <article class="glassmorphism rounded-3xl p-8 sm:p-12 shadow-xl prose prose-invert max-w-none space-y-6">
+            <header class="border-b border-slate-800 pb-6 space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">The Engineering Behind Automated Matte Generation and Background Removal Matrix</h2>
+                <div class="text-xs text-slate-500 flex items-center gap-4">
+                    <span><i class="far fa-calendar-alt"></i> Updated July 2026</span>
+                    <span><i class="fas fa-brain"></i> Client-Side WASM Model Architecture</span>
+                </div>
+            </header>
+
+            <div class="text-sm text-slate-400 leading-relaxed space-y-4 text-justify">
+                <h3 class="text-md font-bold text-white uppercase tracking-wider mt-6">1. Semantic Segmentation and Salient Object Detection</h3>
+                <p>
+                    Modern background removal utility systems leverage state-of-the-art Convolutional Neural Networks (CNNs) and transformer models specialized in semantic segmentation layout schemas. The primary challenge is mapping pixel structural matrices to resolve spatial orientation variables. The system identifies structural borders via **Salient Object Detection (SOD)** architectures, classifying localized groups of vectors into definitive layer maps (foreground masks versus non-essential ambient backgrounds).
+                </p>
+                <p>
+                    Once the target asset payload is received, the AI system parses structural textures through high-dimensional feature channels. This allows for clear parsing of complex outlines, such as human hair profiles, translucent synthetic fibers, or architectural geometries, without introducing spatial boundary degradation or aliasing artifacts.
+                </p>
+
+                <h3 class="text-md font-bold text-white uppercase tracking-wider mt-6">2. WebAssembly (WASM) & Zero-Server Data Pipeline</h3>
+                <p>
+                    Unlike traditional legacy rendering workflows that require processing payloads on external servers via heavy PHP scripts, this open-architecture module utilizes compiled **WebAssembly (WASM)**. By using WebAssembly compilation targets, machine learning operations execute directly within your browser's local sandbox memory space.
+                </p>
+                <ul class="list-disc pl-5 space-y-2 text-xs">
+                    <li><strong>Enhanced Privacy Boundary:</strong> Since your raw graphic files are never transmitted to third-party database nodes, information leak vulnerabilities are structurally eliminated.</li>
+                    <li><strong>Reduced Latency:</strong> Eliminating internet packet transport protocols ensures processing speeds scale entirely with the computing capability of your local hardware framework.</li>
+                    <li><strong>Cross-Platform Scalability:</strong> The underlying WASM multi-threading layer handles heavy image processing tasks natively across mobile viewports and desktop environments.</li>
+                </ul>
+            </div>
+        </article>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glassmorphism border-t border-slate-900 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <div>&copy; 2026 WCC CleanBG. Distributed Client Neural Network Framework.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:underline">WASM License</a>
+                <a href="#" class="hover:underline">Privacy Architecture</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Interactive App Logic Script -->
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const urlInput = document.getElementById('urlInput');
+        const btnFetchUrl = document.getElementById('btnFetchUrl');
+        const btnGenerate = document.getElementById('btnGenerate');
+        const btnDownload = document.getElementById('btnDownload');
+        const downloadFormat = document.getElementById('downloadFormat');
+        
+        const imgOriginal = document.getElementById('imgOriginal');
+        const imgResult = document.getElementById('imgResult');
+        const originalPlaceholder = document.getElementById('originalPlaceholder');
+        const resultPlaceholder = document.getElementById('resultPlaceholder');
+        const loaderState = document.getElementById('loaderState');
+        const dropzone = document.getElementById('dropzone');
+
+        let currentActiveBlobUrl = null;
+        let originalSourceType = null; // Menyimpan representasi format asal berkas
+
+        // Event handler deteksi unggahan file lokal
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processAndDisplayOriginal(file);
+            }
+        });
+
+        // Event handler penarikan gambar dari URL luar
+        btnFetchUrl.addEventListener('click', async function() {
+            const targetUrl = urlInput.value.trim();
+            if (!targetUrl) {
+                alert("Please declare a valid operational URL string first.");
+                return;
+            }
+            
+            try {
+                btnFetchUrl.innerText = "Fetching...";
+                // Amankan fetch via public proxy jika CORS memblokir request langsung
+                const proxyUrl = `https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=${encodeURIComponent(targetUrl)}`;
+                
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error("Network failed to pull resources.");
+                
+                const blob = await response.blob();
+                processAndDisplayOriginal(blob);
+            } catch (err) {
+                alert("CORS restriction block or Invalid Resource URL. Try uploading a local file asset instead.");
+                console.error(err);
+            } finally {
+                btnFetchUrl.innerText = "Fetch";
+            }
+        });
+
+        // Tampilkan gambar asli ke sisi layar kiri workbench
+        function processAndDisplayOriginal(sourceBlobOrFile) {
+            if(currentActiveBlobUrl) {
+                URL.revokeObjectURL(currentActiveBlobUrl);
+            }
+            currentActiveBlobUrl = URL.createObjectURL(sourceBlobOrFile);
+            imgOriginal.src = currentActiveBlobUrl;
+            
+            imgOriginal.classList.remove('hidden');
+            originalPlaceholder.classList.add('hidden');
+            
+            // Aktifkan tombol Generate
+            btnGenerate.removeAttribute('disabled');
+            
+            // Reset tampilan hasil sebelumnya jika ada berkas baru masuk
+            imgResult.classList.add('hidden');
+            resultPlaceholder.classList.remove('hidden');
+            btnDownload.setAttribute('disabled', 'true');
+        }
+
+        // Eksekusi Neural Core AI Background Removal Sisi Klien
+        btnGenerate.addEventListener('click', async function() {
+            if(!currentActiveBlobUrl) return;
+
+            loaderState.classList.remove('hidden');
+            btnGenerate.setAttribute('disabled', 'true');
+
+            try {
+                // Menjalankan fungsi prapemrosesan dari modul imgly WASM Engine
+                const config = {
+                    publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/", // Memastikan file modul .wasm terisi penuh
+                    progress: (instance, progress) => {
+                        console.log(`Neural Compute Frame: ${Math.round(progress * 100)}%`);
+                    }
+                };
+
+                const outputBlob = await imglyBackgroundRemoval(currentActiveBlobUrl, config);
+                
+                // Konversi hasil blob keluaran AI menuju DOM object URL gambar
+                const resultUrl = URL.createObjectURL(outputBlob);
+                imgResult.src = resultUrl;
+                
+                imgResult.classList.remove('hidden');
+                resultPlaceholder.classList.add('hidden');
+                btnDownload.removeAttribute('disabled');
+
+            } catch (error) {
+                alert("Processing failed. Make sure your browser supports WebAssembly threads allocation.");
+                console.error("Neural processing exception:", error);
+            } finally {
+                loaderState.classList.add('hidden');
+                btnGenerate.removeAttribute('disabled');
+            }
+        });
+
+        // Prosedur Ekspor Unduhan Berdasarkan Pilihan Format (PNG/JPG/WEBP)
+        btnDownload.addEventListener('click', function() {
+            if(!imgResult.src) return;
+
+            const targetFormat = downloadFormat.value; // MIME type selector
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = imgResult.naturalWidth;
+            canvas.height = imgResult.naturalHeight;
+
+            // Jika pengguna memilih format JPEG, buat warna latar belakang solid putih (karena JPEG tidak mendukung transparansi)
+            if(targetFormat === 'image/jpeg') {
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Gambar ulang elemen biner ke canvas penampung
+            ctx.drawImage(imgResult, 0, 0);
+
+            // Ekspor data menuju berkas unduhan virtual anchor tautan
+            const finalImageDataUrl = canvas.toDataURL(targetFormat, 0.92);
+            const downloadLink = document.createElement('a');
+            
+            let fileExtension = 'png';
+            if(targetFormat === 'image/jpeg') fileExtension = 'jpg';
+            if(targetFormat === 'image/webp') fileExtension = 'webp';
+
+            downloadLink.download = `WCC_CleanBG_Output.${fileExtension}`;
+            downloadLink.href = finalImageDataUrl;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+    </script>
+</body>
+</html>
