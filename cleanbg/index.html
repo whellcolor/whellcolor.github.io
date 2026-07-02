@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WCC CleanBG - Premium AI Background Remover</title>
     <meta name="description" content="Remove image backgrounds instantly with high precision using our client-side AI network. Free, fast, and secure.">
-       <meta name="google-adsense-account" content="ca-pub-7182145371991939">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
-<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-<script src="https://whellcolor.github.io/js/deploy.js"></script>
-<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
-<script src="https://whellcolor.github.io/js/fetch.js"></script>
-<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
-<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
   
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -164,8 +164,8 @@
                             <!-- Processing Loader state overlay -->
                             <div id="loaderState" class="absolute inset-0 bg-slate-950/90 hidden flex-col items-center justify-center gap-3 z-20 text-center p-4">
                                 <div class="w-10 h-10 border-4 border-pink-500 border-t-transparent rounded-full animate-spin"></div>
-                                <p class="text-xs font-bold text-pink-400 uppercase tracking-widest animate-pulse">AI Model Processing...</p>
-                                <p class="text-[11px] text-slate-500 max-w-[200px]">Downloading neural data model weights inside browser memory (~20MB initially)</p>
+                                <p id="loaderText" class="text-xs font-bold text-pink-400 uppercase tracking-widest animate-pulse">AI Model Processing...</p>
+                                <p class="text-[11px] text-slate-500 max-w-[200px]">Downloading neural data model weights inside browser memory (~25MB initially)</p>
                             </div>
 
                             <img id="imgResult" class="max-w-full max-h-full object-contain hidden z-10" src="" alt="Result View">
@@ -247,10 +247,11 @@
         const originalPlaceholder = document.getElementById('originalPlaceholder');
         const resultPlaceholder = document.getElementById('resultPlaceholder');
         const loaderState = document.getElementById('loaderState');
+        const loaderText = document.getElementById('loaderText');
         const dropzone = document.getElementById('dropzone');
 
         let currentActiveBlobUrl = null;
-        let originalSourceType = null; // Menyimpan representasi format asal berkas
+        let processedBlob = null; // Menyimpan hasil pemrosesan AI dalam bentuk Blob asli
 
         // Event handler deteksi unggahan file lokal
         fileInput.addEventListener('change', function(e) {
@@ -304,6 +305,7 @@
             imgResult.classList.add('hidden');
             resultPlaceholder.classList.remove('hidden');
             btnDownload.setAttribute('disabled', 'true');
+            processedBlob = null;
         }
 
         // Eksekusi Neural Core AI Background Removal Sisi Klien
@@ -312,20 +314,22 @@
 
             loaderState.classList.remove('hidden');
             btnGenerate.setAttribute('disabled', 'true');
+            loaderText.innerText = "AI Model Processing (0%)...";
 
             try {
-                // Menjalankan fungsi prapemrosesan dari modul imgly WASM Engine
+                // Menjalankan fungsi prapemrosesan dari modul imgly WASM Engine (Sesuai dokumentasi objek global)
                 const config = {
-                    publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/", // Memastikan file modul .wasm terisi penuh
+                    publicPath: "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/",
                     progress: (instance, progress) => {
-                        console.log(`Neural Compute Frame: ${Math.round(progress * 100)}%`);
+                        loaderText.innerText = `AI Model Processing (${Math.round(progress * 100)}%)...`;
                     }
                 };
 
-                const outputBlob = await imglyBackgroundRemoval(currentActiveBlobUrl, config);
+                // Perbaikan fatal: imglyBackgroundRemoval diubah ke imgly.backgroundRemoval
+                processedBlob = await imgly.backgroundRemoval(currentActiveBlobUrl, config);
                 
                 // Konversi hasil blob keluaran AI menuju DOM object URL gambar
-                const resultUrl = URL.createObjectURL(outputBlob);
+                const resultUrl = URL.createObjectURL(processedBlob);
                 imgResult.src = resultUrl;
                 
                 imgResult.classList.remove('hidden');
@@ -343,38 +347,50 @@
 
         // Prosedur Ekspor Unduhan Berdasarkan Pilihan Format (PNG/JPG/WEBP)
         btnDownload.addEventListener('click', function() {
-            if(!imgResult.src) return;
+            if(!processedBlob) return;
 
             const targetFormat = downloadFormat.value; // MIME type selector
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
             
-            canvas.width = imgResult.naturalWidth;
-            canvas.height = imgResult.naturalHeight;
-
-            // Jika pengguna memilih format JPEG, buat warna latar belakang solid putih (karena JPEG tidak mendukung transparansi)
-            if(targetFormat === 'image/jpeg') {
-                ctx.fillStyle = '#FFFFFF';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Jika memilih PNG asli transparan, tidak perlu melewati Canvas render ulang
+            if (targetFormat === 'image/png') {
+                triggerDownload(imgResult.src, 'png');
+                return;
             }
 
-            // Gambar ulang elemen biner ke canvas penampung
-            ctx.drawImage(imgResult, 0, 0);
+            // Jika memilih JPEG/WEBP, buat Canvas dan tunggu gambar selesai dimuat (onload)
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const tempImg = new Image();
 
-            // Ekspor data menuju berkas unduhan virtual anchor tautan
-            const finalImageDataUrl = canvas.toDataURL(targetFormat, 0.92);
+            tempImg.onload = function() {
+                canvas.width = tempImg.naturalWidth;
+                canvas.height = tempImg.naturalHeight;
+
+                // Jika JPEG, beri warna latar belakang putih polos
+                if(targetFormat === 'image/jpeg') {
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                ctx.drawImage(tempImg, 0, 0);
+
+                // Ekspor data url hasil penyesuaian format canvas
+                const finalImageDataUrl = canvas.toDataURL(targetFormat, 0.92);
+                let fileExtension = targetFormat === 'image/jpeg' ? 'jpg' : 'webp';
+                triggerDownload(finalImageDataUrl, fileExtension);
+            };
+
+            tempImg.src = imgResult.src;
+        });
+
+        function triggerDownload(url, extension) {
             const downloadLink = document.createElement('a');
-            
-            let fileExtension = 'png';
-            if(targetFormat === 'image/jpeg') fileExtension = 'jpg';
-            if(targetFormat === 'image/webp') fileExtension = 'webp';
-
-            downloadLink.download = `WCC_CleanBG_Output.${fileExtension}`;
-            downloadLink.href = finalImageDataUrl;
+            downloadLink.download = `WCC_CleanBG_Output.${extension}`;
+            downloadLink.href = url;
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
-        });
+        }
     </script>
 </body>
 </html>
