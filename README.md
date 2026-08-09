@@ -2,6 +2,8 @@
 
 > A Web3-powered crypto ecosystem built on Ethereum with wallet connect, staking, and on-chain utilities.
 
+![WCC Logo](wcc.png)
+
 <p align="center">
   <img src="https://img.shields.io/badge/STATUS-LIVE%20FROM%20START-00ff88?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/BUILD-GITHUB%20PAGES-blue?style=for-the-badge"/>
