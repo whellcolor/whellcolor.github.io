@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilar Artikel & Manajemen Todo - Whellcolor</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+   <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+ 
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GK8ZT3L7EC');
+</script>
+
+<style>
+        /* Custom styling untuk smooth reading & styling tambahan */
+        .article-body h2 { font-size: 1.75rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #1e293b; }
+        .article-body h3 { font-size: 1.35rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #334155; }
+        .article-body p { margin-bottom: 1.25rem; line-height: 1.8; color: #475569; }
+        .article-body ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #475569; }
+        .article-body li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col justify-between">
+
+    <!-- HEADER & NAVIGASI UTAMA -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="https://whellcolor.github.io/" class="flex items-center gap-3">
+                <img src="https://whellcolor.github.io/wcc.png" alt="Logo Whellcolor" class="w-10 h-10 rounded-full object-cover border">
+                <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Whellcolor Hub</span>
+            </a>
+            <nav class="flex flex-wrap gap-3 text-sm font-medium text-slate-600">
+                <a href="https://whellcolor.github.io/" class="hover:text-indigo-600 transition">Home</a>
+                <a href="https://whellcolor.github.io/blog/" class="hover:text-indigo-600 transition">Blog</a>
+                <a href="https://whellcolor.github.io/shop/" class="hover:text-indigo-600 transition">Shop</a>
+                <a href="https://whellcolor.github.io/fastsong" class="hover:text-indigo-600 transition">FastSong</a>
+                <a href="https://whellcolor.github.io/neumorphism" class="hover:text-indigo-600 transition">Neumorphism</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA -->
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full space-y-12">
+
+        <!-- IMAGE SLIDER -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden p-4 relative">
+            <h2 class="text-lg font-semibold text-slate-700 mb-3 px-2">Featured Image Slider</h2>
+            <div class="relative w-full h-64 sm:h-96 overflow-hidden rounded-xl bg-slate-900">
+                <!-- Slider Items -->
+                <div class="slider-track flex transition-transform duration-500 ease-out h-full">
+                    <div class="min-w-full h-full flex items-center justify-center relative">
+                        <img src="https://whellcolor.github.io/wcc.png" class="w-full h-full object-cover opacity-80" alt="Slider 1">
+                        <div class="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg text-sm">Eksplorasi Warna dan Desain Kreatif</div>
+                    </div>
+                    <div class="min-w-full h-full flex items-center justify-center relative">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200" class="w-full h-full object-cover opacity-80" alt="Slider 2">
+                        <div class="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg text-sm">Teknologi Web Modern & Kreativitas Digital</div>
+                    </div>
+                    <div class="min-w-full h-full flex items-center justify-center relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" class="w-full h-full object-cover opacity-80" alt="Slider 3">
+                        <div class="absolute bottom-4 left-4 bg-black/60 text-white px-4 py-2 rounded-lg text-sm">Seni Abstrak & Komposisi Visual Estetik</div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow text-slate-800 font-bold">&larr;</button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow text-slate-800 font-bold">&rarr;</button>
+            </div>
+        </section>
+
+        <!-- BAGIAN ARTIKEL PILAR & TABLE OF CONTENTS -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-10">
+            <!-- Header Artikel Pilar -->
+            <div class="border-b pb-6 mb-8">
+                <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Artikel Pilar Utama</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-4">Panduan Komprehensif Desain Visual, Warna Digital, dan Manajemen Produktivitas Modern</h1>
+                <p class="text-slate-500 text-sm">Dipublikasikan oleh Whellcolor • Perkiraan Baca 10-15 Menit (~1700 Kata)</p>
+            </div>
+
+            <!-- Table of Contents (Daftar Isi) -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8">
+                <h3 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">📑 Daftar Isi (Table of Contents)</h3>
+                <ul class="list-decimal list-inside space-y-2 text-sm font-medium text-indigo-600">
+                    <li><a href="#bab1" class="hover:underline">Pendahuluan: Evolusi Warna dan Desain Digital</a></li>
+                    <li><a href="#bab2" class="hover:underline">Pentingnya Manajemen Tugas dan Produktivitas Creator</a></li>
+                    <li><a href="#bab3" class="hover:underline">Eksplorasi Tool Kreatif Berbasis Web (Internal & Eksternal)</a></li>
+                    <li><a href="#bab4" class="hover:underline">Strategi Penggunaan Warna dalam Pengembangan Antarmuka (UI/UX)</a></li>
+                    <li><a href="#bab5" class="hover:underline">Kesimpulan dan Langkah Selanjutnya</a></li>
+                </ul>
+            </div>
+
+            <!-- Isi Artikel Pilar (Struktur Mendalam) -->
+            <div class="article-body">
+                <h2 id="bab1">1. Pendahuluan: Evolusi Warna dan Desain Digital</h2>
+                <p>Dunia digital saat ini bergerak dengan kecepatan luar biasa. Kombinasi antara estetika visual dan fungsionalitas teknologi adalah kunci utama dalam membangun pengalaman pengguna (user experience) yang memukau. Pemahaman tentang palet warna tidak lagi hanya dimonopoli oleh seniman tradisional, melainkan menjadi fondasi krusial bagi web developer, desainer UI/UX, hingga kreator konten di berbagai platform online.</p>
+                <p>Melalui platform seperti <a href="https://whellcolor.github.io/" class="text-indigo-600 underline">Whellcolor Home</a>, para kreator diberikan kemudahan untuk mengakses berbagai perangkat utilitas warna interaktif. Penggunaan warna yang tepat dapat memengaruhi psikologi audiens, meningkatkan retensi pengunjung pada sebuah situs web, serta memperkuat identitas merek (branding) secara keseluruhan.</p>
+
+                <h2 id="bab2">2. Pentingnya Manajemen Tugas dan Produktivitas Creator</h2>
+                <p>Menghasilkan karya digital yang konsisten menuntut sistem pengelolaan waktu yang terstruktur. Seringkali, ide-ide kreatif muncul secara spontan namun hilang begitu saja karena tidak dicatat dengan baik. Oleh karena itu, memiliki sistem pengelolaan tugas (*Todo List*) yang terintegrasi dengan penyimpanan artikel dan media visual sangat membantu produktivitas harian.</p>
+                <p>Dengan memanfaatkan aplikasi manajemen tugas interaktif seperti yang ada di halaman <a href="https://whellcolor.github.io/todo/" class="text-indigo-600 underline">Todo Manager</a> ini, Anda dapat merencanakan konten artikel, mengunggah aset gambar referensi secara lokal, dan memastikan setiap target harian tercapai tepat waktu tanpa hambatan.</p>
+                
+                <!-- Tools Rekomendasi / Eksternal Link Section -->
+                <h3 class="mt-6">Referensi & Perkakas Pendukung Industri Kreatif</h3>
+                <p>Untuk mempertajam skill dan memperluas wawasan Anda seputar pengembangan web, desain, serta estetika visual, berikut adalah daftar sumber daya eksternal terkemuka yang sangat direkomendasikan:</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Pelajari standar web global dan dokumentasi bahasa pemrograman di <a href="https://developer.mozilla.org" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Mozilla Developer Network (MDN)</a>.</li>
+                    <li>Cari inspirasi kode interaktif dan framework mutakhir melalui platform kolaborasi <a href="https://github.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">GitHub Official</a>.</li>
+                    <li>Rancang skema warna dan skema desain terbaik menggunakan bantuan <a href="https://dribbble.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Dribbble Inspirations</a>.</li>
+                    <li>Temukan tren desain antarmuka modern terkini di portal komunitas <a href="https://www.behance.net" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Behance Creative Network</a>.</li>
+                    <li>Uji performa dan aksesibilitas situs web Anda secara mendalam via <a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Google Developers Lighthouse</a>.</li>
+                    <li>Pelajari teori warna mendalam dan psikologi visual melalui riset di <a href="https://www.interaction-design.org" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Interaction Design Foundation</a>.</li>
+                    <li>Dapatkan aset ikon grafis vector berkualitas tinggi melalui <a href="https://fontawesome.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">FontAwesome Icons</a>.</li>
+                    <li>Gunakan pustaka komponen styling terdepan seperti <a href="https://tailwindcss.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Tailwind CSS Documentation</a> untuk mempercepat development.</li>
+                    <li>Manfaatkan galeri open-source sumber gambar bebas royalti di <a href="https://unsplash.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Unsplash Photos</a>.</li>
+                    <li>Perdalam teknik pemrograman web interaktif bersama komunitas belajar di <a href="https://stackoverflow.com" target="_blank" rel="nofollow noopener" class="text-indigo-600 underline">Stack Overflow Community</a>.</li>
+                </ul>
+
+                <h2 id="bab3">3. Eksplorasi Tool Kreatif Berbasis Web</h2>
+                <p>Ekosistem Whellcolor menyediakan berbagai alat bantu interaktif yang dirancang untuk mempermudah pekerjaan Anda di bidang web dan desain. Anda bisa mencoba berbagai fitur menarik yang telah disediakan secara publik:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Nikmati pengalaman audio visual interaktif melalui <a href="https://whellcolor.github.io/fastsong" class="text-indigo-600 underline">FastSong</a>.</li>
+                    <li>Eksperimen dengan gaya desain UI timbul modern di <a href="https://whellcolor.github.io/neumorphism" class="text-indigo-600 underline">Neumorphism Generator</a>.</li>
+                    <li>Ciptakan simulasi visual animasi unik lewat <a href="https://whellcolor.github.io/bubble" class="text-indigo-600 underline">Bubble Tool</a>.</li>
+                    <li>Analisis warna secara mendalam menggunakan <a href="https://whellcolor.github.io/ld-color-tool" class="text-indigo-600 underline">LD Color Tool</a>.</li>
+                    <li>Evaluasi tata letak dan visualisasi data di <a href="https://whellcolor.github.io/Visicality" class="text-indigo-600 underline">Visicality</a>.</li>
+                </ul>
+
+                <h2 id="bab4">4. Strategi Penggunaan Warna dalam Pengembangan Antarmuka (UI/UX)</h2>
+                <p>Dalam merancang antarmuka aplikasi, pemilihan warna primer, sekunder, dan aksen memegang peranan penting dalam mengarahkan perhatian pengguna. Warna kontras tinggi sering digunakan untuk elemen *Call to Action* (CTA) agar mudah ditekan, sementara warna netral dipilih untuk latar belakang guna mengurangi ketegangan mata (*eye strain*) saat menatap layar dalam durasi lama.</p>
+                <p>Kunjungi galeri dan produk kami di halaman <a href="https://whellcolor.github.io/shop/" class="text-indigo-600 underline">Shop</a> atau baca artikel mendalam lainnya yang tersedia di <a href="https://whellcolor.github.io/blog/" class="text-indigo-600 underline">Blog Whellcolor</a>.</p>
+
+                <h2 id="bab5">5. Kesimpulan dan Langkah Selanjutnya</h2>
+                <p>Integrasi antara manajemen tugas harian, eksplorasi warna, dan pembuatan konten artikel yang terstruktur adalah kunci sukses seorang kreator digital era modern. Dengan memanfaatkan ekosistem alat berbasis web yang tersedia di Whellcolor, alur kerja Anda akan menjadi jauh lebih efektif dan efisien. Mulailah mencatat ide-ide brilian Anda hari ini melalui form interaktif di bawah ini!</p>
+            </div>
+        </section>
+
+        <!-- FITUR UTAMA: TODO & ARTIKEL UPLOAD IMAGE -->
+        <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Tambah Todo & Artikel Baru</h2>
+            <form id="todoForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Judul Artikel / Catatan</label>
+                    <input type="text" id="title" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Masukkan judul...">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Isi Artikel / Deskripsi Tugas</label>
+                    <textarea id="content" rows="4" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Tulis rincian konten di sini..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Upload Gambar Pendukung</label>
+                    <input type="file" id="imageInput" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer">
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 shadow-md">
+                    Simpan Data ke LocalStorage
+                </button>
+            </form>
+        </section>
+
+        <!-- DAFTAR LIST ITEM -->
+        <section class="space-y-4">
+            <h3 class="text-xl font-bold text-slate-800">Daftar Todo & Artikel Tersimpan</h3>
+            <div class="space-y-4" id="todoList">
+                <!-- Data dinamis dimuat via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER PROFESIONAL -->
+    <footer class="bg-slate-900 text-slate-400 mt-16 py-10 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="https://whellcolor.github.io/wcc.png" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                    <span class="text-white font-bold text-lg">Whellcolor</span>
+                </div>
+                <p class="text-sm text-slate-400">Platform kreatif mandiri untuk eksplorasi warna, desain web, tools interaktif, dan manajemen produktivitas harian.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Halaman Penting</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://whellcolor.github.io/about-us.html" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="https://whellcolor.github.io/contact.html" class="hover:text-white transition">Contact</a></li>
+                    <li><a href="https://whellcolor.github.io/blog/" class="hover:text-white transition">Blog</a></li>
+                    <li><a href="https://whellcolor.github.io/shop/" class="hover:text-white transition">Shop</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Kebijakan & Legalitas</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="https://whellcolor.github.io/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="https://whellcolor.github.io/terms-and-conditions.html" class="hover:text-white transition">Terms and Conditions</a></li>
+                    <li><a href="https://whellcolor.github.io/disclaimer.html" class="hover:text-white transition">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+            &copy; 2026 Whellcolor. All rights reserved. Hosted on GitHub Pages.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: SLIDER & TODO LOGIC -->
+    <script>
+        // --- Slider Logic ---
+        const track = document.querySelector('.slider-track');
+        const slides = track.children;
+        let currentIndex = 0;
+
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlidePosition();
+        }
+
+        // Auto slide setiap 5 detik
+        setInterval(nextSlide, 5000);
+
+        // --- Todo & Article Upload Logic ---
+        const todoForm = document.getElementById('todoForm');
+        const titleInput = document.getElementById('title');
+        const contentInput = document.getElementById('content');
+        const imageInput = document.getElementById('imageInput');
+        const todoList = document.getElementById('todoList');
+
+        let posts = JSON.parse(localStorage.getItem('whellcolor_posts')) || [];
+
+        function renderPosts() {
+            todoList.innerHTML = '';
+            if (posts.length === 0) {
+                todoList.innerHTML = `<p class="text-center text-slate-400 italic bg-white p-6 rounded-xl shadow-sm">Belum ada data artikel atau todo yang disimpan.</p>`;
+                return;
+            }
+
+            posts.forEach((post, index) => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-md overflow-hidden p-5 flex flex-col sm:flex-row gap-4 items-start";
+
+                let imageTag = '';
+                if (post.image) {
+                    imageTag = `<img src="${post.image}" alt="Upload Image" class="w-full sm:w-32 h-32 object-cover rounded-lg border flex-shrink-0">`;
+                }
+
+                card.innerHTML = `
+                    ${imageTag}
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-bold text-slate-800">${post.title}</h3>
+                            <button onclick="deletePost(${index})" class="text-red-500 hover:text-red-700 text-sm font-semibold">Hapus</button>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-2 whitespace-pre-line">${post.content}</p>
+                        <span class="text-xs text-slate-400 mt-4 block">${post.date}</span>
+                    </div>
+                `;
+                todoList.appendChild(card);
+            });
+        }
+
+        todoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = titleInput.value;
+            const content = contentInput.value;
+            const file = imageInput.files[0];
+
+            const currentDate = new Date().toLocaleDateString('id-ID', {
+                day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function() {
+                    saveData(title, content, reader.result, currentDate);
+                };
+            } else {
+                saveData(title, content, null, currentDate);
+            }
+        });
+
+        function saveData(title, content, image, date) {
+            posts.unshift({ title, content, image, date });
+            localStorage.setItem('whellcolor_posts', JSON.stringify(posts));
+            todoForm.reset();
+            renderPosts();
+        }
+
+        window.deletePost = function(index) {
+            if(confirm('Yakin ingin menghapus data ini?')) {
+                posts.splice(index, 1);
+                localStorage.setItem('whellcolor_posts', JSON.stringify(posts));
+                renderPosts();
+            }
+        }
+
+        renderPosts();
+    </script>
+</body>
+</html>
