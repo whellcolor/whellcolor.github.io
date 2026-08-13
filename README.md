@@ -1,6 +1,6 @@
 # 🧊 Whellcolor Cube Crypto (WCC)
 
-> A Web3-powered crypto ecosystem built on Ethereum with wallet connect, staking, and on-chain utilities.
+> A Web3-powered crypto ecosystem built on Ethereum with wallet connect, staking, and on-chain utilities. We provide a pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, and professional web color tools.
 
 ![WCC Logo](wcc.png)
 
@@ -16,6 +16,42 @@
 
 ## 🌐 Live Project
 🔗 https://whellcolor.github.io/
+
+
+---
+
+## Pages & Tools Directory
+
+| Title | Description | Link |
+| :--- | :--- | :--- |
+| **Home** | Whellcolor main landing page | [Open](https://whellcolor.github.io/index.html) |
+| **WCC Main** | Central hub for the WCC ecosystem | [Open](https://whellcolor.github.io/wcc.html) |
+| **SmartLink** | Smart link generator utility | [Open](https://whellcolor.github.io/SmartLink/index.html) |
+| **Address Explorer** | Blockchain address exploration tool | [Open](https://whellcolor.github.io/addres/explorer.html) |
+| **Color Tool** | Professional web color utility | [Open](https://whellcolor.github.io/color/index.html) |
+| **Faucet** | Web3 testnet faucet claim page | [Open](https://whellcolor.github.io/faucet/index.html) |
+| **Web Proxy** | Secure browsing proxy service | [Open](https://whellcolor.github.io/webproxy/index.html) |
+| **Global Atlas** | Global data navigation interface | [Open](https://whellcolor.github.io/global-atlas/index.html) |
+| **Blog Hub** | Technical articles and updates | [Open](https://whellcolor.github.io/blog/index.html) |
+| **Shop** | Digital assets store | [Open](https://whellcolor.github.io/shop/) |
+| **FastSong** | Rapid media playback service | [Open](https://whellcolor.github.io/fastsong/) |
+| **Neumorphism** | UI design generator tool | [Open](https://whellcolor.github.io/neumorphism/) |
+| **Visicality** | Advanced data visualization dashboard | [Open](https://whellcolor.github.io/Visicality/) |
+
+---
+
+## Additional Information
+
+*   **About Us**: [View](https://whellcolor.github.io/about-us.html)
+*   **Contact**: [View](https://whellcolor.github.io/contact.html)
+*   **Sitemap**: [View](https://whellcolor.github.io/sitemap.html)
+*   **Privacy Policy**: [View](https://whellcolor.github.io/privacy-policy.html)
+*   **Disclaimer**: [View](https://whellcolor.github.io/disclaimer.html)
+*   **Terms of Service**: [View](https://whellcolor.github.io/terms.html)
+
+---
+
+*Developed by Whellcolor Dev Core Team.*
 
 ### 🔗 Wallet Donation
 
