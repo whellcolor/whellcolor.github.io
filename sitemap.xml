@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://whellcolor.github.io/</loc>
-    <lastmod>2025-10-24</lastmod>
-    <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/about-us.html</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  
-  
-  <url>
-  <loc>https://whellcolor.github.io/contact.html</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/disclaimer.html</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/privacy-policy.html</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/terms-and-conditions.html</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/blog/</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/shop/</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/fastsong</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/neumorphism</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/bubble</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
-  
-  <url>
-  <loc>https://whellcolor.github.io/ld-color-tool</loc>
-  <lastmod>2025-10-24</lastmod>
-  <priority>1.0</priority>
-  </url>
+  <url><loc>https://whellcolor.github.io/</loc></url>
+  <url><loc>https://whellcolor.github.io/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/contact.html</loc></url>
+  <url><loc>https://whellcolor.github.io/about-us.html</loc></url>
+  <url><loc>https://whellcolor.github.io/sitemap.html</loc></url>
+  <url><loc>https://whellcolor.github.io/privacy-policy.html</loc></url>
+  <url><loc>https://whellcolor.github.io/disclaimer.html</loc></url>
+  <url><loc>https://whellcolor.github.io/terms.html</loc></url>
+  <url><loc>https://whellcolor.github.io/wcc.html</loc></url>
+  <url><loc>https://whellcolor.github.io/404.html</loc></url>
+  <url><loc>https://whellcolor.github.io/SmartLink/</loc></url>
+  <url><loc>https://whellcolor.github.io/SmartLink/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/SmartLink/generator/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/explorer.html</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/qr/</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/qr/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/tools</loc></url>
+  <url><loc>https://whellcolor.github.io/addres/tools/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/web3-wallet-security-2026.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/wcc-tools-terminal.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/multidimensional-nft-utility.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/future-of-gamified-cryptography.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/decentralized-finance-mechanics.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html</loc></url>
+  <url><loc>https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html</loc></url>
+  <url><loc>https://whellcolor.github.io/cleanbg/</loc></url>
+  <url><loc>https://whellcolor.github.io/cleanbg/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/cleanwm/</loc></url>
+  <url><loc>https://whellcolor.github.io/cleanwm/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/color/</loc></url>
+  <url><loc>https://whellcolor.github.io/color/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/faucet/</loc></url>
+  <url><loc>https://whellcolor.github.io/faucet/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/global-atlas/</loc></url>
+  <url><loc>https://whellcolor.github.io/global-atlas/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/proxy/</loc></url>
+  <url><loc>https://whellcolor.github.io/proxy/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/proxy/site.html</loc></url>
+  <url><loc>https://whellcolor.github.io/proxy/blog.html</loc></url>
+  <url><loc>https://whellcolor.github.io/safelink/</loc></url>
+  <url><loc>https://whellcolor.github.io/safelink/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/templates/</loc></url>
+  <url><loc>https://whellcolor.github.io/templates/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/safelink.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/faucet.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/donation.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/dex.html</loc></url>
+  <url><loc>https://whellcolor.github.io/thirdweb/dapp.html</loc></url>
+  <url><loc>https://whellcolor.github.io/todo/</loc></url>
+  <url><loc>https://whellcolor.github.io/todo/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/tools/</loc></url>
+  <url><loc>https://whellcolor.github.io/tools/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/wcc/</loc></url>
+  <url><loc>https://whellcolor.github.io/wcc/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/webproxy/</loc></url>
+  <url><loc>https://whellcolor.github.io/webproxy/index.html</loc></url>
+  <url><loc>https://whellcolor.github.io/shop/</loc></url>
+  <url><loc>https://whellcolor.github.io/fastsong/</loc></url>
+  <url><loc>https://whellcolor.github.io/neumorphism/</loc></url>
+  <url><loc>https://whellcolor.github.io/bubble/</loc></url>
+  <url><loc>https://whellcolor.github.io/ld-color-tool/</loc></url>
+  <url><loc>https://whellcolor.github.io/Visicality/</loc></url>
 </urlset>
-
-
