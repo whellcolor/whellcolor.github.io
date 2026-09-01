@@ -1,17 +1,635 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>WhellColor Ecosystem RSS Feed</title>
+    <title>Whell Color Complete Ecosystem Feed</title>
     <link>https://whellcolor.github.io/</link>
-    <description>Complete RSS feed containing all pages and tools of the WhellColor GitHub Pages repository.</description>
-    <lastBuildDate>Tue, 01 Sep 2026 14:56:55 +0000</lastBuildDate>
+    <description>Complete RSS feed containing all pages, tools, directories, and blog posts across the Whell Color platform.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Sep 2026 15:05:00 +0700</lastBuildDate>
+    <atom:link href="https://whellcolor.github.io/rrs.txt" rel="self" type="application/rss+xml"/>
+    
     <item>
-      <title>Home - WhellColor</title>
+      <title>Whell Color Homepage</title>
       <link>https://whellcolor.github.io/</link>
       <guid isPermaLink="true">https://whellcolor.github.io/</guid>
-      <description>Page/Tool update from WhellColor ecosystem: https://whellcolor.github.io/</description>
-      <pubDate>Tue, 01 Sep 2026 14:56:55 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Main landing page and navigation hub for Whell Color.</description>
     </item>
-    <!-- Dan seterusnya untuk total 78 item tautan lainnya -->
+
+    <item>
+      <title>Index HTML</title>
+      <link>https://whellcolor.github.io/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Primary index document.</description>
+    </item>
+
+    <item>
+      <title>Contact Us</title>
+      <link>https://whellcolor.github.io/contact.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/contact.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Get in touch with the Whell Color team.</description>
+    </item>
+
+    <item>
+      <title>About Us</title>
+      <link>https://whellcolor.github.io/about-us.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/about-us.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Learn more about our mission and project background.</description>
+    </item>
+
+    <item>
+      <title>Sitemap Page</title>
+      <link>https://whellcolor.github.io/sitemap.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/sitemap.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>HTML directory and site navigation layout.</description>
+    </item>
+
+    <item>
+      <title>Privacy Policy</title>
+      <link>https://whellcolor.github.io/privacy-policy.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/privacy-policy.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Privacy and data handling policies.</description>
+    </item>
+
+    <item>
+      <title>Disclaimer</title>
+      <link>https://whellcolor.github.io/disclaimer.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/disclaimer.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Legal liability and usage disclaimers.</description>
+    </item>
+
+    <item>
+      <title>Terms and Conditions</title>
+      <link>https://whellcolor.github.io/terms.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/terms.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Terms of service agreement.</description>
+    </item>
+
+    <item>
+      <title>WCC Info Page</title>
+      <link>https://whellcolor.github.io/wcc.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/wcc.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Core overview of the WCC protocol.</description>
+    </item>
+
+    <item>
+      <title>404 Error Page</title>
+      <link>https://whellcolor.github.io/404.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/404.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Page not found fallback.</description>
+    </item>
+
+    <item>
+      <title>SmartLink Hub</title>
+      <link>https://whellcolor.github.io/SmartLink/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/SmartLink/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>SmartLink redirect and management system.</description>
+    </item>
+
+    <item>
+      <title>SmartLink Index</title>
+      <link>https://whellcolor.github.io/SmartLink/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/SmartLink/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>SmartLink index document.</description>
+    </item>
+
+    <item>
+      <title>SmartLink Generator</title>
+      <link>https://whellcolor.github.io/SmartLink/generator/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/SmartLink/generator/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Tool to generate custom smart links.</description>
+    </item>
+
+    <item>
+      <title>Address Directory</title>
+      <link>https://whellcolor.github.io/addres/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Address index hub.</description>
+    </item>
+
+    <item>
+      <title>Address Index HTML</title>
+      <link>https://whellcolor.github.io/addres/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Address index document.</description>
+    </item>
+
+    <item>
+      <title>Address Explorer</title>
+      <link>https://whellcolor.github.io/addres/explorer.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/explorer.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Blockchain and wallet address exploration utility.</description>
+    </item>
+
+    <item>
+      <title>Address QR Hub</title>
+      <link>https://whellcolor.github.io/addres/qr/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/qr/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>QR code generator and scanner hub for addresses.</description>
+    </item>
+
+    <item>
+      <title>Address QR Index</title>
+      <link>https://whellcolor.github.io/addres/qr/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/qr/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>QR tool index document.</description>
+    </item>
+
+    <item>
+      <title>Address Tools</title>
+      <link>https://whellcolor.github.io/addres/tools</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/tools</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Utility suite for address management.</description>
+    </item>
+
+    <item>
+      <title>Address Tools Index</title>
+      <link>https://whellcolor.github.io/addres/tools/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/addres/tools/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Address tools index document.</description>
+    </item>
+
+    <item>
+      <title>Blog Hub</title>
+      <link>https://whellcolor.github.io/blog/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Whell Color official technical blog.</description>
+    </item>
+
+    <item>
+      <title>Blog Index</title>
+      <link>https://whellcolor.github.io/blog/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Blog index page.</description>
+    </item>
+
+    <item>
+      <title>Web3 Wallet Security 2026</title>
+      <link>https://whellcolor.github.io/blog/web3-wallet-security-2026.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/web3-wallet-security-2026.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Essential security practices for Web3 wallets.</description>
+    </item>
+
+    <item>
+      <title>WCC Tools Terminal</title>
+      <link>https://whellcolor.github.io/blog/wcc-tools-terminal.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/wcc-tools-terminal.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Guide to WCC terminal command utilities.</description>
+    </item>
+
+    <item>
+      <title>Virtual Cloud Mining Guide</title>
+      <link>https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Understanding virtualized cloud mining concepts.</description>
+    </item>
+
+    <item>
+      <title>Understanding WCC Ecosystem</title>
+      <link>https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Architectural breakdown of the WCC ecosystem.</description>
+    </item>
+
+    <item>
+      <title>Tokenomics and Staking Yields</title>
+      <link>https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Analyzing token supply and staking rewards.</description>
+    </item>
+
+    <item>
+      <title>Multidimensional NFT Utility</title>
+      <link>https://whellcolor.github.io/blog/multidimensional-nft-utility.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/multidimensional-nft-utility.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Exploring dynamic NFTs and cross-platform utility.</description>
+    </item>
+
+    <item>
+      <title>Holesky Testnet Smart Contracts</title>
+      <link>https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Smart contract deployment on Holesky testnet.</description>
+    </item>
+
+    <item>
+      <title>Future of Gamified Cryptography</title>
+      <link>https://whellcolor.github.io/blog/future-of-gamified-cryptography.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/future-of-gamified-cryptography.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Bridging interactive gameplay with cryptography.</description>
+    </item>
+
+    <item>
+      <title>Decentralized Finance Mechanics</title>
+      <link>https://whellcolor.github.io/blog/decentralized-finance-mechanics.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/decentralized-finance-mechanics.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Core patterns for AMMs and liquidity pools.</description>
+    </item>
+
+    <item>
+      <title>Cross-Chain RPC Optimization</title>
+      <link>https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Improving node response speeds across multi-chain endpoints.</description>
+    </item>
+
+    <item>
+      <title>Comprehensive WCC Technical Manifesto</title>
+      <link>https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Foundational technical blueprint for WCC.</description>
+    </item>
+
+    <item>
+      <title>Comprehensive WCC Ecosystem Deep Dive</title>
+      <link>https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Exhaustive analysis of integrated modules and smart contracts.</description>
+    </item>
+
+    <item>
+      <title>Comprehensive Arabic Text Architecture Manifesto</title>
+      <link>https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Technical standards for Arabic text rendering.</description>
+    </item>
+
+    <item>
+      <title>AdSense Readiness for DApps</title>
+      <link>https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Guidelines for display ads within DApp frontends.</description>
+    </item>
+
+    <item>
+      <title>Clean Background Tool</title>
+      <link>https://whellcolor.github.io/cleanbg/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/cleanbg/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Clean background utility hub.</description>
+    </item>
+
+    <item>
+      <title>Clean Background Index</title>
+      <link>https://whellcolor.github.io/cleanbg/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/cleanbg/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Clean background index document.</description>
+    </item>
+
+    <item>
+      <title>Clean Watermark Tool</title>
+      <link>https://whellcolor.github.io/cleanwm/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/cleanwm/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Watermark removal and cleaning utility.</description>
+    </item>
+
+    <item>
+      <title>Clean Watermark Index</title>
+      <link>https://whellcolor.github.io/cleanwm/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/cleanwm/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Clean watermark index document.</description>
+    </item>
+
+    <item>
+      <title>Color Tool Hub</title>
+      <link>https://whellcolor.github.io/color/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/color/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Color palette and gradient management tool.</description>
+    </item>
+
+    <item>
+      <title>Color Tool Index</title>
+      <link>https://whellcolor.github.io/color/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/color/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Color tool index document.</description>
+    </item>
+
+    <item>
+      <title>Faucet Hub</title>
+      <link>https://whellcolor.github.io/faucet/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/faucet/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Testnet token faucet utility.</description>
+    </item>
+
+    <item>
+      <title>Faucet Index</title>
+      <link>https://whellcolor.github.io/faucet/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/faucet/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Faucet index document.</description>
+    </item>
+
+    <item>
+      <title>Global Atlas</title>
+      <link>https://whellcolor.github.io/global-atlas/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/global-atlas/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Global mapping and geographic information tool.</description>
+    </item>
+
+    <item>
+      <title>Global Atlas Index</title>
+      <link>https://whellcolor.github.io/global-atlas/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/global-atlas/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Global atlas index document.</description>
+    </item>
+
+    <item>
+      <title>Proxy Hub</title>
+      <link>https://whellcolor.github.io/proxy/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/proxy/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Proxy management hub.</description>
+    </item>
+
+    <item>
+      <title>Proxy Index</title>
+      <link>https://whellcolor.github.io/proxy/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/proxy/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Proxy index document.</description>
+    </item>
+
+    <item>
+      <title>Proxy Site</title>
+      <link>https://whellcolor.github.io/proxy/site.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/proxy/site.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Proxy site interface.</description>
+    </item>
+
+    <item>
+      <title>Proxy Blog</title>
+      <link>https://whellcolor.github.io/proxy/blog.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/proxy/blog.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Proxy blog page.</description>
+    </item>
+
+    <item>
+      <title>Safelink Hub</title>
+      <link>https://whellcolor.github.io/safelink/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/safelink/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Safelink redirection generator.</description>
+    </item>
+
+    <item>
+      <title>Safelink Index</title>
+      <link>https://whellcolor.github.io/safelink/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/safelink/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Safelink index document.</description>
+    </item>
+
+    <item>
+      <title>Templates Hub</title>
+      <link>https://whellcolor.github.io/templates/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/templates/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Template resources and layouts.</description>
+    </item>
+
+    <item>
+      <title>Templates Index</title>
+      <link>https://whellcolor.github.io/templates/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/templates/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Templates index document.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb Integration Hub</title>
+      <link>https://whellcolor.github.io/thirdweb/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb smart contract integrations.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb Index</title>
+      <link>https://whellcolor.github.io/thirdweb/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb index document.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb Safelink</title>
+      <link>https://whellcolor.github.io/thirdweb/safelink.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/safelink.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb safelink module.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb Faucet</title>
+      <link>https://whellcolor.github.io/thirdweb/faucet.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/faucet.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb faucet module.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb Donation</title>
+      <link>https://whellcolor.github.io/thirdweb/donation.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/donation.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb donation portal.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb DEX</title>
+      <link>https://whellcolor.github.io/thirdweb/dex.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/dex.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb decentralized exchange interface.</description>
+    </item>
+
+    <item>
+      <title>Thirdweb DApp</title>
+      <link>https://whellcolor.github.io/thirdweb/dapp.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/thirdweb/dapp.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Thirdweb decentralized application interface.</description>
+    </item>
+
+    <item>
+      <title>Todo List Hub</title>
+      <link>https://whellcolor.github.io/todo/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/todo/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Task management and todo application.</description>
+    </item>
+
+    <item>
+      <title>Todo List Index</title>
+      <link>https://whellcolor.github.io/todo/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/todo/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Todo index document.</description>
+    </item>
+
+    <item>
+      <title>Tools Hub</title>
+      <link>https://whellcolor.github.io/tools/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/tools/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>General platform utilities and tools.</description>
+    </item>
+
+    <item>
+      <title>Tools Index</title>
+      <link>https://whellcolor.github.io/tools/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/tools/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Tools index document.</description>
+    </item>
+
+    <item>
+      <title>WCC Section Hub</title>
+      <link>https://whellcolor.github.io/wcc/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/wcc/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>WCC core section hub.</description>
+    </item>
+
+    <item>
+      <title>WCC Section Index</title>
+      <link>https://whellcolor.github.io/wcc/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/wcc/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>WCC section index document.</description>
+    </item>
+
+    <item>
+      <title>Web Proxy Hub</title>
+      <link>https://whellcolor.github.io/webproxy/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/webproxy/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Web proxy service tool.</description>
+    </item>
+
+    <item>
+      <title>Web Proxy Index</title>
+      <link>https://whellcolor.github.io/webproxy/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/webproxy/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Web proxy index document.</description>
+    </item>
+
+    <item>
+      <title>Shop Hub</title>
+      <link>https://whellcolor.github.io/shop/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/shop/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>E-commerce and item shop interface.</description>
+    </item>
+
+    <item>
+      <title>FastSong Utility</title>
+      <link>https://whellcolor.github.io/fastsong/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/fastsong/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Audio and fast song streaming utility.</description>
+    </item>
+
+    <item>
+      <title>Neumorphism Design Tool</title>
+      <link>https://whellcolor.github.io/neumorphism/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/neumorphism/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>CSS generator for soft UI neumorphism.</description>
+    </item>
+
+    <item>
+      <title>Bubble Animation Tool</title>
+      <link>https://whellcolor.github.io/bubble/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/bubble/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Interactive bubble visualizer.</description>
+    </item>
+
+    <item>
+      <title>LD Color Tool</title>
+      <link>https://whellcolor.github.io/ld-color-tool/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/ld-color-tool/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Advanced color matching and lighting utility.</description>
+    </item>
+
+    <item>
+      <title>Visicality</title>
+      <link>https://whellcolor.github.io/Visicality/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/Visicality/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Visual data formatting and utility workspace.</description>
+    </item>
+
+    <item>
+      <title>Images Hub</title>
+      <link>https://whellcolor.github.io/img/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/img/</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Media and image asset directory.</description>
+    </item>
+
+    <item>
+      <title>Images Index</title>
+      <link>https://whellcolor.github.io/img/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/img/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Image index document.</description>
+    </item>
+
+    <item>
+      <title>Video Player Index</title>
+      <link>https://whellcolor.github.io/vidio/index.html</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/vidio/index.html</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 +0700</pubDate>
+      <description>Video streaming and player tool interface.</description>
+    </item>
   </channel>
 </rss>
