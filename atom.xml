@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Whellcolor Sitemap</title>
+  <link href="https://whellcolor.github.io/" rel="self"/>
+  <link href="https://whellcolor.github.io/"/>
+  <updated>2026-09-01T00:00:00Z</updated>
+  <id>https://whellcolor.github.io/</id>
+  
+  <entry>
+    <title>Whellcolor</title>
+    <link href="https://whellcolor.github.io/"/>
+    <id>https://whellcolor.github.io/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Whellcolor Index</title>
+    <link href="https://whellcolor.github.io/index.html"/>
+    <id>https://whellcolor.github.io/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Contact Us</title>
+    <link href="https://whellcolor.github.io/contact.html"/>
+    <id>https://whellcolor.github.io/contact.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>About Us</title>
+    <link href="https://whellcolor.github.io/about-us.html"/>
+    <id>https://whellcolor.github.io/about-us.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Sitemap</title>
+    <link href="https://whellcolor.github.io/sitemap.html"/>
+    <id>https://whellcolor.github.io/sitemap.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Privacy Policy</title>
+    <link href="https://whellcolor.github.io/privacy-policy.html"/>
+    <id>https://whellcolor.github.io/privacy-policy.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Disclaimer</title>
+    <link href="https://whellcolor.github.io/disclaimer.html"/>
+    <id>https://whellcolor.github.io/disclaimer.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Terms</title>
+    <link href="https://whellcolor.github.io/terms.html"/>
+    <id>https://whellcolor.github.io/terms.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>WCC</title>
+    <link href="https://whellcolor.github.io/wcc.html"/>
+    <id>https://whellcolor.github.io/wcc.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>404 Not Found</title>
+    <link href="https://whellcolor.github.io/404.html"/>
+    <id>https://whellcolor.github.io/404.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>SmartLink</title>
+    <link href="https://whellcolor.github.io/SmartLink/"/>
+    <id>https://whellcolor.github.io/SmartLink/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>SmartLink Index</title>
+    <link href="https://whellcolor.github.io/SmartLink/index.html"/>
+    <id>https://whellcolor.github.io/SmartLink/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>SmartLink Generator</title>
+    <link href="https://whellcolor.github.io/SmartLink/generator/index.html"/>
+    <id>https://whellcolor.github.io/SmartLink/generator/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address</title>
+    <link href="https://whellcolor.github.io/addres/"/>
+    <id>https://whellcolor.github.io/addres/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address Index</title>
+    <link href="https://whellcolor.github.io/addres/index.html"/>
+    <id>https://whellcolor.github.io/addres/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address Explorer</title>
+    <link href="https://whellcolor.github.io/addres/explorer.html"/>
+    <id>https://whellcolor.github.io/addres/explorer.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address QR</title>
+    <link href="https://whellcolor.github.io/addres/qr/"/>
+    <id>https://whellcolor.github.io/addres/qr/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address QR Index</title>
+    <link href="https://whellcolor.github.io/addres/qr/index.html"/>
+    <id>https://whellcolor.github.io/addres/qr/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address Tools</title>
+    <link href="https://whellcolor.github.io/addres/tools"/>
+    <id>https://whellcolor.github.io/addres/tools</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Address Tools Index</title>
+    <link href="https://whellcolor.github.io/addres/tools/index.html"/>
+    <id>https://whellcolor.github.io/addres/tools/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Blog</title>
+    <link href="https://whellcolor.github.io/blog/"/>
+    <id>https://whellcolor.github.io/blog/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Blog Index</title>
+    <link href="https://whellcolor.github.io/blog/index.html"/>
+    <id>https://whellcolor.github.io/blog/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Web3 Wallet Security 2026</title>
+    <link href="https://whellcolor.github.io/blog/web3-wallet-security-2026.html"/>
+    <id>https://whellcolor.github.io/blog/web3-wallet-security-2026.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>WCC Tools Terminal</title>
+    <link href="https://whellcolor.github.io/blog/wcc-tools-terminal.html"/>
+    <id>https://whellcolor.github.io/blog/wcc-tools-terminal.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Virtual Cloud Mining Guide</title>
+    <link href="https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html"/>
+    <id>https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Understanding WCC Ecosystem</title>
+    <link href="https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html"/>
+    <id>https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Tokenomics and Staking Yields</title>
+    <link href="https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html"/>
+    <id>https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Multidimensional NFT Utility</title>
+    <link href="https://whellcolor.github.io/blog/multidimensional-nft-utility.html"/>
+    <id>https://whellcolor.github.io/blog/multidimensional-nft-utility.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Holesky Testnet Smart Contracts</title>
+    <link href="https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html"/>
+    <id>https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Future of Gamified Cryptography</title>
+    <link href="https://whellcolor.github.io/blog/future-of-gamified-cryptography.html"/>
+    <id>https://whellcolor.github.io/blog/future-of-gamified-cryptography.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Decentralized Finance Mechanics</title>
+    <link href="https://whellcolor.github.io/blog/decentralized-finance-mechanics.html"/>
+    <id>https://whellcolor.github.io/blog/decentralized-finance-mechanics.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Cross-Chain RPC Optimization</title>
+    <link href="https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html"/>
+    <id>https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Comprehensive WCC Technical Manifesto</title>
+    <link href="https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html"/>
+    <id>https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Comprehensive WCC Ecosystem Deepdive</title>
+    <link href="https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html"/>
+    <id>https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Comprehensive ArabicText Architecture Manifesto</title>
+    <link href="https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html"/>
+    <id>https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Adsense Readiness for Dapps</title>
+    <link href="https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html"/>
+    <id>https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Cleanbg</title>
+    <link href="https://whellcolor.github.io/cleanbg/"/>
+    <id>https://whellcolor.github.io/cleanbg/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Cleanbg Index</title>
+    <link href="https://whellcolor.github.io/cleanbg/index.html"/>
+    <id>https://whellcolor.github.io/cleanbg/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Cleanwm</title>
+    <link href="https://whellcolor.github.io/cleanwm/"/>
+    <id>https://whellcolor.github.io/cleanwm/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Cleanwm Index</title>
+    <link href="https://whellcolor.github.io/cleanwm/index.html"/>
+    <id>https://whellcolor.github.io/cleanwm/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Color</title>
+    <link href="https://whellcolor.github.io/color/"/>
+    <id>https://whellcolor.github.io/color/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Color Index</title>
+    <link href="https://whellcolor.github.io/color/index.html"/>
+    <id>https://whellcolor.github.io/color/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Faucet</title>
+    <link href="https://whellcolor.github.io/faucet/"/>
+    <id>https://whellcolor.github.io/faucet/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Faucet Index</title>
+    <link href="https://whellcolor.github.io/faucet/index.html"/>
+    <id>https://whellcolor.github.io/faucet/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Global Atlas</title>
+    <link href="https://whellcolor.github.io/global-atlas/"/>
+    <id>https://whellcolor.github.io/global-atlas/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Global Atlas Index</title>
+    <link href="https://whellcolor.github.io/global-atlas/index.html"/>
+    <id>https://whellcolor.github.io/global-atlas/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Proxy</title>
+    <link href="https://whellcolor.github.io/proxy/"/>
+    <id>https://whellcolor.github.io/proxy/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Proxy Index</title>
+    <link href="https://whellcolor.github.io/proxy/index.html"/>
+    <id>https://whellcolor.github.io/proxy/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Proxy Site</title>
+    <link href="https://whellcolor.github.io/proxy/site.html"/>
+    <id>https://whellcolor.github.io/proxy/site.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Proxy Blog</title>
+    <link href="https://whellcolor.github.io/proxy/blog.html"/>
+    <id>https://whellcolor.github.io/proxy/blog.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Safelink</title>
+    <link href="https://whellcolor.github.io/safelink/"/>
+    <id>https://whellcolor.github.io/safelink/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Safelink Index</title>
+    <link href="https://whellcolor.github.io/safelink/index.html"/>
+    <id>https://whellcolor.github.io/safelink/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Templates</title>
+    <link href="https://whellcolor.github.io/templates/"/>
+    <id>https://whellcolor.github.io/templates/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Templates Index</title>
+    <link href="https://whellcolor.github.io/templates/index.html"/>
+    <id>https://whellcolor.github.io/templates/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb</title>
+    <link href="https://whellcolor.github.io/thirdweb/"/>
+    <id>https://whellcolor.github.io/thirdweb/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Index</title>
+    <link href="https://whellcolor.github.io/thirdweb/index.html"/>
+    <id>https://whellcolor.github.io/thirdweb/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Safelink</title>
+    <link href="https://whellcolor.github.io/thirdweb/safelink.html"/>
+    <id>https://whellcolor.github.io/thirdweb/safelink.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Faucet</title>
+    <link href="https://whellcolor.github.io/thirdweb/faucet.html"/>
+    <id>https://whellcolor.github.io/thirdweb/faucet.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Donation</title>
+    <link href="https://whellcolor.github.io/thirdweb/donation.html"/>
+    <id>https://whellcolor.github.io/thirdweb/donation.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Dex</title>
+    <link href="https://whellcolor.github.io/thirdweb/dex.html"/>
+    <id>https://whellcolor.github.io/thirdweb/dex.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Thirdweb Dapp</title>
+    <link href="https://whellcolor.github.io/thirdweb/dapp.html"/>
+    <id>https://whellcolor.github.io/thirdweb/dapp.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Todo</title>
+    <link href="https://whellcolor.github.io/todo/"/>
+    <id>https://whellcolor.github.io/todo/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Todo Index</title>
+    <link href="https://whellcolor.github.io/todo/index.html"/>
+    <id>https://whellcolor.github.io/todo/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Tools</title>
+    <link href="https://whellcolor.github.io/tools/"/>
+    <id>https://whellcolor.github.io/tools/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Tools Index</title>
+    <link href="https://whellcolor.github.io/tools/index.html"/>
+    <id>https://whellcolor.github.io/tools/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>WCC Section</title>
+    <link href="https://whellcolor.github.io/wcc/"/>
+    <id>https://whellcolor.github.io/wcc/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>WCC Section Index</title>
+    <link href="https://whellcolor.github.io/wcc/index.html"/>
+    <id>https://whellcolor.github.io/wcc/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Webproxy</title>
+    <link href="https://whellcolor.github.io/webproxy/"/>
+    <id>https://whellcolor.github.io/webproxy/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Webproxy Index</title>
+    <link href="https://whellcolor.github.io/webproxy/index.html"/>
+    <id>https://whellcolor.github.io/webproxy/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Shop</title>
+    <link href="https://whellcolor.github.io/shop/"/>
+    <id>https://whellcolor.github.io/shop/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Fastsong</title>
+    <link href="https://whellcolor.github.io/fastsong/"/>
+    <id>https://whellcolor.github.io/fastsong/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Neumorphism</title>
+    <link href="https://whellcolor.github.io/neumorphism/"/>
+    <id>https://whellcolor.github.io/neumorphism/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Bubble</title>
+    <link href="https://whellcolor.github.io/bubble/"/>
+    <id>https://whellcolor.github.io/bubble/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>LD Color Tool</title>
+    <link href="https://whellcolor.github.io/ld-color-tool/"/>
+    <id>https://whellcolor.github.io/ld-color-tool/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Visicality</title>
+    <link href="https://whellcolor.github.io/Visicality/"/>
+    <id>https://whellcolor.github.io/Visicality/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Images</title>
+    <link href="https://whellcolor.github.io/img/"/>
+    <id>https://whellcolor.github.io/img/</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Images Index</title>
+    <link href="https://whellcolor.github.io/img/index.html"/>
+    <id>https://whellcolor.github.io/img/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <title>Vidio Index</title>
+    <link href="https://whellcolor.github.io/vidio/index.html"/>
+    <id>https://whellcolor.github.io/vidio/index.html</id>
+    <updated>2026-09-01T00:00:00Z</updated>
+  </entry>
+</feed>
