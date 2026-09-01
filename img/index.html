@@ -1,1 +1,880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whellcolor Cube Crypto (WCC) IMAGE Gallery</title>
+    
+    <link rel="canonical" href="https://whellcolor.github.io/img/index.html">
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y">
+    <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o">
+    
+    <meta name="description" content="Explore Whellcolor Cube Crypto (WCC), a pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, and NFT frameworks. Browse our official asset image gallery.">
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace, Gallery">
+    <meta name="author" content="Whellcolor Dev Core Team">
 
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../wcc.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whellcolor.github.io/img/index.html">
+    <meta property="og:title" content="Whellcolor Cube Crypto (WCC) - IMAGE Gallery">
+    <meta property="og:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic cubes on the WCC Network.">
+    <meta property="og:image" content="https://whellcolor.github.io/wcc-cube.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://whellcolor.github.io/img/index.html">
+    <meta property="twitter:title" content="Whellcolor Cube Crypto (WCC) - IMAGE Gallery">
+    <meta property="twitter:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic cubes on the WCC Network.">
+    <meta property="twitter:image" content="https://whellcolor.github.io/wcc-cube.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://whellcolor.github.io/#organization",
+          "name": "Whellcolor Cube Crypto",
+          "url": "https://whellcolor.github.io/",
+          "logo": "https://whellcolor.github.io/wcc.png",
+          "sameAs": [
+            "https://github.com/whellcolor",
+            "https://twitter.com/whellcolor"
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #090a0f;
+            color: #fff;
+        }
+
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        .bg-galaxy {
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%) !important;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -4;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .galaxy-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            opacity: 0.5;
+            background: radial-gradient(circle at 50% 50%, rgba(120, 0, 255, 0.4) 0%, rgba(0, 0, 0, 0.9) 80%);
+            animation: rotateGalaxy 120s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGalaxy {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .main-wrapper {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        header.gallery-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        header.gallery-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+
+        header.gallery-header p {
+            color: #bbb;
+            font-size: 1.1rem;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.2);
+            border-color: rgba(0, 243, 255, 0.4);
+        }
+
+        .gallery-img-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover .gallery-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .gallery-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .gallery-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .gallery-content p {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .link-box {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .link-box input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: #00f3ff;
+            font-size: 0.8rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, #00f3ff, #7000ff);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: opacity 0.2s;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.85;
+        }
+
+        .article-section {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .article-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #00f3ff;
+        }
+
+        .article-section p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .external-links-section {
+            max-width: 1200px;
+            width: 100%;
+            margin-bottom: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .external-links-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            color: #ff0080;
+        }
+
+        .ext-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .ext-link-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+        .ext-link-item:hover {
+            background: rgba(0, 243, 255, 0.15);
+            border-color: #00f3ff;
+            color: #00f3ff;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .footer-links {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #00f3ff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer span {
+            color: #00f3ff;
+        }
+
+        #cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(10, 12, 20, 0.95);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 12px;
+            padding: 1.2rem;
+            z-index: 9999;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #cookie-consent p {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        #cookie-consent a {
+            color: #00f3ff;
+            text-decoration: none;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .cookie-btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cookie-decline {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .cookie-accept {
+            background: linear-gradient(45deg, #00f3ff, #7000ff);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            header.gallery-header h1 { font-size: 1.8rem; }
+            .main-wrapper { padding: 1rem; }
+        }
+    </style>
+</head>
+<body class="bg-galaxy">
+
+    <div class="bg-layer bg-galaxy" id="bgLayer"></div>
+    <div class="stars-container" id="stars"></div>
+    <div class="galaxy-overlay" id="galaxyOverlay"></div>
+
+    <main class="main-wrapper">
+        <header class="gallery-header">
+            <img src="../wcc.png" alt="Whellcolor Cube Crypto Logo" style="width: 80px; height: 80px; margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(0,243,255,0.5);">
+            <h1>Whellcolor Cube Crypto (WCC) Gallery</h1>
+            <p>Explore official architectural renders, localized linguistic assets, and decentralized cryptographic ecosystem visual packages.</p>
+        </header>
+
+        <section class="gallery-container">
+            <!-- Item 1 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/0.png" alt="WCC Asset Zero Node Index">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Asset Zero Node</h3>
+                        <p>Core system vector reference for zero-point validation framework.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/0.png" readonly id="link-0">
+                        <button class="copy-btn" onclick="copyLink('link-0', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/3d.jpeg" alt="WCC 3D Cryptographic Cube Infrastructure">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>3D Crypto Cube</h3>
+                        <p>Interactive multi-dimensional cryptographic ledger structure overview.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/3d.jpeg" readonly id="link-3d">
+                        <button class="copy-btn" onclick="copyLink('link-3d', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/Angular-18.png" alt="WCC Angular Frontend Framework Integration">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Angular-18 UI Module</h3>
+                        <p>Advanced frontend component architecture for high-performance dapp routing.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/Angular-18.png" readonly id="link-angular">
+                        <button class="copy-btn" onclick="copyLink('link-angular', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/Arabic_language_-_kuffi.png" alt="Arabic Kuffi Calligraphy Script">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Arabic Kuffi Script</h3>
+                        <p>Traditional geometric Kuffi typography integrated into global localized interfaces.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/Arabic_language_-_kuffi.png" readonly id="link-kuffi">
+                        <button class="copy-btn" onclick="copyLink('link-kuffi', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/Ilmu-Pengetahuan.jpg" alt="Science and Knowledge Repository Artwork">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Ilmu Pengetahuan</h3>
+                        <p>Educational matrix graphic illustrating open-source distributed knowledge pools.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/Ilmu-Pengetahuan.jpg" readonly id="link-ilmu">
+                        <button class="copy-btn" onclick="copyLink('link-ilmu', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/ai.jpeg" alt="Artificial Intelligence Neural Network Grid">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>AI Neural Grid</h3>
+                        <p>Autonomous machine-learning analytics node powering token optimization loops.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/ai.jpeg" readonly id="link-ai">
+                        <button class="copy-btn" onclick="copyLink('link-ai', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/arabic-calligraphy-artwork.png" alt="Arabic Calligraphy Artistic Asset">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Arabic Calligraphy Art</h3>
+                        <p>High-resolution cultural typographic artwork curated for regional community portals.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/arabic-calligraphy-artwork.png" readonly id="link-calligraphy">
+                        <button class="copy-btn" onclick="copyLink('link-calligraphy', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/bahasa-jawa.jpeg" alt="Javanese Language Cultural Asset">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Bahasa Jawa Resource</h3>
+                        <p>Regional localization asset celebrating Javanese heritage within decentralized dApps.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/bahasa-jawa.jpeg" readonly id="link-jawa">
+                        <button class="copy-btn" onclick="copyLink('link-jawa', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/calendar.jpeg" alt="WCC Protocol Event Calendar Graphic">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Protocol Calendar</h3>
+                        <p>Time-locked schedule layout tracking epoch milestones and staking periods.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/calendar.jpeg" readonly id="link-calendar">
+                        <button class="copy-btn" onclick="copyLink('link-calendar', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/how-to-choose-the-right-web-programming-language-for-your-custom-website-development-project.jpeg" alt="Web Programming Language Guide Header">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Dev Language Guide</h3>
+                        <p>Infographic asset mapping optimal tech stacks for custom decentralized projects.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/how-to-choose-the-right-web-programming-language-for-your-custom-website-development-project.jpeg" readonly id="link-devguide">
+                        <button class="copy-btn" onclick="copyLink('link-devguide', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 11 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/ip.png" alt="Internet Protocol Security Layer Badge">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>IP Security Badge</h3>
+                        <p>Decentralized network routing and node identification verification seal.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/ip.png" readonly id="link-ip">
+                        <button class="copy-btn" onclick="copyLink('link-ip', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 12 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/keyboard-jawa.png" alt="Javanese Script Keyboard Layout Asset">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Javanese Keyboard Input</h3>
+                        <p>Specialized virtual input interface graphic supporting traditional scripts.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/keyboard-jawa.png" readonly id="link-kbjawa">
+                        <button class="copy-btn" onclick="copyLink('link-kbjawa', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 13 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/macapat.jpeg" alt="Macapat Traditional Poetry Heritage Asset">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Macapat Heritage</h3>
+                        <p>Visual representation of classical Javanese metrical poetry structures.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/macapat.jpeg" readonly id="link-macapat">
+                        <button class="copy-btn" onclick="copyLink('link-macapat', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 14 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/maps.jpeg" alt="Global Node Distribution Map Graphic">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Global Node Map</h3>
+                        <p>Geospatial tracking interface showing worldwide validator node placement.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/maps.jpeg" readonly id="link-maps">
+                        <button class="copy-btn" onclick="copyLink('link-maps', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 15 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/quran.png" alt="Digital Quranic Manuscript Index Icon">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Digital Manuscript Index</h3>
+                        <p>Archival repository asset for authenticated textual reference preservation.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/quran.png" readonly id="link-quran">
+                        <button class="copy-btn" onclick="copyLink('link-quran', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 16 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/search.png" alt="Decentralized Discovery Search Engine Node">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Search Node Asset</h3>
+                        <p>High-speed querying interface vector for rapid on-chain indexing.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/search.png" readonly id="link-search">
+                        <button class="copy-btn" onclick="copyLink('link-search', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 17 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/tts.png" alt="Text-to-Speech Engine System Graphic">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Text-to-Speech Module</h3>
+                        <p>Audio synthesis interface icon for accessible multilingual user experiences.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/tts.png" readonly id="link-tts">
+                        <button class="copy-btn" onclick="copyLink('link-tts', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 18 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/voice.png" alt="Voice Recognition Biometric Interface">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Voice Biometric Icon</h3>
+                        <p>Secure audio command processing node for hands-free decentralized navigation.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/voice.png" readonly id="link-voice">
+                        <button class="copy-btn" onclick="copyLink('link-voice', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 19 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/wa.png" alt="Community Broadcast Channel Badge">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Broadcast Channel Badge</h3>
+                        <p>Direct communication link asset for instant community governance alerts.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/wa.png" readonly id="link-wa">
+                        <button class="copy-btn" onclick="copyLink('link-wa', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 20 -->
+            <div class="gallery-card">
+                <div class="gallery-img-wrapper">
+                    <img src="../img/wayang.png" alt="Wayang Cultural Heritage Graphic Asset">
+                </div>
+                <div class="gallery-content">
+                    <div>
+                        <h3>Wayang Heritage Asset</h3>
+                        <p>Shadow puppet artistic design element honoring rich Indonesian storytelling traditions.</p>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/img/wayang.png" readonly id="link-wayang">
+                        <button class="copy-btn" onclick="copyLink('link-wayang', this)">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="article-section">
+            <h2>Advancing Decentralized Ecosystems Through Visual Asset Integration</h2>
+            <p>The Whellcolor Cube Crypto (WCC) protocol represents a paradigm shift in how Web3 systems incorporate multidimensional data arrays, automated smart contract logic, and culturally rich user interfaces. By bridging high-performance cryptographic frameworks with intuitive design elements—ranging from advanced 3D cryptographic cubes to localized script engines—WCC ensures seamless accessibility across diverse global communities.</p>
+            <p>Our commitment to open-source transparency is reflected in this comprehensive image asset repository. Developers, validators, and community contributors can easily reference, copy, and utilize official graphics to build robust decentralized applications, educational portals, and scalable decentralized finance (DeFi) solutions securely hosted on GitHub Pages.</p>
+        </section>
+
+        <section class="external-links-section">
+            <h3>Recommended Ecosystem Resources</h3>
+            <div class="ext-grid">
+                <a href="https://ethereum.org" class="ext-link-item" target="_blank" rel="noopener">Ethereum Network</a>
+                <a href="https://github.com" class="ext-link-item" target="_blank" rel="noopener">GitHub Developer Platform</a>
+                <a href="https://ipfs.tech" class="ext-link-item" target="_blank" rel="noopener">IPFS Distributed Storage</a>
+                <a href="https://polygon.technology" class="ext-link-item" target="_blank" rel="noopener">Polygon Scaling Protocol</a>
+                <a href="https://chain.link" class="ext-link-item" target="_blank" rel="noopener">Chainlink Oracle Feeds</a>
+                <a href="https://solana.com" class="ext-link-item" target="_blank" rel="noopener">Solana High-Speed Chain</a>
+                <a href="https://metamask.io" class="ext-link-item" target="_blank" rel="noopener">MetaMask Web3 Wallet</a>
+                <a href="https://coingecko.com" class="ext-link-item" target="_blank" rel="noopener">CoinGecko Market Data</a>
+                <a href="https://defillama.com" class="ext-link-item" target="_blank" rel="noopener">DeFiLlama Analytics</a>
+                <a href="https://W3.org" class="ext-link-item" target="_blank" rel="noopener">W3C Web Standards</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a> | 
+                <a href="about-us.html">About Us</a> | 
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms & Conditions</a> | 
+                <a href="disclaimer.html">Disclaimer</a> | 
+                <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+            </div>
+            <p>&copy; 2026 <span>Whellcolor Cube Crypto (WCC) Protocol</span>. All Rights Reserved. Built securely on GitHub Pages.</p>
+        </footer>
+    </main>
+
+    <div id="cookie-consent">
+        <p>We use cookies and decentralized local trackers to optimize your Web3 experience, analyze traffic, and secure interactions. By continuing to use our platform, you agree to our <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms</a>.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-decline" onclick="handleCookie('decline')">Decline</button>
+            <button class="cookie-btn cookie-accept" onclick="handleCookie('accept')">Accept All</button>
+        </div>
+    </div>
+
+    <script>
+        // Generate Dynamic Parallax Stars
+        const starsContainer = document.getElementById('stars');
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = `${Math.random() * 3 + 1}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 3 + 2;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Copy Link Function
+        function copyLink(elementId, btnElement) {
+            const inputElement = document.getElementById(elementId);
+            inputElement.select();
+            inputElement.setSelectionRange(0, 99999); // For mobile devices
+            
+            navigator.clipboard.writeText(inputElement.value).then(() => {
+                const originalText = btnElement.textContent;
+                btnElement.textContent = 'Copied!';
+                btnElement.style.background = '#00ff80';
+                
+                setTimeout(() => {
+                    btnElement.textContent = originalText;
+                    btnElement.style.background = 'linear-gradient(45deg, #00f3ff, #7000ff)';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // Cookie Consent Logic
+        function handleCookie(action) {
+            const banner = document.getElementById('cookie-consent');
+            if(banner) {
+                banner.style.display = 'none';
+                localStorage.setItem('wcc_cookie_consent', action);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('wcc_cookie_consent')) {
+                const banner = document.getElementById('cookie-consent');
+                if(banner) banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
