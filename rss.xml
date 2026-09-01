@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WhellColor Ecosystem RSS Feed</title>
+    <link>https://whellcolor.github.io/</link>
+    <description>Complete RSS feed containing all pages and tools of the WhellColor GitHub Pages repository.</description>
+    <lastBuildDate>Tue, 01 Sep 2026 14:56:55 +0000</lastBuildDate>
+    <item>
+      <title>Home - WhellColor</title>
+      <link>https://whellcolor.github.io/</link>
+      <guid isPermaLink="true">https://whellcolor.github.io/</guid>
+      <description>Page/Tool update from WhellColor ecosystem: https://whellcolor.github.io/</description>
+      <pubDate>Tue, 01 Sep 2026 14:56:55 +0000</pubDate>
+    </item>
+    <!-- Dan seterusnya untuk total 78 item tautan lainnya -->
+  </channel>
+</rss>
