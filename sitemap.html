@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,104 +11,325 @@
     <meta name="description" content="Explore Whellcolor Cube Crypto (WCC), a pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, and professional web color tools.">
     <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Color Tool, Tailwind Colors, Decentralized Applications">
     <meta name="author" content="Whellcolor Dev Core Team">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="wcc.png">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://whellcolor.github.io/">
-    <meta property="og:title" content="Whellcolor Cube Crypto (WCC) - Next-Gen Web3 & Color Hub">
-    <meta property="og:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive color utility tools on the WCC Network.">
-    <meta property="og:image" content="https://whellcolor.github.io/wcc-cube.jpg">
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://whellcolor.github.io/">
-    <meta property="twitter:title" content="Whellcolor Cube Crypto (WCC) - Next-Gen Web3 & Color Hub">
-    <meta property="twitter:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive color utility tools on the WCC Network.">
-    <meta property="twitter:image" content="https://whellcolor.github.io/wcc-cube.jpg">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-GK8ZT3L7EC');
-    </script>
 
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN untuk kemudahan styling responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0b0f19',
+                        cardBg: '#131c31',
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
-        h1 { font-family: 'Orbitron', sans-serif; color: #000; }
-        h2 { font-family: 'Orbitron', sans-serif; border-bottom: 2px solid #eee; margin-top: 30px; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin-bottom: 8px; }
-        a { text-decoration: none; color: #007bff; }
-        a:hover { text-decoration: underline; }
+        .rainbow-text {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .rainbow-border {
+            border-image: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff) 1;
+        }
     </style>
 </head>
-<body>
+<body class="bg-darkBg text-gray-100 font-inter min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white">
 
-    <h1>Sitemap</h1>
-    <p>Welcome to the official sitemap of Whellcolor Cube Crypto (WCC).</p>
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/80 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Title -->
+            <a href="https://whellcolor.github.io/" class="flex items-center space-x-3 group">
+                <img src="wcc.png" alt="WCC Logo - Whellcolor Cube Crypto" class="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300">
+                <span class="font-orbitron font-bold text-lg sm:text-xl tracking-wider rainbow-text">
+                    WHELLCOLOR WCC
+                </span>
+            </a>
 
-    <h2>Main Pages</h2>
-    <ul>
-        <li><a href="https://whellcolor.github.io/">Home</a></li>
-        <li><a href="https://whellcolor.github.io/about-us.html">About Us</a></li>
-        <li><a href="https://whellcolor.github.io/contact.html">Contact</a></li>
-        <li><a href="https://whellcolor.github.io/sitemap.html">Sitemap</a></li>
-        <li><a href="https://whellcolor.github.io/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="https://whellcolor.github.io/disclaimer.html">Disclaimer</a></li>
-        <li><a href="https://whellcolor.github.io/terms.html">Terms of Service</a></li>
-    </ul>
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="https://whellcolor.github.io/" class="hover:text-indigo-400 transition-colors">Home</a>
+                <a href="https://whellcolor.github.io/about-us.html" class="hover:text-indigo-400 transition-colors">About Us</a>
+                <a href="https://whellcolor.github.io/blog/" class="hover:text-indigo-400 transition-colors">Blog</a>
+                <a href="https://whellcolor.github.io/tools/" class="hover:text-indigo-400 transition-colors">Tools</a>
+                <a href="https://whellcolor.github.io/contact.html" class="hover:text-indigo-400 transition-colors">Contact</a>
+            </nav>
 
-    <h2>Ecosystem & Tools</h2>
-    <ul>
-        <li><a href="https://whellcolor.github.io/wcc.html">WCC Main</a></li>
-        <li><a href="https://whellcolor.github.io/SmartLink/">SmartLink</a></li>
-        <li><a href="https://whellcolor.github.io/addres/">Address Explorer & Tools</a></li>
-        <li><a href="https://whellcolor.github.io/cleanbg/">CleanBG</a></li>
-        <li><a href="https://whellcolor.github.io/cleanwm/">CleanWM</a></li>
-        <li><a href="https://whellcolor.github.io/color/">Color Tool</a></li>
-        <li><a href="https://whellcolor.github.io/faucet/">Faucet</a></li>
-        <li><a href="https://whellcolor.github.io/global-atlas/">Global Atlas</a></li>
-        <li><a href="https://whellcolor.github.io/proxy/">Proxy</a></li>
-        <li><a href="https://whellcolor.github.io/safelink/">Safelink</a></li>
-        <li><a href="https://whellcolor.github.io/templates/">Templates</a></li>
-        <li><a href="https://whellcolor.github.io/thirdweb/">ThirdWeb Utilities</a></li>
-        <li><a href="https://whellcolor.github.io/todo/">Todo App</a></li>
-        <li><a href="https://whellcolor.github.io/tools/">General Tools</a></li>
-        <li><a href="https://whellcolor.github.io/webproxy/">Web Proxy</a></li>
-        <li><a href="https://whellcolor.github.io/shop/">Shop</a></li>
-        <li><a href="https://whellcolor.github.io/fastsong/">FastSong</a></li>
-        <li><a href="https://whellcolor.github.io/neumorphism/">Neumorphism</a></li>
-        <li><a href="https://whellcolor.github.io/bubble/">Bubble</a></li>
-        <li><a href="https://whellcolor.github.io/ld-color-tool/">LD Color Tool</a></li>
-        <li><a href="https://whellcolor.github.io/Visicality/">Visicality</a></li>
-    </ul>
+            <!-- Action Button -->
+            <div>
+                <a href="https://whellcolor.github.io/wcc.html" class="hidden sm:inline-block px-5 py-2.5 rounded-lg font-orbitron text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 shadow-lg shadow-indigo-500/20 transition-all">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <h2>Blog Posts</h2>
-    <ul>
-        <li><a href="https://whellcolor.github.io/blog/">Blog Index</a></li>
-        <li><a href="https://whellcolor.github.io/blog/web3-wallet-security-2026.html">Web3 Wallet Security 2026</a></li>
-        <li><a href="https://whellcolor.github.io/blog/wcc-tools-terminal.html">WCC Tools Terminal</a></li>
-        <li><a href="https://whellcolor.github.io/blog/virtual-cloud-mining-guide.html">Virtual Cloud Mining Guide</a></li>
-        <li><a href="https://whellcolor.github.io/blog/understanding-wcc-ecosystem.html">Understanding WCC Ecosystem</a></li>
-        <li><a href="https://whellcolor.github.io/blog/tokenomics-and-staking-yields.html">Tokenomics and Staking Yields</a></li>
-        <li><a href="https://whellcolor.github.io/blog/multidimensional-nft-utility.html">Multidimensional NFT Utility</a></li>
-        <li><a href="https://whellcolor.github.io/blog/holesky-testnet-smart-contracts.html">Holesky Testnet Smart Contracts</a></li>
-        <li><a href="https://whellcolor.github.io/blog/future-of-gamified-cryptography.html">Future of Gamified Cryptography</a></li>
-        <li><a href="https://whellcolor.github.io/blog/decentralized-finance-mechanics.html">DeFi Mechanics</a></li>
-        <li><a href="https://whellcolor.github.io/blog/cross-chain-rpc-optimization.html">Cross-Chain RPC Optimization</a></li>
-        <li><a href="https://whellcolor.github.io/blog/comprehensive-wcc-technical-manifesto.html">WCC Technical Manifesto</a></li>
-        <li><a href="https://whellcolor.github.io/blog/comprehensive-wcc-ecosystem-deepdive.html">WCC Ecosystem Deepdive</a></li>
-        <li><a href="https://whellcolor.github.io/blog/comprehensive-arabictext-architecture-manifesto.html">ArabicText Architecture</a></li>
-        <li><a href="https://whellcolor.github.io/blog/adsense-readiness-for-dapps.html">AdSense Readiness for dApps</a></li>
-    </ul>
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <!-- Page Title Section -->
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-5xl font-orbitron font-extrabold mb-4 rainbow-text">
+                Sitemap WCC Ecosystem
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                Jelajahi seluruh direktori halaman, aplikasi terdesentralisasi (dApp), alat utilitas warna, serta artikel blog resmi dari ekosistem Whellcolor Cube Crypto.
+            </p>
+        </div>
+
+        <!-- Sitemap Table Section -->
+        <div class="bg-cardBg rounded-xl border border-gray-800 shadow-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-900/60 border-b border-gray-800 text-xs sm:text-sm font-orbitron text-gray-300">
+                            <th class="py-4 px-6 w-16 text-center">No</th>
+                            <th class="py-4 px-6">Judul Halaman</th>
+                            <th class="py-4 px-6">Deskripsi Ekosistem</th>
+                            <th class="py-4 px-6 text-center w-40">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800/60 text-sm">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">01</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Home / Beranda Utama
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Gerbang utama ekosistem Web3 Whellcolor Cube Crypto (WCC) dan Hub Warna Profesional.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">02</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/wcc.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    WCC Network Dashboard
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/wcc.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Pusat kontrol interaktif untuk aset digital, staking, dan analitik mining WCC token.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/wcc.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">03</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/tools/" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Tools & Web Color Utilities
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/tools/</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Kumpulan alat bantu pengembang web, generator palet warna, dan integrasi Tailwind CSS.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/tools/" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">04</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/faucet/" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Web3 Crypto Faucet
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/faucet/</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Klaim token pengujian dan aset digital gratis langsung melalui dApp jaringan testnet.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/faucet/" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 5 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">05</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/blog/" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    WCC Insights & Blog Hub
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/blog/</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Artikel mendalam seputar keamanan wallet Web3, tokenomics, dan panduan virtual mining.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/blog/" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 6 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">06</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/blog/web3-wallet-security-2026.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Web3 Wallet Security Guide
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/blog/web3-wallet-security-2026.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Panduan komprehensif mengamankan aset kripto dan private key dari ancaman siber terkini.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/blog/web3-wallet-security-2026.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 7 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">07</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/addres/explorer.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Address Explorer & QR
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/addres/explorer.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Pemeriksaan alamat smart contract, transaksi blockchain, dan pemindai QR mandiri.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/addres/explorer.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 8 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">08</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/about-us.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    About Us WCC Core Team
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/about-us.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Mengenal visi, misi, serta pengembang inti di balik inovasi teknologi Whellcolor Cube Crypto.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/about-us.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 9 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">09</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/contact.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Contact Support
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/contact.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Hubungi tim dukungan teknis atau ajukan kolaborasi kemitraan bersama jaringan WCC.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/contact.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Row 10 -->
+                        <tr class="hover:bg-gray-800/30 transition-colors">
+                            <td class="py-4 px-6 text-center font-mono text-gray-400">10</td>
+                            <td class="py-4 px-6">
+                                <a href="https://whellcolor.github.io/privacy-policy.html" class="font-semibold text-white hover:text-indigo-400 transition-colors">
+                                    Privacy Policy & Terms
+                                </a>
+                                <div class="text-xs text-gray-500 mt-0.5">https://whellcolor.github.io/privacy-policy.html</div>
+                            </td>
+                            <td class="py-4 px-6 text-gray-300">Kebijakan privasi data pengguna, syarat ketentuan penggunaan dApp, serta disclaimer hukum.</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://whellcolor.github.io/privacy-policy.html" class="inline-block px-4 py-1.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-orbitron text-xs font-semibold tracking-wider transition-colors shadow-md shadow-indigo-600/30">
+                                    Get Started
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-cardBg border-t border-gray-800 mt-16 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <!-- Brand Info -->
+            <div class="space-y-4 md:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="wcc.png" alt="WCC Logo Footer" class="w-8 h-8 object-contain">
+                    <span class="font-orbitron font-bold text-base tracking-wider text-white">WHELLCOLOR</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, and professional web color tools.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-orbitron font-semibold text-sm text-white mb-4 uppercase tracking-wider">Ecosystem</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="https://whellcolor.github.io/wcc.html" class="hover:text-indigo-400 transition-colors">WCC Network</a></li>
+                    <li><a href="https://whellcolor.github.io/faucet/" class="hover:text-indigo-400 transition-colors">Crypto Faucet</a></li>
+                    <li><a href="https://whellcolor.github.io/tools/" class="hover:text-indigo-400 transition-colors">Color Tools</a></li>
+                    <li><a href="https://whellcolor.github.io/blog/" class="hover:text-indigo-400 transition-colors">Insights & Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal Links -->
+            <div>
+                <h4 class="font-orbitron font-semibold text-sm text-white mb-4 uppercase tracking-wider">Legal & Support</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="https://whellcolor.github.io/privacy-policy.html" class="hover:text-indigo-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="https://whellcolor.github.io/terms.html" class="hover:text-indigo-400 transition-colors">Terms of Service</a></li>
+                    <li><a href="https://whellcolor.github.io/disclaimer.html" class="hover:text-indigo-400 transition-colors">Financial Disclaimer</a></li>
+                    <li><a href="https://whellcolor.github.io/contact.html" class="hover:text-indigo-400 transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Social / Verification -->
+            <div>
+                <h4 class="font-orbitron font-semibold text-sm text-white mb-4 uppercase tracking-wider">Community</h4>
+                <div class="flex space-x-3 mb-4">
+                    <a href="https://github.com/whellcolor" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-indigo-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-indigo-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-indigo-600 flex items-center justify-center text-gray-300 hover:text-white transition-colors">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                </div>
+                <p class="text-[11px] text-gray-500">Secured & Verified by Google AdSense & Google Analytics Network.</p>
+            </div>
+        </div>
+
+        <!-- Copyright Bottom -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800/80 pt-6 text-center text-xs text-gray-500">
+            &copy; 2026 Whellcolor Cube Crypto (WCC) Dev Core Team. All Rights Reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
