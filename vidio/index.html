@@ -1,1 +1,922 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whellcolor Cube Crypto (WCC) Video Gallery - Web3 Ecosystem</title>
+    <link rel="canonical" href="https://whellcolor.github.io/vidio/index.html">
+    <meta name="description" content="Explore Whellcolor Cube Crypto (WCC) Video Gallery, featuring immersive Web3 media, scenic destinations, decentralized insights, and high-yield ecosystem showcases.">
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Video Gallery, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+    <meta name="author" content="Whellcolor Dev Core Team">
 
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../wcc.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whellcolor.github.io/vidio/index.html">
+    <meta property="og:title" content="Whellcolor Cube Crypto (WCC) Video Gallery - Web3 Ecosystem">
+    <meta property="og:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic video media on the WCC Network.">
+    <meta property="og:image" content="https://whellcolor.github.io/wcc-cube.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://whellcolor.github.io/vidio/index.html">
+    <meta property="twitter:title" content="Whellcolor Cube Crypto (WCC) Video Gallery - Web3 Ecosystem">
+    <meta property="twitter:description" content="Discover automated asset mining, decentralized exchange mechanisms, and interactive cryptographic video media on the WCC Network.">
+    <meta property="twitter:image" content="https://whellcolor.github.io/wcc-cube.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Dynamic Background Switcher Layer */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.8s ease-in-out;
+        }
+
+        .bg-galaxy {
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%) !important;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -4;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .galaxy-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            opacity: 0.5;
+            background: radial-gradient(circle at 50% 50%, rgba(120, 0, 255, 0.4) 0%, rgba(0, 0, 0, 0.9) 80%);
+            animation: rotateGalaxy 120s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGalaxy {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Site Header & Navigation Bar */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.6));
+            animation: pulseLogo 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.6)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.9)); }
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #00f3ff, #bd00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #00f3ff;
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+        }
+
+        .main-wrapper {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7rem 1rem 2rem 1rem;
+            z-index: 2;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        p.subtitle {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        /* Gallery Grid Styles */
+        .gallery-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .video-card {
+            background: rgba(15, 15, 25, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            border-color: rgba(0, 243, 255, 0.4);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .video-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+        }
+
+        .video-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .link-box {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 6px 10px;
+            gap: 8px;
+        }
+
+        .link-box input {
+            background: transparent;
+            border: none;
+            color: #00f3ff;
+            font-size: 0.75rem;
+            width: 100%;
+            outline: none;
+            font-family: monospace;
+        }
+
+        .copy-btn {
+            background: linear-gradient(45deg, #00f3ff, #7000ff);
+            color: #fff;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Article & External Links Section */
+        .article-section {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .article-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #00f3ff;
+            margin-bottom: 1rem;
+        }
+
+        .article-section p {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .external-links {
+            margin-top: 1.5rem;
+        }
+
+        .external-links h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .links-grid a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            background: rgba(0, 243, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .links-grid a:hover {
+            background: rgba(0, 243, 255, 0.2);
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .footer-links {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #00f3ff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cookie Consent Banner */
+        #cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 18, 0.95);
+            border-top: 1px solid rgba(0, 243, 255, 0.3);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #cookie-consent p {
+            font-size: 0.85rem;
+            color: #ccc;
+            max-width: 800px;
+        }
+
+        #cookie-consent a {
+            color: #00f3ff;
+            text-decoration: none;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cookie-btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+        }
+
+        .cookie-decline {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .cookie-accept {
+            background: linear-gradient(45deg, #00f3ff, #7000ff);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 0.6rem 1rem; }
+            .nav-links { display: none; }
+            h1 { font-size: 1.6rem; }
+            .gallery-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="bg-galaxy">
+
+    <!-- Dynamic Background Layers -->
+    <div class="bg-layer bg-galaxy" id="bgLayer"></div>
+    <div class="stars-container" id="stars"></div>
+    <div class="galaxy-overlay" id="galaxyOverlay"></div>
+
+    <!-- Header & Logo Navigation Bar -->
+    <header class="site-header">
+        <a href="https://whellcolor.github.io/" class="logo-container">
+            <img src="https://whellcolor.github.io/wcc.png" alt="WCC Logo" class="logo-img">
+            <span class="logo-text">WCC PROTOCOL</span>
+        </a>
+        <nav class="nav-links">
+            <a href="https://whellcolor.github.io/">Home</a>
+            <a href="https://whellcolor.github.io/vidio/index.html" class="active">Video Gallery</a>
+            <a href="https://whellcolor.github.io/about-us.html">About Us</a>
+            <a href="https://whellcolor.github.io/privacy-policy.html">Privacy Policy</a>
+            <a href="https://whellcolor.github.io/terms.html">Terms</a>
+        </nav>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="page-header">
+            <h1>Whellcolor Cube Crypto (WCC) Video Gallery</h1>
+            <p class="subtitle">Discover decentralized asset media, global landmark views, and immersive visual artifacts from the WCC ecosystem.</p>
+        </div>
+
+        <!-- Video Gallery Grid -->
+        <div class="gallery-container">
+            
+            <!-- 1. Borobudur -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/borobudur.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Borobudur Temple Heritage</h3>
+                    <p class="video-desc">Cinematic footage of the magnificent ancient Buddhist temple, blending cultural legacy with digital permanence.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/borobudur.mp4" readonly id="link-borobudur">
+                        <button class="copy-btn" onclick="copyLink('link-borobudur', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Bunga -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/bunga.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Blooming Floral Art</h3>
+                    <p class="video-desc">A mesmerizing look at natural botany synchronized with algorithmic visual patterns on the WCC Network.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/bunga.mp4" readonly id="link-bunga">
+                        <button class="copy-btn" onclick="copyLink('link-bunga', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Burung -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/burung.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Avian Flight Dynamics</h3>
+                    <p class="video-desc">Stunning captured flight of rare birds representing speed, liberty, and decentralized governance models.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/burung.mp4" readonly id="link-burung">
+                        <button class="copy-btn" onclick="copyLink('link-burung', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Caligraphy -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/caligraphy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Exquisite Calligraphy</h3>
+                    <p class="video-desc">Intricate typographic art strokes symbolizing the precise cryptographic signatures embedded in WCC infrastructure.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/caligraphy.mp4" readonly id="link-caligraphy">
+                        <button class="copy-btn" onclick="copyLink('link-caligraphy', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Cat -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/cat.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Feline Elegance</h3>
+                    <p class="video-desc">Playful and graceful feline clips tokenized as lighthearted utility tokens within experimental dApps.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/cat.mp4" readonly id="link-cat">
+                        <button class="copy-btn" onclick="copyLink('link-cat', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Dragon -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/dragon.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Mythical Dragon Scale</h3>
+                    <p class="video-desc">Legendary mystical creature animation symbolizing powerhouse liquidity pools and high-yield asset tiers.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/dragon.mp4" readonly id="link-dragon">
+                        <button class="copy-btn" onclick="copyLink('link-dragon', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Indah -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/indah.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Scenic Wonder ("Indah")</h3>
+                    <p class="video-desc">Breathtaking visual vistas illustrating the natural harmony that inspires our clean, green Web3 architecture.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/indah.mp4" readonly id="link-indah">
+                        <button class="copy-btn" onclick="copyLink('link-indah', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Italia -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/italia.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Italian Heritage Tour</h3>
+                    <p class="video-desc">Romantic streets and historic monuments of Italy captured in high-definition digital streams.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/italia.mp4" readonly id="link-italia">
+                        <button class="copy-btn" onclick="copyLink('link-italia', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Loncat -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/loncat.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Dynamic Leap ("Loncat")</h3>
+                    <p class="video-desc">Energetic motion capture highlighting breakthrough leaps in cross-chain interoperability and speed.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/loncat.mp4" readonly id="link-loncat">
+                        <button class="copy-btn" onclick="copyLink('link-loncat', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. London -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/london.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">London Cityscape</h3>
+                    <p class="video-desc">Urban financial hubs meet modern decentralized networks in this panoramic video tour of London.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/london.mp4" readonly id="link-london">
+                        <button class="copy-btn" onclick="copyLink('link-london', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Madinah -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/madinah.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Madinah Al-Munawwarah</h3>
+                    <p class="video-desc">Serene spiritual vistas reflecting peace, devotion, and community values foundational to our network.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/madinah.mp4" readonly id="link-madinah">
+                        <button class="copy-btn" onclick="copyLink('link-madinah', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Masjid Qatar -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/masjidqatar.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Qatar Architectural Mosques</h3>
+                    <p class="video-desc">Stunning modern Islamic architecture showcasing structural excellence and futuristic design ideals.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/masjidqatar.mp4" readonly id="link-masjidqatar">
+                        <button class="copy-btn" onclick="copyLink('link-masjidqatar', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. Naga -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/naga.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Asian Mythological Naga</h3>
+                    <p class="video-desc">Fluid serpent deity visual representation linked with bullish market momentum and protective smart contracts.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/naga.mp4" readonly id="link-naga">
+                        <button class="copy-btn" onclick="copyLink('link-naga', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14. Ngakak -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/ngakak.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Community Humor Hub</h3>
+                    <p class="video-desc">Lighthearted entertainment clips celebrating the active, vibrant WCC global user community.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/ngakak.mp4" readonly id="link-ngakak">
+                        <button class="copy-btn" onclick="copyLink('link-ngakak', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15. Perahu -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/perahu.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sailboat Voyage ("Perahu")</h3>
+                    <p class="video-desc">Navigating digital oceans of decentralized wealth with secure vessel frameworks.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/perahu.mp4" readonly id="link-perahu">
+                        <button class="copy-btn" onclick="copyLink('link-perahu', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 16. Pesawat -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/pesawat.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Aircraft Flight Stream</h3>
+                    <p class="video-desc">Soaring high-altitude airplane journeys symbolizing scalability and global crypto adoption.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/pesawat.mp4" readonly id="link-pesawat">
+                        <button class="copy-btn" onclick="copyLink('link-pesawat', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 17. Qatar City -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/qatarcity.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Doha Qatar Skyline</h3>
+                    <p class="video-desc">Futuristic skyscrapers mirroring the advanced technological blueprint of the WCC protocol.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/qatarcity.mp4" readonly id="link-qatarcity">
+                        <button class="copy-btn" onclick="copyLink('link-qatarcity', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 18. Swiss -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <video controls muted preload="metadata">
+                        <source src="https://whellcolor.github.io/vidio/swiss.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Swiss Alps Landscape</h3>
+                    <p class="video-desc">Pristine mountain peaks representing ultimate asset security, privacy standards, and stability.</p>
+                    <div class="link-box">
+                        <input type="text" value="https://whellcolor.github.io/vidio/swiss.mp4" readonly id="link-swiss">
+                        <button class="copy-btn" onclick="copyLink('link-swiss', this)">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- English Article & External Links Section -->
+        <section class="article-section">
+            <h2>Empowering Decentralized Media & Web3 Innovation</h2>
+            <p>
+                The Whellcolor Cube Crypto (WCC) ecosystem bridges traditional high-definition media storage with cutting-edge decentralized ledgers. By integrating secure video streams, cryptographic cubes, and automated mining contracts, WCC delivers an uncompromised user experience built directly on GitHub Pages infrastructure. Our decentralized framework guarantees transparent tokenomics, high-yield staking pools, and interactive web applications designed for next-gen digital creators.
+            </p>
+            <p>
+                Explore our comprehensive resource catalog below to dive deeper into blockchain development, crypto security guidelines, and global financial standards powering the modern decentralized web.
+            </p>
+
+            <div class="external-links">
+                <h3>Recommended Web3 & Tech Resources</h3>
+                <div class="links-grid">
+                    <a href="https://ethereum.org" target="_blank" rel="noopener">Ethereum Ecosystem</a>
+                    <a href="https://github.com" target="_blank" rel="noopener">GitHub Development</a>
+                    <a href="https://coinmarketcap.com" target="_blank" rel="noopener">CoinMarketCap Data</a>
+                    <a href="https://coingecko.com" target="_blank" rel="noopener">CoinGecko Analytics</a>
+                    <a href="https://polygon.technology" target="_blank" rel="noopener">Polygon Scaling</a>
+                    <a href="https://binance.com" target="_blank" rel="noopener">Binance Academy</a>
+                    <a href="https://defillama.com" target="_blank" rel="noopener">DeFi Llama Metrics</a>
+                    <a href="https://metamask.io" target="_blank" rel="noopener">MetaMask Web3 Wallet</a>
+                    <a href="https://solana.com" target="_blank" rel="noopener">Solana Network</a>
+                    <a href="https://schema.org" target="_blank" rel="noopener">Schema.org Standards</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="../index.html">Home</a> | 
+                <a href="../about-us.html">About Us</a> | 
+                <a href="../privacy-policy.html">Privacy Policy</a> | 
+                <a href="../terms.html">Terms & Conditions</a> | 
+                <a href="../disclaimer.html">Disclaimer</a> | 
+                <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+            </div>
+            <p>&copy; 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved. Built securely on GitHub Pages.</p>
+        </footer>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent">
+        <p>We use cookies and decentralized local trackers to optimize your Web3 experience, analyze traffic, and secure interactions. By continuing to use our platform, you agree to our <a href="../privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="../terms.html" target="_blank">Terms</a>.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-decline" onclick="handleCookie('decline')">Decline</button>
+            <button class="cookie-btn cookie-accept" onclick="handleCookie('accept')">Accept All</button>
+        </div>
+    </div>
+
+    <script>
+        // Copy Link Functionality
+        function copyLink(elementId, btnElement) {
+            const inputField = document.getElementById(elementId);
+            inputField.select();
+            inputField.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(inputField.value).then(() => {
+                const originalText = btnElement.textContent;
+                btnElement.textContent = 'Copied!';
+                btnElement.style.background = '#00ff80';
+                setTimeout(() => {
+                    btnElement.textContent = originalText;
+                    btnElement.style.background = 'linear-gradient(45deg, #00f3ff, #7000ff)';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        // Generate Dynamic Parallax Stars
+        const starsContainer = document.getElementById('stars');
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.width = `${Math.random() * 3 + 1}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 3 + 2;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            
+            starsContainer.appendChild(star);
+        }
+
+        // Cookie Consent Logic
+        function handleCookie(action) {
+            const banner = document.getElementById('cookie-consent');
+            if(banner) {
+                banner.style.display = 'none';
+                localStorage.setItem('wcc_cookie_consent', action);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if(localStorage.getItem('wcc_cookie_consent')) {
+                const banner = document.getElementById('cookie-consent');
+                if(banner) banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
