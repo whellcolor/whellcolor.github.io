@@ -371,6 +371,70 @@ async function connectTrustWallet() {
         rpc: "https://api.devnet.solana.com"
     }
 ];
+
+        // Contoh ABI standar untuk fungsi klaim faucet (sesuaikan dengan kontrak asli Anda)
+const faucetABI = [
+    "function claim() external",
+    "function drip() external"
+];
+
+async function claimFaucet() {
+    const walletAddress = document.getElementById("wallet").value.trim();
+    if (!walletAddress) return alert("Masukkan alamat dompet terlebih dahulu!");
+
+    const net = NETWORKS[document.getElementById("network").value];
+    document.getElementById("status").innerText = "Menghubungkan ke dompet & blockchain...";
+
+    try {
+        if (net.chain === "solana") {
+            // Logika Solana (Airdrop)
+            const c = new solanaWeb3.Connection(net.rpc, "confirmed");
+            const sig = await c.requestAirdrop(
+                new solanaWeb3.PublicKey(walletAddress),
+                solanaWeb3.LAMPORTS_PER_SOL
+            );
+            saveHistory({ network: net.name, hash: sig });
+            document.getElementById("status").innerText = "SOL Airdrop Berhasil!";
+        } else {
+            // Logika EVM (Memanggil Smart Contract Faucet)
+            if (!window.ethereum) return alert("Silakan instal MetaMask atau Trust Wallet!");
+
+            // Meminta provider dari browser (MetaMask/Trust Wallet)
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = await provider.getSigner();
+
+            // Alamat kontrak faucet Anda
+            const contractAddress = "0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b";
+            
+            // Hubungkan ke kontrak pintar
+            const faucetContract = new ethers.Contract(contractAddress, faucetABI, signer);
+
+            document.getElementById("status").innerText = "Konfirmasi transaksi di dompet Anda...";
+
+            // Panggil fungsi claim di smart contract (sesuaikan nama fungsi, misal: claim() atau drip())
+            const tx = await faucetContract.claim();
+            
+            document.getElementById("status").innerText = "Transaksi dikirim, menunggu konfirmasi...";
+            
+            // Tunggu transaksi selesai
+            const receipt = await tx.wait();
+
+            saveHistory({
+                network: net.name,
+                hash: receipt.hash
+            });
+
+            document.getElementById("status").innerText = "Klaim Faucet EVM Berhasil!";
+        }
+
+        saveClaim(walletAddress);
+        startCooldown();
+
+    } catch (e) {
+        console.error(e);
+        document.getElementById("status").innerText = "Gagal: " + (e.reason || e.message);
+    }
+}
     </script>
 </body>
 </html>
