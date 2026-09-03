@@ -1,13 +1,4 @@
 {
-  "name": "wcc-crypto-miner",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "node server.js",
-    "test-mine": "curl -X POST http://localhost:3001/api/mine -H \"Content-Type: application/json\" -d '{\"smartWallet\": \"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763\", \"contractor\": \"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88\", \"amount\": 0.9, \"status\": \"HASH_MINING_SUCCESS\"}'",
-    "check-rpc": "curl https://rpc.buildbear.io/global-wolverine-ff979075 -X POST -H \"Content-Type: application/json\" -d '{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[],\"id\":1}'"
-  }
-}
-{
   "name": "whellcolor-cube-crypto",
   "version": "1.0.0",
   "description": "Whellcolor Cube Crypto (WCC) official platform and monetization configurations.",
@@ -16,7 +7,9 @@
   "scripts": {
     "start": "echo \"Running WCC local server...\" && -your-start-command-here-",
     "build": "echo \"Building WCC project...\" && -your-build-command-here-",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-mine": "curl -X POST http://localhost:3001/api/mine -H \"Content-Type: application/json\" -d '{\"smartWallet\": \"0x7D4B0583DB9c1bb69F481e241DdAa5943Bad7763\", \"contractor\": \"0xd8519A8b8825Aa0DcC73aAD572f447FAE102fe88\", \"amount\": 0.9, \"status\": \"HASH_MINING_SUCCESS\"}'",
+    "check-rpc": "curl https://rpc.buildbear.io/global-wolverine-ff979075 -X POST -H \"Content-Type: application/json\" -d '{\"jsonrpc\":\"2.0\",\"method\":\"eth_blockNumber\",\"params\":[],\"id\":1}'"
   },
   "keywords": [
     "crypto",
