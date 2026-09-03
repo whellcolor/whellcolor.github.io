@@ -339,6 +339,38 @@ async function connectTrustWallet() {
                 document.getElementById("status").innerText = "Error: " + e.message;
             }
         }
+        const NETWORKS = [
+    {
+        name: "Ethereum Sepolia",
+        chain: "evm",
+        rpc: "https://rpc.ankr.com/eth_sepolia"
+    },
+    {
+        name: "Base Sepolia",
+        chain: "evm",
+        rpc: "https://sepolia.base.org"
+    },
+    {
+        name: "Arbitrum Sepolia",
+        chain: "evm",
+        rpc: "https://sepolia-rollup.arbitrum.io/rpc"
+    },
+    {
+        name: "Polygon Amoy",
+        chain: "evm",
+        rpc: "https://rpc-amoy.polygon.technology"
+    },
+    {
+        name: "Avalanche Fuji",
+        chain: "evm",
+        rpc: "https://api.avax-test.network/ext/bc/C/rpc"
+    },
+    {
+        name: "Solana Devnet",
+        chain: "solana",
+        rpc: "https://api.devnet.solana.com"
+    }
+];
     </script>
 </body>
 </html>
