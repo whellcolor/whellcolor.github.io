@@ -1,0 +1,32 @@
+# ==========================================
+# Netlify Configuration File (netlify.toml)
+# Project: Whellcolor Cube Crypto (WCC)
+# ==========================================
+
+[build]
+  # Direktori output file publik (gunakan "." jika file berada di root utama repository)
+  publish = "."
+  
+  # Perintah build (kosongkan atau hapus tanda '#' jika Anda menggunakan framework seperti React/Vite/Next.js)
+  # command = "npm run build"
+
+# Konfigurasi Header Keamanan & Kinerja Web
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Pengaturan Redirects (Opsional jika menggunakan Single Page Application / SPA)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# ==========================================
+# Netlify Build Hook Integration
+# Build Hook URL untuk memicu re-deploy otomatis via API / webhook:
+# https://api.netlify.com/build_hooks/6a998ef93fad359430654a86
+# ==========================================
