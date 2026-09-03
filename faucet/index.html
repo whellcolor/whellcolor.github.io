@@ -1,585 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WCC Multi Faucet Chain</title>
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+    <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+    <meta name="author" content="Whellcolor Dev Core Team">
 
-<title>WCC Multi Faucet Chain</title>
-<meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
-<meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
-<meta name="author" content="Whellcolor Dev Core Team">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="wcc.png">
 
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="wcc.png">
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 
-<meta property="og:type" content="website">
-<meta name="google-adsense-account" content="ca-pub-7182145371991939">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
- 
-<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-<script src="https://whellcolor.github.io/js/deploy.js"></script>
-<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
-<script src="https://whellcolor.github.io/js/fetch.js"></script>
-<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    <script src="https://whellcolor.github.io/dapp/js/rpc.js"></script>
 
- gtag('config', 'G-GK8ZT3L7EC');
-</script>
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GK8ZT3L7EC');
+    </script>
 
-<!-- Ethers -->
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Solana -->
-<script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
 
-<!-- AppKit (Reown WalletConnect) -->
-<script src="https://unpkg.com/@reown/appkit@latest/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
 
-<!-- Thirdweb Bridge -->
-<script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
+    <script src="https://unpkg.com/@reown/appkit@latest/dist/index.umd.js"></script>
 
+    <script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
 
-<script src="https://whellcolor.github.io/dapp/js/rpc.js"></script>
-<meta name="google-adsense-account" content="ca-pub-7182145371991939">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939"
- crossorigin="anonymous"></script>
- 
- <script async custom-element="amp-auto-ads"
- src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
- </script>
-
-<meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
-
-
-<style>
-
-body{
-    background:#020617;
-    color:white;
-    font-family:Arial;
-}
-
-.glass{
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
-    border-radius:16px;
-    padding:16px;
-}
-
-</style>
-
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
 
 <body class="p-6">
 
-<div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto space-y-6">
 
-<h1 class="text-3xl font-bold mb-6">🚀 WCC Multi Faucet Chain</h1>
+        <h1 class="text-3xl font-bold mb-2">🚀 WCC Multi Faucet Chain</h1>
 
-<!-- WALLET -->
-<div class="glass mb-4">
+        <div class="glass">
+            <div class="flex gap-3 flex-wrap items-center">
+                <appkit-button></appkit-button>
 
-    <div class="flex gap-3 flex-wrap">
+                <button onclick="connectEVM()" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                    MetaMask
+                </button>
 
-        <!-- AppKit Wallet -->
-        <appkit-button></appkit-button>
-
-        <button onclick="connectEVM()" class="bg-purple-600 px-4 py-2 rounded-xl">
-            MetaMask
-        </button>
-
-        <button onclick="connectSolana()" class="bg-cyan-600 px-4 py-2 rounded-xl">
-            Phantom
-        </button>
-
-    </div>
-
-    <input id="wallet"
-        class="w-full mt-4 p-3 rounded-xl bg-slate-900"
-        placeholder="Wallet address"
-    />
-
-</div>
-
-<!-- NETWORK -->
-<div class="glass mb-4">
-
-    <select id="network"
-        class="w-full p-3 rounded-xl bg-slate-900"
-    ></select>
-
-    <button onclick="claimFaucet()"
-        class="bg-green-600 w-full mt-4 p-3 rounded-xl"
-    >
-        Claim Faucet
-    </button>
-
-    <div id="cooldown" class="mt-3 text-yellow-300">
-        Ready
-    </div>
-
-</div>
-
-<!-- STATUS -->
-<div id="status" class="glass mb-4">
-    Ready...
-</div>
-
-<!-- HISTORY -->
-<div class="glass">
-
-    <h2 class="text-xl mb-3">History</h2>
-    <div id="history"></div>
-
-</div>
-<!-- Add a container element where you want to render the UI -->
-<div id="bridge-widget-container"></div>
-
-<!-- Initialize the widget at the end of <body> -->
-<script>
-  const container = document.querySelector('#bridge-widget-container');
-
-  BridgeWidget.render(container, {
-    clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
-    theme: "dark",
-  });
-</script>
-
-<center>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-  <input type="hidden" name="cmd" value="_s-xclick" />
-  <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
-  <table>
-    <tr>
-      <td>
-        <input type="hidden" name="on0" value="LAYANAN PELANGGAN"/>
-        LAYANAN PELANGGAN
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <select name="os0">
-          <option value="Subcribe">
-            Subcribe $5,00 USD - minggu
-          </option>
-          <option value="Premium">
-            Premium $25,00 USD - bulan
-          </option>
-          <option value="Golden">
-            Golden $100,00 USD - tahun
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type="hidden" name="on1" value="Terima Kasih ."/>
-        Terima Kasih .
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type="text" name="os1" maxLength="200" />
-      </td>
-    </tr>
-  </table>
-  <input type="hidden" name="currency_code" value="USD" />
-  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - Cara yang lebih aman dan mudah untuk membayar secara daring!" alt="Berlangganan" />
-</form></center>
-</div>
-
-<!-- CHART JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-</div>
-
-<!-- THIRDWEB -->
-<div class="mt-6">
-    <thirdweb-bridge-widget />
-</div>
-
-<script>
-
-// =========================
-// NETWORKS
-// =========================
-
-const NETWORKS = [
-
-{
-name:"Ethereum Sepolia",
-chain:"evm",
-rpc:"https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-},
-
-{
-name:"Base Sepolia",
-chain:"evm",
-rpc:"https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-},
-
-{
-name:"Arbitrum Sepolia",
-chain:"evm",
-rpc:"https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-},
-
-{
-name:"Polygon Amoy",
-chain:"evm",
-rpc:"https://polygon-amoy.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-},
-
-{
-name:"Avalanche Fuji",
-chain:"evm",
-rpc:"https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-},
-
-{
-name:"Solana Devnet",
-chain:"solana",
-rpc:"https://solana-devnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a"
-}
-
-];
-
-// =========================
-// GLOBAL
-// =========================
-
-let cooldownTime = 60;
-
-// =========================
-// INIT NETWORK
-// =========================
-
-function loadNetworks(){
-
-    const el = document.getElementById("network");
-
-    NETWORKS.forEach((n,i)=>{
-
-        const opt = document.createElement("option");
-        opt.value = i;
-        opt.innerText = n.name;
-
-        el.appendChild(opt);
-
-    });
-
-}
-
-loadNetworks();
-
-// =========================
-// CONNECT EVM
-// =========================
-
-async function connectEVM(){
-
-    if(!window.ethereum) return alert("Install MetaMask");
-
-    const acc = await window.ethereum.request({
-        method:"eth_requestAccounts"
-    });
-
-    document.getElementById("wallet").value = acc[0];
-
-}
-
-// =========================
-// CONNECT SOLANA
-// =========================
-
-async function connectSolana(){
-
-    if(!window.solana) return alert("Install Phantom");
-
-    const res = await window.solana.connect();
-
-    document.getElementById("wallet").value =
-        res.publicKey.toString();
-
-}
-
-// =========================
-// FAST RPC
-// =========================
-
-async function getFastestRPC(chain){
-
-    const list = NETWORKS.filter(x=>x.chain===chain);
-
-    let best = list[0];
-    let bestTime = 999999;
-
-    for(const r of list){
-
-        const start = Date.now();
-
-        try{
-
-            if(chain==="evm"){
-                const p = new ethers.JsonRpcProvider(r.rpc);
-                await p.getBlockNumber();
-            }else{
-                const c = new solanaWeb3.Connection(r.rpc);
-                await c.getBlockHeight();
-            }
-
-            const t = Date.now() - start;
-
-            if(t < bestTime){
-                best = r;
-                bestTime = t;
-            }
-
-        }catch(e){}
-
-    }
-
-    return best;
-
-}
-
-// =========================
-// ANTI SPAM
-// =========================
-
-function canClaim(wallet){
-
-    const key = "claim_"+wallet;
-    const last = localStorage.getItem(key);
-
-    if(!last) return true;
-
-    return Date.now() - last > cooldownTime*1000;
-
-}
-
-// =========================
-// SAVE CLAIM
-// =========================
-
-function saveClaim(wallet){
-    localStorage.setItem("claim_"+wallet,Date.now());
-}
-
-// =========================
-// HISTORY
-// =========================
-
-function saveHistory(data){
-
-    let h = JSON.parse(localStorage.getItem("tx")) || [];
-
-    h.unshift(data);
-
-    localStorage.setItem("tx",JSON.stringify(h));
-
-    renderHistory();
-
-}
-
-function renderHistory(){
-
-    let h = JSON.parse(localStorage.getItem("tx")) || [];
-
-    document.getElementById("history").innerHTML =
-        h.map(x=>`
-            <div class="bg-slate-900 p-3 rounded-xl mb-2">
-                <div>${x.network}</div>
-                <div class="text-xs text-gray-400">${x.hash}</div>
+                <button onclick="connectSolana()" class="bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                    Phantom
+                </button>
             </div>
-        `).join("");
 
-}
+            <input id="wallet"
+                class="w-full mt-4 p-3 rounded-xl bg-slate-900 border border-slate-700 text-sm focus:outline-none focus:border-emerald-500"
+                placeholder="Wallet address"
+            />
+        </div>
 
-renderHistory();
+        <div class="glass">
+            <select id="network" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-sm focus:outline-none focus:border-emerald-500 mb-4"></select>
 
-// =========================
-// COOLDOWN UI
-// =========================
+            <button onclick="claimFaucet()" class="bg-green-600 hover:bg-green-500 w-full p-3 rounded-xl font-semibold transition">
+                Claim Faucet
+            </button>
 
-function startCooldown(){
+            <div id="cooldown" class="mt-3 text-yellow-300 text-sm font-medium">
+                Ready
+            </div>
+        </div>
 
-    let t = cooldownTime;
+        <div id="status" class="glass text-sm text-slate-300">
+            Ready...
+        </div>
 
-    const i = setInterval(()=>{
+        <div class="glass">
+            <h2 class="text-xl font-bold mb-3">History</h2>
+            <div id="history" class="space-y-2"></div>
+        </div>
 
-        document.getElementById("cooldown").innerText =
-            "Cooldown: "+t+"s";
+        <div class="glass">
+            <div id="bridge-widget-container"></div>
+        </div>
 
-        t--;
+        <div class="glass flex justify-center">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="JZ8YZT9LM257A" />
+                <table class="text-center space-y-2">
+                    <tr>
+                        <td class="font-semibold text-sm">LAYANAN PELANGGAN</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">
+                            <select name="os0" class="bg-slate-900 border border-slate-700 p-2 rounded-xl text-sm">
+                                <option value="Subcribe">Subcribe $5,00 USD - minggu</option>
+                                <option value="Premium">Premium $25,00 USD - bulan</option>
+                                <option value="Golden">Golden $100,00 USD - tahun</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-xs text-slate-400">Terima Kasih .</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2">
+                            <input type="text" name="os1" maxLength="200" placeholder="Catatan / Pesan" class="bg-slate-900 border border-slate-700 p-2 rounded-xl text-sm w-full" />
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="currency_code" value="USD" />
+                <div class="mt-3 flex justify-center">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" title="PayPal - Cara yang lebih aman dan mudah untuk membayar secara daring!" alt="Berlangganan" />
+                </div>
+            </form>
+        </div>
 
-        if(t<0){
-            clearInterval(i);
-            document.getElementById("cooldown").innerText="Ready";
+        <div class="glass">
+            <thirdweb-bridge-widget></thirdweb-bridge-widget>
+        </div>
+
+    </div>
+
+    <script>
+        // Initialize Thirdweb Bridge Widget
+        const container = document.querySelector('#bridge-widget-container');
+        if (container && window.BridgeWidget) {
+            BridgeWidget.render(container, {
+                clientId: "2409d98fbe42fa94fb7ba259d6cf58c9",
+                theme: "dark",
+            });
         }
 
-    },1000);
+        // =========================
+        // NETWORKS CONFIG
+        // =========================
+        const NETWORKS = [
+            { name: "Ethereum Sepolia", chain: "evm", rpc: "https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
+            { name: "Base Sepolia", chain: "evm", rpc: "https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
+            { name: "Arbitrum Sepolia", chain: "evm", rpc: "https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
+            { name: "Polygon Amoy", chain: "evm", rpc: "https://polygon-amoy.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
+            { name: "Avalanche Fuji", chain: "evm", rpc: "https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
+            { name: "Solana Devnet", chain: "solana", rpc: "https://solana-devnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" }
+        ];
 
-}
+        let cooldownTime = 60;
 
-// =========================
-// CLAIM FAUCET
-// =========================
-
-async function claimFaucet(){
-
-    const wallet = document.getElementById("wallet").value.trim();
-
-    if(!wallet) return alert("Input wallet");
-
-    if(!canClaim(wallet)) return alert("Cooldown active");
-
-    const net = NETWORKS[
-        document.getElementById("network").value
-    ];
-
-    document.getElementById("status").innerText = "Processing...";
-
-    try{
-
-        if(net.chain==="solana"){
-
-            const c = new solanaWeb3.Connection(net.rpc,"confirmed");
-
-            const sig = await c.requestAirdrop(
-                new solanaWeb3.PublicKey(wallet),
-                solanaWeb3.LAMPORTS_PER_SOL
-            );
-
-            saveHistory({
-                network:net.name,
-                hash:sig
+        // Load Networks into Dropdown
+        function loadNetworks() {
+            const el = document.getElementById("network");
+            NETWORKS.forEach((n, i) => {
+                const opt = document.createElement("option");
+                opt.value = i;
+                opt.innerText = n.name;
+                el.appendChild(opt);
             });
+        }
+        loadNetworks();
 
-            document.getElementById("status").innerText =
-                "SOL Airdrop Success";
-
-        }else{
-
-            const rpc = await getFastestRPC("evm");
-
-            const p = new ethers.JsonRpcProvider(rpc.rpc);
-
-            const b = await p.getBlockNumber();
-
-            saveHistory({
-                network:net.name,
-                hash:"RPC-"+b
-            });
-
-            document.getElementById("status").innerText =
-                "EVM RPC OK (no direct faucet in frontend)";
-
+        // Connect EVM (MetaMask)
+        async function connectEVM() {
+            if (!window.ethereum) return alert("Install MetaMask first!");
+            try {
+                const acc = await window.ethereum.request({ method: "eth_requestAccounts" });
+                document.getElementById("wallet").value = acc[0];
+            } catch (err) {
+                console.error(err);
+            }
         }
 
-        saveClaim(wallet);
-        startCooldown();
+        // Connect Solana (Phantom)
+        async function connectSolana() {
+            if (!window.solana) return alert("Install Phantom first!");
+            try {
+                const res = await window.solana.connect();
+                document.getElementById("wallet").value = res.publicKey.toString();
+            } catch (err) {
+                console.error(err);
+            }
+        }
 
-    }catch(e){
+        // Fast RPC Checker
+        async function getFastestRPC(chain) {
+            const list = NETWORKS.filter(x => x.chain === chain);
+            let best = list[0];
+            let bestTime = 999999;
 
-        document.getElementById("status").innerText = e.message;
+            for (const r of list) {
+                const start = Date.now();
+                try {
+                    if (chain === "evm") {
+                        const p = new ethers.JsonRpcProvider(r.rpc);
+                        await p.getBlockNumber();
+                    } else {
+                        const c = new solanaWeb3.Connection(r.rpc);
+                        await c.getBlockHeight();
+                    }
+                    const t = Date.now() - start;
+                    if (t < bestTime) {
+                        best = r;
+                        bestTime = t;
+                    }
+                } catch (e) {}
+            }
+            return best;
+        }
 
-    }
+        // Anti Spam / Cooldown Checker
+        function canClaim(wallet) {
+            const key = "claim_" + wallet;
+            const last = localStorage.getItem(key);
+            if (!last) return true;
+            return Date.now() - last > cooldownTime * 1000;
+        }
 
-}
+        function saveClaim(wallet) {
+            localStorage.setItem("claim_" + wallet, Date.now());
+        }
 
-</script>
+        // History Management
+        function saveHistory(data) {
+            let h = JSON.parse(localStorage.getItem("tx")) || [];
+            h.unshift(data);
+            localStorage.setItem("tx", JSON.stringify(h));
+            renderHistory();
+        }
 
-<script type="text/javascript">
-import { createAppKit } from '@reown/appkit'
-import { mainnet, arbitrum } from '@reown/appkit/networks'
-import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+        function renderHistory() {
+            let h = JSON.parse(localStorage.getItem("tx")) || [];
+            document.getElementById("history").innerHTML = h.map(x => `
+                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-xs">
+                    <div class="font-bold text-emerald-400">${x.network}</div>
+                    <div class="text-gray-400 truncate mt-1">${x.hash}</div>
+                </div>
+            `).join("");
+        }
+        renderHistory();
 
-// 1. Get a project ID at https://dashboard.reown.com
-const projectId = '5022875ce6ee68917f103ff9b1e3422d'
+        // Cooldown Timer UI
+        function startCooldown() {
+            let t = cooldownTime;
+            const i = setInterval(() => {
+                document.getElementById("cooldown").innerText = "Cooldown: " + t + "s";
+                t--;
+                if (t < 0) {
+                    clearInterval(i);
+                    document.getElementById("cooldown").innerText = "Ready";
+                }
+            }, 1000);
+        }
 
-export const networks = [mainnet, arbitrum]
+        // Claim Faucet Logic
+        async function claimFaucet() {
+            const wallet = document.getElementById("wallet").value.trim();
+            if (!wallet) return alert("Input wallet address first!");
+            if (!canClaim(wallet)) return alert("Cooldown active! Please wait.");
 
-// 2. Set up Wagmi adapter
-const wagmiAdapter = new WagmiAdapter({
-  projectId,
-  networks
-})
+            const net = NETWORKS[document.getElementById("network").value];
+            document.getElementById("status").innerText = "Processing transaction...";
 
-// 3. Configure the metadata
-const metadata = {
-  name: 'WCC',
-  description: 'WCC WALLET',
-  url: 'https://whellcolor.github.io', // origin must match your domain & subdomain
-  icons: ['https://avatars.githubusercontent.com/u/179229932']
-}
+            try {
+                if (net.chain === "solana") {
+                    const c = new solanaWeb3.Connection(net.rpc, "confirmed");
+                    const sig = await c.requestAirdrop(
+                        new solanaWeb3.PublicKey(wallet),
+                        solanaWeb3.LAMPORTS_PER_SOL
+                    );
+                    saveHistory({ network: net.name, hash: sig });
+                    document.getElementById("status").innerText = "SOL Airdrop Success!";
+                } else {
+                    const rpc = await getFastestRPC("evm");
+                    const p = new ethers.JsonRpcProvider(rpc.rpc);
+                    const b = await p.getBlockNumber();
+                    saveHistory({ network: net.name, hash: "RPC Block: " + b });
+                    document.getElementById("status").innerText = "EVM RPC Verified Successfully!";
+                }
 
-// 3. Create the modal
-const modal = createAppKit({
-  adapters: [wagmiAdapter],
-  networks: [mainnet, arbitrum],
-  metadata,
-  projectId,
-  features: {
-    analytics: true // Optional - defaults to your Cloud configuration
-  }
-})
-
-// 4. Trigger modal programaticaly
-const openConnectModalBtn = document.getElementById('open-connect-modal')
-const openNetworkModalBtn = document.getElementById('open-network-modal')
-
-openConnectModalBtn.addEventListener('click', () => modal.open())
-openNetworkModalBtn.addEventListener('click', () => modal.open({ view: 'Networks' }))
-
-// 5. Alternatively use w3m component buttons within the index.html file
-
-
-import { createAppKit } from '@reown/appkit'
-import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { reconnect, http, createConfig } from '@wagmi/core'
-import { CreateConnectorFn } from 'wagmi'
-import { abstractTestnet } from '@reown/appkit/networks'
-// you need to add the abstract library in order to make it work
-import { abstractWalletConnector } from "@abstract-foundation/agw-react/connectors";
-
-const projectId = '5022875ce6ee68917f103ff9b1e3422d'
-
-const metadata = {
-  //...
-}
-
-// create the connectors (delete the ones you don't need)
-const connectors: CreateConnectorFn[] = []
-connectors.push(abstractWalletConnector())
-
-export const networks = [abstractTestnet]
-
-export const wagmiAdapter = new WagmiAdapter({
-  connectors,
-  projectId,
-  networks
-})
-
-export const config = wagmiAdapter.wagmiConfig
-
-createAppKit({
-  adapters: [wagmiAdapter],
-  projectId,
-  networks
-})
-</script>
-
+                saveClaim(wallet);
+                startCooldown();
+            } catch (e) {
+                document.getElementById("status").innerText = "Error: " + e.message;
+            }
+        }
+    </script>
 </body>
 </html>
-
-
