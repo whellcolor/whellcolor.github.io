@@ -14,9 +14,54 @@
 
 ---
 
-## 🌐 Live Project
-🔗 https://whellcolor.github.io/
 
+
+<div align="center">
+
+# Whellcolor Cube Crypto (WCC) Ecosystem
+
+[![GitHub Pages Deployment](https://github.com/whellcolor/whellcolor.github.io/actions/workflows/pages/badge.svg)](https://github.com/whellcolor/whellcolor.github.io/actions)
+[![Live Status](https://img.shields.io/badge/Status-Online-success?style=flat-square)](https://whellcolor.github.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+Explore Whellcolor Cube Crypto (WCC), a pioneering Web3 ecosystem integrating decentralized financial systems, high-yield mining pools, and NFT frameworks.
+
+<br>
+
+### 🚀 1-Click Deployment & Instant Connect Hub
+
+Pilih platform cloud, hosting statis, atau infrastruktur terdesentralisasi pilihan Anda di bawah ini untuk mendeploy atau menghubungkan situs secara instan:
+
+<br>
+
+| Platform | Badge / Deploy Button | Aksi |
+| :--- | :--- | :--- |
+| **1. Vercel** | [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/whellcolor/whellcolor.github.io) | [Connect / Deploy](https://vercel.com/new/clone?repository-url=https://github.com/whellcolor/whellcolor.github.io) |
+| **2. Netlify** | [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/whellcolor/whellcolor.github.io) | [Connect / Deploy](https://app.netlify.com/start/deploy?repository=https://github.com/whellcolor/whellcolor.github.io) |
+| **3. Cloudflare Pages** | [![Deploy to Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://dash.cloudflare.com/?to=/:account/pages/view) | [Connect / Deploy](https://dash.cloudflare.com/?to=/:account/pages/view) |
+| **4. GitHub Pages** | [![Deploy to GitHub Pages](https://img.shields.io/badge/GitHub_Pages-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/whellcolor/whellcolor.github.io/actions) | [Connect / Deploy](https://github.com/whellcolor/whellcolor.github.io/actions) |
+| **5. Render** | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/whellcolor/whellcolor.github.io) | [Connect / Deploy](https://render.com/deploy?repo=https://github.com/whellcolor/whellcolor.github.io) |
+| **6. Fleek (Web3/IPFS)** | [![Deploy to Fleek](https://img.shields.io/badge/Fleek-000000?style=for-the-badge&logo=fleek&logoColor=white)](https://app.fleek.xyz/) | [Connect / Deploy](https://app.fleek.xyz/) |
+| **7. Firebase Hosting** | [![Deploy to Firebase](https://img.shields.io/badge/Firebase_Hosting-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://console.firebase.google.com/) | [Connect / Deploy](https://console.firebase.google.com/) |
+| **8. Railway** | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new?template=https://github.com/whellcolor/whellcolor.github.io) | [Connect / Deploy](https://railway.app/new?template=https://github.com/whellcolor/whellcolor.github.io) |
+| **9. Surge.sh** | [![Deploy to Surge](https://img.shields.io/badge/Surge.sh-31B981?style=for-the-badge&logo=surge&logoColor=white)](https://surge.sh/) | [Connect / Deploy](https://surge.sh/) |
+| **10. Glitch** | [![Remix on Glitch](https://cdn.glitch.com/2703baf2-bdee-4faa-a3faa-6a1c970ef1f3%2Fbutton.svg)](https://glitch.com/edit/#!/remix/git?git_url=https://github.com/whellcolor/whellcolor.github.io.git) | [Connect / Deploy](https://glitch.com/) |
+
+<br>
+
+[![Connect Situs Utama](https://img.shields.io/badge/🌐_KUNJUNGI_SITUS_UTAMA-WCC_LIVE-success?style=for-the-badge&logo=googlechrome)](https://whellcolor.github.io/)
+
+</div>
+
+---
+
+
+## 🚀 Quick Links
+
+* [Official Website / DApp](https://whellcolor.github.io/)
+* [Sitemap & Tools Directory](https://whellcolor.github.io/sitemap.html)
+
+  
 
 ---
 
