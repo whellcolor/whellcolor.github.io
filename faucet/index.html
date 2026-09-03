@@ -63,18 +63,27 @@
 
         <h1 class="text-3xl font-bold mb-2">🚀 WCC Multi Faucet Chain</h1>
 
-        <div class="glass">
-            <div class="flex gap-3 flex-wrap items-center">
-                <appkit-button></appkit-button>
+        <!-- WALLET -->
+<div class="glass">
+    <div class="flex gap-3 flex-wrap items-center">
+        <!-- AppKit Wallet Button -->
+        <appkit-button></appkit-button>
 
-                <button onclick="connectEVM()" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
-                    MetaMask
-                </button>
+        <button onclick="connectEVM()" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+            MetaMask
+        </button>
 
-                <button onclick="connectSolana()" class="bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
-                    Phantom
-                </button>
-            </div>
+        <!-- TOMBOL TRUST WALLET BARU -->
+        <button onclick="connectTrustWallet()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+            Trust Wallet
+        </button>
+
+        <button onclick="connectSolana()" class="bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+            Phantom
+        </button>
+    </div>
+
+    
 
             <input id="wallet"
                 class="w-full mt-4 p-3 rounded-xl bg-slate-900 border border-slate-700 text-sm focus:outline-none focus:border-emerald-500"
@@ -203,7 +212,31 @@
                 console.error(err);
             }
         }
+// =========================
+// CONNECT TRUST WALLET
+// =========================
+async function connectTrustWallet() {
+    // Trust Wallet injects its provider, or can be accessed via window.ethereum if Trust is primary
+    const provider = window.trustwallet || window.ethereum;
 
+    if (!provider) {
+        return alert("Trust Wallet extension not detected! Please open in Trust Wallet browser or install the extension.");
+    }
+
+    try {
+        const accounts = await provider.request({
+            method: "eth_requestAccounts"
+        });
+        
+        if (accounts && accounts.length > 0) {
+            document.getElementById("wallet").value = accounts[0];
+            document.getElementById("status").innerText = "Trust Wallet Connected Successfully!";
+        }
+    } catch (err) {
+        console.error(err);
+        document.getElementById("status").innerText = "Connection failed: " + err.message;
+    }
+}
         // Fast RPC Checker
         async function getFastestRPC(chain) {
             const list = NETWORKS.filter(x => x.chain === chain);
