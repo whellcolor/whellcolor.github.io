@@ -32,13 +32,9 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
-
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
-
     <script src="https://unpkg.com/@reown/appkit@latest/dist/index.umd.js"></script>
-
     <script src="https://unpkg.com/thirdweb/dist/scripts/bridge-widget.js"></script>
 
     <style>
@@ -63,27 +59,22 @@
 
         <h1 class="text-3xl font-bold mb-2">🚀 WCC Multi Faucet Chain</h1>
 
-        <!-- WALLET -->
-<div class="glass">
-    <div class="flex gap-3 flex-wrap items-center">
-        <!-- AppKit Wallet Button -->
-        <appkit-button></appkit-button>
+        <div class="glass">
+            <div class="flex gap-3 flex-wrap items-center">
+                <appkit-button></appkit-button>
 
-        <button onclick="connectEVM()" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
-            MetaMask
-        </button>
+                <button onclick="connectEVM()" class="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                    MetaMask
+                </button>
 
-        <!-- TOMBOL TRUST WALLET BARU -->
-        <button onclick="connectTrustWallet()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2">
-            Trust Wallet
-        </button>
+                <button onclick="connectTrustWallet()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+                    Trust Wallet
+                </button>
 
-        <button onclick="connectSolana()" class="bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
-            Phantom
-        </button>
-    </div>
-
-    
+                <button onclick="connectSolana()" class="bg-cyan-600 hover:bg-cyan-500 px-4 py-2 rounded-xl text-sm font-semibold transition">
+                    Phantom
+                </button>
+            </div>
 
             <input id="wallet"
                 class="w-full mt-4 p-3 rounded-xl bg-slate-900 border border-slate-700 text-sm focus:outline-none focus:border-emerald-500"
@@ -166,15 +157,15 @@
         }
 
         // =========================
-        // NETWORKS CONFIG
+        // NETWORKS CONFIG (Optimized Public RPC)
         // =========================
         const NETWORKS = [
-            { name: "Ethereum Sepolia", chain: "evm", rpc: "https://sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
-            { name: "Base Sepolia", chain: "evm", rpc: "https://base-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
-            { name: "Arbitrum Sepolia", chain: "evm", rpc: "https://arbitrum-sepolia.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
-            { name: "Polygon Amoy", chain: "evm", rpc: "https://polygon-amoy.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
-            { name: "Avalanche Fuji", chain: "evm", rpc: "https://avalanche-fuji.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" },
-            { name: "Solana Devnet", chain: "solana", rpc: "https://solana-devnet.infura.io/v3/418d1e12e6e4490fa5ed80a4b3b8ae8a" }
+            { name: "Ethereum Sepolia", chain: "evm", rpc: "https://rpc.ankr.com/eth_sepolia" },
+            { name: "Base Sepolia", chain: "evm", rpc: "https://sepolia.base.org" },
+            { name: "Arbitrum Sepolia", chain: "evm", rpc: "https://sepolia-rollup.arbitrum.io/rpc" },
+            { name: "Polygon Amoy", chain: "evm", rpc: "https://rpc-amoy.polygon.technology" },
+            { name: "Avalanche Fuji", chain: "evm", rpc: "https://api.avax-test.network/ext/bc/C/rpc" },
+            { name: "Solana Devnet", chain: "solana", rpc: "https://api.devnet.solana.com" }
         ];
 
         let cooldownTime = 60;
@@ -197,8 +188,27 @@
             try {
                 const acc = await window.ethereum.request({ method: "eth_requestAccounts" });
                 document.getElementById("wallet").value = acc[0];
+                document.getElementById("status").innerText = "MetaMask Connected Successfully!";
             } catch (err) {
                 console.error(err);
+            }
+        }
+
+        // Connect Trust Wallet
+        async function connectTrustWallet() {
+            const provider = window.trustwallet || window.ethereum;
+            if (!provider) {
+                return alert("Trust Wallet extension not detected! Please open in Trust Wallet browser or install the extension.");
+            }
+            try {
+                const accounts = await provider.request({ method: "eth_requestAccounts" });
+                if (accounts && accounts.length > 0) {
+                    document.getElementById("wallet").value = accounts[0];
+                    document.getElementById("status").innerText = "Trust Wallet Connected Successfully!";
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById("status").innerText = "Connection failed: " + err.message;
             }
         }
 
@@ -208,59 +218,10 @@
             try {
                 const res = await window.solana.connect();
                 document.getElementById("wallet").value = res.publicKey.toString();
+                document.getElementById("status").innerText = "Phantom Connected Successfully!";
             } catch (err) {
                 console.error(err);
             }
-        }
-// =========================
-// CONNECT TRUST WALLET
-// =========================
-async function connectTrustWallet() {
-    // Trust Wallet injects its provider, or can be accessed via window.ethereum if Trust is primary
-    const provider = window.trustwallet || window.ethereum;
-
-    if (!provider) {
-        return alert("Trust Wallet extension not detected! Please open in Trust Wallet browser or install the extension.");
-    }
-
-    try {
-        const accounts = await provider.request({
-            method: "eth_requestAccounts"
-        });
-        
-        if (accounts && accounts.length > 0) {
-            document.getElementById("wallet").value = accounts[0];
-            document.getElementById("status").innerText = "Trust Wallet Connected Successfully!";
-        }
-    } catch (err) {
-        console.error(err);
-        document.getElementById("status").innerText = "Connection failed: " + err.message;
-    }
-}
-        // Fast RPC Checker
-        async function getFastestRPC(chain) {
-            const list = NETWORKS.filter(x => x.chain === chain);
-            let best = list[0];
-            let bestTime = 999999;
-
-            for (const r of list) {
-                const start = Date.now();
-                try {
-                    if (chain === "evm") {
-                        const p = new ethers.JsonRpcProvider(r.rpc);
-                        await p.getBlockNumber();
-                    } else {
-                        const c = new solanaWeb3.Connection(r.rpc);
-                        await c.getBlockHeight();
-                    }
-                    const t = Date.now() - start;
-                    if (t < bestTime) {
-                        best = r;
-                        bestTime = t;
-                    }
-                } catch (e) {}
-            }
-            return best;
         }
 
         // Anti Spam / Cooldown Checker
@@ -307,134 +268,67 @@ async function connectTrustWallet() {
             }, 1000);
         }
 
-        // Claim Faucet Logic
+        // Contoh ABI standar untuk fungsi klaim faucet (sesuaikan dengan kontrak asli Anda)
+        const faucetABI = [
+            "function claim() external",
+            "function drip() external"
+        ];
+
+        // Unified Claim Faucet Logic
         async function claimFaucet() {
-            const wallet = document.getElementById("wallet").value.trim();
-            if (!wallet) return alert("Input wallet address first!");
-            if (!canClaim(wallet)) return alert("Cooldown active! Please wait.");
+            const walletAddress = document.getElementById("wallet").value.trim();
+            if (!walletAddress) return alert("Masukkan alamat dompet terlebih dahulu!");
+            if (!canClaim(walletAddress)) return alert("Cooldown active! Please wait.");
 
             const net = NETWORKS[document.getElementById("network").value];
-            document.getElementById("status").innerText = "Processing transaction...";
+            document.getElementById("status").innerText = "Menghubungkan ke dompet & blockchain...";
 
             try {
                 if (net.chain === "solana") {
+                    // Logika Solana (Airdrop)
                     const c = new solanaWeb3.Connection(net.rpc, "confirmed");
                     const sig = await c.requestAirdrop(
-                        new solanaWeb3.PublicKey(wallet),
+                        new solanaWeb3.PublicKey(walletAddress),
                         solanaWeb3.LAMPORTS_PER_SOL
                     );
                     saveHistory({ network: net.name, hash: sig });
-                    document.getElementById("status").innerText = "SOL Airdrop Success!";
+                    document.getElementById("status").innerText = "SOL Airdrop Berhasil!";
                 } else {
-                    const rpc = await getFastestRPC("evm");
-                    const p = new ethers.JsonRpcProvider(rpc.rpc);
-                    const b = await p.getBlockNumber();
-                    saveHistory({ network: net.name, hash: "RPC Block: " + b });
-                    document.getElementById("status").innerText = "EVM RPC Verified Successfully!";
+                    // Logika EVM (Memanggil Smart Contract Faucet)
+                    if (!window.ethereum) return alert("Silakan instal MetaMask atau Trust Wallet!");
+
+                    const provider = new ethers.BrowserProvider(window.ethereum);
+                    const signer = await provider.getSigner();
+
+                    // Ganti dengan Alamat Kontrak Faucet Anda yang valid
+                    const contractAddress = "0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b";
+                    
+                    const faucetContract = new ethers.Contract(contractAddress, faucetABI, signer);
+
+                    document.getElementById("status").innerText = "Konfirmasi transaksi di dompet Anda...";
+
+                    const tx = await faucetContract.claim();
+                    
+                    document.getElementById("status").innerText = "Transaksi dikirim, menunggu konfirmasi...";
+                    
+                    const receipt = await tx.wait();
+
+                    saveHistory({
+                        network: net.name,
+                        hash: receipt.hash
+                    });
+
+                    document.getElementById("status").innerText = "Klaim Faucet EVM Berhasil!";
                 }
 
-                saveClaim(wallet);
+                saveClaim(walletAddress);
                 startCooldown();
+
             } catch (e) {
-                document.getElementById("status").innerText = "Error: " + e.message;
+                console.error(e);
+                document.getElementById("status").innerText = "Gagal: " + (e.reason || e.message);
             }
         }
-        const NETWORKS = [
-    {
-        name: "Ethereum Sepolia",
-        chain: "evm",
-        rpc: "https://rpc.ankr.com/eth_sepolia"
-    },
-    {
-        name: "Base Sepolia",
-        chain: "evm",
-        rpc: "https://sepolia.base.org"
-    },
-    {
-        name: "Arbitrum Sepolia",
-        chain: "evm",
-        rpc: "https://sepolia-rollup.arbitrum.io/rpc"
-    },
-    {
-        name: "Polygon Amoy",
-        chain: "evm",
-        rpc: "https://rpc-amoy.polygon.technology"
-    },
-    {
-        name: "Avalanche Fuji",
-        chain: "evm",
-        rpc: "https://api.avax-test.network/ext/bc/C/rpc"
-    },
-    {
-        name: "Solana Devnet",
-        chain: "solana",
-        rpc: "https://api.devnet.solana.com"
-    }
-];
-
-        // Contoh ABI standar untuk fungsi klaim faucet (sesuaikan dengan kontrak asli Anda)
-const faucetABI = [
-    "function claim() external",
-    "function drip() external"
-];
-
-async function claimFaucet() {
-    const walletAddress = document.getElementById("wallet").value.trim();
-    if (!walletAddress) return alert("Masukkan alamat dompet terlebih dahulu!");
-
-    const net = NETWORKS[document.getElementById("network").value];
-    document.getElementById("status").innerText = "Menghubungkan ke dompet & blockchain...";
-
-    try {
-        if (net.chain === "solana") {
-            // Logika Solana (Airdrop)
-            const c = new solanaWeb3.Connection(net.rpc, "confirmed");
-            const sig = await c.requestAirdrop(
-                new solanaWeb3.PublicKey(walletAddress),
-                solanaWeb3.LAMPORTS_PER_SOL
-            );
-            saveHistory({ network: net.name, hash: sig });
-            document.getElementById("status").innerText = "SOL Airdrop Berhasil!";
-        } else {
-            // Logika EVM (Memanggil Smart Contract Faucet)
-            if (!window.ethereum) return alert("Silakan instal MetaMask atau Trust Wallet!");
-
-            // Meminta provider dari browser (MetaMask/Trust Wallet)
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = await provider.getSigner();
-
-            // Alamat kontrak faucet Anda
-            const contractAddress = "0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b";
-            
-            // Hubungkan ke kontrak pintar
-            const faucetContract = new ethers.Contract(contractAddress, faucetABI, signer);
-
-            document.getElementById("status").innerText = "Konfirmasi transaksi di dompet Anda...";
-
-            // Panggil fungsi claim di smart contract (sesuaikan nama fungsi, misal: claim() atau drip())
-            const tx = await faucetContract.claim();
-            
-            document.getElementById("status").innerText = "Transaksi dikirim, menunggu konfirmasi...";
-            
-            // Tunggu transaksi selesai
-            const receipt = await tx.wait();
-
-            saveHistory({
-                network: net.name,
-                hash: receipt.hash
-            });
-
-            document.getElementById("status").innerText = "Klaim Faucet EVM Berhasil!";
-        }
-
-        saveClaim(walletAddress);
-        startCooldown();
-
-    } catch (e) {
-        console.error(e);
-        document.getElementById("status").innerText = "Gagal: " + (e.reason || e.message);
-    }
-}
     </script>
 </body>
 </html>
