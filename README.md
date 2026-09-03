@@ -20,7 +20,7 @@
 
 # Whellcolor Cube Crypto (WCC) Ecosystem
 
-[![GitHub Pages Deployment](https://github.com/whellcolor/whellcolor.github.io/actions/workflows/pages/badge.svg)](https://github.com/whellcolor/whellcolor.github.io/actions)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/636ede31-4ded-4498-882c-ebaf3dbe18ad/deploy-status)](https://app.netlify.com/projects/whellcolor/deploys)
 [![Live Status](https://img.shields.io/badge/Status-Online-success?style=flat-square)](https://whellcolor.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
