@@ -414,6 +414,28 @@ setInterval(() => {
     realTimeChart.data.datasets[0].data.push(randomRps);
     realTimeChart.update('none');
 }, 2000);
+ const { ethers } = require("ethers");
+
+// Konfigurasi Provider & Wallet Admin
+const provider = new ethers.JsonRpcProvider("https://polygon-rpc.com");
+const adminWallet = new ethers.Wallet("PRIVATE_KEY_ADMIN_ANDA", provider);
+
+// ABI Smart Contract WCC ERC-20
+const contractABI = ["function transfer(address to, uint256 value) public returns (bool)"];
+const contractAddress = "ALAMAT_CONTRACT_WCC_ANDA";
+const wccContract = new ethers.Contract(contractAddress, contractABI, adminWallet);
+
+async function sendTokenToUser(userAddress) {
+    try {
+        // Jumlah 0,5 WCC (dengan asumsi desimal token adalah 18)
+        const amount = ethers.parseUnits("0.5", 18); 
+        const tx = await wccContract.transfer(userAddress, amount);
+        await tx.wait(); // Menunggu transaksi sukses di blockchain
+        return { success: true, txHash: tx.hash };
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
+}
 </script>
 </body>
 </html>
