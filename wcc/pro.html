@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whellcolor Cube Crypto (WCC) - Pro DApp Miner & Wallet Directory</title>
+<meta name="description" content="Official Whellcolor WCC DApp Miner with real-time multi-chain analytics, interactive copy buttons, and crypto wallet address book.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="wcc.png">
+<meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+<meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+<meta name="author" content="Whellcolor Dev Core Team">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="wcc.png">
+
+<meta property="og:type" content="website">
+<meta name="google-adsense-account" content="ca-pub-7182145371991939">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+ 
+<script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+<script src="https://whellcolor.github.io/js/deploy.js"></script>
+<script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+<script src="https://whellcolor.github.io/js/fetch.js"></script>
+<script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'G-GK8ZT3L7EC');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#020617;color:#f8fafc;line-height:1.6;}
+.navbar{background:linear-gradient(90deg,#0f172a,#020617);border-bottom:1px solid rgba(16,185,129,0.1);padding:20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;background:linear-gradient(90deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+.nav-links a{color:#94a3b8;text-decoration:none;margin-left:15px;font-size:13px;transition:0.3s;}
+.nav-links a:hover{color:#10b981;}
+.main-container{max-width:1100px;margin:30px auto;padding:0 20px;}
+.panel{background:#0f172a;border:1px solid rgba(16,185,129,0.2);padding:25px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.7);margin-bottom:25px;}
+.panel h1, .panel h2{font-family:'Orbitron',sans-serif;color:#10b981;margin-bottom:15px;}
+.panel h1{font-size:22px;}
+.panel h2{font-size:18px;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:8px;margin-top:20px;}
+.panel p{color:#94a3b8;font-size:14px;margin-bottom:15px;}
+.form-group{margin-bottom:15px;}
+.form-group label{display:block;font-size:13px;color:#3b82f6;margin-bottom:6px;font-weight:600;}
+.form-control{width:100%;padding:10px 14px;background:#020617;border:1px solid rgba(255,255,255,0.1);color:#fff;border-radius:8px;font-size:13px;}
+.btn{background:linear-gradient(90deg,#10b981,#3b82f6);color:#fff;border:none;padding:10px 20px;font-family:'Orbitron',sans-serif;font-weight:600;font-size:12px;border-radius:8px;cursor:pointer;transition:0.3s;}
+.btn:hover{opacity:0.9;}
+.output-box{background:#020617;border:1px solid rgba(16,185,129,0.15);padding:15px;border-radius:8px;margin-top:15px;font-family:'Courier New',Courier,monospace;font-size:12px;color:#10b981;max-height:200px;overflow-y:auto;}
+.chart-container{position:relative;height:250px;width:100%;background:#020617;border-radius:8px;padding:10px;border:1px solid rgba(255,255,255,0.05);margin-top:15px;}
+.wallet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px;margin-top:15px;}
+.wallet-card{background:#020617;border:1px solid rgba(255,255,255,0.05);padding:15px;border-radius:10px;display:flex;flex-direction:column;justify-content:space-between;}
+.wallet-title{font-family:'Orbitron',sans-serif;font-size:14px;color:#3b82f6;margin-bottom:5px;}
+.wallet-addr{font-family:'Courier New',Courier,monospace;font-size:11px;color:#cbd5e1;word-break:break-all;background:#0f172a;padding:8px;border-radius:6px;margin-bottom:10px;}
+.copy-btn{background:#1e293b;color:#10b981;border:1px solid rgba(16,185,129,0.3);padding:6px 12px;font-size:11px;border-radius:6px;cursor:pointer;font-weight:600;transition:0.2s;align-self:flex-start;}
+.copy-btn:hover{background:#10b981;color:#020617;}
+.toast{position:fixed;bottom:20px;right:20px;background:#10b981;color:#020617;padding:10px 20px;border-radius:8px;font-weight:600;font-size:13px;display:none;z-index:1000;box-shadow:0 5px 15px rgba(0,0,0,0.5);}
+footer{background:#020617;padding:25px;text-align:center;font-size:12px;border-top:1px solid rgba(255,255,255,0.05);color:#475569;margin-top:30px;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="nav-logo">WCC DAPP & WALLET REGISTRY</a>
+    <div class="nav-links">
+        <a href="#miner">Miner Node</a>
+        <a href="#charts">Real-Time Graphic</a>
+        <a href="#wallets">Wallet Book</a>
+    </div>
+</nav>
+
+<div class="main-container">
+    <div class="panel" id="miner">
+        <h1>WCC Free Online Multi-Chain Miner</h1>
+        <p>Query live transaction history and validate node blocks securely using Tatum API keys.</p>
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Select Network Chain</label>
+                <select id="chainSelect" class="form-control">
+                    <option value="ethereum-mainnet">Ethereum Mainnet</option>
+                    <option value="polygon-mainnet">Polygon Mainnet</option>
+                    <option value="base-mainnet">Base Mainnet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>API Key Profile</label>
+                <select id="apiKeySelect" class="form-control">
+                    <option value="t-6a9acac60348622d629ce41c-9d04958396cc4ef086545152">Key Profile 1 (.152)</option>
+                    <option value="t-6a9acac60348622d629ce41c-5dc522d8c5854663bc5b6df5">Key Profile 2 (.f5)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Target Address / Contract</label>
+            <input type="text" id="walletAddress" class="form-control" value="0xd8519a8b8825aa0dcc73aad572f447fae102fe88">
+        </div>
+        
+        <button class="btn" onclick="fetchTransactionHistory()">Fetch Transaction History</button>
+        <div id="minerOutput" class="output-box">System ready. Awaiting telemetry trigger...</div>
+    </div>
+
+    <div class="panel" id="charts">
+        <h2>📈 Real-Time Node Throughput Graphic</h2>
+        <p>Live visualization of requests per second (RPS) and network telemetry load.</p>
+        <div class="chart-container">
+            <canvas id="realTimeChart"></canvas>
+        </div>
+    </div>
+
+    <div class="panel" id="wallets">
+        <h2>🔗 Wallet Donation & Crypto Address Book</h2>
+        <p>Simpan dan gunakan alamat wallet berikut untuk transaksi crypto Anda. Klik tombol salin untuk menyalin address dengan cepat.</p>
+        
+        <div style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.3); padding:15px; border-radius:10px; margin-bottom:20px;">
+            <div class="wallet-title" style="color:#10b981;">⚡ Main Donation & Smart Contract Address</div>
+            <div class="wallet-addr" id="main-don">0xd8519a8b8825aa0dcc73aad572f447fae102fe88</div>
+            <button class="copy-btn" onclick="copyText('0xd8519a8b8825aa0dcc73aad572f447fae102fe88')">📋 Salin Main Address</button>
+        </div>
+
+        <div class="wallet-grid">
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🟣 Ethereum (ETH)</div>
+                    <div class="wallet-addr" id="w-eth">0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('0x5e8bade6e0bce65807db6327cb1d9eeb7c6a6a5b')">📋 Salin ETH</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">☀️ Solana (SOL)</div>
+                    <div class="wallet-addr" id="w-sol">CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('CB4xnv7Mw23eJkbRBXvbLUDUDQVQsg5AUvfY5nu8Ny5W')">📋 Salin SOL</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🟠 Bitcoin (BTC)</div>
+                    <div class="wallet-addr" id="w-btc">bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('bc1qfwn7lfntn5jyl9yxgcrnhu4gaz8w5mnua0acyt')">📋 Salin BTC</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">💉 Injective (INJ)</div>
+                    <div class="wallet-addr" id="w-inj">inj1t696mehqhnn9sp7mvvnuk8v7ad7x56jm5gslj6</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('inj1t696mehqhnn9sp7mvvnuk8v7ad7x56jm5gslj6')">📋 Salin INJ</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🐶 Dogecoin (DOGE)</div>
+                    <div class="wallet-addr" id="w-doge">DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('DSTbQeqpCajXu8BYmririjJ8b8Lx92Lvov')">📋 Salin DOGE</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">⚪ Litecoin (LTC)</div>
+                    <div class="wallet-addr" id="w-ltc">ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('ltc1qz7ccrlkkv5qxrmlenr67jtqe3dy5k5w09sznvf')">📋 Salin LTC</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🔵 FIO</div>
+                    <div class="wallet-addr" id="w-fio">FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('FIO67SRBSYY42urrjvN11AWuuTWHQzo47jH8LE1nrthe48EBxDo9e')">📋 Salin FIO</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">♾ ICP</div>
+                    <div class="wallet-addr" id="w-icp">8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('8a92cb3db92beacc8982e1425c3c25b8f80381249d77ce19bf66c306d8727053')">📋 Salin ICP</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🌐 IOTX</div>
+                    <div class="wallet-addr" id="w-iotx">io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('io1p7ej7yufhsc7fwqv5vngde5llse00a4zsrs83w')">📋 Salin IOTX</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">⚡ Zilliqa (ZIL)</div>
+                    <div class="wallet-addr" id="w-zil">zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('zil1de4766z0f9mm9psyflk3tcrxc562cw068y863d')">📋 Salin ZIL</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">👑 MultiversX (eGLD)</div>
+                    <div class="wallet-addr" id="w-egld">erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('erd1rgznaj8fvvy6jq80xyvnzjk0amv5t63l9vm276r0kf939gjy2p0sfakxj8')">📋 Salin eGLD</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🧪 Osmosis (OSMO)</div>
+                    <div class="wallet-addr" id="w-osmo">osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('osmo148ds6u09ywv0d2zswjdcp0h9krs7f8eaf60gw5')">📋 Salin OSMO</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🔋 Flux (FLUX)</div>
+                    <div class="wallet-addr" id="w-flux">t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('t1LKNhr6hitag9QwTk7sGgBnwyyQYxFqMbv')">📋 Salin FLUX</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🌕 JUNO</div>
+                    <div class="wallet-addr" id="w-juno">juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('juno148ds6u09ywv0d2zswjdcp0h9krs7f8eahnlrl6')">📋 Salin JUNO</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🔥 FIRO</div>
+                    <div class="wallet-addr" id="w-firo">aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('aE7PmZpWuW7aXBqCXhpGmaF2XLSYert4DR')">📋 Salin FIRO</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">💎 XRP</div>
+                    <div class="wallet-addr" id="w-xrp">rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('rUT9m6CoZqdNWKFm7q2zo8Htsy1cvfSuk')">📋 Salin XRP</button>
+            </div>
+            <div class="wallet-card">
+                <div>
+                    <div class="wallet-title">🚀 TRON (TRX)</div>
+                    <div class="wallet-addr" id="w-trx">TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo</div>
+                </div>
+                <button class="copy-btn" onclick="copyText('TBh1vo5wazVxz5FCqmkVZSDAG2RgXJRPbo')">📋 Salin TRX</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">Berhasil disalin ke clipboard!</div>
+
+<footer>
+    <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Copy to Clipboard utility
+function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+// Miner API Integration
+async function fetchTransactionHistory() {
+    const chain = document.getElementById('chainSelect').value;
+    const address = document.getElementById('walletAddress').value;
+    const apiKey = document.getElementById('apiKeySelect').value;
+    const output = document.getElementById('minerOutput');
+    
+    output.innerText = "Querying Tatum data channels...";
+    
+    const url = `https://api.tatum.io/v4/data/transaction/history?chain=${chain}&addresses=${address}&transactionTypes=native&sort=DESC`;
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            'x-api-key': apiKey
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        output.innerText = JSON.stringify(data, null, 2);
+    } catch (error) {
+        output.innerText = "Error executing request: " + error.message;
+    }
+}
+
+// Real-time Chart.js Setup
+const ctx = document.getElementById('realTimeChart').getContext('2d');
+const realTimeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Node Throughput (RPS)',
+            data: [],
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+            y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } }, beginAtZero: true, max: 10 }
+        },
+        plugins: { legend: { labels: { color: '#f8fafc', font: { family: 'Orbitron', size: 11 } } } }
+    }
+});
+
+// Update chart dynamically with random real-time telemetry simulation
+setInterval(() => {
+    const now = new Date();
+    const timeLabel = now.toLocaleTimeString();
+    const randomRps = (Math.random() * 4 + 1).toFixed(2);
+    
+    if (realTimeChart.data.labels.length > 15) {
+        realTimeChart.data.labels.shift();
+        realTimeChart.data.datasets[0].data.shift();
+    }
+    
+    realTimeChart.data.labels.push(timeLabel);
+    realTimeChart.data.datasets[0].data.push(randomRps);
+    realTimeChart.update('none');
+}, 2000);
+</script>
+</body>
+</html>
