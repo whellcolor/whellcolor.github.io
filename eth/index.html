@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Portfolio & Web3 Tool | Whellcolor Cube Crypto</title>
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="wcc.png">
+    
+    <!-- Fonts & Styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- AdSense & AMP -->
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    
+    <!-- Custom GitHub JS Scripts -->
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="NqLgf-05eY_iPOnAYQN00obZcOq7q9wSTNKaCqIGg0o" />
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://whellcolor.github.io/#organization",
+          "name": "Whellcolor Cube Crypto",
+          "url": "https://whellcolor.github.io/",
+          "logo": "https://whellcolor.github.io/wcc.png",
+          "sameAs": []
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GK8ZT3L7EC');
+    </script>
+
+    <style>
+        :root {
+            --primary-font: 'Inter', sans-serif;
+            --heading-font: 'Orbitron', sans-serif;
+            --bg-color: #0f111a;
+            --card-bg: #1a1d29;
+            --text-color: #e2e8f0;
+            --accent-color: #00f2fe;
+            --accent-hover: #4facfe;
+        }
+        body { 
+            font-family: var(--primary-font); 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            background: var(--bg-color); 
+            color: var(--text-color); 
+        }
+        h1, h2, h3 { font-family: var(--heading-font); color: #fff; }
+        .card { 
+            background: var(--card-bg); 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
+            margin-bottom: 25px; 
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        input, button { 
+            padding: 12px 16px; 
+            font-size: 15px; 
+            border-radius: 6px; 
+            outline: none; 
+        }
+        input[type="text"] { 
+            width: 62%; 
+            background: #10121b; 
+            border: 1px solid #2d3748; 
+            color: #fff;
+        }
+        button { 
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover)); 
+            color: #000; 
+            font-weight: bold; 
+            border: none; 
+            cursor: pointer; 
+            transition: opacity 0.2s;
+        }
+        button:hover { opacity: 0.9; }
+        pre { 
+            background: #0d0f17; 
+            color: #00f2fe; 
+            padding: 15px; 
+            border-radius: 6px; 
+            overflow-x: auto; 
+            border: 1px solid #2d3748;
+        }
+        .loading { color: #f6e05e; font-weight: bold; }
+        .tutorial-section { line-height: 1.6; color: #cbd5e0; }
+        .tutorial-section h3 { color: #00f2fe; margin-top: 0; }
+        
+        /* Footer Styling */
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid #2d3748;
+            text-align: center;
+            font-size: 14px;
+            color: #a0aec0;
+        }
+        .footer-links { margin-bottom: 10px; }
+        .footer-links a { color: #00f2fe; text-decoration: none; margin: 0 5px; }
+        .footer-links a:hover { text-decoration: underline; }
+
+        /* Cookie Consent Banner Styling */
+        #cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #1a1d29;
+            border-top: 2px solid #00f2fe;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+            z-index: 9999;
+        }
+        #cookie-consent p { margin: 0; font-size: 14px; max-width: 70%; color: #cbd5e0; }
+        #cookie-consent a { color: #00f2fe; }
+        .cookie-buttons { display: flex; gap: 10px; }
+        .cookie-btn { padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; }
+        .cookie-decline { background: transparent; border: 1px solid #a0aec0; color: #a0aec0; }
+        .cookie-accept { background: #00f2fe; border: none; color: #000; }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="card">
+        <h2>Ethereum Portfolio Viewer</h2>
+        <p>Enter a target EVM wallet address to query fungible tokens via Tatum API securely.</p>
+        <div>
+            <input type="text" id="walletAddress" value="0x4C7C717e404102ddeE58ACa93aCd94A6EA6Ba421" placeholder="0x...">
+            <button onclick="fetchPortfolio()">Check Portfolio</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>API Response Data:</h3>
+        <div id="status"></div>
+        <pre id="output">No data loaded yet.</pre>
+    </div>
+
+    <!-- English Tutorial Article Section -->
+    <div class="card tutorial-section">
+        <h3>Tutorial: How to Track Ethereum Portfolios Programmatically</h3>
+        <p>Tracking ERC-20 token balances across the Ethereum mainnet is a core requirement for modern decentralized applications (dApps), crypto dashboards, and portfolio trackers. By leveraging powerful indexing engines like the Tatum API, developers can bypass running resource-heavy local full nodes.</p>
+        <p><strong>Step 1: Obtain a Secured API Key.</strong> Register on Tatum's developer portal to generate an enterprise API key (passed inside the header as <code>x-api-key</code>).</p>
+        <p><strong>Step 2: Construct the Request.</strong> Target the <code>/v4/data/wallet/portfolio</code> endpoint, ensuring you pass the correct parameters: <code>chain=ethereum-mainnet</code>, target user <code>addresses</code>, and <code>tokenTypes=fungible</code>.</p>
+        <p><strong>Step 3: Parse and Display.</strong> Process the incoming JSON object using JavaScript async/await functions as demonstrated in this tool to display user balances, asset contracts, and ticker metadata cleanly.</p>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="index.html">Home</a> | 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms & Conditions</a> | 
+        <a href="disclaimer.html">Disclaimer</a> | 
+        <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+      </div>
+      <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved. Built securely on GitHub Pages.</p>
+    </footer>
+</main>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent">
+  <p>We use cookies and decentralized local trackers to optimize your Web3 experience, analyze traffic, and secure interactions. By continuing to use our platform, you agree to our <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="terms.html" target="_blank">Terms</a>.</p>
+  <div class="cookie-buttons">
+    <button class="cookie-btn cookie-decline" onclick="handleCookie('decline')">Decline</button>
+    <button class="cookie-btn cookie-accept" onclick="handleCookie('accept')">Accept All</button>
+  </div>
+</div>
+
+<script>
+    async function fetchPortfolio() {
+        const address = document.getElementById('walletAddress').value.trim();
+        const outputElement = document.getElementById('output');
+        const statusElement = document.getElementById('status');
+        const apiKey = 't-6a9acac60348622d629ce41c-9d04958396cc4ef086545152'; 
+
+        if (!address) {
+            alert('Please enter a wallet address first!');
+            return;
+        }
+
+        statusElement.innerHTML = '<span class="loading">Loading blockchain data...</span>';
+        outputElement.textContent = '';
+
+        const url = `https://api.tatum.io/v4/data/wallet/portfolio?chain=ethereum-mainnet&addresses=${address}&tokenTypes=fungible`;
+        
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                'x-api-key': apiKey
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            
+            statusElement.innerHTML = '<span style="color: #48bb78; font-weight: bold;">Data loaded successfully!</span>';
+            outputElement.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+            statusElement.innerHTML = '<span style="color: #f56565; font-weight: bold;">Failed to fetch data.</span>';
+            outputElement.textContent = error.message;
+        }
+    }
+
+    function handleCookie(action) {
+        const banner = document.getElementById('cookie-consent');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+        // Simpan preferensi cookie secara lokal jika diinginkan
+        localStorage.setItem('cookie_consent', action);
+    }
+
+    // Cek jika cookie sudah pernah diatur sebelumnya
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('cookie_consent')) {
+            const banner = document.getElementById('cookie-consent');
+            if (banner) banner.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
