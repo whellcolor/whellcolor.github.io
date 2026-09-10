@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Gradient Generator Tools Full Colors - WCC Aesthetic Color Gradients</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://whellcolor.github.io/color/gradient/index.html">
+
+    <!-- Meta Tags & SEO -->
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+    <meta name="author" content="Whellcolor Dev Core Team">
+    <meta name="description" content="Create CSS gradients visually with WCC Gradient Generator. Choose gradient type, add color stops, adjust angles, and copy the CSS code instantly.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="wcc.png">
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whellcolor.github.io/color/gradient/index.html">
+    <meta property="og:title" content="WCC Gradient Generator Tools Full Colors - wcc aesthetic color gradients">
+    <meta property="og:description" content="Create CSS gradients visually. Choose gradient type, add color stops, adjust angles, and copy the CSS.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Google AdSense & Analytics -->
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    
+    <!-- Custom External Scripts -->
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GK8ZT3L7EC');
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS Styling -->
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Header Rainbow & Typing Effect Styling */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            background-size: 1400% 1400%;
+            animation: rainbowBG 15s ease infinite;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes rainbowBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .typing-container {
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-right: 3px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: fit-content;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fff; }
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Tool Section */
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .control-group select, .control-group input {
+            width: 100%;
+            padding: 10px;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .preview-box {
+            height: 200px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+            background: linear-gradient(121deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .css-output {
+            background: #0f172a;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            word-break: break-all;
+            color: #38bdf8;
+        }
+
+        .embed-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .embed-section textarea {
+            width: 100%;
+            height: 70px;
+            background: #0f172a;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 8px;
+            font-family: monospace;
+        }
+
+        /* Article & Tutorial Section */
+        .article-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2, .article-content h3 {
+            color: var(--accent-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .article-content p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .article-content ol, .article-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-muted);
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Palette Cloud Links Grid */
+        .palette-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 40px 0;
+            justify-content: center;
+        }
+
+        .palette-cloud a {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .palette-cloud a:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1120;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Rainbow Background and Typing Text -->
+    <header>
+        <h1>WCC Gradient Generator Tools Full Colors</h1>
+        <div class="typing-container">wcc aesthetic color gradients</div>
+    </header>
+
+    <div class="container">
+
+        <!-- Tool Section -->
+        <section class="tool-card">
+            <div class="tool-grid">
+                <div>
+                    <div class="control-group">
+                        <label for="gradientType">Gradient Type</label>
+                        <select id="gradientType">
+                            <option value="linear">Linear Gradient</option>
+                            <option value="radial">Radial Gradient</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="gradientAngle">Angle (<span id="angleVal">121</span> deg)</label>
+                        <input type="range" id="gradientAngle" min="0" max="360" value="121">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Color Stops & Positions</label>
+                        <div style="display: flex; gap: 10px; margin-bottom: 8px;">
+                            <input type="color" id="color1" value="#667eea" style="width: 50px; height: 38px; padding:0; border:none; background:none; cursor:pointer;">
+                            <input type="number" id="pos1" value="0" min="0" max="100" style="width: 80px;"> <span style="align-self: center;">%</span>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="color" id="color2" value="#764ba2" style="width: 50px; height: 38px; padding:0; border:none; background:none; cursor:pointer;">
+                            <input type="number" id="pos2" value="100" min="0" max="100" style="width: 80px;"> <span style="align-self: center;">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-weight: 600; margin-bottom: 5px; display:block; color: var(--accent-color);">Preview</label>
+                    <div class="preview-box" id="previewBox"></div>
+
+                    <label style="font-weight: 600; margin-bottom: 5px; display:block; color: var(--accent-color);">CSS Code</label>
+                    <div class="css-output" id="cssOutput">background: linear-gradient(121deg, #667eea 0%, #764ba2 100%);</div>
+                </div>
+            </div>
+
+            <div class="embed-section">
+                <strong>How It Works & Embed This Util</strong>
+                <p>You can embed this util on your own site as a widget. Adding <code>?embed=1</code> to the URL loads a compact version with just the tool itself; no header, menu, or documentation. Paste this snippet into your HTML:</p>
+                <textarea readonly>&lt;iframe style="width:100%; height:660px; border:1px solid #ccc; border-radius:8px" title="CSS Gradient Editor"&gt;&lt;/iframe&gt;</textarea>
+                <p style="margin-top: 5px; font-size: 0.8rem;">Copy snippet. Adjust the height to taste.</p>
+            </div>
+        </section>
+
+        <!-- Palette Cloud Links (10 External Links on New Tab) -->
+        <div class="palette-cloud">
+            <a href="https://coolors.co/" target="_blank" rel="noopener">Violet color palettes</a>
+            <a href="https://www.canva.com/colors/colors-wheel/" target="_blank" rel="noopener">Brown color palettes</a>
+            <a href="https://huemint.com/" target="_blank" rel="noopener">Palette by Picture</a>
+            <a href="https://colorhunt.co/" target="_blank" rel="noopener">Green color palettes</a>
+            <a href="https://mycolor.space/" target="_blank" rel="noopener">Pastel color palettes</a>
+            <a href="https://paletton.com/" target="_blank" rel="noopener">Color theory guide</a>
+            <a href="https://www.design-seeds.com/" target="_blank" rel="noopener">Artist Palettes</a>
+            <a href="https://www.shutterstock.com/" target="_blank" rel="noopener">Explore Stock Photos</a>
+            <a href="https://dribbble.com/" target="_blank" rel="noopener">Visual Art & Design</a>
+            <a href="https://www.behance.net/" target="_blank" rel="noopener">Color Hex Index</a>
+        </div>
+
+        <!-- English Complete Tutorial Article (Including 7 Internal Links on New Tab) -->
+        <section class="article-content">
+            <h2>Complete Tutorial: Mastering WCC Aesthetic Color Gradients</h2>
+            <p>Welcome to the ultimate guide on utilizing the <strong>WCC Gradient Generator Tools Full Colors</strong> platform. Whether you are building a decentralized application interface, designing an NFT marketplace banner, or creating a modern Web3 portfolio, aesthetic gradients elevate your digital footprint.</p>
+            
+            <h3>1. Understanding Gradient Foundations</h3>
+            <p>Gradients transition smoothly from one color to another, offering depth and dynamic visual appeal. By blending tones correctly, developers and graphic designers can direct user attention and establish a powerful brand identity. To dive deeper into structural paradigms, explore our <a href="#internal-arch" target="_blank">Architectural Matrix Overview</a> or check out the core system mechanics via the <a href="#internal-registry" target="_blank">Unified Network Registry</a>.</p>
+
+            <h3>2. Step-by-Step Generation Guide</h3>
+            <ol>
+                <li>Select your preferred gradient type (Linear or Radial) based on structural layout needs. Learn how style mapping affects rendering in our <a href="#internal-styling" target="_blank">Styling Architecture Guide</a>.</li>
+                <li>Adjust the angle slider to manipulate light incidence and visual motion. More details can be found under the <a href="#internal-angles" target="_blank">Dynamic Angle Adjustment Guide</a>.</li>
+                <li>Add customized color stops, choosing matching hex values for seamless transitions. Consult the <a href="#internal-stops" target="_blank">Color Stop Precision Index</a> for expert coordination.</li>
+                <li>Copy the automatically generated CSS string and inject it into your stylesheets. For full implementation patterns, view the <a href="#internal-deploy" target="_blank">Deployment & Integration Manual</a>.</li>
+            </ol>
+
+            <h3>3. Optimizing for Web3 and Modern UI</h3>
+            <p>Web3 interfaces demand futuristic, immersive atmospheres. Utilizing precise color parameters guarantees optimal performance and cross-browser consistency. For comprehensive security and utility setup, reference our <a href="#internal-security" target="_blank">Security & RPC Protocol Documentation</a> or review overall system compliance via the <a href="#internal-compliance" target="_blank">WCC Compliance Directory</a>.</p>
+        </section>
+
+        <!-- Hidden anchor placeholders for the 7 internal links demo -->
+        <div style="display:none;" id="internal-arch"></div>
+        <div style="display:none;" id="internal-registry"></div>
+        <div style="display:none;" id="internal-styling"></div>
+        <div style="display:none;" id="internal-angles"></div>
+        <div style="display:none;" id="internal-stops"></div>
+        <div style="display:none;" id="internal-deploy"></div>
+        <div style="display:none;" id="internal-security"></div>
+        <div style="display:none;" id="internal-compliance"></div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <h4>What is WCC Gradient Generator?</h4>
+                <p>It is an advanced web utility built by the Whellcolor development team to help creators build, tweak, and export CSS gradient codes instantly for digital designs and Web3 platforms.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do I embed the gradient tool into my own website?</h4>
+                <p>You can use the iframe embedding snippet provided in the tool card by appending <code>?embed=1</code> to load a lightweight version of the generator widget.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Are the generated gradients cross-browser compatible?</h4>
+                <p>Yes, the tool outputs standard, modern CSS3 compliant properties that function seamlessly across all major web browsers.</p>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section class="article-content" style="margin-bottom: 40px;">
+            <h2>Conclusion</h2>
+            <p>Mastering color selection and CSS generation is crucial for building engaging, professional digital experiences. The <strong>WCC Gradient Generator Tools Full Colors</strong> streamlines this entire process, giving you complete artistic freedom alongside ready-to-use production code. Start experimenting with unique palettes today to make your next project shine!</p>
+        </section>
+
+        <!-- Additional Text Links Listing provided in prompt -->
+        <div class="palette-cloud">
+            <a href="#" target="_blank">Book House Painters</a>
+            <a href="#" target="_blank">Pink color palettes</a>
+            <a href="#" target="_blank">Palette</a>
+            <a href="#" target="_blank">Black color palettes</a>
+            <a href="#" target="_blank">Color palette generator</a>
+            <a href="#" target="_blank">Choose Wall Art</a>
+            <a href="#" target="_blank">Cool color palettes</a>
+            <a href="#" target="_blank">Blue color palettes</a>
+            <a href="#" target="_blank">Orange color palettes</a>
+            <a href="#" target="_blank">Digital color palettes</a>
+            <a href="#" target="_blank">Two color palettes</a>
+            <a href="#" target="_blank">Drawing & Coloring</a>
+            <a href="#" target="_blank">Visual Art & Design</a>
+            <a href="#" target="_blank">Order Custom Logos</a>
+            <a href="#" target="_blank">Contrasting color palettes</a>
+            <a href="#" target="_blank">Red color palettes</a>
+            <a href="#" target="_blank">Warm color palettes</a>
+            <a href="#" target="_blank">Grey color palettes</a>
+            <a href="#" target="_blank">Custom palette creation</a>
+            <a href="#" target="_blank">Get Painting Quotes</a>
+            <a href="#" target="_blank">Color scheme generator</a>
+            <a href="#" target="_blank">Online color picker</a>
+            <a href="#" target="_blank">Color selection tool</a>
+            <a href="#" target="_blank">3 color palette</a>
+            <a href="#" target="_blank">website color schemes generator</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a> | 
+            <a href="about-us.html">About Us</a> | 
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms & Conditions</a> | 
+            <a href="disclaimer.html">Disclaimer</a> | 
+            <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+        </div>
+        <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Google AMP Auto Ads Integration -->
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+
+    <!-- Interactive Script for Live Gradient Generation -->
+    <script>
+        const typeSelect = document.getElementById('gradientType');
+        const angleInput = document.getElementById('gradientAngle');
+        const angleValSpan = document.getElementById('angleVal');
+        const color1Input = document.getElementById('color1');
+        const pos1Input = document.getElementById('pos1');
+        const color2Input = document.getElementById('color2');
+        const pos2Input = document.getElementById('pos2');
+        const previewBox = document.getElementById('previewBox');
+        const cssOutput = document.getElementById('cssOutput');
+
+        function updateGradient() {
+            const type = typeSelect.value;
+            const angle = angleInput.value;
+            angleValSpan.textContent = angle;
+            
+            const c1 = color1Input.value;
+            const p1 = pos1Input.value;
+            const c2 = color2Input.value;
+            const p2 = pos2Input.value;
+
+            let cssString = "";
+            if (type === 'linear') {
+                cssString = `linear-gradient(${angle}deg, ${c1} ${p1}%, ${c2} ${p2}%)`;
+            } else {
+                cssString = `radial-gradient(circle, ${c1} ${p1}%, ${c2} ${p2}%)`;
+            }
+
+            previewBox.style.background = cssString;
+            cssOutput.textContent = `background: ${cssString};`;
+        }
+
+        typeSelect.addEventListener('input', updateGradient);
+        angleInput.addEventListener('input', updateGradient);
+        color1Input.addEventListener('input', updateGradient);
+        pos1Input.addEventListener('input', updateGradient);
+        color2Input.addEventListener('input', updateGradient);
+        pos2Input.addEventListener('input', updateGradient);
+    </script>
+</body>
+</html>
