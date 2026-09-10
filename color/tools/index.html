@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Tools WCC Generator All In One</title>
+    <link rel="canonical" href="https://whellcolor.github.io/color/tools/index.html">
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+    <meta name="author" content="Whellcolor Dev Core Team">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="wcc.png">
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+
+    <meta property="og:type" content="website">
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-GK8ZT3L7EC');
+    </script>
+    <meta property="og:url" content="https://whellcolor.github.io/color/tools/index.html">
+    <meta property="og:title" content="Color Tools WCC Generator All In One">
+    <meta property="og:description" content="A comprehensive engineering index mapping out automated system paths, static micro-portals, low-latency audio delivery nodes, and high-performance cross-domain asset frameworks.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e1b4b, var(--card-bg));
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+        }
+
+        header img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            background: linear-gradient(to right, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tool Grid & Interactive Generator */
+        .generator-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .generator-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .palette-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .color-box {
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-generate {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-generate:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Palette Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            border-color: var(--accent);
+            background: #2563eb15;
+            transform: translateY(-3px);
+        }
+
+        /* Article & Tutorial Section */
+        .article-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .article-section h2, .article-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .article-section p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .article-section ul, .article-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .article-section li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #7dd3fc;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item h4 {
+            color: var(--text-color);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            margin: 0 5px;
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        @media(max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .article-section, .generator-section, .faq-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- HEADER -->
+        <header>
+            <img src="wcc.png" alt="logo wcc.png alt text header">
+            <h1>COLOR TOOLS WCC GENERATOR ALL IN ONE</h1>
+        </header>
+
+        <!-- INTERACTIVE PALETTE GENERATOR TOOL -->
+        <section class="generator-section">
+            <h2>Interactive Palette Generator</h2>
+            <div class="palette-display" id="paletteContainer">
+                <!-- Color items will be rendered via JS -->
+            </div>
+            <button class="btn-generate" id="generateBtn">Generate New Palette</button>
+        </section>
+
+        <!-- PALETTE CATEGORIES LIST -->
+        <div class="category-grid">
+            <div class="category-card" onclick="loadTheme('violet')">Violet color palettes</div>
+            <div class="category-card" onclick="loadTheme('brown')">Brown color palettes</div>
+            <div class="category-card" onclick="loadTheme('picture')">Palette by Picture</div>
+            <div class="category-card" onclick="loadTheme('green')">Green color palettes</div>
+            <div class="category-card" onclick="loadTheme('pastel')">Pastel color palettes</div>
+            <div class="category-card" onclick="loadTheme('theory')">Color theory guide</div>
+            <div class="category-card" onclick="loadTheme('artist')">Artist Palettes</div>
+            <div class="category-card" onclick="loadTheme('painters')">Book House Painters</div>
+            <div class="category-card" onclick="loadTheme('pink')">Pink color palettes</div>
+            <div class="category-card" onclick="loadTheme('palette')">Palette</div>
+            <div class="category-card" onclick="loadTheme('black')">Black color palettes</div>
+            <div class="category-card" onclick="loadTheme('generator')">Color palette generator</div>
+            <div class="category-card" onclick="loadTheme('wallart')">Choose Wall Art</div>
+            <div class="category-card" onclick="loadTheme('cool')">Cool color palettes</div>
+            <div class="category-card" onclick="loadTheme('blue')">Blue color palettes</div>
+            <div class="category-card" onclick="loadTheme('orange')">Orange color palettes</div>
+            <div class="category-card" onclick="loadTheme('digital')">Digital color palettes</div>
+            <div class="category-card" onclick="loadTheme('stock')">Explore Stock Photos</div>
+            <div class="category-card" onclick="loadTheme('twocolor')">Two color palettes</div>
+            <div class="category-card" onclick="loadTheme('palette2')">palette</div>
+            <div class="category-card" onclick="loadTheme('drawing')">Drawing & Coloring</div>
+            <div class="category-card" onclick="loadTheme('pastel2')">Pastel color palettes</div>
+            <div class="category-card" onclick="loadTheme('pink2')">Pink color palettes</div>
+            <div class="category-card" onclick="loadTheme('palette3')">palette</div>
+            <div class="category-card" onclick="loadTheme('visualart')">Visual Art & Design</div>
+            <div class="category-card" onclick="loadTheme('logos')">Order Custom Logos</div>
+            <div class="category-card" onclick="loadTheme('contrasting')">Contrasting color palettes</div>
+            <div class="category-card" onclick="loadTheme('red')">Red color palettes</div>
+            <div class="category-card" onclick="loadTheme('warm')">Warm color palettes</div>
+            <div class="category-card" onclick="loadTheme('warm2')">Warm color palettes</div>
+            <div class="category-card" onclick="loadTheme('grey')">Grey color palettes</div>
+            <div class="category-card" onclick="loadTheme('pastel3')">Pastel color palettes</div>
+            <div class="category-card" onclick="loadTheme('painters2')">Book House Painters</div>
+            <div class="category-card" onclick="loadTheme('theory2')">Color theory guide</div>
+            <div class="category-card" onclick="loadTheme('custom')">Custom palette creation</div>
+            <div class="category-card" onclick="loadTheme('logos2')">Order Custom Logos</div>
+            <div class="category-card" onclick="loadTheme('green2')">Green color palettes</div>
+            <div class="category-card" onclick="loadTheme('quotes')">Get Painting Quotes</div>
+            <div class="category-card" onclick="loadTheme('schemegenerator')">Color scheme generator</div>
+            <div class="category-card" onclick="loadTheme('onlinepicker')">Online color picker</div>
+            <div class="category-card" onclick="loadTheme('selectiontool')">Color selection tool</div>
+            <div class="category-card" onclick="loadTheme('threecolor')">3 color palette</div>
+            <div class="category-card" onclick="loadTheme('webschemes')">website color schemes generator</div>
+            <div class="category-card" onclick="loadTheme('hexindex')">Color Hex Index</div>
+        </div>
+
+        <!-- ENGLISH TUTORIAL ARTICLE -->
+        <article class="article-section">
+            <h2>Comprehensive Guide to Mastering Color Tools and Web Design Generators</h2>
+            <p>Welcome to the ultimate resource hub for digital artists, web developers, and crypto-enthusiast designers. Understanding color theory is a fundamental milestone when building decentralized apps (dApps) or managing modern web infrastructure. Utilizing advanced toolsets like the <strong>Color Tools WCC Generator All In One</strong> simplifies the design process significantly.</p>
+
+            <h3>Why Color Schemes Matter in Modern Web3 Ecosystems</h3>
+            <p>When interacting with decentralized networks, user interfaces must establish immediate trust and high readability. A meticulously balanced color index prevents user fatigue and enhances transaction security perception. To explore more about decentralized protocols, you can check out 
+                <a href="https://github.com/whellcolor" target="_blank">Whellcolor GitHub Organization</a> or review their comprehensive 
+                <a href="https://en.wikipedia.org/wiki/Web3" target="_blank">Web3 Architecture Overview</a>. For broader cryptographic perspectives, feel free to inspect insights via 
+                <a href="https://coinmarketcap.com" target="_blank">CoinMarketCap Analytics</a> and study the blockchain security metrics on 
+                <a href="https://etherscan.io" target="_blank">Etherscan Explorer</a>.
+            </p>
+
+            <h3>Step-by-Step Tutorial: Generating and Implementing Custom Palettes</h3>
+            <ol>
+                <li><strong>Analyze Project Requirements:</strong> Determine whether your application requires a <a href="https://coolors.co" target="_blank">Coolors Design Hub</a> vibe or a darker tone typical of blockchain tools.</li>
+                <li><strong>Select Your Palette Generator:</strong> Use the interactive generator above or explore external libraries like the <a href="https://colorhunt.co" target="_blank">Color Hunt Community</a> for pre-made combinations.</li>
+                <li><strong>Export Hex Codes:</strong> Copy the generated HEX, RGB, or HSL values directly into your CSS layout variables.</li>
+                <li><strong>Test Contrast and Accessibility:</strong> Ensure your text meets optimal contrast ratios using evaluation systems found on the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">WCAG Official Guidelines</a>.</li>
+                <li><strong>Integrate with Smart Contracts:</strong> Connect your customized styling with Web3 portals or frontend interfaces referenced in tutorials by the <a href="https://ethereum.org/en/developers/" target="_blank">Ethereum Developer Portal</a>.</li>
+                <li><strong>Optimize Assets:</strong> Minimize color bloat and leverage global standards like those outlined by the <a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a>.</li>
+                <li><strong>Deploy Final Configuration:</strong> Push updates live to your repository. You can review network topologies via tools like <a href="https://www.cloudflare.com" target="_blank">Cloudflare Infrastructure</a>.</li>
+            </ol>
+
+            <h3>Internal Resources & Navigation</h3>
+            <p>To deepen your workflow experience, explore our internal architecture guides:</p>
+            <ul>
+                <li><a href="index.html">Home Portal Index</a></li>
+                <li><a href="about-us.html">About Our Core Development Team</a></li>
+                <li><a href="privacy-policy.html">Privacy Protection Policy</a></li>
+                <li><a href="terms.html">Platform Terms & Conditions</a></li>
+                <li><a href="disclaimer.html">Financial & Technical Disclaimer</a></li>
+                <li><a href="https://whellcolor.github.io/sitemap.xml" target="_blank">XML Sitemap Map</a></li>
+                <li><a href="index.html#tools">Quick Tool Access Hub</a></li>
+            </ul>
+
+            <h3>FAQ</h3>
+            <div class="faq-section" style="background: var(--bg-color); padding: 20px; border-radius: 8px; margin-top: 20px;">
+                <div class="faq-item">
+                    <h4>What is the Color Tools WCC Generator All In One?</h4>
+                    <p>It is an integrated suite designed to help creators find, test, and implement color palettes seamlessly for standard web development and modern Web3 projects.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I copy color codes from the generator?</h4>
+                    <p>Simply click or view the generated color box to see the HEX code values, which can then be directly pasted into your style sheets.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Are these color palettes optimized for mobile screens?</h4>
+                    <p>Yes, all color indexes and generator layouts are 100% fully responsive across desktop, tablet, and smartphone display metrics.</p>
+                </div>
+            </div>
+
+            <h3>Conclusion</h3>
+            <p>Mastering color selection elevates your digital creations from standard to professional grade. By integrating automated generators, adhering to accessibility standards, and leaning on reliable web resources, you establish a solid foundation for any web application or Web3 platform. Keep experimenting with diverse color combinations and optimize your development workflow today!</p>
+        </article>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a> | 
+                <a href="about-us.html">About Us</a> | 
+                <a href="privacy-policy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms & Conditions</a> | 
+                <a href="disclaimer.html">Disclaimer</a> | 
+                <a href="https://whellcolor.github.io/sitemap.xml" target="_blank">Sitemap</a>
+            </div>
+            <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+
+    <!-- FUNCTIONAL SCRIPT FOR COLOR TOOLS -->
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function generatePalette() {
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const color = getRandomColor();
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = color;
+                box.innerText = color;
+                box.title = "Click to copy " + color;
+                box.onclick = () => {
+                    navigator.clipboard.writeText(color);
+                    alert("Copied color: " + color);
+                };
+                container.appendChild(box);
+            }
+        }
+
+        function loadTheme(themeName) {
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            // Preset themes simulation based on name selection
+            let colors = [];
+            switch(themeName) {
+                case 'violet': colors = ['#2e1065', '#581c87', '#7e22ce', '#a855f7', '#d8b4fe']; break;
+                case 'brown': colors = ['#3f2305', '#6f4e37', '#964B00', '#b5651d', '#dda15e']; break;
+                case 'green': colors = ['#064e3b', '#065f46', '#047857', '#10b981', '#6ee7b7']; break;
+                case 'pastel': colors = ['#ffb5a7', '#fcd5ce', '#f8edeb', '#f9dcc4', '#fec89a']; break;
+                case 'pink': colors = ['#831843', '#be185d', '#ec4899', '#f472b6', '#fbcfe8']; break;
+                case 'blue': colors = ['#1e3a8a', '#1d4ed8', '#2563eb', '#3b82f6', '#93c5fd']; break;
+                case 'orange': colors = ['#7c2d12', '#c2410c', '#ea580c', '#f97316', '#fdba74']; break;
+                case 'red': colors = ['#7f1d1d', '#991b1b', '#dc2626', '#ef4444', '#fca5a5']; break;
+                case 'grey': colors = ['#111827', '#1f2937', '#4b5563', '#9ca3af', '#e5e7eb']; break;
+                default: 
+                    for (let i = 0; i < 5; i++) colors.push(getRandomColor());
+            }
+            
+            colors.forEach(color => {
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = color;
+                box.innerText = color;
+                box.title = "Click to copy " + color;
+                box.onclick = () => {
+                    navigator.clipboard.writeText(color);
+                    alert("Copied theme color: " + color);
+                };
+                container.appendChild(box);
+            });
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generatePalette);
+
+        // Initial load
+        window.onload = generatePalette;
+    </script>
+</body>
+</html>
