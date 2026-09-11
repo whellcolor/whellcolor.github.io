@@ -1,0 +1,21 @@
+name: Run BlockVision Monad API
+
+on:
+  schedule:
+    # Berjalan otomatis setiap 6 jam sekali (opsional)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Bisa dijalankan secara manual dari tab Actions di GitHub
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Execute BlockVision cURL Request
+        run: |
+          curl --request GET \
+               --url 'https://api.blockvision.org/v2/monad/account/tokens?address=0x4C7C717e404102ddeE58ACa93aCd94A6EA6Ba421' \
+               --header 'accept: application/json' \
+               --header 'x-api-key: 3JBWzvTrbX6FnBwxnodY9UYbdC6'
