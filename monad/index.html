@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build a Custom RPC Miner and Web3 Faucet Checker in Python</title>
+    <link rel="canonical" href="https://whellcolor.github.io/monad/index.html">
+    <meta name="keywords" content="Whellcolor, WCC, Cube Crypto, Web3 Faucet, Crypto Mining, Decentralized Applications, Stake Crypto, NFT Marketplace">
+    <meta name="author" content="Whellcolor Dev Core Team">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="wcc.png">
+    <meta name="google-site-verification" content="UDmGsNWMGTQ5ZWd7lhfXjk19ojERynhk7IEf_TJoY_Y" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://whellcolor.github.io/monad/index.html">
+    <meta property="og:title" content="How to Build a Custom RPC Miner and Web3 Faucet Checker in Python">
+    <meta property="og:description" content="A comprehensive tutorial on building an RPC checker, mining validation utility, and Web3 faucet connector using Python requests.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="google-adsense-account" content="ca-pub-7182145371991939">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7182145371991939" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
+    <script src="https://whellcolor.github.io/js/deploy.js"></script>
+    <script src="https://whellcolor.github.io/js/multi-rpc.js"></script>
+    <script src="https://whellcolor.github.io/js/fetch.js"></script>
+    <script src="https://whellcolor.github.io/dapp/rpc.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GK8ZT3L7EC"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-GK8ZT3L7EC');
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; line-height: 1.6; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; color: #111; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 6px; overflow-x: auto; }
+        code { font-family: monospace; }
+        .interactive-widget { background: #fdfdfd; border: 2px dashed #007bff; padding: 20px; border-radius: 8px; margin: 30px 0; }
+        .token-card { display: flex; align-items: center; border: 1px solid #ddd; padding: 12px; margin-bottom: 10px; border-radius: 6px; background: #fff; gap: 15px; }
+        .token-logo { width: 35px; height: 35px; border-radius: 50%; object-fit: contain; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        button:hover { background: #0056b3; }
+        footer { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; text-align: center; font-size: 0.9rem; }
+        .footer-links a { color: #007bff; text-decoration: none; margin: 0 5px; }
+        .footer-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Building an Advanced RPC Miner Validator and Faucet Connectivity Engine</h1>
+    </header>
+
+    <main>
+        <p>In the modern decentralized application ecosystem managed by protocols like <a href="https://whellcolor.github.io/dapp/rpc.js" target="_blank" rel="noopener">Whellcolor Cube Crypto (WCC)</a>, maintaining seamless connectivity with network nodes is imperative. Developers often encounter latency issues or faulty broadcasting pipelines when interacting directly with blockchain endpoints. This comprehensive guide outlines how to build an active Remote Procedure Call (RPC) verification system, handle raw transaction decoding, and connect with automated <a href="https://whellcolor.github.io/js/fetch.js" target="_blank" rel="noopener">Web3 Faucet infrastructures</a> using Python.</p>
+
+        <h2>Understanding Blockchain RPC Architecture and Mining Nodes</h2>
+        <p>A Remote Procedure Call (RPC) acts as the bridge between your localized software architecture and distributed ledger nodes. When dealing with specialized operations—such as decentralized <a href="https://whellcolor.github.io/js/deploy.js" target="_blank" rel="noopener">Crypto Mining</a> tasks or smart contract triggers—your script must frequently ping validator nodes to check operational health, gas metrics, and node responsiveness. Multi-chain frameworks often rely on centralized services like <a href="https://trongrid.io" target="_blank" rel="noopener">TronGrid</a> or custom modular execution layers to broadcast transactions efficiently.</p>
+
+        <h2>Complete Python Source Code Implementation</h2>
+        <p>The Python implementation below features native address encoding translation, raw transaction hex parsing, RPC validation checks, and simulated faucet token requests using the industry-standard `requests` library.</p>
+
+<pre><code class="language-python">
+import requests
+import json
+import hashlib
+
+# ==========================================
+# 1. API CONFIGURATION & TRONGRID ENDPOINT
+# ==========================================
+API_KEY = "8e15fa7a-3c0a-4aa5-a9f6-fc407def9f52"
+url = "https://api.trongrid.io/wallet/broadcasttransaction"
+
+headers = {
+    "Content-Type": "application/json",
+    "TRON-PRO-API-KEY": API_KEY
+}
+
+# ==========================================
+# 2. RAW TRANSACTION PAYLOAD STRUCTURE
+# ==========================================
+transaction_data = {
+  "raw_data": {
+    "ref_block_bytes": "6bbc",
+    "ref_block_hash": "b04c21f411d816f6",
+    "expiration": 1789097796000,
+    "contract": [
+      {
+        "parameter": {
+          "value": {
+            "owner_address": "414480f54fdc885e3f4943635bf5dd564f512c1ab0",
+            "contract_address": "41a614f803b6fd780986a42c78ec9c7f77e6ded13c",
+            "data": "095ea7b3000000000000000000000000be365314f2e77fd1257d60c346bb32dbda369403ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+        },
+        "type": "TriggerSmartContract"
+      }
+    ],
+    "timestamp": 1789097738325,
+    "fee_limit": 1000000000
+  },
+  "raw_data_hex": "0a026bbc2208b04c21f411d816f640a0c3a7f488345aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a15414480f54fdc885e3f4943635bf5dd564f512c1ab0121541a614f803b6fd780986a42c78ec9c7f77e6ded13c2244095ea7b300000000000000000000000be365314f2e77fd1257d60c346bb32dbda369403ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff70d580a4f4883490018094ebdc03",
+  "txID": "14949c3f891a8033e17fb0b4b9cdd6f44f7318bc7275b8d40c835a951c1523b5",
+  "visible": False
+}
+
+# ==========================================
+# 3. ADDRESS CONVERSION ROUTINES (HEX TO BASE58)
+# ==========================================
+ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+def encode_base58(b: bytes) -> str:
+    n = int.from_bytes(b, 'big')
+    res = []
+    while n > 0:
+        n, rem = divmod(n, 58)
+        res.append(ALPHABET[rem])
+    res = ''.join(reversed(res))
+    
+    for byte in b:
+        if byte == 0:
+            res = ALPHABET[0] + res
+        else:
+            break
+    return res
+
+def hex_to_tron_base58(hex_addr: str) -> str:
+    addr_bytes = bytes.fromhex(hex_addr)
+    sha1 = hashlib.sha256(addr_bytes).digest()
+    sha2 = hashlib.sha256(sha1).digest()
+    checksum = sha2[:4]
+    return encode_base58(addr_bytes + checksum)
+
+# Execute address translation mappings
+owner_hex = transaction_data["raw_data"]["contract"][0]["parameter"]["value"]["owner_address"]
+contract_hex = transaction_data["raw_data"]["contract"][0]["parameter"]["value"]["contract_address"]
+spender_hex = "41be365314f2e77fd1257d60c346bb32dbda369403"
+
+print("--- DECODED BLOCKCHAIN ADDRESS MAPPINGS ---")
+print("Owner Address (Base58)    :", hex_to_tron_base58(owner_hex))
+print("Contract Address (Base58) :", hex_to_tron_base58(contract_hex))
+print("Spender Address (Base58)  :", hex_to_tron_base58(spender_hex))
+print("-" * 45)
+
+# ==========================================
+# 4. RPC NODE VALIDATION & FAUCET CHECKER
+# ==========================================
+def check_rpc_miner_status(rpc_endpoint):
+    """Checks the health status of a remote mining node or multi-rpc endpoint."""
+    payload = {
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
+        "params": [],
+        "id": 1
+    }
+    try:
+        res = requests.post(rpc_endpoint, json=payload, timeout=5)
+        return res.json().get("result") != None
+    except Exception:
+        return False
+
+def request_testnet_faucet(faucet_url, wallet_address):
+    """Simulates automated asset claiming from a decentralized Web3 Faucet."""
+    payload = {"address": wallet_address}
+    try:
+        res = requests.post(faucet_url, json=payload, timeout=10)
+        return res.json()
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+# Execute validation workflows
+print("\nInitiating RPC Miner Status Inspection...")
+is_node_active = check_rpc_miner_status("https://api.trongrid.io/jsonrpc")
+print(f"RPC Node Online Status: {is_node_active}")
+
+print("\nBroadcasting Transaction to Ledger Network...")
+response = requests.post(url, headers=headers, data=json.dumps(transaction_data))
+print("Server Response Payload:", response.json())
+</code></pre>
+
+        <!-- Live Widget Integrasi Monad Token Checker -->
+        <div class="interactive-widget">
+            <h3>Live Tool: Monad Token Portfolio Checker</h3>
+            <p>Check live balances dynamically using the integrated BlockVision API endpoint:</p>
+            <button onclick="fetchTokens()">Muat Token Portfolio</button>
+            <div id="result" style="margin-top: 15px;">Klik tombol di atas untuk memuat data.</div>
+        </div>
+
+        <h2>Integrating Multi-RPC Checking and Faucet Verification</h2>
+        <p>Advanced decentralized platforms often integrate secondary fallback mechanisms using scripts like <a href="https://whellcolor.github.io/js/multi-rpc.js" target="_blank" rel="noopener">Multi-RPC Node Balancers</a> to avoid single points of failure. By validating block heights dynamically before pushing raw payload hex bytes, developers secure their infrastructure against sudden network blackouts or rate-limiting filters enforced by providers.</p>
+
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <h3>Why is signature generation mandatory before broadcasting raw transactions?</h3>
+        <p>Raw transaction objects contain parameters describing the state alterations, but without a cryptographic signature generated using the owner's private key, validator nodes will reject the payload to protect network integrity against unauthorized alterations.</p>
+        
+        <h3>How do Web3 Faucets prevent automated bot exploitation?</h3>
+        <p>Most enterprise faucets implement strict rate limits, cross-chain balance verification checks, and CAPTCHA interfaces handled securely via backend verification scripts.</p>
+
+        <h2>Conclusion</h2>
+        <p>Building resilient blockchain tooling requires careful management of endpoint availability, address translation accuracy, and cryptographic verification safeguards. By combining Python's robust `requests` module with decentralized RPC checks and secure faucet integration patterns, developers can reliably scale applications across modern networks like <a href="https://whellcolor.github.io/dapp/rpc.js" target="_blank" rel="noopener">WCC Infrastructure Ecosystems</a>.</p>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a> | 
+            <a href="about-us.html" target="_blank" rel="noopener">About Us</a> | 
+            <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> | 
+            <a href="terms.html" target="_blank" rel="noopener">Terms & Conditions</a> | 
+            <a href="disclaimer.html" target="_blank" rel="noopener">Disclaimer</a> | 
+            <a href="https://whellcolor.github.io/sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+        </div>
+        <p>© 2026 Whellcolor Cube Crypto (WCC) Protocol. All Rights Reserved.</p>
+    </footer>
+
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7182145371991939"></amp-auto-ads>
+
+    <!-- JavaScript untuk Menjalankan Fetch API Token Monad & Penanganan Desimal -->
+    <script>
+        async function fetchTokens() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = "Sedang mengambil data dari BlockVision API...";
+
+            const url = "https://api.blockvision.org/v2/monad/account/tokens?address=0x4C7C717e404102ddeE58ACa93aCd94A6EA6Ba421";
+            const headers = {
+                "accept": "application/json",
+                "x-api-key": "3JBWzvTrbX6FnBwxnogY9UYbdC6"
+            };
+
+            try {
+                const response = await fetch(url, { method: 'GET', headers: headers });
+                const data = await response.json();
+
+                if (data.code === 0) {
+                    const tokens = data.result.data;
+                    let html = `<h3>Total Portfolio USD: $${data.result.usdValue}</h3>`;
+                    
+                    tokens.forEach(token => {
+                        // Penanganan koreksi desimal jika API mengirim nilai decimal 0 atau string kosong
+                        let decimals = token.decimal;
+                        if (!decimals || decimals === 0) {
+                            if (token.symbol === "USDC") decimals = 6;
+                            else if (token.symbol === "cbBTC") decimals = 8;
+                            else decimals = 18; // Default standar EVM
+                        }
+
+                        // Menghitung saldo asli dengan membagi berdasarkan desimal
+                        let adjustedBalance = Number(token.balance) / Math.pow(10, decimals);
+                        // Batasi tampilan angka di belakang koma maksimal 4 digit
+                        let formattedBalance = adjustedBalance.toLocaleString('en-US', { maximumFractionDigits: 4 });
+
+                        html += `
+                            <div class="token-card">
+                                <img src="${token.imageURL || ''}" alt="${token.symbol}" class="token-logo" onerror="this.style.display='none'">
+                                <div>
+                                    <strong>${token.name} (${token.symbol})</strong><br>
+                                    <small style="color: #666;">Kontrak: ${token.contractAddress}</small><br>
+                                    <strong>Saldo:</strong> ${formattedBalance} ${token.symbol}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    resultDiv.innerHTML = html;
+                } else {
+                    resultDiv.innerHTML = `Gagal memuat data: ${data.reason || 'Kesalahan API'}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `Terjadi kesalahan koneksi: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
