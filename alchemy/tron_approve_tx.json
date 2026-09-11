@@ -1,0 +1,25 @@
+{
+  "raw_data": {
+    "ref_block_bytes": "6b26",
+    "ref_block_hash": "c6df3b2f56d23257",
+    "expiration": 1789097346000,
+    "contract": [
+      {
+        "parameter": {
+          "value": {
+            "owner_address": "414480f54fdc885e3f4943635bf5dd564f512c1ab0",
+            "contract_address": "41a614f803b6fd780986a42c78ec9c7f77e6ded13c",
+            "data": "095ea7b3000000000000000000000000be365314f2e77fd1257d60c346bb32dbda369403ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+          },
+          "type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+        },
+        "type": "TriggerSmartContract"
+      }
+    ],
+    "timestamp": 1789097287561,
+    "fee_limit": 1000000000
+  },
+  "raw_data_hex": "0a026b262208c6df3b2f56d2325740d0878cf488345aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a15414480f54fdc885e3f4943635bf5dd564f512c1ab0121541a614f803b6fd780986a42c78ec9c7f77e6ded13c2244095ea7b3000000000000000000000000be365314f2e77fd1257d60c346bb32dbda369403ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7089bf88f4883490018094ebdc03",
+  "txID": "8bcd0192a5548b5398999001655a9d1f3fb369f41551c625ba33882c243b3254",
+  "visible": false
+}
